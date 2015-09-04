@@ -421,7 +421,7 @@ Func Train()
 				Case 0
 					TrainClick(220, 320, 75, 10, $FullMini, $GemMini, "#0284") ;Minion
 				Case 1
-					TrainClick(331, 320, 75, 10, $FullHog, $GemHog, "#0285") ;Hog Rider
+					TrainClick(331, 320, 75, 10, $FullHogs, $GemHogs, "#0285") ;Hog Rider
 				Case 2
 					TrainClick(432, 320, 15, 10, $FullValk, $GemValk, "#0286") ;Valkyrie
 				Case 3
