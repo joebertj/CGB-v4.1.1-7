@@ -720,10 +720,10 @@ EndFunc   ;==>GetDropTH
 
 Func PrepareAttackTHPB6()
 	Local $i
-	Local $d[4] = [0, 0, 0, 0], $smallestd = 40
-	Local $DropTH[2] = [0, 0]
+	Local $smallestd = 40
 	Local $tiles = 0
 	Local $THnum = 6
+	Local $sided[2] = [0, 0]
 
 	;SetLog("Checking TH Coords")
 	;SetLog("THx: " & $THx & " THy: " & $THy)
@@ -733,20 +733,15 @@ Func PrepareAttackTHPB6()
 		$THnum = $searchTH
 	EndIf
 	$tiles += (12 - $THnum) ^ 2 + (10 - $THnum) * 2
-	For $i = 0 To 3
-		$DropTH = GetDropTH($THx, $THy, $i)
-		$d = GetDistance($THx, $THy, $DropTH[0], $DropTH[1], $i)
-		If $d[3] < $smallestd Then
-			$smallestd = Round($d[3])
-			$THside = $i
-		EndIf
-	Next
+	$sided = GetTHSide($THx,$THy)
+	$THside = $sided[0]
+	$smallestd = $sided[1]
 	If $smallestd < $tiles Then Return True
 	SetLog("Shortest distance " & $smallestd & " on side " & $THside & " is NOT less than " & $tiles & " tiles")
 	Return False
 EndFunc   ;==>PrepareAttackTHPB6
 
-Func GetDistance($x1, $y1, $x2, $y2, $type)
+Func GetDistance($x1, $y1, $x2, $y2, $type=0)
 	Local $a, $b, $c, $d[4] = [0, 0, 0, 0]
 	Local $Dpixel = 11.6
 
@@ -778,3 +773,21 @@ Func SetOffTraps($THx, $THy, $eTroop, $spotsNum, $setOffTrap)
 	EndIf
 	Return True
 EndFunc   ;==>SetOffTraps
+
+Func GetTHSide($xx,$yy)
+	Local $i
+	Local $smallestd = 40
+	Local $DropTH[2] = [0, 0]
+	Local $d[4] = [0, 0, 0, 0]
+	Local $sided[2]
+
+	For $i = 0 To 3
+		$DropTH = GetDropTH($xx, $yy, $i)
+		$d = GetDistance($xx, $yy, $DropTH[0], $DropTH[1], $i)
+		If $d[3] < $smallestd Then
+			$sided[1] = Round($d[3])
+			$sided[0] = $i
+		EndIf
+	Next
+	Return $sided
+EndFunc

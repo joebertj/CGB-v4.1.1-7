@@ -144,7 +144,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			ElseIf FileExists(@WindowsDir & "\media\Windows Exclamation.wav") Then
 				SoundPlay(@WindowsDir & "\media\Windows Exclamation.wav", 1)
 			EndIf
-			If _Sleep(20000) Then Return
+			If _Sleep(15000) Then Return
 		EndIf
 		If $Restart = True Then Return ; exit func
 		$bBtnAttackNowPressed = False

@@ -85,6 +85,19 @@ Func checkDefense()
 
 	$airTroops = $OptIgnoreTraps
 	$grdTroops = $OptIgnoreAirTraps
+	Local $d[4]
+
+	If $airTroops = 1 Then
+		$chkMortar = 0
+	EndIf
+	If $grdTroops = 1 Then
+		$chkAir = 0
+	EndIf
+	If $airTroops = 1 And $grdTroops = 1 Then
+		$chkWiz = 0
+		$chkInferno = 0
+		$chkTesla = 0
+	EndIf
 
 	SetLog("Checking Trapped TH", $COLOR_BLUE)
 
@@ -118,45 +131,49 @@ Func checkDefense()
 						Setlog($DefText[$t] & " Found")
 						;Setlog($trapTHtxt[$t][$i] & " Found")
 
+						$d = GetDistance($THx, $THy, $Defx, $Defy)
 						If $chkInferno = 1 AND $DefText[$t] = "Inferno Tower" Then
-							If ($Defx > 40 AND $Defx < 210) AND ($Defy > 30 AND $Defy < 150) Then
+							SetLog("Inferno Tower distance is " & $d[3]);range 9
+							If $d[3] < 7 Then
 								$skipBase = True
 								Return "Inferno Tower found near TH, skipping..."
 							Else
 								$skipBase = False
 							EndIf
 						ElseIf $chkTesla = 1 AND $DefText[$t] = "Hidden Tesla" Then
-							If ($Defx > 58 AND $Defx < 192) AND ($Defy > 45 AND $Defy < 135) Then
+							SetLog("Hidden Tesla distance is " & $d[3]);range 6-7
+							If $d[3] < 4 Then
 								$skipBase = True
 								Return "Hidden Tesla found near TH, skipping..."
 							Else
 								$skipBase = False
 							EndIf
 						ElseIf $chkMortar = 1 AND $DefText[$t] = "Mortar" Then
-							If ($Defx > 5 AND $Defx < 245) AND ($Defy > 10 AND $Defy < 170) Then
+							SetLog("Mortar distance is " & $d[3]);range is 4-11
+							If $d[3] < 9 And Then
 								$skipBase = True
 								Return "Mortar found near TH, skipping..."
 							Else
 								$skipBase = False
 							EndIf
 						ElseIf $chkWiz = 1 AND $DefText[$t] = "Wizard Tower" Then
-							If ($Defx > 53 AND $Defx < 197) AND ($Defy > 42 AND $Defy < 138) Then
+							SetLog("Wizard Tower distance is " & $d[3]);range is 7
+							If $d[3] < 5 Then
 								$skipBase = True
 								Return "Wizard Tower found near TH, skipping..."
 							Else
 								$skipBase = False
 							EndIf
 						ElseIf $chkAir = 1 AND $DefText[$t] = "Air Defense" Then
-							If ($Defx > 15 AND $Defx < 235) AND ($Defy > 20 AND $Defy < 160) Then
+							SetLog("Air Defense distance is " & $d[3]);range is 10
+							If $d[3] < 8 Then
 								$skipBase = True
 								Return "Air Defense found near TH, skipping..."
 							Else
 								$skipBase = False
 							EndIf
 						Else
-							If ($DefText[$t] = "Air Defense" AND $airTroops = 0) or ($DefText[$t] = "Mortar" AND $grdTroops = 0) Then
-								$skipBase = False
-							ElseIf ($Defx > 5 AND $Defx < 245) AND ($Defy > 10 AND $Defy < 170) Then
+							If ($Defx > 5 AND $Defx < 245) AND ($Defy > 10 AND $Defy < 170) Then
 								$skipBase = False
 								$allTroops = True
 								Return $DefText[$t]&" found at "&$DefX&","&$DefY&". Using alternative attack strategy!"
