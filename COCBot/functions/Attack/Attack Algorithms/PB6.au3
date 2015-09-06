@@ -669,7 +669,7 @@ Func GetDropTH($xx, $yy, $type, $spots = 1, $spotidx = 1)
 	If $spotidx > $spots Then Return $DropTH
 	Switch $type
 		Case 0
-			$intercept = 330
+			$intercept = 325
 			$x1 = (($yy - $intercept) / -$slope)
 			$y1 = (-$slope * $x1 + $intercept)
 			$y2 = (-$slope * $xx + $intercept)
@@ -691,7 +691,7 @@ Func GetDropTH($xx, $yy, $type, $spots = 1, $spotidx = 1)
 			$DropTH[0] = Round($x1 + ($c * $spotidx / ($spots + 1)) * $cos37)
 			$DropTH[1] = Round($slope * $DropTH[0] + $intercept)
 		Case 2
-			$intercept = 300
+			$intercept = 310
 			$x1 = (($yy + $intercept) / $slope)
 			$y1 = ($slope * $x1 - $intercept)
 			$y2 = ($slope * $xx - $intercept)
