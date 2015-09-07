@@ -785,7 +785,8 @@ Func GetTHSide($xx,$yy)
 		$DropTH = GetDropTH($xx, $yy, $i)
 		$d = GetDistance($xx, $yy, $DropTH[0], $DropTH[1], $i)
 		If $d[3] < $smallestd Then
-			$sided[1] = Round($d[3])
+			$smallestd = Round($d[3])
+			$sided[1] = $smallestd
 			$sided[0] = $i
 		EndIf
 	Next
