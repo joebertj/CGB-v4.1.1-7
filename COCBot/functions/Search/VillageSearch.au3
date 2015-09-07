@@ -137,14 +137,14 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 
 		If $Restart = True Then Return ; exit func
 		GetResources() ;Reads Resource Values
-		If $searchTH == "-" And $AlertSearch = 1 Then
+		If $searchTH == "-" And $AlertSearchError = 1 Then
 			TrayTip("TH Detection Problem", "TH location can't be determined. Press Next or wait for 15 seconds or manually attack this base. ", 15)
 			If FileExists(@WindowsDir & "\media\Festival\Windows Exclamation.wav") Then
 				SoundPlay(@WindowsDir & "\media\Festival\Windows Exclamation.wav", 1)
 			ElseIf FileExists(@WindowsDir & "\media\Windows Exclamation.wav") Then
 				SoundPlay(@WindowsDir & "\media\Windows Exclamation.wav", 1)
 			EndIf
-			If _Sleep(20000) Then Return
+			If _Sleep(15000) Then Return
 		EndIf
 		If $Restart = True Then Return ; exit func
 		$bBtnAttackNowPressed = False

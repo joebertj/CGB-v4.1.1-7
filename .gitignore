@@ -44,4 +44,5 @@ Temporary Items
 
 *.rar
 *.log
-*.exe
+Backup
+*_old*.au3
