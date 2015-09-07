@@ -767,7 +767,7 @@ Func GetDistance($x1, $y1, $x2, $y2, $type=0)
 	Return $d
 EndFunc   ;==>GetDistance
 
-Func SetOffTraps($THx, $THy, $eTroop, $spotsNum, $setOffTrap)
+Func SetOffTraps($THx, $THy, $eTroop, $spotsNum, $setOffTrap = False)
 	If Not $setOffTrap Then
 		TroopTH($THx, $THy, $eTroop, $spotsNum, 1, 1000)
 	EndIf

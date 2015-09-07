@@ -86,6 +86,7 @@ Func checkDefense()
 	$airTroops = $OptIgnoreTraps
 	$grdTroops = $OptIgnoreAirTraps
 	Local $d[4]
+	Local $Dpixel = 11.6
 
 	If $airTroops = 1 Then
 		$chkMortar = 0
@@ -132,6 +133,8 @@ Func checkDefense()
 						;Setlog($trapTHtxt[$t][$i] & " Found")
 
 						$d = GetDistance($THx, $THy, $Defx, $Defy)
+						SetLog("Defense coord: " & $Defx & " ," & $Defy)
+						SetLog("Distance in pixels: " & $d[2] & " Distance in tiles: " & $d[3])
 						If $chkInferno = 1 AND $DefText[$t] = "Inferno Tower" Then
 							SetLog("Inferno Tower distance is " & $d[3]);range 9
 							If $d[3] < 7 Then
@@ -150,7 +153,7 @@ Func checkDefense()
 							EndIf
 						ElseIf $chkMortar = 1 AND $DefText[$t] = "Mortar" Then
 							SetLog("Mortar distance is " & $d[3]);range is 4-11
-							If $d[3] < 9 And Then
+							If $d[3] < 9 Then
 								$skipBase = True
 								Return "Mortar found near TH, skipping..."
 							Else
