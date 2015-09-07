@@ -46,3 +46,4 @@ Temporary Items
 *.log
 Backup
 *_old*.au3
+*.ini
