@@ -337,9 +337,6 @@ AutoIt3 Syntax Checker v3.3.14.1  Copyright (c) 2007-2013 Tylo & AutoIt Team
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\THWizard.au3"(8,35) : error: $iDelayAttackTHWizard1: undeclared global variable.
 	 If _Sleep($iDelayAttackTHWizard1)
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Image Search\checkDefense.au3"(137,73) : error: d(): undefined function.
-						SetLog("Distance in pixels: " & $d[2] & " Distance in tiles: " & d[
-						~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
 C:\Program Files (x86)\AutoIt3\Include\APIProcConstants.au3(37,1) : UNREFED(37):	$ABOVE_NORMAL_PRIORITY_CLASS
 C:\Program Files (x86)\AutoIt3\Include\SecurityConstants.au3(96,1) : UNREFED(96):	$ACCESS_SYSTEM_SECURITY
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(353,1) : UNREFED(353):	$AD_CLOCKWISE
@@ -6067,4 +6064,4 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\g
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\CheckPrerequisites.au3(1,1) : UNREFED(11):	isNetFramework4Installed
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(335,1) : UNREFED(365):	runHelper
 
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\GameBot.org.au3 - 9 error(s), 14 warning(s)
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\GameBot.org.au3 - 8 error(s), 14 warning(s)

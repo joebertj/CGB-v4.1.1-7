@@ -149,7 +149,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				$MsgBox = MsgBox(1 + 65536, "Manual TH Select", "Click OK to manually select the base Townhall.", 5, $frmBot)
 				If $MsgBox = 1 Then
 					$MsgBox = MsgBox(0, "Click TH", "Please click the Townhall.", 2, $frmBot)
-					If $MsgBox = 0 Then
+					If $MsgBox = 1 Then
 						$THx = FindPos()[0]
 						$THy = FindPos()[1]
 						$MsgBox = MsgBox(4 + 65536, "Confirm TH Location", "Please confirm Townhall coordinates: " & $THx & ", " & $THy, 3, $frmBot)
