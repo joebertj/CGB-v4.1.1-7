@@ -110,7 +110,7 @@ Func checkDefense()
 
 				$sendHBitmap = _GDIPlus_BitmapCreateHBITMAPFromBitmap($hBitmap)
 				$res = DllCall($LibDir & "\ImageSearch.dll", "str", "searchTile", "handle", $sendHBitmap, "str", $trapTH[$t][$i], "float", $defSimilarity[$t][$i])
-				;_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\checkDefense.png")
+				_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\checkDefense.png")
 				_WinAPI_DeleteObject($sendHBitmap)
 
 				If IsArray($res) Then
@@ -132,7 +132,7 @@ Func checkDefense()
 						SetLog("Distance in pixels: " & $d[2] & " Distance in tiles: " & $d[3])
 						If $chkInferno = 1 And $DefText[$t] = "Inferno Tower" Then
 							SetLog("Inferno Tower distance is " & $d[3]);range 9
-							If $d[3] < 7 Then
+							If $d[3] > 4 And $d[3] < 9 Then
 								$skipBase = True
 								Return "Inferno Tower found near TH, skipping..."
 							Else
@@ -140,7 +140,7 @@ Func checkDefense()
 							EndIf
 						ElseIf $chkTesla = 1 And $DefText[$t] = "Hidden Tesla" Then
 							SetLog("Hidden Tesla distance is " & $d[3]);range 6-7
-							If $d[3] < 4 Then
+							If $d[3] > 4 And $d[3] < 7 Then
 								$skipBase = True
 								Return "Hidden Tesla found near TH, skipping..."
 							Else
@@ -148,7 +148,7 @@ Func checkDefense()
 							EndIf
 						ElseIf $chkMortar = 1 And $DefText[$t] = "Mortar" Then
 							SetLog("Mortar distance is " & $d[3]);range is 4-11
-							If $d[3] < 9 Then
+							If $d[3] > 6 And $d[3] < 11 Then
 								$skipBase = True
 								Return "Mortar found near TH, skipping..."
 							Else
@@ -156,7 +156,7 @@ Func checkDefense()
 							EndIf
 						ElseIf $chkWiz = 1 And $DefText[$t] = "Wizard Tower" Then
 							SetLog("Wizard Tower distance is " & $d[3]);range is 7
-							If $d[3] < 5 Then
+							If $d[3] > 4 And $d[3] < 7 Then
 								$skipBase = True
 								Return "Wizard Tower found near TH, skipping..."
 							Else
@@ -164,7 +164,7 @@ Func checkDefense()
 							EndIf
 						ElseIf $chkAir = 1 And $DefText[$t] = "Air Defense" Then
 							SetLog("Air Defense distance is " & $d[3]);range is 10
-							If $d[3] < 8 Then
+							If $d[3] > 4 And $d[3] < 10 Then
 								$skipBase = True
 								Return "Air Defense found near TH, skipping..."
 							Else
