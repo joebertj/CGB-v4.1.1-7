@@ -78,8 +78,25 @@ Func AttackTHLavaloonion()
 
 	SetOffTraps($THx, $THy, $eMini, $spotsNum)
 	SetOffTraps($THx, $THy, $eBall, $spotsNum)
-	TroopTH($THx, $THy, $eLava, 1, $eLavaCount, 500) ;change THx,THy to ADx,ADy
 	TroopTH($THx, $THy, $eBall, $spotsNum, $eBallCount-$spotsNum, 500)
+	If $eRSpellCount > 1 Then
+		Switch $THside
+			Case 0
+				SpellTH($THx - 50, $THy, $eRSpellSlot)
+				SpellTH($THx, $THy - 50, $eRSpellSlot)
+			Case 1
+				SpellTH($THx - 50, $THy, $eRSpellSlot)
+				SpellTH($THx, $THy + 50, $eRSpellSlot)
+			Case 2
+				SpellTH($THx + 50, $THy, $eRSpellSlot)
+				SpellTH($THx, $THy - 50, $eRSpellSlot)
+			Case 3
+				SpellTH($THx + 50, $THy, $eRSpellSlot)
+				SpellTH($THx, $THy + 50, $eRSpellSlot)
+		EndSwitch
+	EndIf
+
+	TroopTH($THx, $THy, $eLava, 1, $eLavaCount, 500) ;change THx,THy to ADx,ADy
 	TroopTH($THx, $THy, $eMini, $spotsNum, $eMiniCount-$spotsNum, 500)
 
 	If $ePSpellCount > 0 Then
@@ -87,14 +104,12 @@ Func AttackTHLavaloonion()
 	EndIf
 
 	If $eRSpellCount > 0 Then
-		If $OptParanoid = 0 Then $eRSpellCount = 1
 		For $i = 1 To $eRSpellCount
 			SpellTH($DropCoord[1][0], $DropCoord[1][1], $eRSpellSlot)
 		Next
 	EndIf
 
 	If $eHaSpellCount > 0 Then
-		If $OptParanoid = 0 Then $eHaSpellCount = 1
 		For $i = 1 To $eHaSpellCount
 			SpellTH($DropCoord[3][0], $DropCoord[3][1], $eHaSpellSlot)
 		Next
@@ -117,7 +132,6 @@ Func AttackTHLavaloonion()
 	CheckHeroesHealth($eKingSlot, $eQueenSlot)
 
 	If $eLSpellCount > 0 Then
-		If $OptParanoid = 0 Then $eLSpellCount = 1
 		For $i = 1 To $eLSpellCount
 			SpellTH($THx, $THy, $eLSpellSlot)
 		Next
@@ -126,7 +140,6 @@ Func AttackTHLavaloonion()
 	CheckHeroesHealth($eKingSlot, $eQueenSlot)
 
 	If $eESpellCount > 0 Then
-		If $OptParanoid = 0 Then $eESpellCount = 1
 		For $i = 1 To $eESpellCount
 			SpellTH($THx, $THy, $eESpellSlot)
 		Next
@@ -149,7 +162,7 @@ Func PrepareAttackTHLavaloonion()
 	$eBallCount = GetTroopCount($eBall)
 	$eLavaCount = GetTroopCount($eLava)
 	$eRSpellCount = GetTroopCount($eRSpell)
-	If $eLavaCount < 1 Or $eBallCount < 10 Or $eMiniCount < 10 Then
+	If $eLavaCount < 2 Or $eBallCount < 10 Or $eMiniCount < 10 Or $eRSpellCount < 2 Then
 		SetLog("Not attacking this base using Lavaloonion since there is not enough Lava Hound, Baloons, Minions or Rage Spell")
 		Return False
 	EndIf

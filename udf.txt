@@ -4364,7 +4364,6 @@ C:\Program Files (x86)\AutoIt3\Include\StructureConstants.au3(829,1) : UNREFED(8
 C:\Program Files (x86)\AutoIt3\Include\StructureConstants.au3(764,1) : UNREFED(764):	$tagWINDOWPLACEMENT
 C:\Program Files (x86)\AutoIt3\Include\StructureConstants.au3(769,1) : UNREFED(769):	$tagWINDOWPOS
 C:\Program Files (x86)\AutoIt3\Include\WinAPIGdi.au3(39,1) : UNREFED(39):	$tagXFORM
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Image Search\checkDefense.au3(29,1) : UNREFED(29):	$trapTHtxt
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(222,1) : UNREFED(222):	$wallbuild
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(230,1) : UNREFED(230):	$wallh
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(223,1) : UNREFED(223):	$walllowlevel
