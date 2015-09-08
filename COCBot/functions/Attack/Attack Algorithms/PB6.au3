@@ -424,7 +424,7 @@ EndFunc   ;==>CheckForStar
 Func SpellTH($xx, $yy, $SpellSlot = -1)
 	SetLog("Dropping Spell @ " & $xx & ", " & $yy, $COLOR_BLUE)
 	SelectDropTroop($SpellSlot)
-	If $THi > 15 Then
+	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
 		SwitchAttackBottomTH(1, 1)
 	Else
 		Click($xx, $yy, 1, 0, "#0029")
@@ -436,7 +436,7 @@ Func KingTH($xx, $yy, $KingSlot = -1)
 	SetLog("Dropping King @ " & $xx & ", " & $yy, $COLOR_BLUE)
 	;SelectDropTroop($KingSlot)
 	Click(GetXPosOfArmySlot($KingSlot, 68), 595, 1, 0, "#0092") ;Select King
-	If $THi > 15 Then
+	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
 		SwitchAttackBottomTH(1, 1)
 	Else
 		Click($xx, $yy, 1, 0, "#0093")
@@ -449,7 +449,7 @@ Func QueenTH($xx, $yy, $QueenSlot = -1)
 	SetLog("Dropping Queen @ " & $xx & ", " & $yy, $COLOR_BLUE)
 	;SelectDropTroop($QueenSlot)
 	Click(GetXPosOfArmySlot($QueenSlot, 68), 595, 1, 0, "#0094") ;Select Queen
-	If $THi > 15 Then
+	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
 		SwitchAttackBottomTH(1, 1)
 	Else
 		Click($xx, $yy, 1, 0, "#0095")
@@ -462,7 +462,7 @@ Func CCTH($xx, $yy, $CCSlot)
 	SetLog("Dropping Clan Castle @ " & $xx & ", " & $yy, $COLOR_BLUE)
 	;SelectDropTroop($CCSlot)
 	Click(GetXPosOfArmySlot($CCSlot, 68), 595, 1, $iDelaydropCC2, "#0090")
-	If $THi > 15 Then
+	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
 		SwitchAttackBottomTH(1, 1)
 	Else
 		Click($xx, $yy, 1, 0, "#0091")
@@ -605,7 +605,7 @@ Func TroopTH($xx, $yy, $eTroop, $spots, $numperspot, $Sleep)
 	If $total > 1 Then $plural = 1
 	$name = NameOfTroop($eTroop, $plural)
 	SetLog("Dropping " & $name)
-	If $THi > 15 Then
+	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
 		SwitchAttackBottomTH($numperspot, $spots)
 	Else
 		Switch $THside

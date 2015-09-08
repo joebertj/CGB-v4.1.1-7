@@ -195,6 +195,9 @@ AutoIt3 Syntax Checker v3.3.14.1  Copyright (c) 2007-2013 Tylo & AutoIt Team
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(68,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Image Search\CheckTombs.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(69,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Image Search\ClearObstacles.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(70,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Image Search\checkDefense.au3"
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Image Search\checkDefense.au3"(116,21) : warning: $DefLocation: possibly used before declaration.
+				If $DefLocation =
+				~~~~~~~~~~~~~~~~^
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(72,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Main Screen\checkMainScreen.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(73,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Main Screen\checkObstacles.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(74,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Main Screen\CloseBlueStacks.au3"
@@ -328,6 +331,9 @@ AutoIt3 Syntax Checker v3.3.14.1  Copyright (c) 2007-2013 Tylo & AutoIt Team
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Toolbox.au3"(179,54) : error: $btnToolbox_GUI_Status: undeclared global variable.
         _GUICtrlButton_SetText($btnToolbox_GUI_Status,
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Image Search\checkDefense.au3"(116,21) : error: $DefLocation: undeclared global variable.
+				If $DefLocation =
+				~~~~~~~~~~~~~~~~^
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3"(326,50) : error: $ChatbotStartTime: undeclared global variable.
    $Time_Difference = TimerDiff($ChatbotStartTime)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
@@ -6064,4 +6070,4 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\g
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\CheckPrerequisites.au3(1,1) : UNREFED(11):	isNetFramework4Installed
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(335,1) : UNREFED(365):	runHelper
 
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\GameBot.org.au3 - 8 error(s), 14 warning(s)
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\GameBot.org.au3 - 9 error(s), 15 warning(s)
