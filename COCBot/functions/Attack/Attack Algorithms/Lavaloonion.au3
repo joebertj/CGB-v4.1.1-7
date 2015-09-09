@@ -26,6 +26,7 @@ Func AttackTHLavaloonion()
 	Local $eCastleSlot = -1
 	Local $DropCoord[4][2] = [[0, 0], [0, 0], [0, 0], [0, 0]]
 	Local $DropTH[2] = [0, 0]
+	Local $d[4] = [0, 0, 0, 0]
 	$spotsNum = 5;
 
 	SetLog("THside: " & $THside & " THi: " & $THi)
@@ -33,6 +34,7 @@ Func AttackTHLavaloonion()
 	Setlog("THx: " & $THx & " THy: " & $THy)
 	$DropTH = GetDropTH($THx, $THy, $THside)
 	Setlog("x: " & $DropTH[0] & " y: " & $DropTH[1])
+	$d = GetDistance($THx, $THy, $DropTH[0], $DropTH[1], $THside)
 	$DropCoord = GetDropTHDistance($THx, $THy, $DropTH[0], $DropTH[1], $THside)
 	Setlog("Calculating drop sequence...")
 	$ePSpellCount = GetTroopCount($ePSpell)
@@ -82,17 +84,17 @@ Func AttackTHLavaloonion()
 	If $eRSpellCount > 1 Then
 		Switch $THside
 			Case 0
-				SpellTH($THx - 50, $THy, $eRSpellSlot)
-				SpellTH($THx, $THy - 50, $eRSpellSlot)
+				SpellTH($THx - 5 * $d[3] , $THy, $eRSpellSlot)
+				SpellTH($THx, $THy - 5 * $d[3], $eRSpellSlot)
 			Case 1
-				SpellTH($THx - 50, $THy, $eRSpellSlot)
-				SpellTH($THx, $THy + 50, $eRSpellSlot)
+				SpellTH($THx - 5 * $d[3], $THy, $eRSpellSlot)
+				SpellTH($THx, $THy + 5 * $d[3], $eRSpellSlot)
 			Case 2
-				SpellTH($THx + 50, $THy, $eRSpellSlot)
-				SpellTH($THx, $THy - 50, $eRSpellSlot)
+				SpellTH($THx + 5 * $d[3], $THy, $eRSpellSlot)
+				SpellTH($THx, $THy - 5 * $d[3], $eRSpellSlot)
 			Case 3
-				SpellTH($THx + 50, $THy, $eRSpellSlot)
-				SpellTH($THx, $THy + 50, $eRSpellSlot)
+				SpellTH($THx + 5 * $d[3], $THy, $eRSpellSlot)
+				SpellTH($THx, $THy + 5 * $d[3], $eRSpellSlot)
 		EndSwitch
 	EndIf
 
@@ -158,6 +160,7 @@ Func AttackTHLavaloonion()
 EndFunc   ;==>AttackTHLavaloonion
 
 Func PrepareAttackTHLavaloonion()
+	PrepareAttack($iMatchMode)
 	$eMiniCount = GetTroopCount($eMini)
 	$eBallCount = GetTroopCount($eBall)
 	$eLavaCount = GetTroopCount($eLava)

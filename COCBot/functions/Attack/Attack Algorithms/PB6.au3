@@ -721,24 +721,22 @@ EndFunc   ;==>GetDropTH
 Func PrepareAttackTHPB6()
 	Local $i
 	Local $smallestd = 40
-	Local $tiles = 0
+	;Local $tiles = 0
 	Local $THnum = 6
 	Local $sided[2] = [0, 0]
 
-	;SetLog("Checking TH Coords")
-	;SetLog("THx: " & $THx & " THy: " & $THy)
 	If $searchTH == "-" Then
 		$THnum = 10
 	ElseIf $searchTH <> "4-6" Then
 		$THnum = $searchTH
 	EndIf
-	$tiles += (12 - $THnum) ^ 2 + (10 - $THnum) * 2
+	;$tiles += (12 - $THnum) ^ 2 + (10 - $THnum) * 2
 	$sided = GetTHSide($THx,$THy)
 	$THside = $sided[0]
 	$smallestd = $sided[1]
-	If $smallestd < $tiles Then Return True
-	SetLog("Shortest distance " & $smallestd & " on side " & $THside & " is NOT less than " & $tiles & " tiles")
-	Return False
+	SetLog("Shortest distance " & $smallestd & " on side " & $THside)
+	;If $smallestd < $tiles Then
+	Return True
 EndFunc   ;==>PrepareAttackTHPB6
 
 Func GetDistance($x1, $y1, $x2, $y2, $type=0)

@@ -154,7 +154,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 						$THy = FindPos()[1]
 						$MsgBox = MsgBox(4 + 65536, "Confirm TH Location", "Please confirm Townhall coordinates: " & $THx & ", " & $THy, 3, $frmBot)
 						If $MsgBox = 6 Then
-							$searchTH = checkTownhallADV()
+							$searchTH = checkTownhall()
 							If $searchTH == "-" Then
 								$searchTH = "10"
 								SetLog("Forcing TH: " & $searchTH)
@@ -283,13 +283,9 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			EndIf
 			If $iChkDeploySettings[$iMatchMode] = 5 Then
 				If PrepareAttackTHPB6() Then ExitLoop
-			Else
-				ExitLoop
 			EndIf
 			If $iChkDeploySettings[$iMatchMode] = 6 Then
 				If PrepareAttackTHLavaloonion() Then ExitLoop
-			Else
-				ExitLoop
 			EndIf
 		ElseIf $match[$LB] And Not $dbBase Then
 			SetLog(_PadStringCenter(" Live Base Found! ", 50, "~"), $COLOR_GREEN)
@@ -309,13 +305,9 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			EndIf
 			If $iChkDeploySettings[$iMatchMode] = 5 Then
 				If PrepareAttackTHPB6() Then ExitLoop
-			Else
-				ExitLoop
 			EndIf
 			If $iChkDeploySettings[$iMatchMode] = 6 Then
 				If PrepareAttackTHLavaloonion() Then ExitLoop
-			Else
-				ExitLoop
 			EndIf
 		ElseIf $match[$LB] Or $match[$DB] Then
 			If $OptBullyMode = 1 And ($SearchCount >= $ATBullyMode) Then
@@ -434,7 +426,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 
 	; TH Detection Check Once Conditions
 	If $OptBullyMode = 0 And $OptTrophyMode = 0 And $iChkMeetTH[$iMatchMode] = 0 And $iChkMeetTHO[$iMatchMode] = 0 And $chkATH = 1 Then
-		$searchTH = checkTownhallADV()
+		$searchTH = checkTownhall()
 		If SearchTownHallLoc() = False And $searchTH <> "-" Then
 			SetLog("Checking Townhall location: TH is inside, skip Attack TH")
 		ElseIf $searchTH <> "-" Then
