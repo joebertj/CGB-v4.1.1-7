@@ -258,7 +258,7 @@ Func SideSnipe($numperspot, $spots)
 			If $debugSetlog = 1 Then Setlog("Not Center Bottom deployment THi = " & $THi & " ,x = " & $Thx & " ,y = " & $Thy)
 			For $count = 1 To $numperspot * $spots
 				;If CheckForStar(1) Then Return
-				Click(Random($Thx - 5, $Thx + 5, 1), Random(564, 566, 1))
+				Click((Mod($count,2)=0)?(Random(360 - 5,360 + 5, 1)):(Random(510 - 5, 510 + 5 , 1)), Random($THy - 5, $THy + 5, 1))
 				If _Sleep(Random(70, 100)) Then Return
 			Next
 		EndIf

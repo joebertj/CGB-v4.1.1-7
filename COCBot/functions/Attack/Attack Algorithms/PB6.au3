@@ -424,7 +424,7 @@ EndFunc   ;==>CheckForStar
 Func SpellTH($xx, $yy, $SpellSlot = -1)
 	SetLog("Dropping Spell @ " & $xx & ", " & $yy, $COLOR_BLUE)
 	SelectDropTroop($SpellSlot)
-	If $THi > 15 Then
+	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
 		SwitchAttackBottomTH(1, 1)
 	Else
 		Click($xx, $yy, 1, 0, "#0029")
@@ -436,7 +436,7 @@ Func KingTH($xx, $yy, $KingSlot = -1)
 	SetLog("Dropping King @ " & $xx & ", " & $yy, $COLOR_BLUE)
 	;SelectDropTroop($KingSlot)
 	Click(GetXPosOfArmySlot($KingSlot, 68), 595, 1, 0, "#0092") ;Select King
-	If $THi > 15 Then
+	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
 		SwitchAttackBottomTH(1, 1)
 	Else
 		Click($xx, $yy, 1, 0, "#0093")
@@ -449,7 +449,7 @@ Func QueenTH($xx, $yy, $QueenSlot = -1)
 	SetLog("Dropping Queen @ " & $xx & ", " & $yy, $COLOR_BLUE)
 	;SelectDropTroop($QueenSlot)
 	Click(GetXPosOfArmySlot($QueenSlot, 68), 595, 1, 0, "#0094") ;Select Queen
-	If $THi > 15 Then
+	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
 		SwitchAttackBottomTH(1, 1)
 	Else
 		Click($xx, $yy, 1, 0, "#0095")
@@ -462,7 +462,7 @@ Func CCTH($xx, $yy, $CCSlot)
 	SetLog("Dropping Clan Castle @ " & $xx & ", " & $yy, $COLOR_BLUE)
 	;SelectDropTroop($CCSlot)
 	Click(GetXPosOfArmySlot($CCSlot, 68), 595, 1, $iDelaydropCC2, "#0090")
-	If $THi > 15 Then
+	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
 		SwitchAttackBottomTH(1, 1)
 	Else
 		Click($xx, $yy, 1, 0, "#0091")
@@ -605,7 +605,7 @@ Func TroopTH($xx, $yy, $eTroop, $spots, $numperspot, $Sleep)
 	If $total > 1 Then $plural = 1
 	$name = NameOfTroop($eTroop, $plural)
 	SetLog("Dropping " & $name)
-	If $THi > 15 Then
+	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
 		SwitchAttackBottomTH($numperspot, $spots)
 	Else
 		Switch $THside
@@ -721,24 +721,22 @@ EndFunc   ;==>GetDropTH
 Func PrepareAttackTHPB6()
 	Local $i
 	Local $smallestd = 40
-	Local $tiles = 0
+	;Local $tiles = 0
 	Local $THnum = 6
 	Local $sided[2] = [0, 0]
 
-	;SetLog("Checking TH Coords")
-	;SetLog("THx: " & $THx & " THy: " & $THy)
 	If $searchTH == "-" Then
 		$THnum = 10
 	ElseIf $searchTH <> "4-6" Then
 		$THnum = $searchTH
 	EndIf
-	$tiles += (12 - $THnum) ^ 2 + (10 - $THnum) * 2
+	;$tiles += (12 - $THnum) ^ 2 + (10 - $THnum) * 2
 	$sided = GetTHSide($THx,$THy)
 	$THside = $sided[0]
 	$smallestd = $sided[1]
-	If $smallestd < $tiles Then Return True
-	SetLog("Shortest distance " & $smallestd & " on side " & $THside & " is NOT less than " & $tiles & " tiles")
-	Return False
+	SetLog("Shortest distance " & $smallestd & " on side " & $THside)
+	;If $smallestd < $tiles Then
+	Return True
 EndFunc   ;==>PrepareAttackTHPB6
 
 Func GetDistance($x1, $y1, $x2, $y2, $type=0)
@@ -767,7 +765,7 @@ Func GetDistance($x1, $y1, $x2, $y2, $type=0)
 	Return $d
 EndFunc   ;==>GetDistance
 
-Func SetOffTraps($THx, $THy, $eTroop, $spotsNum, $setOffTrap)
+Func SetOffTraps($THx, $THy, $eTroop, $spotsNum, $setOffTrap = False)
 	If Not $setOffTrap Then
 		TroopTH($THx, $THy, $eTroop, $spotsNum, 1, 1000)
 	EndIf
@@ -785,7 +783,8 @@ Func GetTHSide($xx,$yy)
 		$DropTH = GetDropTH($xx, $yy, $i)
 		$d = GetDistance($xx, $yy, $DropTH[0], $DropTH[1], $i)
 		If $d[3] < $smallestd Then
-			$sided[1] = Round($d[3])
+			$smallestd = Round($d[3])
+			$sided[1] = $smallestd
 			$sided[0] = $i
 		EndIf
 	Next

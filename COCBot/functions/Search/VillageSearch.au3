@@ -137,14 +137,40 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 
 		If $Restart = True Then Return ; exit func
 		GetResources() ;Reads Resource Values
+		$manualTH = False
 		If $searchTH == "-" And $AlertSearchError = 1 Then
-			TrayTip("TH Detection Problem", "TH location can't be determined. Press Next or wait for 15 seconds or manually attack this base. ", 15)
+			TrayTip("TH Detection Problem", "TH location can't be determined. Please wait or manually intervene. ", 5)
 			If FileExists(@WindowsDir & "\media\Festival\Windows Exclamation.wav") Then
 				SoundPlay(@WindowsDir & "\media\Festival\Windows Exclamation.wav", 1)
 			ElseIf FileExists(@WindowsDir & "\media\Windows Exclamation.wav") Then
 				SoundPlay(@WindowsDir & "\media\Windows Exclamation.wav", 1)
 			EndIf
-			If _Sleep(15000) Then Return
+			While 1
+				$MsgBox = MsgBox(1 + 65536, "Manual TH Select", "Click OK to manually select the base Townhall.", 5, $frmBot)
+				If $MsgBox = 1 Then
+					$MsgBox = MsgBox(0, "Click TH", "Please click the Townhall.", 2, $frmBot)
+					If $MsgBox = 1 Then
+						$THx = FindPos()[0]
+						$THy = FindPos()[1]
+						$MsgBox = MsgBox(4 + 65536, "Confirm TH Location", "Please confirm Townhall coordinates: " & $THx & ", " & $THy, 3, $frmBot)
+						If $MsgBox = 6 Then
+							$searchTH = checkTownhall()
+							If $searchTH == "-" Then
+								$searchTH = "10"
+								SetLog("Forcing TH: " & $searchTH)
+							ElseIf $searchTH <> "-" Then
+								SetLog("Manual TH: " & $searchTH)
+								GetResources($searchTH)
+								$manualTH = True
+							EndIf
+						EndIf
+					EndIf
+				EndIf
+				ExitLoop
+			WEnd
+			If Not $manualTH Then
+				If _Sleep(1000) Then Return
+			EndIf
 		EndIf
 		If $Restart = True Then Return ; exit func
 		$bBtnAttackNowPressed = False
@@ -257,20 +283,21 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			EndIf
 			If $iChkDeploySettings[$iMatchMode] = 5 Then
 				If PrepareAttackTHPB6() Then ExitLoop
-			Else
-				ExitLoop
+			EndIf
+			If $iChkDeploySettings[$iMatchMode] = 6 Then
+				If PrepareAttackTHLavaloonion() Then ExitLoop
 			EndIf
 		ElseIf $match[$LB] And Not $dbBase Then
 			SetLog(_PadStringCenter(" Live Base Found! ", 50, "~"), $COLOR_GREEN)
 			$iMatchMode = $LB
-			If $iChkDeploySettings[$LB] = 6 And ($iSkipUndetectedDE > 0 Or $iSkipCentreDE > 0) Then
+			If $iChkDeploySettings[$LB] = 7 And ($iSkipUndetectedDE > 0 Or $iSkipCentreDE > 0) Then
 				If CheckfoundorcoreDE() = True Then
 					SetLog(_PadStringCenter(" DE Side Base Found!- ", 50, "~"), $COLOR_GREEN)
 					$iMatchMode = $LB
 					$DESideFound = True
 					ExitLoop
 				EndIf
-			ElseIf $iChkDeploySettings[$LB] = 6 Then
+			ElseIf $iChkDeploySettings[$LB] = 7 Then
 				SetLog(_PadStringCenter(" DE Side Base Found! ", 50, "~"), $COLOR_GREEN)
 				$iMatchMode = $LB
 				$DESideFound = True
@@ -278,8 +305,9 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			EndIf
 			If $iChkDeploySettings[$iMatchMode] = 5 Then
 				If PrepareAttackTHPB6() Then ExitLoop
-			Else
-				ExitLoop
+			EndIf
+			If $iChkDeploySettings[$iMatchMode] = 6 Then
+				If PrepareAttackTHLavaloonion() Then ExitLoop
 			EndIf
 		ElseIf $match[$LB] Or $match[$DB] Then
 			If $OptBullyMode = 1 And ($SearchCount >= $ATBullyMode) Then
@@ -398,7 +426,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 
 	; TH Detection Check Once Conditions
 	If $OptBullyMode = 0 And $OptTrophyMode = 0 And $iChkMeetTH[$iMatchMode] = 0 And $iChkMeetTHO[$iMatchMode] = 0 And $chkATH = 1 Then
-		$searchTH = checkTownhallADV()
+		$searchTH = checkTownhall()
 		If SearchTownHallLoc() = False And $searchTH <> "-" Then
 			SetLog("Checking Townhall location: TH is inside, skip Attack TH")
 		ElseIf $searchTH <> "-" Then

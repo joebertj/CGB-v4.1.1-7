@@ -149,9 +149,12 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 			SetLog("Attacking with four fingers", $COLOR_BLUE)
 			$nbSides = 5
 		Case 5
-			SetLog("Attacking PB6-style")
+			SetLog("Attacking using PB6")
 			AttackTHPB6()
-	    Case 6 ;DE Side - Live Base only ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		Case 6
+			SetLog("Attacking using PB6:Lavaloonion")
+			AttackTHLavaloonion()
+	    Case 7 ;DE Side - Live Base only ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			SetLog("Attacking on Dark Elixir Side.", $COLOR_BLUE)
 			$nbSides = 1
 			GetDEEdge()
