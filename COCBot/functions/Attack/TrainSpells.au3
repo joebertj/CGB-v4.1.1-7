@@ -272,36 +272,35 @@ WEnd
 If isDarkSpellFactory() Then
      $count = 0
 	$i = 0
-	While $count < 3
+	While $count < 6
 		$created = True
 		If $multiTrain Then $i = $count
 		If _sleep(500) Then Return
 
-        If $debugSetlog = 1 Then SetLog(_GetPixelColor($SpellPos, 375, True))
+        If $debugSetlog = 1 Then SetLog(_GetPixelColor($SpellPos[$i], 375, True))
 
 		If _ColorCheck(_GetPixelColor(250, 375, True), Hex(0x292929, 6), 10) Then
 					SetLog("Dark Spell Factory Full", $COLOR_RED)
 					ExitLoop
 		EndIf
 
-		If _ColorCheck(_GetPixelColor($SpellPos, 375, True), Hex(0x302238, 6), 20) = False Then
+		If _ColorCheck(_GetPixelColor($SpellPos[$i], 375, True), Hex(0x302238, 6), 20) = False Then
 					SetLog("Dark Spell isn't avaliable", $COLOR_RED)
 					$created = False
 					If Not $multiTrain Then ExitLoop
 		EndIf
+		If _Sleep(500) Then Return
 
-		GemClick($SpellPos, 375, 1, 20, "#0290")
+		GemClick($SpellPos[$i], 375, 1, 600, "#0290")
 		$count += 1
 		If $created Then $spellCount[$i] =+ 1
-
-		If _Sleep(500) Then Return
 
     WEnd
     $i = 0
 	For $count = 0 To 4
 		If $multiTrain Then $i = $count
 		If $spellCount[$i] <> 0 Then
-			SetLog("Created " & $spellCount[$i] & " " &  $spellName & " Dark Spell(s)", $COLOR_BLUE)
+			SetLog("Created " & $spellCount[$i] & " " &  $spellName[$i] & " Dark Spell(s)", $COLOR_BLUE)
 		EndIf
 	Next
 
