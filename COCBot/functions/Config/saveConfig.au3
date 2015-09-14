@@ -586,6 +586,12 @@ Func saveConfig() ;Saves the controls settings to the config
 
 	IniWrite($config, "donate", "txtRequest", GUICtrlRead($txtRequest))
 
+	If GUICtrlRead($chkDonate) = $GUI_CHECKED Then
+		IniWrite($config, "donate", "chkDonate", 1)
+	Else
+		IniWrite($config, "donate", "chkDonate", 0)
+	EndIf
+
 	If GUICtrlRead($chkDonateBarbarians) = $GUI_CHECKED Then
 		IniWrite($config, "donate", "chkDonateBarbarians", 1)
 	Else

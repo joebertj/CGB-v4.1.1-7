@@ -23,6 +23,54 @@ Func chkRequest()
 	EndIf
 EndFunc   ;==>chkRequest
 
+Func chkDonate()
+	If GUICtrlRead($chkDonate) = $GUI_CHECKED Then
+		$ichkDonate = 1
+		GUICtrlSetState($grpBarbarians, $GUI_DISABLE)
+		GUICtrlSetState($grpArchers, $GUI_DISABLE)
+		GUICtrlSetState($grpGiants, $GUI_DISABLE)
+		GUICtrlSetState($grpGoblins, $GUI_DISABLE)
+		GUICtrlSetState($grpWallBreakers, $GUI_DISABLE)
+		GUICtrlSetState($grpBalloons, $GUI_DISABLE)
+		GUICtrlSetState($grpWizards, $GUI_DISABLE)
+		GUICtrlSetState($grpHealers, $GUI_DISABLE)
+		GUICtrlSetState($grpDragons, $GUI_DISABLE)
+		GUICtrlSetState($grpPekkas, $GUI_DISABLE)
+		GUICtrlSetState($grpMinions, $GUI_DISABLE)
+		GUICtrlSetState($grpHogRiders, $GUI_DISABLE)
+		GUICtrlSetState($grpValkyries, $GUI_DISABLE)
+		GUICtrlSetState($grpGolems, $GUI_DISABLE)
+		GUICtrlSetState($grpWitches, $GUI_DISABLE)
+		GUICtrlSetState($grpLavaHounds, $GUI_DISABLE)
+		GUICtrlSetState($grpCustom, $GUI_DISABLE)
+		GUICtrlSetState($grpBlacklist, $GUI_DISABLE)
+		GUICtrlSetState($donateAllSub, $GUI_DISABLE)
+		GUICtrlSetState($cmbDonateAllSub, $GUI_DISABLE)
+	Else
+		$ichkDonate = 0
+		GUICtrlSetState($grpBarbarians, $GUI_ENABLE)
+		GUICtrlSetState($grpArchers, $GUI_ENABLE)
+		GUICtrlSetState($grpGiants, $GUI_ENABLE)
+		GUICtrlSetState($grpGoblins, $GUI_ENABLE)
+		GUICtrlSetState($grpWallBreakers, $GUI_ENABLE)
+		GUICtrlSetState($grpBalloons, $GUI_ENABLE)
+		GUICtrlSetState($grpWizards, $GUI_ENABLE)
+		GUICtrlSetState($grpHealers, $GUI_ENABLE)
+		GUICtrlSetState($grpDragons, $GUI_ENABLE)
+		GUICtrlSetState($grpPekkas, $GUI_ENABLE)
+		GUICtrlSetState($grpMinions, $GUI_ENABLE)
+		GUICtrlSetState($grpHogRiders, $GUI_ENABLE)
+		GUICtrlSetState($grpValkyries, $GUI_ENABLE)
+		GUICtrlSetState($grpGolems, $GUI_ENABLE)
+		GUICtrlSetState($grpWitches, $GUI_ENABLE)
+		GUICtrlSetState($grpLavaHounds, $GUI_ENABLE)
+		GUICtrlSetState($grpCustom, $GUI_ENABLE)
+		GUICtrlSetState($grpBlacklist, $GUI_ENABLE)
+		GUICtrlSetState($donateAllSub, $GUI_ENABLE)
+		GUICtrlSetState($cmbDonateAllSub, $GUI_ENABLE)
+	EndIf
+EndFunc   ;==>chkDonate
+
 Func btnDonateBarbarians()
 	If GUICtrlGetState($grpBarbarians) = BitOR($GUI_HIDE, $GUI_ENABLE) Then
 		_DonateBtn($grpBarbarians, $txtBlacklistBarbarians) ;Hide/Show controls on Donate tab

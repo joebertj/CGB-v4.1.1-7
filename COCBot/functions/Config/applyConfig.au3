@@ -656,6 +656,13 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	GUICtrlSetData($txtRequest, $sTxtRequest)
 	chkRequest()
 
+	If $ichkDonate = 1 Then
+		GUICtrlSetState($chkDonate, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkDonate, $GUI_UNCHECKED)
+	EndIf
+	chkDonate()
+
 	If $ichkDonateBarbarians = 1 Then
 		GUICtrlSetState($chkDonateBarbarians, $GUI_CHECKED)
 	Else

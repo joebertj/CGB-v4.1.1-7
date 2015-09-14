@@ -277,6 +277,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		;Donate Settings-------------------------------------------------------------------------
 		$iChkRequest = IniRead($config, "donate", "chkRequest", "0")
 		$sTxtRequest = IniRead($config, "donate", "txtRequest", "")
+		$iChkdonate = IniRead($config, "donate", "chkDonate", "0")
 
 		$ichkDonateBarbarians = IniRead($config, "donate", "chkDonateBarbarians", "0")
 		$ichkDonateAllBarbarians = IniRead($config, "donate", "chkDonateAllBarbarians", "0")

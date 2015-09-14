@@ -321,7 +321,7 @@ Global $TroopCheck = 0
 Global $GTFO
 Global $cmbgtfo
 Global $gtfocount
-Global $iChkRequest = 0, $sTxtRequest = ""
+Global $iChkRequest = 0, $sTxtRequest = "", $ichkDonate = 0
 
 Global $ichkDonateAllBarbarians = 0, $ichkDonateBarbarians = 0, $sTxtDonateBarbarians = "", $sTxtBlacklistBarbarians = "", $aDonBarbarians, $aBlkBarbarians
 Global $ichkDonateAllArchers = 0, $ichkDonateArchers = 0, $sTxtDonateArchers = "", $sTxtBlacklistArchers = "", $aDonArchers, $aBlkArchers

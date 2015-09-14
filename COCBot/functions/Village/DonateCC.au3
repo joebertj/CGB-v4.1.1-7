@@ -25,7 +25,7 @@ Func DonateCC($Check = False)
 
 	Global $Donate = BitOR($DonateTroop, $DonateAllTroop)
 
-	If $Donate = False Or $bDonationEnabled = False Then Return ; exit func if no donate checkmarks
+	If $ichkDonate = 1 Or $Donate = False Or $bDonationEnabled = False Then Return ; exit func if no donate checkmarks
 
 	If $iPlannedDonateHoursEnable = 1 Then
 		Local $hour = StringSplit(_NowTime(4), ":", $STR_NOCOUNT)
