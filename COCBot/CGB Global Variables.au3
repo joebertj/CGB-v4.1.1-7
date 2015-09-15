@@ -200,7 +200,8 @@ Global $OptBullyMode = 0
 Global $OptTrophyMode
 Global $OptIgnoreTraps = 0
 Global $OptIgnoreAirTraps = 0
-Global $OptParanoid= 0
+Global $OptParanoid = 0
+Global $OptGreedy = 0
 Global $ATBullyMode
 Global $YourTH
 Global $iTHBullyAttackMode
@@ -683,3 +684,11 @@ Global $LabNeedsElix = 0
 Global $Answer
 Global $Answered = True
 Global $AnswerTries = 0
+
+;Fixed
+Global $chkABEnableAfterHero
+Global $btnToolbox_Win_Status, $btnToolbox_GUI_Status
+Global $ChatbotStartTime
+Global $ClanAdStartTime
+Global $iDelayAttackTHDragon1 = 1000
+Global $iDelayAttackTHWizard1 = 1000

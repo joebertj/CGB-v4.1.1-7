@@ -530,6 +530,11 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "advanced", "Paranoid", 0)
 	EndIf
+	If GUICtrlRead($chkGreedy) = $GUI_CHECKED Then
+		IniWrite($config, "advanced", "Greedy", 1)
+	Else
+		IniWrite($config, "advanced", "Greedy", 0)
+	EndIf
 	IniWrite($config, "advanced", "THaddTiles", GUICtrlRead($txtTHaddtiles))
 	IniWrite($config, "advanced", "AttackTHType", _GUICtrlComboBox_GetCurSel($cmbAttackTHType))
 	;Attack bottom townhall type

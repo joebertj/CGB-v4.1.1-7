@@ -369,6 +369,40 @@ Func AttackTHPB6()
 		Next
 	EndIf
 
+	If checkDeadBase() Then
+		SetLog("Greedy mode activated")
+		$i = Mod($THside + 1, 4)
+		$j = 0
+		While $j < 4
+			$THside = $i
+			CheckHeroesHealth($eKingSlot, $eQueenSlot)
+			PrepareAttack($DB, True)
+			$eBarbCount = GetTroopCount($eBarb)
+			$eArchCount = GetTroopCount($eArch)
+			$eMiniCount = GetTroopCount($eMini)
+			$eGoblCount = GetTroopCount($eGobl)
+			If $eBarbCount > 0 Or $eMiniCount > 0 Or $eArchCount > 0 Or $eGoblCount > 0 Then
+				If $eBarbCount > 0 Then
+					TroopTH($THx, $THy, $eBarb, $spotsNum*2, Random(1, 2, 1), 500)
+				EndIf
+
+				If $eGoblCount > 0 Then
+					TroopTH($THx, $THy, $eGobl, $spotsNum*2, Random(1, 2, 1), 500)
+				EndIf
+
+				If $eArchCount > 0 Then
+					TroopTH($THx, $THy, $eArch, $spotsNum*2, Random(1, 2, 1), 500)
+				EndIf
+
+				If $eMiniCount > 0 Then
+					TroopTH($THx, $THy, $eMini, $spotsNum*2, Random(1, 2, 1), 500)
+				EndIf
+			EndIf
+			$i = Mod($i + 1, 4)
+			$j += 1
+		WEnd
+	EndIf
+
 	SetLog("Activating heroes abilities if not yet used before exit")
 	If $eKingCount = 1 Then
 		SelectDropTroop($eKingSlot)

@@ -145,6 +145,7 @@ GUICtrlCreateGroup("", -99, -99, 1, 1)
 		$chkIgnoreAirTraps = GUICtrlCreateCheckbox("Air", $x + 145 , $y, -1, -1)
 		$y+=20
 		$chkParanoid = GUICtrlCreateCheckbox("Paranoid", $x , $y, -1, -1)
+		$chkGreedy = GUICtrlCreateCheckbox("Greedy", $x + 95 , $y, -1, -1)
     GUICtrlCreateGroup("", -99, -99, 1, 1)
 	Local $x = 260, $y = 260
 	$grpDefenseFarming = GUICtrlCreateGroup("Defense Farming", $x - 20, $y - 20, 220, 165)

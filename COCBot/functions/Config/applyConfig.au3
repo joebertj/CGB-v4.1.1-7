@@ -525,6 +525,12 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 		GUICtrlSetState($chkParanoid, $GUI_UNCHECKED)
 	EndIf
 
+	If $OptGreedy = 1 Then
+		GUICtrlSetState($chkGreedy, $GUI_CHECKED)
+	ElseIf $OptGreedy = 0 Then
+		GUICtrlSetState($chkGreedy, $GUI_UNCHECKED)
+	EndIf
+
 	GUICtrlSetData($txtTHaddTiles, $THaddTiles)
 	_GUICtrlComboBox_SetCurSel($cmbAttackTHType, $AttackTHType)
 	chkSnipeMode()
