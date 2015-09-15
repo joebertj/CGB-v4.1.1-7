@@ -296,11 +296,23 @@ AutoIt3 Syntax Checker v3.3.14.1  Copyright (c) 2007-2013 Tylo & AutoIt Team
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(186,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\MasterGiBAM.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(187,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\AttackTHSmartBarch.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(188,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\PB6.au3"
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\PB6.au3"(823,32) : warning: $eKingSlot: possibly used before declaration.
+			CheckHeroesHealth($eKingSlot,
+			~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\PB6.au3"(823,45) : warning: $eQueenSlot: possibly used before declaration.
+			CheckHeroesHealth($eKingSlot, $eQueenSlot)
+			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(189,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\Lavaloonion.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(190,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\THDragons.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(191,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\THWizard.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(192,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\LocateHeroes.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(193,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\UpgradeHeroes.au3"
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\PB6.au3"(823,32) : error: $eKingSlot: undeclared global variable.
+			CheckHeroesHealth($eKingSlot,
+			~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\PB6.au3"(823,45) : error: $eQueenSlot: undeclared global variable.
+			CheckHeroesHealth($eKingSlot, $eQueenSlot)
+			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
 C:\Program Files (x86)\AutoIt3\Include\APIProcConstants.au3(37,1) : UNREFED(37):	$ABOVE_NORMAL_PRIORITY_CLASS
 C:\Program Files (x86)\AutoIt3\Include\SecurityConstants.au3(96,1) : UNREFED(96):	$ACCESS_SYSTEM_SECURITY
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(353,1) : UNREFED(353):	$AD_CLOCKWISE
@@ -6029,4 +6041,4 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\g
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\CheckPrerequisites.au3(1,1) : UNREFED(11):	isNetFramework4Installed
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(335,1) : UNREFED(365):	runHelper
 
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\GameBot.org.au3 - 2 error(s), 8 warning(s)
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\GameBot.org.au3 - 4 error(s), 10 warning(s)

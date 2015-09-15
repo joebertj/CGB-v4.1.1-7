@@ -59,7 +59,12 @@ Func AttackTHPB6()
 			$setOffGroundTrap = SetOffTraps($THx, $THy, $eArch, 3, $setOffGroundTrap)
 			TroopTH($THx, $THy, $eArch, $spotsNum, Random(2, 3, 1), 500)
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(25) = True Then Return
+			If CheckForStar(25) = True Then
+				If $optGreedy = 1 Then
+					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
+				EndIf
+				Return
+			EndIf
 		Else
 			Setlog("Too few archers...skipping wave")
 		EndIf
@@ -88,7 +93,12 @@ Func AttackTHPB6()
 				TroopTH($THx, $THy, $eMini, $spotsNum, Random(2, 4, 1), 1000)
 			EndIf
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(12) = True Then Return
+			If CheckForStar(12) = True Then
+				If $optGreedy = 1 Then
+					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
+				EndIf
+				Return
+			EndIf
 		Else
 			Setlog("Too few BAM troops...skipping wave")
 		EndIf
@@ -146,7 +156,12 @@ Func AttackTHPB6()
 				TroopTH($THx, $THy, $eMini, $spotsNum, Random(3, 5, 1), 1500)
 			EndIf
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(5) = True Then Return
+			If CheckForStar(5) = True Then
+				If $optGreedy = 1 Then
+					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
+				EndIf
+				Return
+			EndIf
 		Else
 			Setlog("Too few Defense Aggro and Wizards...skipping wave")
 		EndIf
@@ -367,40 +382,6 @@ Func AttackTHPB6()
 		For $i = 1 To $eESpellCount
 			SpellTH($THx, $THy, $eESpellSlot)
 		Next
-	EndIf
-
-	If checkDeadBase() Then
-		SetLog("Greedy mode activated")
-		$i = Mod($THside + 1, 4)
-		$j = 0
-		While $j < 4
-			$THside = $i
-			CheckHeroesHealth($eKingSlot, $eQueenSlot)
-			PrepareAttack($DB, True)
-			$eBarbCount = GetTroopCount($eBarb)
-			$eArchCount = GetTroopCount($eArch)
-			$eMiniCount = GetTroopCount($eMini)
-			$eGoblCount = GetTroopCount($eGobl)
-			If $eBarbCount > 0 Or $eMiniCount > 0 Or $eArchCount > 0 Or $eGoblCount > 0 Then
-				If $eBarbCount > 0 Then
-					TroopTH($THx, $THy, $eBarb, $spotsNum*2, Random(1, 2, 1), 500)
-				EndIf
-
-				If $eGoblCount > 0 Then
-					TroopTH($THx, $THy, $eGobl, $spotsNum*2, Random(1, 2, 1), 500)
-				EndIf
-
-				If $eArchCount > 0 Then
-					TroopTH($THx, $THy, $eArch, $spotsNum*2, Random(1, 2, 1), 500)
-				EndIf
-
-				If $eMiniCount > 0 Then
-					TroopTH($THx, $THy, $eMini, $spotsNum*2, Random(1, 2, 1), 500)
-				EndIf
-			EndIf
-			$i = Mod($i + 1, 4)
-			$j += 1
-		WEnd
 	EndIf
 
 	SetLog("Activating heroes abilities if not yet used before exit")
@@ -823,4 +804,49 @@ Func GetTHSide($xx,$yy)
 		EndIf
 	Next
 	Return $sided
+EndFunc
+
+Func Greedy($spotsNum, $eKingSlot = -1, $eQueenSlot = -1)
+	Local $i, $j
+	Local $eBarbCount = 0
+	Local $eGoblCount = 0
+	Local $eArchCount = 0
+	Local $eMiniCount = 0
+
+	SetLog("Greedy mode: Activated")
+	If checkDeadBase() Then
+		SetLog("Greedy mode: Attacking...")
+		$i = Mod($THside + 1, 4)
+		$j = 0
+		While $j < 4
+			$THside = $i
+			CheckHeroesHealth($eKingSlot, $eQueenSlot)
+			PrepareAttack($DB, True)
+			$eBarbCount = GetTroopCount($eBarb)
+			$eArchCount = GetTroopCount($eArch)
+			$eMiniCount = GetTroopCount($eMini)
+			$eGoblCount = GetTroopCount($eGobl)
+			If $eBarbCount > 0 Or $eMiniCount > 0 Or $eArchCount > 0 Or $eGoblCount > 0 Then
+				If $eBarbCount > 0 Then
+					TroopTH($THx, $THy, $eBarb, $spotsNum*2, Random(1, 2, 1), 500)
+				EndIf
+
+				If $eGoblCount > 0 Then
+					TroopTH($THx, $THy, $eGobl, $spotsNum*2, Random(1, 2, 1), 500)
+				EndIf
+
+				If $eArchCount > 0 Then
+					TroopTH($THx, $THy, $eArch, $spotsNum*2, Random(1, 2, 1), 500)
+				EndIf
+
+				If $eMiniCount > 0 Then
+					TroopTH($THx, $THy, $eMini, $spotsNum*2, Random(1, 2, 1), 500)
+				EndIf
+			EndIf
+			$i = Mod($i + 1, 4)
+			$j += 1
+		WEnd
+	Else
+		SetLog("Greedy mode: Nothing to loot")
+	EndIf
 EndFunc
