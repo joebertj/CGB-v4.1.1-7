@@ -225,6 +225,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$OptTrophyMode = IniRead($config, "advanced", "TrophyMode", "0")
 		$OptIgnoreTraps = IniRead($config, "advanced", "IgnoreTraps", "0")
 		$OptParanoid = IniRead($config, "advanced", "Paranoid", "0")
+		$OptGreedy = IniRead($config, "advanced", "Greedy", "0")
 		$THaddtiles = IniRead($config, "advanced", "THaddTiles", "0")
 		$AttackTHType = IniRead($config, "advanced", "AttackTHType", "0")
         $BottomTHType = IniRead($config, "advanced", "BottomTHType", "0")
@@ -277,6 +278,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		;Donate Settings-------------------------------------------------------------------------
 		$iChkRequest = IniRead($config, "donate", "chkRequest", "0")
 		$sTxtRequest = IniRead($config, "donate", "txtRequest", "")
+		$iChkdonate = IniRead($config, "donate", "chkDonate", "0")
 
 		$ichkDonateBarbarians = IniRead($config, "donate", "chkDonateBarbarians", "0")
 		$ichkDonateAllBarbarians = IniRead($config, "donate", "chkDonateAllBarbarians", "0")

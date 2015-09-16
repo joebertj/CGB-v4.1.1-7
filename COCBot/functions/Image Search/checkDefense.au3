@@ -172,7 +172,7 @@ Func checkDefense()
 								$skipBase = False
 							EndIf
 						Else
-							If ($Defx > 5 And $Defx < 245) And ($Defy > 10 And $Defy < 170) Then
+							If $AttackTHType <> 6 And ($Defx > 5 And $Defx < 245) And ($Defy > 10 And $Defy < 170) Then
 								$skipBase = False
 								$allTroops = True
 								Return $DefText[$t] & " found at " & $Defx & "," & $Defy & ". Using alternative attack strategy!"

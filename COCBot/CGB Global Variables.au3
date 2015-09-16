@@ -200,7 +200,8 @@ Global $OptBullyMode = 0
 Global $OptTrophyMode
 Global $OptIgnoreTraps = 0
 Global $OptIgnoreAirTraps = 0
-Global $OptParanoid= 0
+Global $OptParanoid = 0
+Global $OptGreedy = 0
 Global $ATBullyMode
 Global $YourTH
 Global $iTHBullyAttackMode
@@ -321,7 +322,7 @@ Global $TroopCheck = 0
 Global $GTFO
 Global $cmbgtfo
 Global $gtfocount
-Global $iChkRequest = 0, $sTxtRequest = ""
+Global $iChkRequest = 0, $sTxtRequest = "", $ichkDonate = 0
 
 Global $ichkDonateAllBarbarians = 0, $ichkDonateBarbarians = 0, $sTxtDonateBarbarians = "", $sTxtBlacklistBarbarians = "", $aDonBarbarians, $aBlkBarbarians
 Global $ichkDonateAllArchers = 0, $ichkDonateArchers = 0, $sTxtDonateArchers = "", $sTxtBlacklistArchers = "", $aDonArchers, $aBlkArchers
@@ -683,3 +684,11 @@ Global $LabNeedsElix = 0
 Global $Answer
 Global $Answered = True
 Global $AnswerTries = 0
+
+;Fixed
+Global $chkABEnableAfterHero
+Global $btnToolbox_Win_Status, $btnToolbox_GUI_Status
+Global $ChatbotStartTime
+Global $ClanAdStartTime
+Global $iDelayAttackTHDragon1 = 1000
+Global $iDelayAttackTHWizard1 = 1000

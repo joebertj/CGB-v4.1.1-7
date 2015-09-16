@@ -93,6 +93,8 @@ WEnd
 
 Func runBot() ;Bot that runs everything in order
 	$TotalTrainedTroops = 0
+	;$ChatbotStartTime =  TimerInit()
+	$ClanAdStartTime =  TimerInit()
 	While 1
 		SWHTrainRevertNormal()
 		$Restart = False
@@ -347,8 +349,9 @@ Func Idle() ;Sequence that runs until Full Army
 		If $ichkIceBreaker = 1 Then IceBreaker()
 		If $ichkKeepAlive = 1 Then KeepAlive()
 		If $ichkClanAd = 1 Then
-			If Mod(@MIN, 15) = 0 Then
+			If TimerDiff($ClanAdStartTime) = 15*1000 Then
 				WriteClan($itxtClanAd)
+				$ClanAdStartTime = TimerInit()
 			EndIf
 		EndIf
 		SnipeWhileTrain()
