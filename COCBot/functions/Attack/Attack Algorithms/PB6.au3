@@ -820,6 +820,7 @@ Func Greedy($spotsNum, $eKingSlot = -1, $eQueenSlot = -1)
 		$j = 0
 		While $j < 4
 			$THside = $i
+			SetLog("Greedy mode: Side " & $THside)
 			CheckHeroesHealth($eKingSlot, $eQueenSlot)
 			PrepareAttack($DB, True)
 			$eBarbCount = GetTroopCount($eBarb)
@@ -828,19 +829,19 @@ Func Greedy($spotsNum, $eKingSlot = -1, $eQueenSlot = -1)
 			$eGoblCount = GetTroopCount($eGobl)
 			If $eBarbCount > 0 Or $eMiniCount > 0 Or $eArchCount > 0 Or $eGoblCount > 0 Then
 				If $eBarbCount > 0 Then
-					TroopTH($THx, $THy, $eBarb, $spotsNum*2, Random(1, 2, 1), 500)
+					TroopTH(430, 315, $eBarb, $spotsNum*2, 1, 500)
 				EndIf
 
 				If $eGoblCount > 0 Then
-					TroopTH($THx, $THy, $eGobl, $spotsNum*2, Random(1, 2, 1), 500)
+					TroopTH(430, 315, $eGobl, $spotsNum*2, 1, 500)
 				EndIf
 
 				If $eArchCount > 0 Then
-					TroopTH($THx, $THy, $eArch, $spotsNum*2, Random(1, 2, 1), 500)
+					TroopTH(430, 315, $eArch, $spotsNum*2, 1, 500)
 				EndIf
 
 				If $eMiniCount > 0 Then
-					TroopTH($THx, $THy, $eMini, $spotsNum*2, Random(1, 2, 1), 500)
+					TroopTH(430, 315, $eMini, $spotsNum*2, 1, 500)
 				EndIf
 			EndIf
 			$i = Mod($i + 1, 4)
