@@ -126,11 +126,11 @@ GUICtrlCreateGroup("", -99, -99, 1, 1)
 			GUICtrlSetData(-1, "Barch|Attack1:Normal|Attack2:eXtreme|Attack3:Gbarch|Attack4:SmartBarch|Attack5:MasterGiBAM|Attack6:PB6|Attack7:THWizard|Attack8:THDragon", "Attack1:Normal")
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$y = 400
-		$lblAttackBottomType = GUICtrlCreateLabel("Attack Bottom base", $x -15 , $y + 5, -1, 17, $SS_LEFT)
-		$cmbAttackbottomType = GUICtrlCreateCombo("",  $x + 95, $y, 105, 21, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-		GUICtrlSetData(-1, "1:MaxZoomed|2:ModerateZoomed|3:SideAttack|4:MaxZoomed2|5:OriginalMaxZoom", "3:SideAttack")
-		GUICtrlSetOnEvent(-1, "cmbAttackbottomType")
-		GUICtrlSetState(-1, $GUI_DISABLE)
+		;$lblAttackBottomType = GUICtrlCreateLabel("Attack Bottom base", $x -15 , $y + 5, -1, 17, $SS_LEFT)
+		;$cmbAttackbottomType = GUICtrlCreateCombo("",  $x + 95, $y, 105, 21, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+		;GUICtrlSetData(-1, "1:MaxZoomed|2:ModerateZoomed|3:SideAttack|4:MaxZoomed2|5:OriginalMaxZoom", "3:SideAttack")
+		;GUICtrlSetOnEvent(-1, "cmbAttackbottomType")
+		;GUICtrlSetState(-1, $GUI_DISABLE)
 	$y += 20
 		$btnSnipeOnlyMode = GUICtrlCreateButton ("Snipe Only Mode", $x, $y, 90,20)
 		$txtTip = "Changes Your Settings so that the bot will only snipe Th ouside with no other attack types"

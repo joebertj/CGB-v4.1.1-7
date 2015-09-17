@@ -281,7 +281,7 @@ Func AttackTHGrid($troopKind, $spots, $numperspot, $Sleep, $waveNb, $maxWaveNb, 
 		EndIf
 
 		If $THi > 15 And ($THside = 1 Or $THside = 3) Then
-			SwitchAttackBottomTH($numperspot, $spots)
+			SideSnipe($numperspot, $spots)
 		EndIf
 
 		If _Sleep($iDelayAttackTHGrid1) Then Return

@@ -212,7 +212,7 @@ Global $allTroops = False, $skipBase = False
 Global $ichkTrainSpells
 Global $NormalSpellTrain
 Global $DarkSpellTrain
-Global $BottomTHType
+;Global $BottomTHType
 ;Global $ichkSmartLightSpell
 Global $TrainSpecial = 1 ;0=Only trains after atk. Setting is automatic
 Global $cBarbarian = 0, $cArcher = 0, $cGoblin = 0, $cGiant = 0, $cWallbreaker = 0, $cWizard = 0, $cBalloon = 0, $cDragon = 0, $cPekka = 0, $cMinion = 0, $cHogs = 0, $cValkyrie = 0, $cGolem = 0, $cWitch = 0, $cLavaHound = 0
@@ -298,7 +298,6 @@ Global $iUnbreakableWait, $iUnBrkMinGold, $iUnBrkMinElixir, $iUnBrkMaxGold, $iUn
 Global $OutOfGold = 0 ; Flag for out of gold to search for attack
 Global $OutOfElixir = 0 ; Flag for out of elixir to train troops
 Global $OutOfDarkElixir = 0 ; Flag for out of dark elixir to train troops
-Global $BottomTHType,$LTCount,$num,$numperspot,$spots
 Global $CTHx, $CTHy, $z, $ct, $ci, $debugTH, $atkTHADV, $ToleranceTH
 ;Zoom/scroll variables for TH snipe, bottom corner
 Global $zoomedin = False, $zCount = 0, $sCount = 0
@@ -653,7 +652,7 @@ Global $ichkTrophySwitchMax, $itxtMaxTrophyAmount, $icmbTrophyMaxProfile, $ichkT
 Global $DidntRevert
 Global $iChkSnipeWhileTrain, $isSnipeWhileTrain
 Global $tempSnipeWhileTrain[8] = [0,0,0,0,0,0,0,0]
-Global $BottomTHType,$LTCount,$num,$numperspot,$spots
+Global $LTCount,$num,$numperspot,$spots
 ;;; Toolbox
 Global $ichkToolboxModeBot
 Global $ichkToolboxModeSearch
