@@ -535,7 +535,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	_GUICtrlComboBox_SetCurSel($cmbAttackTHType, $AttackTHType)
 	chkSnipeMode()
 
-	_GUICtrlComboBox_SetCurSel($cmbAttackbottomType, $BottomTHType)
+	;_GUICtrlComboBox_SetCurSel($cmbAttackbottomType, $BottomTHType)
 
 	If $iAlertPBVillage = 1 Then
 		GUICtrlSetState($chkAlertPBVillage, $GUI_CHECKED)

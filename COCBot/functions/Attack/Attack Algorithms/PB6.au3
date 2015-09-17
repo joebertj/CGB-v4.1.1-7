@@ -439,11 +439,7 @@ EndFunc   ;==>CheckForStar
 Func SpellTH($xx, $yy, $SpellSlot = -1)
 	SetLog("Dropping Spell @ " & $xx & ", " & $yy, $COLOR_BLUE)
 	SelectDropTroop($SpellSlot)
-	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
-		SwitchAttackBottomTH(1, 1)
-	Else
 		Click($xx, $yy, 1, 0, "#0029")
-	EndIf
 	If _Sleep($iDelayCastSpell1) Then Return
 EndFunc   ;==>SpellTH
 
@@ -451,11 +447,7 @@ Func KingTH($xx, $yy, $KingSlot = -1)
 	SetLog("Dropping King @ " & $xx & ", " & $yy, $COLOR_BLUE)
 	;SelectDropTroop($KingSlot)
 	Click(GetXPosOfArmySlot($KingSlot, 68), 595, 1, 0, "#0092") ;Select King
-	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
-		SwitchAttackBottomTH(1, 1)
-	Else
 		Click($xx, $yy, 1, 0, "#0093")
-	EndIf
 	If _Sleep($iDelaydropHeroes2) Then Return
 	$checkKPower = True
 EndFunc   ;==>KingTH
@@ -464,11 +456,7 @@ Func QueenTH($xx, $yy, $QueenSlot = -1)
 	SetLog("Dropping Queen @ " & $xx & ", " & $yy, $COLOR_BLUE)
 	;SelectDropTroop($QueenSlot)
 	Click(GetXPosOfArmySlot($QueenSlot, 68), 595, 1, 0, "#0094") ;Select Queen
-	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
-		SwitchAttackBottomTH(1, 1)
-	Else
-		Click($xx, $yy, 1, 0, "#0095")
-	EndIf
+	Click($xx, $yy, 1, 0, "#0095")
 	If _Sleep($iDelaydropHeroes2) Then Return
 	$checkQPower = True
 EndFunc   ;==>QueenTH
@@ -477,11 +465,7 @@ Func CCTH($xx, $yy, $CCSlot)
 	SetLog("Dropping Clan Castle @ " & $xx & ", " & $yy, $COLOR_BLUE)
 	;SelectDropTroop($CCSlot)
 	Click(GetXPosOfArmySlot($CCSlot, 68), 595, 1, $iDelaydropCC2, "#0090")
-	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
-		SwitchAttackBottomTH(1, 1)
-	Else
-		Click($xx, $yy, 1, 0, "#0091")
-	EndIf
+	Click($xx, $yy, 1, 0, "#0091")
 	If _Sleep($iDelaydropCC1) Then Return
 EndFunc   ;==>CCTH
 
@@ -620,9 +604,6 @@ Func TroopTH($xx, $yy, $eTroop, $spots, $numperspot, $Sleep)
 	If $total > 1 Then $plural = 1
 	$name = NameOfTroop($eTroop, $plural)
 	SetLog("Dropping " & $name)
-	If $THi > 15 And ($THside = 1 Or $THside = 3) Then
-		SwitchAttackBottomTH($numperspot, $spots)
-	Else
 		Switch $THside
 			Case 0 ;UL
 				;$x < 68
@@ -665,7 +646,6 @@ Func TroopTH($xx, $yy, $eTroop, $spots, $numperspot, $Sleep)
 					Next
 				Next
 		EndSwitch
-	EndIf
 	If _Sleep($Sleep) Then Return
 EndFunc   ;==>TroopTH
 
@@ -698,13 +678,18 @@ Func GetDropTH($xx, $yy, $type, $spots = 1, $spotidx = 1)
 			$intercept = 280
 			$x1 = (($yy - $intercept) / $slope)
 			$y1 = ($slope * $x1 + $intercept)
-			$y2 = ($slope * $xx + $intercept)
-			$x2 = (($y2 - $intercept) / $slope)
-			$a = $x1 - $x2
-			$b = $y1 - $y2
-			$c = Sqrt($a * $a + $b * $b)
-			$DropTH[0] = Round($x1 + ($c * $spotidx / ($spots + 1)) * $cos37)
-			$DropTH[1] = Round($slope * $DropTH[0] + $intercept)
+			If $yy > 520 Then ; bottom TH
+				$DropTH[0] = Round($x1)
+				$DropTH[1] = Round($y1)
+			Else
+				$y2 = ($slope * $xx + $intercept)
+				$x2 = (($y2 - $intercept) / $slope)
+				$a = $x1 - $x2
+				$b = $y1 - $y2
+				$c = Sqrt($a * $a + $b * $b)
+				$DropTH[0] = Round($x1 + ($c * $spotidx / ($spots + 1)) * $cos37)
+				$DropTH[1] = Round($slope * $DropTH[0] + $intercept)
+			EndIf
 		Case 2
 			$intercept = 310
 			$x1 = (($yy + $intercept) / $slope)
@@ -720,13 +705,18 @@ Func GetDropTH($xx, $yy, $type, $spots = 1, $spotidx = 1)
 			$intercept = 925
 			$x1 = (($yy - $intercept) / -$slope)
 			$y1 = (-$slope * $x1 + $intercept)
-			$y2 = (-$slope * $xx + $intercept)
-			$x2 = (($y2 - $intercept) / -$slope)
-			$a = $x1 - $x2
-			$b = $y1 - $y2
-			$c = Sqrt($a * $a + $b * $b)
-			$DropTH[0] = Round($x1 - ($c * $spotidx / ($spots + 1)) * $cos37)
-			$DropTH[1] = Round(-$slope * $DropTH[0] + $intercept)
+			If $yy > 520 Then ; bottom TH
+				$DropTH[0] = Round($x1)
+				$DropTH[1] = Round($y1)
+			Else
+				$y2 = (-$slope * $xx + $intercept)
+				$x2 = (($y2 - $intercept) / -$slope)
+				$a = $x1 - $x2
+				$b = $y1 - $y2
+				$c = Sqrt($a * $a + $b * $b)
+				$DropTH[0] = Round($x1 - ($c * $spotidx / ($spots + 1)) * $cos37)
+				$DropTH[1] = Round(-$slope * $DropTH[0] + $intercept)
+			EndIF
 	EndSwitch
 	;Setlog("x1: " & $x1 & " y1: " & $y1)
 	;Setlog("x2: " & $x2 & " y2: " & $y2)
@@ -820,6 +810,7 @@ Func Greedy($spotsNum, $eKingSlot = -1, $eQueenSlot = -1)
 		$j = 0
 		While $j < 4
 			$THside = $i
+			SetLog("Greedy mode: Side " & $THside)
 			CheckHeroesHealth($eKingSlot, $eQueenSlot)
 			PrepareAttack($DB, True)
 			$eBarbCount = GetTroopCount($eBarb)
@@ -828,19 +819,19 @@ Func Greedy($spotsNum, $eKingSlot = -1, $eQueenSlot = -1)
 			$eGoblCount = GetTroopCount($eGobl)
 			If $eBarbCount > 0 Or $eMiniCount > 0 Or $eArchCount > 0 Or $eGoblCount > 0 Then
 				If $eBarbCount > 0 Then
-					TroopTH($THx, $THy, $eBarb, $spotsNum*2, Random(1, 2, 1), 500)
+					TroopTH(430, 315, $eBarb, $spotsNum*2, 1, 500)
 				EndIf
 
 				If $eGoblCount > 0 Then
-					TroopTH($THx, $THy, $eGobl, $spotsNum*2, Random(1, 2, 1), 500)
+					TroopTH(430, 315, $eGobl, $spotsNum*2, 1, 500)
 				EndIf
 
 				If $eArchCount > 0 Then
-					TroopTH($THx, $THy, $eArch, $spotsNum*2, Random(1, 2, 1), 500)
+					TroopTH(430, 315, $eArch, $spotsNum*2, 1, 500)
 				EndIf
 
 				If $eMiniCount > 0 Then
-					TroopTH($THx, $THy, $eMini, $spotsNum*2, Random(1, 2, 1), 500)
+					TroopTH(430, 315, $eMini, $spotsNum*2, 1, 500)
 				EndIf
 			EndIf
 			$i = Mod($i + 1, 4)

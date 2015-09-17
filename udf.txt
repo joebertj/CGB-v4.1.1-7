@@ -4333,6 +4333,7 @@ C:\Program Files (x86)\AutoIt3\Include\WinAPIGdi.au3(39,1) : UNREFED(39):	$tagXF
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(223,1) : UNREFED(223):	$wallbuild
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(231,1) : UNREFED(231):	$wallh
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(224,1) : UNREFED(224):	$walllowlevel
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\AttackBottomTHType.au3(43,1) : UNREFED(107):	AllZoomedAttack
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\algorithm_Barch.au3(17,1) : UNREFED(36):	Barch
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\algorithmTH.au3(664,1) : UNREFED(37):	CastSpell
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(416,1) : UNREFED(427):	ChangeLanguageToEN
@@ -4361,6 +4362,9 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control B
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\GoldElixirChange.au3(16,1) : UNREFED(69):	GoldElixirChange
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Troops\IdentifyTroopKind.au3(17,1) : UNREFED(193):	IdentifyTroopKind
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Troops\IdentifyTroopKind.au3(196,1) : UNREFED(240):	IdentifyTroopKindCreate
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\AttackBottomTHType.au3(109,1) : UNREFED(170):	MaxZoomed2
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\AttackBottomTHType.au3(174,1) : UNREFED(231):	ModerateZoomed
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\AttackBottomTHType.au3(272,1) : UNREFED(327):	OriginalMaxZoomed
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Tab.au3(1,1) : UNREFED(99):	Tab
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\TrainClick.au3(86,1) : UNREFED(92):	TrainClickP
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\CheckVersion.au3(97,1) : UNREFED(120):	VersionNumFromVersionTXT

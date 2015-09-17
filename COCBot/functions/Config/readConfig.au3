@@ -228,7 +228,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$OptGreedy = IniRead($config, "advanced", "Greedy", "0")
 		$THaddtiles = IniRead($config, "advanced", "THaddTiles", "0")
 		$AttackTHType = IniRead($config, "advanced", "AttackTHType", "0")
-        $BottomTHType = IniRead($config, "advanced", "BottomTHType", "0")
+        ;$BottomTHType = IniRead($config, "advanced", "BottomTHType", "0")
 
 		$PushToken = IniRead($config, "advanced", "AccountToken", "")
 

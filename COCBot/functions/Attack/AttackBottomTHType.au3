@@ -1,24 +1,24 @@
-Func cmbAttackbottomType()
-	IniWrite($config, "advanced", "BottomTHType", _GUICtrlComboBox_GetCurSel($cmbAttackbottomType))
-EndFunc   ;==>cmbAttackbottomType
+;Func cmbAttackbottomType()
+	;IniWrite($config, "advanced", "BottomTHType", _GUICtrlComboBox_GetCurSel($cmbAttackbottomType))
+;EndFunc   ;==>cmbAttackbottomType
 
-Func SwitchAttackBottomTH($numperspot, $spots)
+;Func SwitchAttackBottomTH($numperspot, $spots)
 
-	Switch (_GUICtrlComboBox_GetCurSel($cmbAttackbottomType) + 1)
+	;Switch (_GUICtrlComboBox_GetCurSel($cmbAttackbottomType) + 1)
 
-		Case 1
-			AllZoomedAttack($numperspot, $spots)
-		Case 2
-			ModerateZoomed($numperspot, $spots)
-		Case 3
-			SideSnipe($numperspot, $spots)
-		Case 4
-			MaxZoomed2($numperspot, $spots)
-		Case 5
-			OriginalMaxZoomed($numperspot, $spots)
-	EndSwitch
+	;	Case 1
+	;		AllZoomedAttack($numperspot, $spots)
+	;	Case 2
+	;		ModerateZoomed($numperspot, $spots)
+	;	Case 3
+	;		SideSnipe($numperspot, $spots)
+	;	Case 4
+	;		MaxZoomed2($numperspot, $spots)
+	;	Case 5
+	;		OriginalMaxZoomed($numperspot, $spots)
+	;EndSwitch
 
-EndFunc   ;==>SwitchAttackBottomTH
+;EndFunc   ;==>SwitchAttackBottomTH
 
 Func ChangeSettingsSnipeOnly()
 
