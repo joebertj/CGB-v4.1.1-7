@@ -708,6 +708,10 @@ Func GetDropTH($xx, $yy, $type, $spots = 1, $spotidx = 1)
 			$x1 = (($yy - $intercept) / $slope)
 			$y1 = ($slope * $x1 + $intercept)
 			If $yy > 520 Then ; bottom TH
+				If $yy > 560 Then
+					$x1 = ((560 - $intercept) / $slope)
+					$y1 = ($slope * $x1 + $intercept)
+				EndIf
 				$DropTH[0] = Round($x1)
 				$DropTH[1] = Round($y1)
 			Else
@@ -735,6 +739,10 @@ Func GetDropTH($xx, $yy, $type, $spots = 1, $spotidx = 1)
 			$x1 = (($yy - $intercept) / -$slope)
 			$y1 = (-$slope * $x1 + $intercept)
 			If $yy > 520 Then ; bottom TH
+				If $yy > 560 Then
+					$x1 = ((560 - $intercept) / $slope)
+					$y1 = ($slope * $x1 + $intercept)
+				EndIf
 				$DropTH[0] = Round($x1)
 				$DropTH[1] = Round($y1)
 			Else
