@@ -430,8 +430,8 @@ Func Train()
 					TrainClick(647, 320, 37, 10, $FullWitc, $GemWitc, "#0288") ;Witch
 				Case 5
 					TrainClick(220, 425, 15, 10, $FullLava, $GemLava, "#0289") ;Lava Hound
-				Case 6
-					ContinueLoop
+				;Case 6
+					;ContinueLoop
 			EndSwitch
 			If $OutOfDarkElixir = 1 Then
 				Setlog("Not enough Dark Elixir to train troops!", $COLOR_RED)

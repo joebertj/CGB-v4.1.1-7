@@ -42,6 +42,7 @@ Func AttackTHPB6()
 	Local $DropTH[2] = [0, 0]
 	Local $setOffGroundTrap = False
 	Local $setOffAirTrap = False
+	Local $waveUsed = False
 	;Local $x, $Bx, $Hx, $Dx
 	;Local $y, $By, $Hy, $Dy
 	$spotsNum = 5;
@@ -58,6 +59,7 @@ Func AttackTHPB6()
 			Setlog("Archer wave")
 			$setOffGroundTrap = SetOffTraps($THx, $THy, $eArch, 3, $setOffGroundTrap)
 			TroopTH($THx, $THy, $eArch, $spotsNum, Random(2, 3, 1), 500)
+			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
 			If CheckForStar(25) = True Then
 				If $optGreedy = 1 Then
@@ -72,14 +74,13 @@ Func AttackTHPB6()
 		$eBarbCount = GetTroopCount($eBarb)
 		$eArchCount = GetTroopCount($eArch)
 		$eMiniCount = GetTroopCount($eMini)
-		If $eBarbCount >= 20 Or $eMiniCount >= 20 Or ($eArchCount >= 10 And ($eBarbCount >= 10 Or $eMiniCount >= 10)) Then
+		If (Not $waveUsed And ($eBarbCount >= 10 Or $eMiniCount >=5)) Or ($waveUsed And ($eBarbCount >= 20 Or $eMiniCount >= 10)) Then
 			$eGoblCount = GetTroopCount($eGobl)
 			Setlog("BAM wave")
 			If $eBarbCount >= 10 Then
 				$setOffGroundTrap = SetOffTraps($THx, $THy, $eBarb, 3, $setOffGroundTrap)
 				TroopTH($THx, $THy, $eBarb, $spotsNum, Random(2, 4, 1), 1000)
 			EndIf
-
 			If $eGoblCount > 0 Then
 				$setOffGroundTrap = SetOffTraps($THx, $THy, $eGobl, 3, $setOffGroundTrap)
 				TroopTH($THx, $THy, $eGobl, $spotsNum, Random(2, 4, 1), 1000)
@@ -88,10 +89,11 @@ Func AttackTHPB6()
 				$setOffGroundTrap = SetOffTraps($THx, $THy, $eArch, 3, $setOffGroundTrap)
 				TroopTH($THx, $THy, $eArch, $spotsNum, Random(2, 4, 1), 1000)
 			EndIf
-			If $eMiniCount >= 10 Then
+			If $eMiniCount >= 5 Then
 				$setOffAirTrap = SetOffTraps($THx, $THy, $eMini, 3, $setOffAirTrap)
-				TroopTH($THx, $THy, $eMini, $spotsNum, Random(2, 4, 1), 1000)
+				TroopTH($THx, $THy, $eMini, $spotsNum, Random(1, 4, 1), 1000)
 			EndIf
+			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
 			If CheckForStar(12) = True Then
 				If $optGreedy = 1 Then
@@ -107,54 +109,49 @@ Func AttackTHPB6()
 		$eHogsCount = GetTroopCount($eHogs)
 		$eBallCount = GetTroopCount($eBall)
 		$eWizaCount = GetTroopCount($eWiza)
-		If $eWizaCount >= 5 And ($eGiantCount >= 5 Or $eHogsCount >= 5 Or $eBallCount >= 5 Or $eBarbCount >= 20) Then
+		If ($waveUsed And ($eWizaCount >= 5 And ($eGiantCount >= 5 Or $eHogsCount >= 5 Or $eBallCount >= 5 Or $eBarbCount >= 20))) Then
 			$eBarbCount = GetTroopCount($eBarb)
 			$eGoblCount = GetTroopCount($eGobl)
 			$eWallCount = GetTroopCount($eWall)
 			$eArchCount = GetTroopCount($eArch)
 			$eMiniCount = GetTroopCount($eMini)
 			Setlog("Defense Aggro and Wizard wave") ;Send in the Defense specialists - Giants, Ballons and Hogriders
-			If $eGiantCount > 0 Then
+			If $eGiantCount >=5 Then
 				$setOffGroundTrap = SetOffTraps($THx, $THy, $eGiant, 3, $setOffGroundTrap)
-				TroopTH($THx, $THy, $eGiant, $spotsNum, Random(1, 2, 1), 1000)
-			EndIf
-			If $eBallCount >= 5 Then
-				$setOffAirTrap = SetOffTraps($THx, $THy, $eBall, 3, $setOffAirTrap)
-				TroopTH($THx, $THy, $eBall, $spotsNum, Random(2, 4, 1), 1000)
+				TroopTH($THx, $THy, $eGiant, $spotsNum, Random(1, 4, 1), 1000)
 			EndIf
 			If $eHogsCount >= 5 Then
 				$setOffGroundTrap = SetOffTraps($THx, $THy, $eHogs, 3, $setOffGroundTrap)
-				TroopTH($THx, $THy, $eHogs, 1, Random(10, 20, 1), 1000)
+				TroopTH($THx, $THy, $eHogs, $spotsNum, Random(1, 4, 1), 1000)
 			EndIf
-
-			If $eBarbCount > 0 Then
+			If $eBallCount >= 5 Then
+				$setOffAirTrap = SetOffTraps($THx, $THy, $eBall, 3, $setOffAirTrap)
+				TroopTH($THx, $THy, $eBall, $spotsNum, Random(1, 4, 1), 1000)
+			EndIf
+			If $eBarbCount >= 20 Then
 				$setOffGroundTrap = SetOffTraps($THx, $THy, $eBarb, 3, $setOffGroundTrap)
-				TroopTH($THx, $THy, $eBarb, $spotsNum, Random(3, 6, 1), 1500)
+				TroopTH($THx, $THy, $eBarb, $spotsNum, Random(4, 6, 1), 1000)
 			EndIf
-
 			If $eGoblCount > 0 Then
 				$setOffGroundTrap = SetOffTraps($THx, $THy, $eGobl, 3, $setOffGroundTrap)
-				TroopTH($THx, $THy, $eGobl, $spotsNum, Random(2, 4, 1), 1000)
+				TroopTH($THx, $THy, $eGobl, $spotsNum, Random(1, 4, 1), 1000)
 			EndIf
-
 			If $eWallCount > 0 Then
-				TroopTH($THx, $THy, $eWall, 2, Random(2, 4, 1), 1000)
+				TroopTH($THx, $THy, $eWall, 1, Random(1, 4, 1), 1000)
 			EndIf
-
-			If $eArchCount > 0 Then
+			If $eArchCount >= 10 Then
 				$setOffGroundTrap = SetOffTraps($THx, $THy, $eArch, 3, $setOffGroundTrap)
-				TroopTH($THx, $THy, $eArch, $spotsNum, Random(3, 6, 1), 1500)
+				TroopTH($THx, $THy, $eArch, $spotsNum, Random(2, 6, 1), 1000)
 			EndIf
-
-			If $eWizaCount > 0 Then
+			If $eWizaCount >= 5 Then
 				$setOffGroundTrap = SetOffTraps($THx, $THy, $eWiza, 3, $setOffGroundTrap)
 				TroopTH($THx, $THy, $eWiza, $spotsNum, Random(1, 2, 1), 1000)
 			EndIf
-
-			If $eMiniCount > 0 Then
+			If $eMiniCount >= 5 Then
 				$setOffAirTrap = SetOffTraps($THx, $THy, $eMini, 3, $setOffAirTrap)
-				TroopTH($THx, $THy, $eMini, $spotsNum, Random(3, 5, 1), 1500)
+				TroopTH($THx, $THy, $eMini, $spotsNum, Random(1, 3, 1), 1500)
 			EndIf
+			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
 			If CheckForStar(5) = True Then
 				If $optGreedy = 1 Then
@@ -164,6 +161,38 @@ Func AttackTHPB6()
 			EndIf
 		Else
 			Setlog("Too few Defense Aggro and Wizards...skipping wave")
+		EndIf
+
+		If Not $waveUsed Then
+			Setlog("Last probe before going ALL IN")
+			$eWizaCount = GetTroopCount($eWiza)
+			$eDragCount = GetTroopCount($eDrag)
+			$ePekkCount = GetTroopCount($ePekk)
+			$eValkCount = GetTroopCount($eValk)
+			If $eWizaCount > 1 Or $eDragCount > 1 Or $ePekkCount > 1 Or $eValkCount > 2 Then
+				If $eWizaCount > 0 Then
+					TroopTH($THx, $THy, $eWiza, 1, 1, 1000)
+				EndIf
+
+				If $eDragCount > 0 Then
+					TroopTH($THx, $THy, $eDrag, 1, 1, 500)
+				EndIf
+
+				If $ePekkCount > 0 Then
+					TroopTH($THx, $THy, $ePekk, 1, 1, 500)
+				EndIf
+
+				If $eValkCount > 0 Then
+					TroopTH($THx, $THy, $eValk, 2, 1, 500)
+				EndIf
+				PrepareAttack($iMatchMode, True) ;Check remaining quantities
+				If CheckForStar(25) = True Then
+					If $optGreedy = 1 Then
+						Greedy($spotsNum,$eKingSlot,$eQueenSlot)
+					EndIf
+					Return
+				EndIf
+			EndIf
 		EndIf
 	Else
 		Setlog("Going directly to final wave since TH is trapped")
