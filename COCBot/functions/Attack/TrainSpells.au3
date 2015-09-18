@@ -297,11 +297,12 @@ If isDarkSpellFactory() Then
 
     WEnd
     $i = 0
-	For $count = 0 To 4
+	For $count = 0 To 2
 		If $multiTrain Then $i = $count
 		If $spellCount[$i] <> 0 Then
 			SetLog("Created " & $spellCount[$i] & " " &  $spellName[$i] & " Dark Spell(s)", $COLOR_BLUE)
 		EndIf
+		If Not $multiTrain Then ExitLoop
 	Next
 
 Else
