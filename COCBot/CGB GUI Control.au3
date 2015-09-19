@@ -79,9 +79,9 @@ Func GUIControl($hWind, $iMsg, $wParam, $lParam)
 					SaveConfig()
 					Exit
 				Case $labelGameBotURL
-					ShellExecute("https://GameBot.org") ;open web site when clicking label
+					ShellExecute("https://MyBot.run") ;open web site when clicking label
 				Case $labelForumURL
-					ShellExecute("https://GameBot.org/forums/forumdisplay.php?fid=2") ;open web site when clicking label
+					ShellExecute("https://MyBot.run/forums/forumdisplay.php?fid=2") ;open web site when clicking label
 				Case $btnStop
 					If $RunState Then btnStop()
 				Case $btnPause
@@ -97,7 +97,7 @@ Func GUIControl($hWind, $iMsg, $wParam, $lParam)
 				Case $btnAttackNowTS
 					If $RunState Then btnAttackNowTS()
 				Case $DonateConfig
-					ShellExecute("https://gamebot.org/forums/misc.php?action=mydonations")
+					ShellExecute("https://mybot.run/forums/misc.php?action=mydonations")
 				Case $btnDeletePBMessages
 					If $RunState Then
 						btnDeletePBMessages() ; call with flag when bot is running to execute on _sleep() idle

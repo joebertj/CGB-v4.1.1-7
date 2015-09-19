@@ -21,7 +21,7 @@ Local $btnColor = False
 
 ;~ Buttons
 Local $x = 15, $y = 525
-$grpButtons = GUICtrlCreateGroup("https://gamebot.org - freeware bot -", $x - 5, $y - 10, 190, 85)
+$grpButtons = GUICtrlCreateGroup("https://mybot.run - freeware bot -", $x - 5, $y - 10, 190, 85)
 	$btnStart = GUICtrlCreateButton("Start Bot", $x, $y + 2 +5, 90, 40-5)
 		GUICtrlSetOnEvent(-1, "btnStart")
 		IF $btnColor then GUICtrlSetBkColor(-1, 0x5CAD85)

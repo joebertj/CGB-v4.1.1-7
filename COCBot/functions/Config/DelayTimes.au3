@@ -1,6 +1,6 @@
 ; Delay Times
 
-;gamebot.org
+;mybot.run
 Global Const $iDelayRunBot1 = 1000
 Global Const $iDelayRunBot2 = 800
 Global Const $iDelayRunBot3 = 200

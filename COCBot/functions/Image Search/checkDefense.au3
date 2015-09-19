@@ -85,8 +85,7 @@ Func checkDefense()
 
 	$airTroops = $OptIgnoreTraps
 	$grdTroops = $OptIgnoreAirTraps
-	Local $d[4]
-	Local $Dpixel = 11.6
+	Local $d[4],$e[4],$f[4]
 
 	If $airTroops = 1 Then
 		$chkMortar = 0
@@ -126,38 +125,56 @@ Func checkDefense()
 						$Defx = Int($expRet[1])
 						$Defy = Int($expRet[1 + 1])
 						$numDefFound += 1
-						Setlog($DefText[$t] & " Found")
+
+						; check if trap is nearer to deployment line than TH
+						Switch $THside
+							Case 0
+								$e = GetDistance(0, 0, $Defx, $Defy)
+								$f = GetDistance(0, 0, 125, 90)
+							Case 1
+								$e = GetDistance(0, 180, $Defx, $Defy)
+								$f = GetDistance(0, 180, 125, 90)
+							Case 2
+								$e = GetDistance(250, 0, $Defx, $Defy)
+								$f = GetDistance(250, 0, 125, 90)
+							Case 3
+								$e = GetDistance(250, 180, $Defx, $Defy)
+								$f = GetDistance(250, 180, 125, 90)
+						EndSwitch
 						;Setlog($trapTHtxt[$t][$i] & " Found")
 						$d = GetDistance(125, 90, $Defx, $Defy) ; 250x180 image TH is center
-						SetLog("Defense coord: " & $Defx & " ," & $Defy)
-						SetLog("Distance in pixels: " & $d[2] & " Distance in tiles: " & $d[3])
+						SetLog($DefText[$t] & " coordinates: " & $Defx & " ," & $Defy)
+						SetLog("Distance from TH: " & $d[2] & " pixels or " & $d[3] & " tiles")
+						SetLog($DefText[$t] & " distance from deployment side is " & $e[3])
+						SetLog("TH distance from deployment side is " & $f[3])
+						;minimum 1 tile distance to discount a false positive and minus 1 to maximum range for trap effectivity
 						If $chkInferno = 1 And $DefText[$t] = "Inferno Tower" Then
-							SetLog("Inferno Tower distance is " & $d[3]);range 9
-							If $d[3] > 2 And $d[3] < 9 - 1 Then
+							SetLog("Inferno Tower distance from TH is " & $d[3]);range 9
+							If $d[3] > 1 And $d[3] < 9 - 1 Or $e[3] < $f[3] Then
 								$skipBase = True
 								Return "Inferno Tower found near TH, skipping..."
 							EndIf
 						ElseIf $chkTesla = 1 And $DefText[$t] = "Hidden Tesla" Then
 							SetLog("Hidden Tesla distance is " & $d[3]);range 6-7
-							If $d[3] > 2 And $d[3] < 7 - 1 Then
+							If $d[3] > 1 And $d[3] < 7 - 1  Or $e[3] < $f[3] Then
 								$skipBase = True
 								Return "Hidden Tesla found near TH, skipping..."
 							EndIf
 						ElseIf $chkMortar = 1 And $DefText[$t] = "Mortar" Then
-							SetLog("Mortar distance is " & $d[3]);range is 4-11
-							If $d[3] > 2 And $d[3] < 11 - 1 Then
+							SetLog("Mortar distance is " & $d[3]);range is 4-11, minimum range 4 is not really a factor
+							If $d[3] > 1 And $d[3] < 11 - 1  Or $e[3] < $f[3] Then
 								$skipBase = True
 								Return "Mortar found near TH, skipping..."
 							EndIf
 						ElseIf $chkWiz = 1 And $DefText[$t] = "Wizard Tower" Then
 							SetLog("Wizard Tower distance is " & $d[3]);range is 7
-							If $d[3] > 2 And $d[3] < 7 - 1 Then
+							If $d[3] > 1 And $d[3] < 7 - 1 Or $e[3] < $f[3] Then
 								$skipBase = True
 								Return "Wizard Tower found near TH, skipping..."
 							EndIf
 						ElseIf $chkAir = 1 And $DefText[$t] = "Air Defense" Then
 							SetLog("Air Defense distance is " & $d[3]);range is 10
-							If $d[3] > 2 And $d[3] < 10 - 1 Then
+							If $d[3] > 1 And $d[3] < 10 - 1 Or $e[3] < $f[3] Then
 								$skipBase = True
 								Return "Air Defense found near TH, skipping..."
 							EndIf
