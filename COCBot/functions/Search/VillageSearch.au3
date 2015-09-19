@@ -223,7 +223,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 					$iMatchMode = $TS
 					ExitLoop
 				Else
-					If $OptIgnoreTraps = 0 And $OptIgnoreAirTraps = 0 Then
+					If $OptIgnoreTraps = 0 Or $OptIgnoreAirTraps = 0 Then
 						SetLog("Trap found, skipping base...", $COLOR_RED)
 						$i = 0
 						While $i < 100
