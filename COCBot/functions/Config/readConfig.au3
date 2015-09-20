@@ -224,6 +224,7 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		$OptTrophyMode = IniRead($config, "advanced", "TrophyMode", "0")
 		$OptIgnoreTraps = IniRead($config, "advanced", "IgnoreTraps", "0")
+		$OptIgnoreAirTraps = IniRead($config, "advanced", "IgnoreAirTraps", "0")
 		$OptParanoid = IniRead($config, "advanced", "Paranoid", "0")
 		$OptGreedy = IniRead($config, "advanced", "Greedy", "0")
 		$THaddtiles = IniRead($config, "advanced", "THaddTiles", "0")

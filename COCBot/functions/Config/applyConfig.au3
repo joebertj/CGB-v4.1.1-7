@@ -515,7 +515,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 
 	If $OptIgnoreAirTraps = 1 Then
 		GUICtrlSetState($chkIgnoreAirTraps, $GUI_CHECKED)
-	ElseIf $OptIgnoreTraps = 0 Then
+	ElseIf $OptIgnoreAirTraps = 0 Then
 		GUICtrlSetState($chkIgnoreAirTraps, $GUI_UNCHECKED)
 	EndIf
 

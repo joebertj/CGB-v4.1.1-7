@@ -708,9 +708,19 @@ Func GetDropTH($xx, $yy, $type, $spots = 1, $spotidx = 1)
 			$x1 = (($yy - $intercept) / $slope)
 			$y1 = ($slope * $x1 + $intercept)
 			If $yy > 520 Then ; bottom TH
-				If $yy > 560 Then
-					$x1 = ((560 - $intercept) / $slope)
-					$y1 = ($slope * $x1 + $intercept)
+				If Mod($spotidx, 2) = 0 Then ;Switch to Case 3
+					$intercept = 925
+					$x1 = (($yy - $intercept) / -$slope)
+					$y1 = (-$slope * $x1 + $intercept)
+					If $yy > 560 Then
+						$x1 = ((560 - $intercept) / -$slope)
+						$y1 = (-$slope * $x1 + $intercept)
+					EndIf
+				Else
+					If $yy > 560 Then
+						$x1 = ((560 - $intercept) / $slope)
+						$y1 = ($slope * $x1 + $intercept)
+					EndIf
 				EndIf
 				$DropTH[0] = Round($x1)
 				$DropTH[1] = Round($y1)
@@ -739,9 +749,19 @@ Func GetDropTH($xx, $yy, $type, $spots = 1, $spotidx = 1)
 			$x1 = (($yy - $intercept) / -$slope)
 			$y1 = (-$slope * $x1 + $intercept)
 			If $yy > 520 Then ; bottom TH
-				If $yy > 560 Then
-					$x1 = ((560 - $intercept) / $slope)
+				If Mod($spotidx, 2) = 0 Then ;Switch to Case 1
+					$intercept = 280
+					$x1 = (($yy - $intercept) / $slope)
 					$y1 = ($slope * $x1 + $intercept)
+					If $yy > 560 Then
+						$x1 = ((560 - $intercept) / $slope)
+						$y1 = ($slope * $x1 + $intercept)
+					EndIf
+				Else
+					If $yy > 560 Then
+						$x1 = ((560 - $intercept) / -$slope)
+						$y1 = (-$slope * $x1 + $intercept)
+					EndIf
 				EndIf
 				$DropTH[0] = Round($x1)
 				$DropTH[1] = Round($y1)
