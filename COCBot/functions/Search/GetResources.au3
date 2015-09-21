@@ -83,9 +83,12 @@ Func GetResources($thisearchTH = "-") ;Reads resources
 	EndIf
 
 	Local $THString = ""
-	$searchTH = $thisearchTH
 	If ($OptBullyMode = 1 And $SearchCount >= $ATBullyMode) Or $OptTrophyMode = 1 Or ($iCmbSearchMode <> $LB And ($iChkMeetTH[$DB] = 1 Or $iChkMeetTHO[$DB] = 1)) Or ($iCmbSearchMode <> $DB And ($iChkMeetTH[$LB] = 1 Or $iChkMeetTHO[$LB] = 1)) Then
-		$searchTH = checkTownhall()
+		If $thisearchTH = "-" Then
+			$searchTH = checkTownhall()
+		ElseIf $thisearchTH <> "-" Then
+			$searchTH = $thisearchTH
+		EndIf
 
 		If SearchTownHallLoc() = False And $searchTH <> "-" Then
 			$THLoc = "In"

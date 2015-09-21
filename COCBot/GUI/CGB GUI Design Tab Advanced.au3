@@ -140,7 +140,7 @@ GUICtrlCreateGroup("", -99, -99, 1, 1)
 		$chkSnipeWhileTrain = GUICtrlCreateCheckbox("TH snipe while training army", $x , $y, -1, -1) ; Snipe While Train MOD by ChiefM3
         GUICtrlSetTip(-1, "Bot will try to TH snipe while training army.")
 		$y+=20
-		$lblIgnoreTraps = GUICtrlCreateLabel( "Ignore Traps", $x , $y + 5, -1, 40)
+		$lblIgnoreTraps = GUICtrlCreateLabel( "Ignore Traps", $x , $y + 5, -1, -1)
 		$chkIgnoreTraps = GUICtrlCreateCheckbox("Ground", $x + 75 , $y, -1, -1)
 		$chkIgnoreAirTraps = GUICtrlCreateCheckbox("Air", $x + 145 , $y, -1, -1)
 		$y+=20

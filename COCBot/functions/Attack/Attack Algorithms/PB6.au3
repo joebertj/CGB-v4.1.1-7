@@ -894,6 +894,7 @@ Func Greedy($spotsNum, $eKingSlot = -1, $eQueenSlot = -1)
 			$i = Mod($i + 1, 4)
 			$j += 1
 		WEnd
+		If _Sleep(10*1000) Then Return
 	Else
 		SetLog("Greedy mode: Nothing to loot")
 	EndIf

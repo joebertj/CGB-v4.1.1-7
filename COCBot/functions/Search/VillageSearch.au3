@@ -148,6 +148,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			While 1
 				$MsgBox = MsgBox(1 + 65536, "Manual TH Select", "Click OK to manually select the base Townhall.", 5, $frmBot)
 				If $MsgBox = 1 Then
+					If $Hide Then btnHide()
 					$MsgBox = MsgBox(0, "Click TH", "Please click the Townhall.", 2, $frmBot)
 					If $MsgBox = 1 Then
 						$THx = FindPos()[0]
@@ -158,6 +159,8 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 							If $searchTH == "-" Then
 								$searchTH = "10"
 								SetLog("Forcing TH: " & $searchTH)
+								GetResources($searchTH)
+								$manualTH = True
 							ElseIf $searchTH <> "-" Then
 								SetLog("Manual TH: " & $searchTH)
 								GetResources($searchTH)
