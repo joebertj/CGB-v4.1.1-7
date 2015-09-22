@@ -159,12 +159,12 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 							If $searchTH == "-" Then
 								$searchTH = "10"
 								SetLog("Forcing TH: " & $searchTH)
-								GetResources($searchTH)
 								$manualTH = True
+								GetResources($manualTH)
 							ElseIf $searchTH <> "-" Then
 								SetLog("Manual TH: " & $searchTH)
-								GetResources($searchTH)
 								$manualTH = True
+								GetResources($manualTH)
 							EndIf
 						EndIf
 					EndIf
