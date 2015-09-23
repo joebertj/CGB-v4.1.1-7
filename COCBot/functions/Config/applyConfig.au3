@@ -1122,7 +1122,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 		GUICtrlSetState($chkSaveWallBldr, $GUI_UNCHECKED)
 	EndIf
 
-	For $iz = 0 To 5 ; Apply the buildings upgrade varaible to GUI
+	For $iz = 0 To 11 ; Apply the buildings upgrade varaible to GUI
 		GUICtrlSetImage($picUpgradeStatus[$iz], $pIconLib, $ipicUpgradeStatus[$iz]) ; Set GUI status pic
 		If $aUpgrades[$iz][2] > 0 Then
 			GUICtrlSetData($txtUpgradeValue[$iz], _NumberFormat($aUpgrades[$iz][2])) ; Set GUI loot value to match $aUpgrades variable

@@ -81,7 +81,7 @@ Func CheckUpgrades() ; Valdiate and determine the cost and type of the upgrade a
 		Setlog("Something weird happened in getting upgrade values, try again", $COLOR_RED)
 		Return False
 	EndIf
-	For $iz = 0 To 5
+	For $iz = 0 To 11
 		If $aUpgrades[$iz][0] <= 0 Or $aUpgrades[$iz][1] <= 0 Then
 			GUICtrlSetImage($picUpgradeStatus[$iz], $pIconLib, $eIcnRedLight) ; change indicator back to red showing location invalid
 			GUICtrlSetState($chkbxUpgrade[$iz], $GUI_UNCHECKED) ; Change upgrade selection box to unchecked

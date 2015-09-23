@@ -24,7 +24,7 @@ Func UpgradeBuilding()
 	$itxtUpgrMinDark = Number($itxtUpgrMinDark)
 
 	; check to see if anything is enabled before wasting time.
-	For $iz = 0 To 5
+	For $iz = 0 To 11
 		If $ichkbxUpgrade[$iz] = 1 Then
 			$iUpgradeAction += 2 ^ ($iz + 1)
 		EndIf
@@ -51,7 +51,7 @@ Func UpgradeBuilding()
 		Return False
 	EndIf
 
-	For $iz = 0 To 5
+	For $iz = 0 To 11
 		If $ichkbxUpgrade[$iz] = 0 Then ContinueLoop ; Is the upgrade checkbox selected?
 		If $aUpgrades[$iz][0] <= 0 Or $aUpgrades[$iz][1] <= 0 Or $aUpgrades[$iz][3] = "" Then ContinueLoop ; Now check to see if upgrade manually located?
 		If $iAvailBldr <= 0 Then ; Check free builder in case of multiple upgrades
