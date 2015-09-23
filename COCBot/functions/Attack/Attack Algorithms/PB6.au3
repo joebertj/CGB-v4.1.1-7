@@ -201,6 +201,11 @@ Func AttackTHPB6()
 	Setlog("ALL IN!!!") ;Desperate times need desperate measures
 	Setlog("Calculating drop sequence...")
 	;Setlog("Drop coordinates: x" & $x & " y " & $y)
+	$eESpellCount = GetTroopCount($eESpell)
+	$eESpellSlot = -1
+	If $eESpellCount > 0 Then
+		$eESpellSlot = GetTroopSlot($eESpell)
+	EndIf
 	$eJSpellCount = GetTroopCount($eJSpell)
 	$eJSpellSlot = -1
 	If $eJSpellCount > 0 Then
@@ -231,11 +236,6 @@ Func AttackTHPB6()
 	If $eLSpellCount > 0 Then
 		$eLSpellSlot = GetTroopSlot($eLSpell)
 	EndIf
-	$eESpellCount = GetTroopCount($eESpell)
-	$eESpellSlot = -1
-	If $eESpellCount > 0 Then
-		$eESpellSlot = GetTroopSlot($eESpell)
-	EndIf
 	$eGoleCount = GetTroopCount($eGole)
 	$eLavaCount = GetTroopCount($eLava)
 	$eDragCount = GetTroopCount($eDrag)
@@ -263,6 +263,13 @@ Func AttackTHPB6()
 	$eWitcCount = GetTroopCount($eWitc)
 	$eHealCount = GetTroopCount($eHeal)
 	Setlog("Done. Dropping now.")
+
+	If $eESpellCount > 0 Then
+		If $OptParanoid = 0 Then $eESpellCount = 1
+		For $i = 1 To $eESpellCount
+			SpellTH($THx, $THy, $eESpellSlot)
+		Next
+	EndIf
 
 	If $eJSpellCount > 0 Then
 		SpellTH($DropCoord[2][0], $DropCoord[2][1], $eJSpellSlot)
@@ -401,15 +408,6 @@ Func AttackTHPB6()
 		If $OptParanoid = 0 Then $eLSpellCount = 1
 		For $i = 1 To $eLSpellCount
 			SpellTH($THx, $THy, $eLSpellSlot)
-		Next
-	EndIf
-
-	CheckHeroesHealth($eKingSlot, $eQueenSlot)
-
-	If $eESpellCount > 0 Then
-		If $OptParanoid = 0 Then $eESpellCount = 1
-		For $i = 1 To $eESpellCount
-			SpellTH($THx, $THy, $eESpellSlot)
 		Next
 	EndIf
 
