@@ -455,6 +455,38 @@ Func Train()
 			Setlog("", $COLOR_PURPLE)
 			SetLog("---------TRAIN CUSTOM ARMY MODE------------------------", $COLOR_PURPLE)
 		EndIf
+		If $eBarbTrain > $BarbComp Then $eBarbTrain=0
+		If $eArchTrain > $ArchComp Then $eArchTrain=0
+		If $eGiantTrain > $GiantComp Then $eGiantTrain=0
+		If $eGoblTrain > $GoblComp Then $eGoblTrain=0
+		If $eWallTrain > $WallComp Then $eWallTrain=0
+		If $eBallTrain > $BallComp Then $eBallTrain=0
+		If $eWizaTrain > $WizaComp Then $eWizaTrain=0
+		If $eHealTrain > $HealComp Then $eHealTrain=0
+		If $eDragTrain > $DragComp Then $eDragTrain=0
+		If $ePekkTrain > $PekkComp Then $ePekkTrain=0
+		If $eMiniTrain > $MiniComp Then $eMiniTrain=0
+		If $eHogsTrain > $HogsComp Then $eHogsTrain=0
+		If $eValkTrain > $ValkComp Then $eValkTrain=0
+		If $eGoleTrain > $GoleComp Then $eGoleTrain=0
+		If $eWitcTrain > $WitcComp Then $eWitcTrain=0
+		If $eLavaTrain > $LavaComp Then $eLavaTrain=0
+		$eBarbTrainOld=$eBarbTrain
+		$eArchTrainOld=$eArchTrain
+		$eGiantTrainOld=$eGiantTrain
+		$eGoblTrainOld=$eGoblTrain
+		$eWallTrainOld=$eWallTrain
+		$eBallTrainOld=$eBallTrain
+		$eWizaTrainOld=$eWizaTrain
+		$eHealTrainOld=$eHealTrain
+		$eDragTrainOld=$eDragTrain
+		$ePekkTrainOld=$ePekkTrain
+		$eMiniTrainOld=$eMiniTrain
+		$eHogsTrainOld=$eHogsTrain
+		$eValkTrainOld=$eValkTrain
+		$eGoleTrainOld=$eGoleTrain
+		$eWitcTrainOld=$eWitcTrain
+		$eLavaTrainOld=$eLavaTrain
 		If $fullarmy Then ; double temporarily to train
 			$BarbComp *= 2
 			$ArchComp *= 2
@@ -473,22 +505,6 @@ Func Train()
 			$WitcComp *= 2
 			$LavaComp *= 2
 		EndIf
-		$eBarbTrainOld=$eBarbTrain
-		$eArchTrainOld=$eArchTrain
-		$eGiantTrainOld=$eGiantTrain
-		$eGoblTrainOld=$eGoblTrain
-		$eWallTrainOld=$eWallTrain
-		$eBallTrainOld=$eBallTrain
-		$eWizaTrainOld=$eWizaTrain
-		$eHealTrainOld=$eHealTrain
-		$eDragTrainOld=$eDragTrain
-		$ePekkTrainOld=$ePekkTrain
-		$eMiniTrainOld=$eMiniTrain
-		$eHogsTrainOld=$eHogsTrain
-		$eValkTrainOld=$eValkTrain
-		$eGoleTrainOld=$eGoleTrain
-		$eWitcTrainOld=$eWitcTrain
-		$eLavaTrainOld=$eLavaTrain
 		;USE BARRACK
 		While isBarrack()
 			_CaptureRegion()
@@ -567,9 +583,10 @@ Func Train()
 				$trainKind += 1
 			EndIf
 			If _Sleep($iDelayTrain4) Then Return
-			SetLog("Count: " & $eArchCount & " Train: " & $eArchTrain & " Comp: " & $ArchComp)
+			SetLog("Count: " & $eArchCount & " Train: " & $eArchTrain & " TrainOld: " & $eArchTrainOld & " Comp: " & $ArchComp)
 			If $eArchCount + $eArchTrain < $ArchComp Then
 				$trainCount = Floor(($ArchComp - $eArchCount - $eArchTrainOld) / $numBarracksAvaiables)
+				SetLog("trainCount: " & $trainCount)
 				If $trainCount = 0 Then $trainCount = 1
 				TrainClick(331, 320, $trainCount, 10, $FullArch, $GemArch, "#0275") ;Archer
 				$eArchTrain += $trainCount
