@@ -95,81 +95,131 @@ Func checkArmyCamp()
 			If $Troops[1] = "Barbarian" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Barbarians"
+				$eBarbCountOld = $eBarbCount
+				$eBarbCount = $TroopQ
+				If $eBarbTrain > 0 Then $eBarbTrain -= ($eBarbCount - $eBarbCountOld)
 				If $FirstStart Then $CurBarb -= $TroopQ
 
 			ElseIf $Troops[1] = "Archer" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Archers"
+				$eArchCountOld = $eArchCount
+				$eArchCount = $TroopQ
+				If $eArchTrain > 0 Then $eArchTrain -= ($eArchCount - $eArchCountOld)
 				If $FirstStart Then $CurArch -= $TroopQ
 
 			ElseIf $Troops[1] = "Giant" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Giants"
+				$eGiantCountOld = $eGiantCount
+				$eGiantCount = $TroopQ
+				If $eGiantTrain > 0 Then $eGiantTrain -= ($eGiantCount - $eGiantCountOld)
 				If $FirstStart Then $CurGiant -= $TroopQ
 
 			ElseIf $Troops[1] = "Goblin" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Goblins"
+				$eGoblCountOld = $eGoblCount
+				$eGoblCount = $TroopQ
+				If $eGoblTrain > 0 Then $eGoblTrain -= ($eGoblCount - $eGoblCountOld)
 				If $FirstStart Then $CurGobl -= $TroopQ
 
 			ElseIf $Troops[1] = "WallBreaker" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Wallbreakers"
+				$eWallCountOld = $eWallCount
+				$eWallCount = $TroopQ
+				If $eWallTrain > 0 Then $eWallTrain -= ($eWallCount - $eWallCountOld)
 				If $FirstStart Then $CurWall -= $TroopQ
 
 			ElseIf $Troops[1] = "Balloon" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Balloons"
+				$eBallCountOld = $eBallCount
+				$eBallCount = $TroopQ
+				If $eBallTrain > 0 Then $eBallTrain -= ($eBallCount - $eBallCountOld)
 				If $FirstStart Then $CurBall -= $TroopQ
 
 			ElseIf $Troops[1] = "Healer" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Healers"
+				$eHealCountOld = $eHealCount
+				$eHealCount = $TroopQ
+				If $eHealTrain > 0 Then $eHealTrain -= ($eHealCount - $eHealCountOld)
 				If $FirstStart Then $CurHeal -= $TroopQ
 
 			ElseIf $Troops[1] = "Wizard" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Wizards"
+				$eWizaCountOld = $eWizaCount
+				$eWizaCount = $TroopQ
+				If $eWizaTrain > 0 Then $eWizaTrain -= ($eWizaCount - $eWizaCountOld)
 				If $FirstStart Then $CurWiza -= $TroopQ
 
 			ElseIf $Troops[1] = "Dragon" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Dragons"
+				$eDragCountOld = $eDragCount
+				$eDragCount = $TroopQ
+				If $eDragTrain > 0 Then $eDragTrain -= ($eDragCount - $eDragCountOld)
 				If $FirstStart Then $CurDrag -= $TroopQ
 
 			ElseIf $Troops[1] = "Pekka" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Pekkas"
+				$ePekkCountOld = $ePekkCount
+				$ePekkCount = $TroopQ
+				If $ePekkTrain > 0 Then $ePekkTrain -= ($ePekkCount - $ePekkCountOld)
 				If $FirstStart Then $CurPekk -= $TroopQ
 
 			ElseIf $Troops[1] = "Minion" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Minions"
+				;SetLog("Minicountold: " & $eMiniCountOld & " Minicount: " & $eMiniCount & " MiniTrain: " & $eMiniTrain)
+				$eMiniCountOld = $eMiniCount
+				$eMiniCount = $TroopQ
+				If $eMiniTrain > 0 Then $eMiniTrain -= ($eMiniCount - $eMiniCountOld)
+				;SetLog("Minicountold: " & $eMiniCountOld & " Minicount: " & $eMiniCount & " MiniTrain: " & $eMiniTrain)
 				If $FirstStart Then $CurMini -= $TroopQ
 
 			ElseIf $Troops[1] = "HogRider" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Hog Riders"
+				$eHogsCountOld = $eHogsCount
+				$eHogsCount = $TroopQ
+				If $eHogsTrain > 0 Then $eHogsTrain -= ($eHogsCount - $eHogsCountOld)
 				If $FirstStart Then $CurHogs -= $TroopQ
 
 			ElseIf $Troops[1] = "Valkyrie" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Valkyries"
+				$eValkCountOld = $eValkCount
+				$eValkCount = $TroopQ
+				If $eValkTrain > 0 Then $eValkTrain -= ($eValkCount - $eValkCountOld)
 				If $FirstStart Then $CurValk -= $TroopQ
 
 			ElseIf $Troops[1] = "Golem" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Golems"
+				$eGoleCountOld = $eGoleCount
+				$eGoleCount = $TroopQ
+				If $eGoleTrain > 0 Then $eGoleTrain -= ($eGoleCount - $eGoleCountOld)
 				If $FirstStart Then $CurGole -= $TroopQ
 
 			ElseIf $Troops[1] = "Witch" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Witches"
+				$eWitcCountOld = $eWitcCount
+				$eWitcCount = $TroopQ
+				If $eWitcTrain > 0 Then $eWitcTrain -= ($eWitcCount - $eWitcCountOld)
 				If $FirstStart Then $CurWitc -= $TroopQ
 
 			ElseIf $Troops[1] = "LavaHound" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Lava Hounds"
+				$eLavaCountOld = $eLavaCount
+				$eLavaCount = $TroopQ
+				If $eLavaTrain > 0 Then $eLavaTrain -= ($eLavaCount - $eLavaCountOld)
 				If $FirstStart Then $CurLava -= $TroopQ
 
 			EndIf

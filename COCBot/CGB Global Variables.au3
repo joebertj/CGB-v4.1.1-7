@@ -177,6 +177,7 @@ Global $iChkEnableAfter[$iModeCount], $iCmbMeetGE[$iModeCount], $iChkMeetDE[$iMo
 Global $THLocation
 Global $THx = 0, $THy = 0
 Global $Defx = 0, $Defy = 0
+Global $WallX = 0, $WallY = 0
 Global $DESLoc
 Global $DESLocx = 0
 Global $DESLocy = 0
@@ -352,7 +353,10 @@ Global $DragComp = 0, $BallComp = 0, $PekkComp = 0, $HealComp = 0, $ValkComp = 0
 Global $CurBarb = 0, $CurArch = 0, $CurGiant = 0, $CurGobl = 0, $CurWall = 0, $CurBall = 0, $CurWiza = 0, $CurHeal = 0
 Global $CurMini = 0, $CurHogs = 0, $CurValk = 0, $CurGole = 0, $CurWitc = 0, $CurLava = 0, $CurDrag = 0, $CurPekk = 0
 Global $T[1] = [97]
-Global $ArmyComp
+Global $ArmyComp = 200
+Global $eBarbCount=0, $eArchCount=0, $eGiantCount=0, $eGoblCount=0, $eWallCount=0, $eBallCount=0, $eWizaCount=0, $eHealCount=0, $eDragCount=0, $ePekkCount=0, $eMiniCount=0, $eHogsCount=0, $eValkCount=0, $eGoleCount=0, $eWitcCount=0, $eLavaCount=0
+Global $eBarbCountOld=0, $eArchCountOld=0, $eGiantCountOld=0, $eGoblCountOld=0, $eWallCountOld=0, $eBallCountOld=0, $eWizaCountOld=0, $eHealCountOld=0, $eDragCountOld=0, $ePekkCountOld=0, $eMiniCountOld=0, $eHogsCountOld=0, $eValkCountOld=0, $eGoleCountOld=0, $eWitcCountOld=0, $eLavaCountOld=0
+Global $eBarbTrain=0, $eArchTrain=0, $eGiantTrain=0, $eGoblTrain=0, $eWallTrain=0, $eBallTrain=0, $eWizaTrain=0, $eHealTrain=0, $eDragTrain=0, $ePekkTrain=0, $eMiniTrain=0, $eHogsTrain=0, $eValkTrain=0, $eGoleTrain=0, $eWitcTrain=0, $eLavaTrain=0
 
 ;Global $barrackPos[4][2] ;Positions of each barracks
 Global $barrackPos[2] = [-1, -1] ;Positions of each barracks

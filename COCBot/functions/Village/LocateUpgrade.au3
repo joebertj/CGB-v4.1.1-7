@@ -33,7 +33,7 @@ Func LocateUpgrades()
 			ZoomOut()
 			Collect()
 		EndIf
-		For $icount = 0 To 5
+		For $icount = 0 To 11
 			$stext = "Click 'Locate Building' button then click on your Building/Hero to upgrade." & @CRLF & @CRLF & "Click 'Finished' button when done locating all upgrades." & @CRLF & @CRLF & "Click on Cancel to exit finding buildings." & @CRLF & @CRLF
 			_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 10, "Comic Sans MS", 500)
 			$MsgBox = _ExtMsgBox(0, "Locate Building|Finished|Cancel", "Locate Upgrades", $stext, 0, $frmBot)

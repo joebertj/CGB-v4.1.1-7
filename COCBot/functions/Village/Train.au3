@@ -14,7 +14,7 @@
 
 Func Train()
 
-	Local $anotherTroops
+	Local $anotherTroops, $trainCount, $trainKind
 
 	If $debugSetlog = 1 Then SetLog("Func Train ", $COLOR_PURPLE)
 	If $bTrainEnabled = False Then Return
@@ -34,7 +34,7 @@ Func Train()
 	; Only reset if the FullArmy , Last attacks was a TH Snipes or First Start.
 	; Global $Cur+TroopName = 0
 	;
-	If $fullarmy Or $iMatchMode = $TS Or $FirstStart Then
+	If $fullarmy Or $iMatchMode = $TS Or $FirstStart And $icmbTroopComp < 8 Then
 		For $i = 0 To UBound($TroopName) - 1
 			If $debugSetlog = 1 Then SetLog("RESET AT 0 " & "Cur" & $TroopName[$i], $COLOR_PURPLE)
 			Assign("Cur" & $TroopName[$i], 0)
@@ -61,7 +61,7 @@ Func Train()
 	; $numBarracksAvaiables returns to be used as the divisor to assign the amount of kind troops each barracks | $TroopName+EBarrack
 	;
 
-	If $icmbTroopComp <> 1 Then
+	If $icmbTroopComp <> 8 Then
 		checkArmyCamp()
 	EndIf
 
@@ -88,7 +88,7 @@ Func Train()
 	; CHECK IF NEED TO MAKE TROOPS
 	; Verify the Global variable $TroopName+Comp and return the GUI selected troops by user
 	;
-	If $isNormalBuild = "" Then
+	If $isNormalBuild = "" And $icmbTroopComp < 8 Then
 		For $i = 0 To UBound($TroopName) - 1
 			If Eval($TroopName[$i] & "Comp") <> "0" Then
 				$isNormalBuild = True
@@ -103,7 +103,7 @@ Func Train()
 	; CHECK IF NEED TO MAKE DARK TROOPS
 	; Verify the Global variable $TroopDarkName+Comp and return the GUI selected troops by user
 	;
-	If $isDarkBuild = "" Then
+	If $isDarkBuild = "" And $icmbTroopComp < 8 Then
 		For $i = 0 To UBound($TroopDarkName) - 1
 			If Eval($TroopDarkName[$i] & "Comp") <> "0" Then
 				$isDarkBuild = True
@@ -174,7 +174,7 @@ Func Train()
 
 	If $debugSetlog = 1 Then SetLog("Total ArmyCamp :" & $TotalCamp)
 
-	If $fullarmy Then
+	If $fullarmy And $icmbTroopComp < 8 Then
 		$ArmyComp = 0
 		$anotherTroops = 0
 		$TotalTrainedTroops = 0
@@ -264,7 +264,7 @@ Func Train()
 		;  $Cur+TroopName = Trained - needed  (-20+25 = 5)
 		;  $anotherTroops = quantity unit troops x $TroopHeight
 		;
-	ElseIf ($ArmyComp = 0 And $icmbTroopComp <> 8) Or $FirstStart Then
+	ElseIf ($ArmyComp = 0 And $icmbTroopComp < 8) Or $FirstStart Then
 		$anotherTroops = 0
 		For $i = 0 To UBound($TroopName) - 1
 			If $TroopName[$i] <> "Barb" And $TroopName[$i] <> "Arch" And $TroopName[$i] <> "Gobl" Then
@@ -290,49 +290,50 @@ Func Train()
 		If $debugSetlog = 1 Then SetLog("Need to train (height) GOBL:" & $CurGobl & "% BARB: " & $CurBarb & "% ARCH: " & $CurArch & "% AND " & $anotherTroops & " other troops space", $COLOR_PURPLE)
 	EndIf
 
-	$TotalTrainedTroops += $anotherTroops + $CurGobl + $CurBarb + $CurArch ; Count of all troops required for training
-	If $debugSetlog = 1 Then SetLog("Total Troops to be Trained= " & $TotalTrainedTroops, $COLOR_PURPLE)
+	If $icmbTroopComp < 8 Then
+		$TotalTrainedTroops += $anotherTroops + $CurGobl + $CurBarb + $CurArch ; Count of all troops required for training
+		If $debugSetlog = 1 Then SetLog("Total Troops to be Trained= " & $TotalTrainedTroops, $COLOR_PURPLE)
 
-	;Local $GiantEBarrack ,$WallEBarrack ,$ArchEBarrack ,$BarbEBarrack ,$GoblinEBarrack,$HogEBarrack,$MinionEBarrack, $WizardEBarrack
-	If $debugSetlog = 1 Then SetLog("BARRACKNUM: " & $numBarracksAvaiables, $COLOR_PURPLE)
-	If $numBarracksAvaiables <> 0 Then
+		;Local $GiantEBarrack ,$WallEBarrack ,$ArchEBarrack ,$BarbEBarrack ,$GoblinEBarrack,$HogEBarrack,$MinionEBarrack, $WizardEBarrack
+		If $debugSetlog = 1 Then SetLog("BARRACKNUM: " & $numBarracksAvaiables, $COLOR_PURPLE)
+		If $numBarracksAvaiables <> 0 Then
+			For $i = 0 To UBound($TroopName) - 1
+				If $debugSetlog = 1 And Number(Floor(Eval("Cur" & $TroopName[$i]) / $numBarracksAvaiables)) <> 0 Then SetLog($TroopName[$i] & "EBarrack" & ": " & Floor(Eval("Cur" & $TroopName[$i]) / $numBarracksAvaiables), $COLOR_PURPLE)
+				Assign(($TroopName[$i] & "EBarrack"), Floor(Eval("Cur" & $TroopName[$i]) / $numBarracksAvaiables))
+			Next
+		Else
+			For $i = 0 To UBound($TroopName) - 1
+				If $debugSetlog = 1 And Floor(Eval("Cur" & $TroopName[$i]) / 4) <> 0 Then SetLog($TroopName[$i] & "EBarrack" & ": " & Floor(Eval("Cur" & $TroopName[$i]) / 4), $COLOR_PURPLE)
+				Assign(($TroopName[$i] & "EBarrack"), Floor(Eval("Cur" & $TroopName[$i]) / 4))
+			Next
+		EndIf
+		If $debugSetlog = 1 Then SetLog("DARKBARRACKNUM: " & $numDarkBarracksAvaiables, $COLOR_PURPLE)
+		If $numDarkBarracksAvaiables <> 0 Then
+			For $i = 0 To UBound($TroopDarkName) - 1
+				If $debugSetlog = 1 And Number(Floor(Eval("Cur" & $TroopDarkName[$i]) / $numBarracksAvaiables)) <> 0 Then SetLog($TroopDarkName[$i] & "EBarrack" & ": " & Floor(Eval("Cur" & $TroopDarkName[$i]) / $numBarracksAvaiables), $COLOR_PURPLE)
+				Assign(($TroopDarkName[$i] & "EBarrack"), Floor(Eval("Cur" & $TroopDarkName[$i]) / $numDarkBarracksAvaiables))
+			Next
+		Else
+			For $i = 0 To UBound($TroopDarkName) - 1
+				If $debugSetlog = 1 And Number(Floor(Eval("Cur" & $TroopDarkName[$i]) / 2)) <> 0 Then SetLog($TroopDarkName[$i] & "EBarrack" & ": " & Floor(Eval("Cur" & $TroopDarkName[$i]) / 2), $COLOR_PURPLE)
+				Assign(($TroopDarkName[$i] & "EBarrack"), Floor(Eval("Cur" & $TroopDarkName[$i]) / 2))
+			Next
+		EndIf
+
+		;RESET TROOPFIRST AND TROOPSECOND
 		For $i = 0 To UBound($TroopName) - 1
-			If $debugSetlog = 1 And Number(Floor(Eval("Cur" & $TroopName[$i]) / $numBarracksAvaiables)) <> 0 Then SetLog($TroopName[$i] & "EBarrack" & ": " & Floor(Eval("Cur" & $TroopName[$i]) / $numBarracksAvaiables), $COLOR_PURPLE)
-			Assign(($TroopName[$i] & "EBarrack"), Floor(Eval("Cur" & $TroopName[$i]) / $numBarracksAvaiables))
+			;If $debugSetlog = 1 Then SetLog("troopFirst" & $TroopName[$i] & ": 0", $COLOR_PURPLE)
+			Assign(("troopFirst" & $TroopName[$i]), 0)
+			;If $debugSetlog = 1 Then SetLog("troopSecond" & $TroopName[$i] & ": 0", $COLOR_PURPLE)
+			Assign(("troopSecond" & $TroopName[$i]), 0)
 		Next
-	Else
-		For $i = 0 To UBound($TroopName) - 1
-			If $debugSetlog = 1 And Floor(Eval("Cur" & $TroopName[$i]) / 4) <> 0 Then SetLog($TroopName[$i] & "EBarrack" & ": " & Floor(Eval("Cur" & $TroopName[$i]) / 4), $COLOR_PURPLE)
-			Assign(($TroopName[$i] & "EBarrack"), Floor(Eval("Cur" & $TroopName[$i]) / 4))
+		For $i = 0 To UBound($TroopDarkName) - 1
+			;If $debugSetlog = 1 Then SetLog("troopFirst" & $TroopDarkName[$i] & ": 0", $COLOR_PURPLE)
+			Assign(("troopFirst" & $TroopDarkName[$i]), 0)
+			;If $debugSetlog = 1 Then SetLog("troopSecond" & $TroopDarkName[$i] & ": 0", $COLOR_PURPLE)
+			Assign(("troopSecond" & $TroopDarkName[$i]), 0)
 		Next
 	EndIf
-	If $debugSetlog = 1 Then SetLog("DARKBARRACKNUM: " & $numDarkBarracksAvaiables, $COLOR_PURPLE)
-	If $numDarkBarracksAvaiables <> 0 Then
-		For $i = 0 To UBound($TroopDarkName) - 1
-			If $debugSetlog = 1 And Number(Floor(Eval("Cur" & $TroopDarkName[$i]) / $numBarracksAvaiables)) <> 0 Then SetLog($TroopDarkName[$i] & "EBarrack" & ": " & Floor(Eval("Cur" & $TroopDarkName[$i]) / $numBarracksAvaiables), $COLOR_PURPLE)
-			Assign(($TroopDarkName[$i] & "EBarrack"), Floor(Eval("Cur" & $TroopDarkName[$i]) / $numDarkBarracksAvaiables))
-		Next
-	Else
-		For $i = 0 To UBound($TroopDarkName) - 1
-			If $debugSetlog = 1 And Number(Floor(Eval("Cur" & $TroopDarkName[$i]) / 2)) <> 0 Then SetLog($TroopDarkName[$i] & "EBarrack" & ": " & Floor(Eval("Cur" & $TroopDarkName[$i]) / 2), $COLOR_PURPLE)
-			Assign(($TroopDarkName[$i] & "EBarrack"), Floor(Eval("Cur" & $TroopDarkName[$i]) / 2))
-		Next
-	EndIf
-
-	;RESET TROOPFIRST AND TROOPSECOND
-	For $i = 0 To UBound($TroopName) - 1
-		;If $debugSetlog = 1 Then SetLog("troopFirst" & $TroopName[$i] & ": 0", $COLOR_PURPLE)
-		Assign(("troopFirst" & $TroopName[$i]), 0)
-		;If $debugSetlog = 1 Then SetLog("troopSecond" & $TroopName[$i] & ": 0", $COLOR_PURPLE)
-		Assign(("troopSecond" & $TroopName[$i]), 0)
-	Next
-	For $i = 0 To UBound($TroopDarkName) - 1
-		;If $debugSetlog = 1 Then SetLog("troopFirst" & $TroopDarkName[$i] & ": 0", $COLOR_PURPLE)
-		Assign(("troopFirst" & $TroopDarkName[$i]), 0)
-		;If $debugSetlog = 1 Then SetLog("troopSecond" & $TroopDarkName[$i] & ": 0", $COLOR_PURPLE)
-		Assign(("troopSecond" & $TroopDarkName[$i]), 0)
-	Next
-
 	If $debugSetlog = 1 Then SetLog("---------END COMPUTE TROOPS TO MAKE--------------------", $COLOR_PURPLE)
 
 
@@ -430,7 +431,7 @@ Func Train()
 					TrainClick(647, 320, 37, 10, $FullWitc, $GemWitc, "#0288") ;Witch
 				Case 5
 					TrainClick(220, 425, 15, 10, $FullLava, $GemLava, "#0289") ;Lava Hound
-				;Case 6
+					;Case 6
 					;ContinueLoop
 			EndSwitch
 			If $OutOfDarkElixir = 1 Then
@@ -448,6 +449,246 @@ Func Train()
 			If _Sleep($iDelayTrain3) Then ExitLoop
 			;endif
 		WEnd
+	ElseIf $icmbTroopComp = 9 Then
+		If $debugSetlog = 1 Then
+			Setlog("", $COLOR_PURPLE)
+			SetLog("---------TRAIN CUSTOM ARMY MODE------------------------", $COLOR_PURPLE)
+		EndIf
+		If $fullarmy Then ; double temporarily to train
+			$BarbComp *= 2
+			$ArchComp *= 2
+			$GoblComp *= 2
+			$GiantComp *= 2
+			$WallComp *= 2
+			$WizaComp *= 2
+			$MiniComp *= 2
+			$HogsComp *= 2
+			$DragComp *= 2
+			$BallComp *= 2
+			$PekkComp *= 2
+			$HealComp *= 2
+			$ValkComp *= 2
+			$GoleComp *= 2
+			$WitcComp *= 2
+			$LavaComp *= 2
+		EndIf
+		;USE BARRACK
+		While isBarrack()
+			_CaptureRegion()
+			If $FirstStart Then
+				$icount = 0
+				While Not _ColorCheck(_GetPixelColor(565, 205, True), Hex(0xE8E8DE, 6), 20) ; while not disappears  green arrow
+					If Not (IsTrainPage()) Then Return
+					Click(496, 197, 10, 0, "#0273")
+					$icount += 1
+					If $icount = 20 Then ExitLoop
+				WEnd
+				If $debugSetlog = 1 And $icount = 20 Then SetLog("Train warning 6")
+			EndIf
+			If _Sleep($iDelayTrain2) Then ExitLoop
+			$brrNum += 1
+			If Not (IsTrainPage()) Then Return ; exit from train if no train page
+			If $numBarracksAvaiables = 0 Then
+				SetLog("Will not ever be able to train since no barracks are available")
+				Return
+			EndIf
+			; train large units first then by cost
+			$trainKind = 0
+			If $ePekkCount + $ePekkTrain < $PekkComp Then
+				$trainCount = Floor(($PekkComp - $ePekkCount - $ePekkTrain) / $numBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(647, 425, $trainCount, 10, $FullPekk, $GemPekk, "#0283") ; Pekka
+				$ePekkTrain += $trainCount
+				$trainKind += 1
+			EndIf
+			If _Sleep($iDelayTrain4) Then Return
+			If $eDragCount + $eDragTrain < $DragComp Then
+				$trainCount = Floor(($DragComp - $eDragCount - $eDragTrain) / $numBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(546, 425, $trainCount, 10, $FullDrag, $GemDrag, "#0282") ;;Dragon
+				$eDragTrain += $trainCount
+				$trainKind += 1
+			EndIf
+			If _Sleep($iDelayTrain4) Then Return
+			If $eHealCount + $eHealTrain < $HealComp Then
+				$trainCount = Floor(($HealComp - $eHealCount - $eHealTrain) / $numBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(432, 425, $trainCount, 10, $FullHeal, $GemHeal, "#0281") ;Healer
+				$eHealTrain += $trainCount
+				$trainKind += 1
+			EndIf
+			If _Sleep($iDelayTrain4) Then Return
+			If $eBallCount + $eBallTrain < $BallComp Then
+				$trainCount = Floor(($BallComp - $eBallCount - $eBallTrain) / $numBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(220, 425, $trainCount, 10, $FullBall, $GemBall, "#0279") ;Balloon
+				$eBallTrain += $trainCount
+				$trainKind += 1
+			EndIf
+			If _Sleep($iDelayTrain4) Then Return
+			If $eGiantCount + $eGiantTrain < $GiantComp Then
+				$trainCount = Floor(($GiantComp - $eGiantCount - $eGiantTrain) / $numBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(432, 320, $trainCount, 10, $FullGiant, $GemGiant, "#0276") ;Giant
+				$eGiantTrain += $trainCount
+				$trainKind += 1
+			EndIf
+			If _Sleep($iDelayTrain4) Then Return
+			If $eWizaCount + $eWizaTrain < $WizaComp Then
+				$trainCount = Floor(($WizaComp - $eWizaCount - $eWizaTrain) / $numBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(331, 425, $trainCount, 10, $FullWiza, $GemWiza, "#0280") ;Wizard
+				$eWizaTrain += $trainCount
+				$trainKind += 1
+			EndIf
+			If _Sleep($iDelayTrain4) Then Return
+			If $eWallCount + $eWallTrain < $WallComp Then
+				$trainCount = Floor(($WallComp - $eWallCount - $eWallTrain) / $numBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(647, 320, $trainCount, 10, $FullWall, $GemWall, "#0278") ;Wall Breaker
+				$eWallTrain += $trainCount
+				$trainKind += 1
+			EndIf
+			If _Sleep($iDelayTrain4) Then Return
+			SetLog("Count: " & $eArchCount & " Train: " & $eArchTrain & " Comp: " & $ArchComp)
+			If $eArchCount + $eArchTrain < $ArchComp Then
+				$trainCount = Floor(($ArchComp - $eArchCount - $eArchTrain) / $numBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(331, 320, $trainCount, 10, $FullArch, $GemArch, "#0275") ;Archer
+				$eArchTrain += $trainCount
+				$trainKind += 1
+			EndIf
+			If _Sleep($iDelayTrain4) Then Return
+			If $eBarbCount + $eBarbTrain < $BarbComp Then
+				$trainCount = Floor(($BarbComp - $eBarbCount - $eBarbTrain) / $numBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(220, 320, $trainCount, 10, $FullBarb, $GemBarb, "#0274") ;Barbarian
+				$eBarbTrain += $trainCount
+				$trainKind += 1
+			EndIf
+			If $trainKind < 9 Then ;only up to 9 troops can be queued
+				If _Sleep($iDelayTrain4) Then Return
+				If $eGoblCount + $eGoblTrain < $GoblComp Then
+					$trainCount = Floor(($GoblComp - $eGoblCount - $eGoblTrain) / $numBarracksAvaiables)
+					If $trainCount = 0 Then $trainCount = 1
+					TrainClick(546, 320, $trainCount, 10, $FullGobl, $GemGobl, "#0277") ;Goblin
+					$eGoblTrain += $trainCount
+				EndIf
+			EndIf
+			If $OutOfElixir = 1 Then
+				Setlog("Not enough Elixir to train troops!", $COLOR_RED)
+				Setlog("Switching to Halt Attack, Stay Online Mode...", $COLOR_RED)
+				$ichkBotStop = 1 ; set halt attack variable
+				$icmbBotCond = 16 ; set stay online
+				If CheckFullArmy() = False Then $Restart = True ;If the army camp is full, use it to refill storages
+				Return ; We are out of Elixir stop training.
+			EndIf
+			If _Sleep($iDelayTrain2) Then ExitLoop
+			If Not (IsTrainPage()) Then Return
+			_TrainMoveBtn(-1) ;click prev button
+			If $brrNum >= 4 Then ExitLoop ; make sure no more infiniti loop
+			If _Sleep($iDelayTrain3) Then ExitLoop
+			;endif
+		WEnd
+		$brrNum = 0
+		;USE DARK BARRACK
+		While Not isDarkBarrack()
+			_TrainMoveBtn(-1)
+			If _Sleep($iDelayTrain2) Then Return
+		WEnd
+		While isDarkBarrack()
+			_CaptureRegion()
+			If $FirstStart Then
+				$icount = 0
+				While Not _ColorCheck(_GetPixelColor(565, 205, True), Hex(0xE8E8DE, 6), 20) ; while not disappears  green arrow
+					If Not (IsTrainPage()) Then Return
+					Click(496, 197, 10, 0, "#0284")
+					$icount += 1
+					If $icount = 20 Then ExitLoop
+				WEnd
+				If $debugSetlog = 1 And $icount = 20 Then SetLog("Train warning 6")
+			EndIf
+			If _Sleep($iDelayTrain2) Then ExitLoop
+			$brrNum += 1
+			If Not (IsTrainPage()) Then Return ; exit from train if no train page
+			If $numDarkBarracksAvaiables = 0 Then
+				SetLog("Will not ever be able to train since no barracks are available")
+				Return
+			EndIf
+			If $eGoleCount + $eGoleTrain < $GoleComp Then
+				$trainCount = Floor(($GoleComp - $eGoleCount - $eGoleTrain) / $numDarkBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(546, 320, $trainCount, 10, $FullGole, $GemGole, "#0287") ;Golem
+				$eGoleTrain += $trainCount
+			EndIf
+			If _Sleep($iDelayTrain4) Then Return
+			If $eLavaCount + $eLavaTrain < $LavaComp Then
+				$trainCount = Floor(($LavaComp - $eLavaCount - $eLavaTrain) / $numDarkBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(220, 425, $trainCount, 10, $FullLava, $GemLava, "#0289") ;Lava Hound
+				$eLavaTrain += $trainCount
+			EndIf
+			If _Sleep($iDelayTrain4) Then Return
+			If $eWitcCount + $eWitcTrain < $WitcComp Then
+				$trainCount = Floor(($WitcComp - $eWitcCount - $eWitcTrain) / $numDarkBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(647, 320, $trainCount, 10, $FullWitc, $GemWitc, "#0288") ;Witch
+				$eWitcTrain += $trainCount
+			EndIf
+			If _Sleep($iDelayTrain4) Then Return
+			If $eValkCount + $eValkTrain < $ValkComp Then
+				$trainCount = Floor(($ValkComp - $eValkCount - $eValkTrain) / $numDarkBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(432, 320, $trainCount, 10, $FullValk, $GemValk, "#0286") ;Valkyrie
+				$eValkTrain += $trainCount
+			EndIf
+			If _Sleep($iDelayTrain4) Then Return
+			If $eHogsCount + $eHogsTrain < $HogsComp Then
+				$trainCount = Floor(($HogsComp - $eHogsCount - $eHogsTrain) / $numDarkBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(331, 320, $trainCount, 10, $FullHogs, $GemHogs, "#0285") ;Hog Rider
+				$eHogsTrain += $trainCount
+			EndIf
+			If _Sleep($iDelayTrain4) Then Return
+			If $eMiniCount + $eMiniTrain < $MiniComp Then
+				$trainCount = Floor(($MiniComp - $eMiniCount - $eMiniTrain) / $numDarkBarracksAvaiables)
+				If $trainCount = 0 Then $trainCount = 1
+				TrainClick(220, 320, $trainCount, 10, $FullMini, $GemMini, "#0284") ;Minion
+				$eMiniTrain += $trainCount
+			EndIf
+			If $OutOfDarkElixir = 1 Then
+				Setlog("Not enough Dark Elixir to train troops!", $COLOR_RED)
+				Setlog("Switching to Halt Attack, Stay Online Mode...", $COLOR_RED)
+				$ichkBotStop = 1 ; set halt attack variable
+				$icmbBotCond = 16 ; set stay online
+				If CheckFullArmy() = False Then $Restart = True ;If the army camp is full, use it to refill storages
+				Return ; We are out of Elixir stop training.
+			EndIf
+			If _Sleep($iDelayTrain2) Then ExitLoop
+			If Not (IsTrainPage()) Then Return
+			_TrainMoveBtn(-1) ;click prev button
+			If $brrNum >= 2 Then ExitLoop ; make sure no more infiniti loop
+			If _Sleep($iDelayTrain3) Then ExitLoop
+			;endif
+		WEnd
+		If $fullarmy Then ; restore original values
+			$BarbComp /= 2
+			$ArchComp /= 2
+			$GoblComp /= 2
+			$GiantComp /= 2
+			$WallComp /= 2
+			$WizaComp /= 2
+			$MiniComp /= 2
+			$HogsComp /= 2
+			$DragComp /= 2
+			$BallComp /= 2
+			$PekkComp /= 2
+			$HealComp /= 2
+			$ValkComp /= 2
+			$GoleComp /= 2
+			$WitcComp /= 2
+			$LavaComp /= 2
+		EndIf
 	Else
 		If $debugSetlog = 1 Then SetLog("---------TRAIN NEW BARRACK MODE------------------------")
 
@@ -556,7 +797,7 @@ Func Train()
 			If $debugSetlog = 1 Then SetLog("BARRACK " & $brrNum - 1 & " STATUS: " & $BarrackStatus[$brrNum - 1], $COLOR_PURPLE)
 
 			;If The remain capacity is lower then the Housing Space of training troop , delete the remain training troop and train 20 arch
-			If _ColorCheck(_GetPixelColor(392, 155, True), Hex(0xe84d50, 6), 20) And $icmbTroopComp <> 8 Then
+			If _ColorCheck(_GetPixelColor(392, 155, True), Hex(0xe84d50, 6), 20) And $icmbTroopComp < 8 Then
 				$icount = 0
 				While _ColorCheck(_GetPixelColor(565, 205, True), Hex(0xa8d070, 6), 20) ; while green arrow is there, delete
 					Click(496, 197, 5, 0, "#0285")
@@ -711,7 +952,7 @@ Func Train()
 				$BarrackDarkStatus[$brrDarkNum - 1] = True
 			EndIf
 
-			If $icmbTroopComp <> 8 Then
+			If $icmbTroopComp < 8 Then
 				;If The remain capacity is lower then the Housing Space of training troop , delete the remain training troop and train 10 Minions
 				If _ColorCheck(_GetPixelColor(392, 155, True), Hex(0xe84d50, 6), 20) Then
 					$icount = 0
@@ -747,7 +988,7 @@ Func Train()
 	EndIf
 	If $debugSetlog = 1 Then SetLog("---=====================END TRAIN =======================================---", $COLOR_PURPLE)
 	TrainSpells()
-	If $icmbTroopComp <> 8 And $isNormalBuild And $BarrackStatus[0] = False And $BarrackStatus[1] = False And $BarrackStatus[2] = False And $BarrackStatus[3] = False And Not $FirstStart Then
+	If $icmbTroopComp < 8 And $isNormalBuild And $BarrackStatus[0] = False And $BarrackStatus[1] = False And $BarrackStatus[2] = False And $BarrackStatus[3] = False And Not $FirstStart Then
 		If Not $isDarkBuild Or ($BarrackDarkStatus[0] = False And $BarrackDarkStatus[1] = False) Then
 			Train()
 			Return
@@ -765,33 +1006,33 @@ Func Train()
 		WEnd
 		If isSpellFactory() Then
 			Local $x = 0
-			local $Spellslot = -1
+			Local $Spellslot = -1
 			If $iChkLightSpell = 1 Then
 				$Spellslot = 0
 			ElseIf $iChkDEUseSpell = 1 Then
 				$Spellslot = $iChkDEUseSpellType + 1
 			EndIf
 			If $Spellslot <> -1 Then
-			While 1
-				_CaptureRegion()
-				If _sleep($iDelayTrain2) Then Return
-				If _ColorCheck(_GetPixelColor(237, 354, True), Hex(0xFFFFFF, 6), 20) = False Then
-					setlog("Not enough Elixir to create Spell", $COLOR_RED)
-					ExitLoop
-				ElseIf _ColorCheck(_GetPixelColor(200, 346, True), Hex(0x1A1A1A, 6), 20) Then
-					setlog("Spell Factory Full", $COLOR_RED)
-					ExitLoop
+				While 1
+					_CaptureRegion()
+					If _sleep($iDelayTrain2) Then Return
+					If _ColorCheck(_GetPixelColor(237, 354, True), Hex(0xFFFFFF, 6), 20) = False Then
+						setlog("Not enough Elixir to create Spell", $COLOR_RED)
+						ExitLoop
+					ElseIf _ColorCheck(_GetPixelColor(200, 346, True), Hex(0x1A1A1A, 6), 20) Then
+						setlog("Spell Factory Full", $COLOR_RED)
+						ExitLoop
+					Else
+						GemClick(252 + ($Spellslot * 105), 354, 1, 20, "#0290")
+						$x = $x + 1
+					EndIf
+					If $x = 5 Then
+						ExitLoop
+					EndIf
+				WEnd
+				If $x = 0 Then
 				Else
-							GemClick(252 + ($Spellslot * 105), 354, 1, 20, "#0290")
-					$x = $x + 1
-				EndIf
-				If $x = 5 Then
-					ExitLoop
-				EndIf
-			WEnd
-			If $x = 0 Then
-			Else
-						SetLog("Created " & $x & " Spell(s)", $COLOR_BLUE)
+					SetLog("Created " & $x & " Spell(s)", $COLOR_BLUE)
 				EndIf
 			EndIf
 		Else

@@ -346,10 +346,10 @@ Func SetComboTroopComp()
 EndFunc   ;==>SetComboTroopComp
 
 Func lblTotalCount()
-	GUICtrlSetData($lblTotalCount, GUICtrlRead($txtNumBarb) + GUICtrlRead($txtNumArch) + GUICtrlRead($txtNumGobl))
-	If GUICtrlRead($lblTotalCount) = "100" Then
+	GUICtrlSetData($lblTotalCount, GUICtrlRead($txtNumBarb) + GUICtrlRead($txtNumArch) + GUICtrlRead($txtNumGiant)*5 + GUICtrlRead($txtNumGobl) + GUICtrlRead($txtNumWall)*2 + GUICtrlRead($txtNumBall)*5 + GUICtrlRead($txtNumWiza)*4 + GUICtrlRead($txtNumHeal)*14 + GUICtrlRead($txtNumDrag)*20 + GUICtrlRead($txtNumPekk)*25 + GUICtrlRead($txtNumMini)*2 + GUICtrlRead($txtNumHogs)*5 + GUICtrlRead($txtNumValk)*8 + GUICtrlRead($txtNumGole)*30 + GUICtrlRead($txtNumWitc)*12 + GUICtrlRead($txtNumLava)*30)
+	If GUICtrlRead($lblTotalCount) = $ArmyComp Then
 		GUICtrlSetBkColor($lblTotalCount, $COLOR_MONEYGREEN)
-	ElseIf GUICtrlRead($lblTotalCount) = "0" Then
+	ElseIf GUICtrlRead($lblTotalCount) < $ArmyComp Then
 		GUICtrlSetBkColor($lblTotalCount, $COLOR_ORANGE)
 	Else
 		GUICtrlSetBkColor($lblTotalCount, $COLOR_RED)

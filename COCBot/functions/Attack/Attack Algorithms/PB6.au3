@@ -16,22 +16,22 @@
 
 Func AttackTHPB6()
 	Local $i, $j
-	Local $eGiantCount = 0
-	Local $eBallCount = 0
-	Local $eHogsCount = 0
-	Local $eBarbCount = 0
-	Local $eGoblCount = 0
-	Local $eWallCount = 0
-	Local $eArchCount = 0
-	Local $eWizaCount = 0
-	Local $eMiniCount = 0
-	Local $eWitcCount
-	Local $eHealCount
-	Local $eGoleCount
-	Local $eLavaCount
-	Local $eDragCount
-	Local $ePekkCount
-	Local $eValkCount
+	;Local $eGiantCount = 0
+	;Local $eBallCount = 0
+	;Local $eHogsCount = 0
+	;Local $eBarbCount = 0
+	;Local $eGoblCount = 0
+	;Local $eWallCount = 0
+	;Local $eArchCount = 0
+	;Local $eWizaCount = 0
+	;Local $eMiniCount = 0
+	;Local $eWitcCount
+	;Local $eHealCount
+	;Local $eGoleCount
+	;Local $eLavaCount
+	;Local $eDragCount
+	;Local $ePekkCount
+	;Local $eValkCount
 	Local $eKingCount
 	Local $eQueenCount
 	Local $eCastleCount

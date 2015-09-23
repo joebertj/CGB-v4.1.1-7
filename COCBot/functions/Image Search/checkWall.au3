@@ -13,7 +13,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Global $Wall[7][3]
+Global $Wall[8][3]
 Global $NoMoreWalls = 0
 
 $Wall[0][0] = @ScriptDir & "\images\Walls\4_1.bmp"
@@ -43,6 +43,10 @@ $Wall[5][2] = @ScriptDir & "\images\Walls\9.png"
 $Wall[6][0] = @ScriptDir & "\images\Walls\10_1.bmp"
 $Wall[6][1] = @ScriptDir & "\images\Walls\10_2.bmp"
 $Wall[6][2] = @ScriptDir & "\images\Walls\10.png"
+
+$Wall[7][0] = @ScriptDir & "\images\Walls\11_1.bmp"
+$Wall[7][1] = @ScriptDir & "\images\Walls\11_2.bmp"
+$Wall[7][2] = @ScriptDir & "\images\Walls\11.png"
 
 Local $WallPos
 Local $WallX, $WallY
@@ -102,19 +106,19 @@ Func CheckWall()
 				EndIf
 			Next
 	WEnd
-	
+
 ;Additional Wall Finding
 	If _Sleep(500) Then Return
-	_CaptureRegion()	
+	_CaptureRegion()
 	Local $WallLoopCounter = 0
-		
-	For $ImageIndex = 0 To 2			
-		If Not FileExists($Wall[$icmbWalls][$ImageIndex]) Then 
+
+	For $ImageIndex = 0 To 2
+		If Not FileExists($Wall[$icmbWalls][$ImageIndex]) Then
 			SetLog("File Not Found", $COLOR_RED)
 			Return False
 		EndIf
 		$res = ""
-		
+
 		If _Sleep(500) Then Return
 		_CaptureRegion()
 		$sendHBitmap = _GDIPlus_BitmapCreateHBITMAPFromBitmap($hBitmap)
@@ -124,7 +128,7 @@ Func CheckWall()
 		If IsArray($res) Then
 		;SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
 			If $res[0] = "0" Then
-				; failed to find any wall of current Level				
+				; failed to find any wall of current Level
 				$res = ""
 			ElseIf $res[0] = "-1" Then
 				SetLog("DLL Error", $COLOR_RED)
@@ -133,13 +137,13 @@ Func CheckWall()
 				SetLog("Invalid Resolution", $COLOR_RED)
 				return False
 			Else
-			
+
 				$expRet = StringSplit($res[0], "|", 2)
 				For $j = 1 To UBound($expRet) - 1 Step 2
 					$WallX = Int($expRet[$j])
-					$WallY = Int($expRet[$j + 1])					
-				
-					If IsInsideDiamondXY($WallX, $WallY) Then 					
+					$WallY = Int($expRet[$j + 1])
+
+					If IsInsideDiamondXY($WallX, $WallY) Then
 						If $debugSetlog = 1 Then
 							SetLog("Wall level: " & $icmbWalls + 4 & " • Position: [" & $WallX & "," & $WallY & "], Verifying..", $COLOR_PURPLE)
 						Else
@@ -152,30 +156,30 @@ Func CheckWall()
 							If _Sleep(1000) Then Return
 							$sBldgName = getNameBuilding(250, 520) ; Get Unit name and level with OCR
 						EndIf
-						
-						
+
+
 						$aString = StringSplit($sBldgName, "(") ; Spilt the name and building level
-						If $aString[0] = 2 Then ; If we have name and level then use it					
+						If $aString[0] = 2 Then ; If we have name and level then use it
 							If $aString[2] <> "" Then ; check for bad read of level
 								$sBldgLevel = $aString[2] ; store level text
 								$aString = StringSplit($sBldgLevel, ")") ;split off the closing parenthesis
-								If $aString[0] = 2 Then ; If we have "level XX" cleaned up							
+								If $aString[0] = 2 Then ; If we have "level XX" cleaned up
 									If $aString[1] <> "" Then $sBldgLevel = $aString[1] ; store "level XX"
 								EndIf
 								$aString = StringSplit($sBldgLevel, " ") ;split off the level number
-								If $aString[0] = 2 Then ; If we have level number then use it							
+								If $aString[0] = 2 Then ; If we have level number then use it
 									If $aString[2] <> "" And Number($aString[2]) = $icmbWalls + 4 Then Return True
 								EndIf
 							EndIf
 						EndIf
 					EndIf
-					$WallLoopCounter += 1					
+					$WallLoopCounter += 1
 					If($WallLoopCounter > 4) Then ExitLoop
-				Next	
-			EndIf		
-			If _Sleep(250) Then Return		
+				Next
+			EndIf
+			If _Sleep(250) Then Return
 		EndIf
-	Next	
+	Next
 
 	SetLog("Cannot find Walls level " & $icmbWalls + 4 & ", more upgrades unlikely", $COLOR_RED)
 	SetLog("Please rearrange the walls so they can be found", $COLOR_RED)
