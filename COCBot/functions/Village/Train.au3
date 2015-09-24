@@ -523,7 +523,7 @@ Func Train()
 				SetLog("Will not ever be able to train since no barracks are available")
 				Return
 			EndIf
-			; train large units first then by cost
+			; train units by training time, longer to train first then by size
 			$trainKind = 0
 			$hasTrained = False
 			If $ePekkCount + $ePekkTrainOld < $PekkComp Then
@@ -594,12 +594,12 @@ Func Train()
 				EndIf
 			EndIf
 			If _Sleep($iDelayTrain6) Then Return
-			If $eGiantCount + $eGiantTrainOld < $GiantComp Then
-				$trainCount = Ceiling(($GiantComp - $eGiantCount - $eGiantTrainOld) / $numBarracksAvaiables)
+			If $eWizaCount + $eWizaTrainOld < $WizaComp Then
+				$trainCount = Ceiling(($WizaComp - $eWizaCount - $eWizaTrainOld) / $numBarracksAvaiables)
 				;If $trainCount = 0 Then $trainCount = 1
 				For $i = 1 to $trainCount
-					If TrainClick(432, 320, 1, 50, $FullGiant, $GemGiant, "#0276") Then ;Giant
-						$eGiantTrain += 1
+					If TrainClick(331, 425, 1, 50, $FullWiza, $GemWiza, "#0280") Then ;Wizard
+						$eWizaTrain += 1
 						$hasTrained = True
 					Else
 						ExitLoop
@@ -611,12 +611,12 @@ Func Train()
 				EndIf
 			EndIf
 			If _Sleep($iDelayTrain6) Then Return
-			If $eWizaCount + $eWizaTrainOld < $WizaComp Then
-				$trainCount = Ceiling(($WizaComp - $eWizaCount - $eWizaTrainOld) / $numBarracksAvaiables)
+			If $eGiantCount + $eGiantTrainOld < $GiantComp Then
+				$trainCount = Ceiling(($GiantComp - $eGiantCount - $eGiantTrainOld) / $numBarracksAvaiables)
 				;If $trainCount = 0 Then $trainCount = 1
 				For $i = 1 to $trainCount
-					If TrainClick(331, 425, 1, 50, $FullWiza, $GemWiza, "#0280") Then ;Wizard
-						$eWizaTrain += 1
+					If TrainClick(432, 320, 1, 50, $FullGiant, $GemGiant, "#0276") Then ;Giant
+						$eGiantTrain += 1
 						$hasTrained = True
 					Else
 						ExitLoop
@@ -764,6 +764,7 @@ Func Train()
 				SetLog("Will not ever be able to train since no barracks are available")
 				Return
 			EndIf
+			; train units by training time, longer to train first then by size, finally cost
 			If $eGoleCount + $eGoleTrainOld < $GoleComp Then
 				$trainCount = Ceiling(($GoleComp - $eGoleCount - $eGoleTrainOld) / $numDarkBarracksAvaiables)
 				;If $trainCount = 0 Then $trainCount = 1
@@ -1337,4 +1338,58 @@ Func getMinInTrain()
 		If $minInTrain > 45 Then $minInTrain = 45
 	EndIf
 	Return $minInTrain
+EndFunc
+
+Func getMaxInTrain()
+	Local $maxInTrain = 0
+
+	If $eBarbTrain > 0 Then
+		If $maxInTrain < 1 Then $maxInTrain = 1
+	EndIf
+	If $eArchTrain > 0 Then
+		If $maxInTrain < 1 Then $maxInTrain = 1
+	EndIf
+	If $eGiantTrain > 0 Then
+		If $maxInTrain < 2 Then $maxInTrain = 2
+	EndIf
+	If $eGoblTrain > 0 Then
+		If $maxInTrain < 1 Then $maxInTrain = 1
+	EndIf
+	If $eWallTrain > 0 Then
+		If $maxInTrain < 2 Then $maxInTrain = 2
+	EndIf
+	If $eBallTrain > 0 Then
+		If $maxInTrain < 8 Then $maxInTrain = 8
+	EndIf
+	If $eWizaTrain > 0 Then
+		If $maxInTrain < 8 Then $maxInTrain = 8
+	EndIf
+	If $eHealTrain > 0 Then
+		If $maxInTrain < 15 Then $maxInTrain = 15
+	EndIf
+	If $eDragTrain > 0 Then
+		If $maxInTrain < 30 Then $maxInTrain = 30
+	EndIf
+	If $ePekkTrain > 0 Then
+		If $maxInTrain < 45 Then $maxInTrain = 45
+	EndIf
+	If $eMiniTrain > 0 Then
+		If $maxInTrain < 1 Then $maxInTrain = 1
+	EndIf
+	If $eHogsTrain > 0 Then
+		If $maxInTrain < 2 Then $maxInTrain = 2
+	EndIf
+	If $eValkTrain > 0 Then
+		If $maxInTrain < 8 Then $maxInTrain = 8
+	EndIf
+	If $eGoleTrain > 0 Then
+		If $maxInTrain < 45 Then $maxInTrain = 45
+	EndIf
+	If $eWitcTrain > 0 Then
+		If $maxInTrain < 20 Then $maxInTrain = 20
+	EndIf
+	If $eLavaTrain > 0 Then
+		If $maxInTrain < 45 Then $maxInTrain = 45
+	EndIf
+	Return $maxInTrain
 EndFunc
