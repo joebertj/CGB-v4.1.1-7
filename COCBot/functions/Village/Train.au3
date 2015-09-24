@@ -455,22 +455,6 @@ Func Train()
 			Setlog("", $COLOR_PURPLE)
 			SetLog("---------TRAIN CUSTOM ARMY MODE------------------------", $COLOR_PURPLE)
 		EndIf
-		;If $eBarbTrain > $BarbComp Then $eBarbTrain=0
-		;If $eArchTrain > $ArchComp Then $eArchTrain=0
-		;If $eGiantTrain > $GiantComp Then $eGiantTrain=0
-		;If $eGoblTrain > $GoblComp Then $eGoblTrain=0
-		;If $eWallTrain > $WallComp Then $eWallTrain=0
-		;If $eBallTrain > $BallComp Then $eBallTrain=0
-		;If $eWizaTrain > $WizaComp Then $eWizaTrain=0
-		;If $eHealTrain > $HealComp Then $eHealTrain=0
-		;If $eDragTrain > $DragComp Then $eDragTrain=0
-		;If $ePekkTrain > $PekkComp Then $ePekkTrain=0
-		;If $eMiniTrain > $MiniComp Then $eMiniTrain=0
-		;If $eHogsTrain > $HogsComp Then $eHogsTrain=0
-		;If $eValkTrain > $ValkComp Then $eValkTrain=0
-		;If $eGoleTrain > $GoleComp Then $eGoleTrain=0
-		;If $eWitcTrain > $WitcComp Then $eWitcTrain=0
-		;If $eLavaTrain > $LavaComp Then $eLavaTrain=0
 		$eBarbTrainOld=$eBarbTrain
 		$eArchTrainOld=$eArchTrain
 		$eGiantTrainOld=$eGiantTrain
@@ -504,6 +488,23 @@ Func Train()
 			$GoleComp *= 2
 			$WitcComp *= 2
 			$LavaComp *= 2
+		Else
+			If $eBarbTrain > $BarbComp Then $eBarbTrain=0
+			If $eArchTrain > $ArchComp Then $eArchTrain=0
+			If $eGiantTrain > $GiantComp Then $eGiantTrain=0
+			If $eGoblTrain > $GoblComp Then $eGoblTrain=0
+			If $eWallTrain > $WallComp Then $eWallTrain=0
+			If $eBallTrain > $BallComp Then $eBallTrain=0
+			If $eWizaTrain > $WizaComp Then $eWizaTrain=0
+			If $eHealTrain > $HealComp Then $eHealTrain=0
+			If $eDragTrain > $DragComp Then $eDragTrain=0
+			If $ePekkTrain > $PekkComp Then $ePekkTrain=0
+			If $eMiniTrain > $MiniComp Then $eMiniTrain=0
+			If $eHogsTrain > $HogsComp Then $eHogsTrain=0
+			If $eValkTrain > $ValkComp Then $eValkTrain=0
+			If $eGoleTrain > $GoleComp Then $eGoleTrain=0
+			If $eWitcTrain > $WitcComp Then $eWitcTrain=0
+			If $eLavaTrain > $LavaComp Then $eLavaTrain=0
 		EndIf
 		;USE BARRACK
 		While isBarrack()
