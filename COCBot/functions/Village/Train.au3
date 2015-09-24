@@ -455,22 +455,6 @@ Func Train()
 			Setlog("", $COLOR_PURPLE)
 			SetLog("---------TRAIN CUSTOM ARMY MODE------------------------", $COLOR_PURPLE)
 		EndIf
-		$eBarbTrainOld=$eBarbTrain
-		$eArchTrainOld=$eArchTrain
-		$eGiantTrainOld=$eGiantTrain
-		$eGoblTrainOld=$eGoblTrain
-		$eWallTrainOld=$eWallTrain
-		$eBallTrainOld=$eBallTrain
-		$eWizaTrainOld=$eWizaTrain
-		$eHealTrainOld=$eHealTrain
-		$eDragTrainOld=$eDragTrain
-		$ePekkTrainOld=$ePekkTrain
-		$eMiniTrainOld=$eMiniTrain
-		$eHogsTrainOld=$eHogsTrain
-		$eValkTrainOld=$eValkTrain
-		$eGoleTrainOld=$eGoleTrain
-		$eWitcTrainOld=$eWitcTrain
-		$eLavaTrainOld=$eLavaTrain
 		If $fullarmy Then ; double temporarily to train
 			$BarbComp *= 2
 			$ArchComp *= 2
@@ -507,6 +491,16 @@ Func Train()
 			If $eLavaTrain > $LavaComp Then $eLavaTrain=0
 		EndIf
 		;USE BARRACK
+		$eBarbTrainOld=$eBarbTrain
+		$eArchTrainOld=$eArchTrain
+		$eGiantTrainOld=$eGiantTrain
+		$eGoblTrainOld=$eGoblTrain
+		$eWallTrainOld=$eWallTrain
+		$eBallTrainOld=$eBallTrain
+		$eWizaTrainOld=$eWizaTrain
+		$eHealTrainOld=$eHealTrain
+		$eDragTrainOld=$eDragTrain
+		$ePekkTrainOld=$ePekkTrain
 		While isBarrack()
 			_CaptureRegion()
 			If $FirstStart Then
@@ -653,7 +647,9 @@ Func Train()
 				$trainCount = Ceiling(($ArchComp - $eArchCount - $eArchTrainOld) / $numBarracksAvaiables)
 				;SetLog("$numBarracksAvaiables: " & $numBarracksAvaiables & " $trainCount: " & $trainCount)
 				;SetLog("trainCount: " & $trainCount)
-				;If $trainCount = 0 Then $trainCount = 1
+				;If $trainCount*$numBarracksAvaiables > $ArchComp Then
+				;	$trainCount = 0
+				;EndIf
 				For $i = 1 to $trainCount
 					If TrainClick(331, 320, 1, 50, $FullArch, $GemArch, "#0275") Then ;Archer
 						$eArchTrain += 1
@@ -712,7 +708,23 @@ Func Train()
 			If $brrNum >= 4 Then ExitLoop ; make sure no more infiniti loop
 			If _Sleep($iDelayTrain3) Then ExitLoop
 			;endif
+			$eBarbTrainOld=$eBarbTrain
+			$eArchTrainOld=$eArchTrain
+			$eGiantTrainOld=$eGiantTrain
+			$eGoblTrainOld=$eGoblTrain
+			$eWallTrainOld=$eWallTrain
+			$eBallTrainOld=$eBallTrain
+			$eWizaTrainOld=$eWizaTrain
+			$eHealTrainOld=$eHealTrain
+			$eDragTrainOld=$eDragTrain
+			$ePekkTrainOld=$ePekkTrain
 		WEnd
+		$eMiniTrainOld=$eMiniTrain
+		$eHogsTrainOld=$eHogsTrain
+		$eValkTrainOld=$eValkTrain
+		$eGoleTrainOld=$eGoleTrain
+		$eWitcTrainOld=$eWitcTrain
+		$eLavaTrainOld=$eLavaTrain
 		$hasTrained = False
 		$brrNum = 0
 		;USE DARK BARRACK
@@ -856,23 +868,13 @@ Func Train()
 			If $brrNum >= 2 Then ExitLoop ; make sure no more infiniti loop
 			If _Sleep($iDelayTrain3) Then ExitLoop
 			;endif
+			$eMiniTrainOld=$eMiniTrain
+			$eHogsTrainOld=$eHogsTrain
+			$eValkTrainOld=$eValkTrain
+			$eGoleTrainOld=$eGoleTrain
+			$eWitcTrainOld=$eWitcTrain
+			$eLavaTrainOld=$eLavaTrain
 		WEnd
-		$eBarbTrainOld=$eBarbTrain
-		$eArchTrainOld=$eArchTrain
-		$eGiantTrainOld=$eGiantTrain
-		$eGoblTrainOld=$eGoblTrain
-		$eWallTrainOld=$eWallTrain
-		$eBallTrainOld=$eBallTrain
-		$eWizaTrainOld=$eWizaTrain
-		$eHealTrainOld=$eHealTrain
-		$eDragTrainOld=$eDragTrain
-		$ePekkTrainOld=$ePekkTrain
-		$eMiniTrainOld=$eMiniTrain
-		$eHogsTrainOld=$eHogsTrain
-		$eValkTrainOld=$eValkTrain
-		$eGoleTrainOld=$eGoleTrain
-		$eWitcTrainOld=$eWitcTrain
-		$eLavaTrainOld=$eLavaTrain
 		If $fullarmy Then ; restore original values
 			$BarbComp /= 2
 			$ArchComp /= 2
