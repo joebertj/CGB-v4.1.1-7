@@ -17,6 +17,24 @@ Func checkArmyCamp()
 	Local $aGetArmySize[3] = ["", "", ""]
 	Local $sArmyInfo = ""
 	Local $sInputbox
+	Local $diff
+
+	$eBarbCount=0
+	$eArchCount=0
+	$eGiantCount=0
+	$eGoblCount=0
+	$eWallCount=0
+	$eBallCount=0
+	$eWizaCount=0
+	$eHealCount=0
+	$eDragCount=0
+	$ePekkCount=0
+	$eMiniCount=0
+	$eHogsCount=0
+	$eValkCount=0
+	$eGoleCount=0
+	$eWitcCount=0
+	$eLavaCount=0
 
 	SetLog("Checking Army Camp...", $COLOR_BLUE)
 	If _Sleep($iDelaycheckArmyCamp1) Then Return
@@ -97,7 +115,8 @@ Func checkArmyCamp()
 				$TroopName = "Barbarians"
 				$eBarbCountOld = $eBarbCount
 				$eBarbCount = $TroopQ
-				If $eBarbTrain > 0 Then $eBarbTrain -= ($eBarbCount - $eBarbCountOld)
+				$diff = $eBarbCount - $eBarbCountOld
+				If $eBarbTrain > $diff And $diff > 0 Then $eBarbTrain -= $diff
 				If $FirstStart Then $CurBarb -= $TroopQ
 
 			ElseIf $Troops[1] = "Archer" Then
@@ -105,7 +124,8 @@ Func checkArmyCamp()
 				$TroopName = "Archers"
 				$eArchCountOld = $eArchCount
 				$eArchCount = $TroopQ
-				If $eArchTrain > 0 Then $eArchTrain -= ($eArchCount - $eArchCountOld)
+				$diff = $eArchCount - $eArchCountOld
+				If $eArchTrain > $diff And $diff > 0 Then $eArchTrain -= $diff
 				If $FirstStart Then $CurArch -= $TroopQ
 
 			ElseIf $Troops[1] = "Giant" Then
@@ -113,7 +133,8 @@ Func checkArmyCamp()
 				$TroopName = "Giants"
 				$eGiantCountOld = $eGiantCount
 				$eGiantCount = $TroopQ
-				If $eGiantTrain > 0 Then $eGiantTrain -= ($eGiantCount - $eGiantCountOld)
+				$diff = $eGiantCount - $eGiantCountOld
+				If $eGiantTrain > $diff And $diff > 0 Then $eGiantTrain -= $diff
 				If $FirstStart Then $CurGiant -= $TroopQ
 
 			ElseIf $Troops[1] = "Goblin" Then
@@ -121,7 +142,8 @@ Func checkArmyCamp()
 				$TroopName = "Goblins"
 				$eGoblCountOld = $eGoblCount
 				$eGoblCount = $TroopQ
-				If $eGoblTrain > 0 Then $eGoblTrain -= ($eGoblCount - $eGoblCountOld)
+				$diff = $eGoblCount - $eGoblCountOld
+				If $eGoblTrain > $diff And $diff > 0 Then $eGoblTrain -= $diff
 				If $FirstStart Then $CurGobl -= $TroopQ
 
 			ElseIf $Troops[1] = "WallBreaker" Then
@@ -129,7 +151,8 @@ Func checkArmyCamp()
 				$TroopName = "Wallbreakers"
 				$eWallCountOld = $eWallCount
 				$eWallCount = $TroopQ
-				If $eWallTrain > 0 Then $eWallTrain -= ($eWallCount - $eWallCountOld)
+				$diff = $eWallCount - $eWallCountOld
+				If $eWallTrain > $diff And $diff > 0 Then $eWallTrain -= $diff
 				If $FirstStart Then $CurWall -= $TroopQ
 
 			ElseIf $Troops[1] = "Balloon" Then
@@ -137,7 +160,8 @@ Func checkArmyCamp()
 				$TroopName = "Balloons"
 				$eBallCountOld = $eBallCount
 				$eBallCount = $TroopQ
-				If $eBallTrain > 0 Then $eBallTrain -= ($eBallCount - $eBallCountOld)
+				$diff = $eBallCount - $eBallCountOld
+				If $eBallTrain > $diff And $diff > 0 Then $eBallTrain -= $diff
 				If $FirstStart Then $CurBall -= $TroopQ
 
 			ElseIf $Troops[1] = "Healer" Then
@@ -145,7 +169,8 @@ Func checkArmyCamp()
 				$TroopName = "Healers"
 				$eHealCountOld = $eHealCount
 				$eHealCount = $TroopQ
-				If $eHealTrain > 0 Then $eHealTrain -= ($eHealCount - $eHealCountOld)
+				$diff = $eHealCount - $eHealCountOld
+				If $eHealTrain > $diff And $diff > 0 Then $eHealTrain -= $diff
 				If $FirstStart Then $CurHeal -= $TroopQ
 
 			ElseIf $Troops[1] = "Wizard" Then
@@ -153,7 +178,8 @@ Func checkArmyCamp()
 				$TroopName = "Wizards"
 				$eWizaCountOld = $eWizaCount
 				$eWizaCount = $TroopQ
-				If $eWizaTrain > 0 Then $eWizaTrain -= ($eWizaCount - $eWizaCountOld)
+				$diff = $eWizaCount - $eWizaCountOld
+				If $eWizaTrain > $diff And $diff > 0 Then $eWizaTrain -= $diff
 				If $FirstStart Then $CurWiza -= $TroopQ
 
 			ElseIf $Troops[1] = "Dragon" Then
@@ -161,7 +187,8 @@ Func checkArmyCamp()
 				$TroopName = "Dragons"
 				$eDragCountOld = $eDragCount
 				$eDragCount = $TroopQ
-				If $eDragTrain > 0 Then $eDragTrain -= ($eDragCount - $eDragCountOld)
+				$diff = $eDragCount - $eDragCountOld
+				If $eDragTrain > $diff And $diff > 0 Then $eDragTrain -= $diff
 				If $FirstStart Then $CurDrag -= $TroopQ
 
 			ElseIf $Troops[1] = "Pekka" Then
@@ -169,17 +196,19 @@ Func checkArmyCamp()
 				$TroopName = "Pekkas"
 				$ePekkCountOld = $ePekkCount
 				$ePekkCount = $TroopQ
-				If $ePekkTrain > 0 Then $ePekkTrain -= ($ePekkCount - $ePekkCountOld)
+				$diff = $ePekkCount - $ePekkCountOld
+				If $ePekkTrain > $diff And $diff > 0 Then $ePekkTrain -= $diff
 				If $FirstStart Then $CurPekk -= $TroopQ
 
 			ElseIf $Troops[1] = "Minion" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Minions"
-				;SetLog("Minicountold: " & $eMiniCountOld & " Minicount: " & $eMiniCount & " MiniTrain: " & $eMiniTrain)
+				SetLog("Minicountold: " & $eMiniCountOld & " Minicount: " & $eMiniCount & " MiniTrain: " & $eMiniTrain)
 				$eMiniCountOld = $eMiniCount
 				$eMiniCount = $TroopQ
-				If $eMiniTrain > 0 Then $eMiniTrain -= ($eMiniCount - $eMiniCountOld)
-				;SetLog("Minicountold: " & $eMiniCountOld & " Minicount: " & $eMiniCount & " MiniTrain: " & $eMiniTrain)
+				$diff = $eMiniCount - $eMiniCountOld
+				If $eMiniTrain > $diff And $diff > 0 Then $eMiniTrain -= $diff
+				SetLog("Minicountold: " & $eMiniCountOld & " Minicount: " & $eMiniCount & " MiniTrain: " & $eMiniTrain)
 				If $FirstStart Then $CurMini -= $TroopQ
 
 			ElseIf $Troops[1] = "HogRider" Then
@@ -187,7 +216,8 @@ Func checkArmyCamp()
 				$TroopName = "Hog Riders"
 				$eHogsCountOld = $eHogsCount
 				$eHogsCount = $TroopQ
-				If $eHogsTrain > 0 Then $eHogsTrain -= ($eHogsCount - $eHogsCountOld)
+				$diff = $eHogsCount - $eHogsCountOld
+				If $eHogsTrain > $diff And $diff > 0 Then $eHogsTrain -= $diff
 				If $FirstStart Then $CurHogs -= $TroopQ
 
 			ElseIf $Troops[1] = "Valkyrie" Then
@@ -195,7 +225,8 @@ Func checkArmyCamp()
 				$TroopName = "Valkyries"
 				$eValkCountOld = $eValkCount
 				$eValkCount = $TroopQ
-				If $eValkTrain > 0 Then $eValkTrain -= ($eValkCount - $eValkCountOld)
+				$diff = $eValkCount - $eValkCountOld
+				If $eValkTrain > $diff And $diff > 0 Then $eValkTrain -= $diff
 				If $FirstStart Then $CurValk -= $TroopQ
 
 			ElseIf $Troops[1] = "Golem" Then
@@ -203,7 +234,8 @@ Func checkArmyCamp()
 				$TroopName = "Golems"
 				$eGoleCountOld = $eGoleCount
 				$eGoleCount = $TroopQ
-				If $eGoleTrain > 0 Then $eGoleTrain -= ($eGoleCount - $eGoleCountOld)
+				$diff = $eGoleCount - $eGoleCountOld
+				If $eGoleTrain > $diff And $diff > 0 Then $eGoleTrain -= $diff
 				If $FirstStart Then $CurGole -= $TroopQ
 
 			ElseIf $Troops[1] = "Witch" Then
@@ -211,7 +243,8 @@ Func checkArmyCamp()
 				$TroopName = "Witches"
 				$eWitcCountOld = $eWitcCount
 				$eWitcCount = $TroopQ
-				If $eWitcTrain > 0 Then $eWitcTrain -= ($eWitcCount - $eWitcCountOld)
+				$diff = $eWitcCount - $eWitcCountOld
+				If $eWitcTrain > $diff And $diff > 0 Then $eWitcTrain -= $diff
 				If $FirstStart Then $CurWitc -= $TroopQ
 
 			ElseIf $Troops[1] = "LavaHound" Then
@@ -219,7 +252,8 @@ Func checkArmyCamp()
 				$TroopName = "Lava Hounds"
 				$eLavaCountOld = $eLavaCount
 				$eLavaCount = $TroopQ
-				If $eLavaTrain > 0 Then $eLavaTrain -= ($eLavaCount - $eLavaCountOld)
+				$diff = $eLavaCount - $eLavaCountOld
+				If $eLavaTrain > $diff And $diff > 0 Then $eLavaTrain -= $diff
 				If $FirstStart Then $CurLava -= $TroopQ
 
 			EndIf

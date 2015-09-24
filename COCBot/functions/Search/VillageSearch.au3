@@ -14,6 +14,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 Func VillageSearch() ;Control for searching a village that meets conditions
+	Local $manualTHx,$manualTHy
 	$iSkipped = 0
 	$DESideFound = False
 
@@ -151,14 +152,18 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 					If $Hide Then btnHide()
 					$MsgBox = MsgBox(0, "Click TH", "Please click the Townhall.", 2, $frmBot)
 					If $MsgBox = 1 Then
-						$THx = FindPos()[0]
-						$THy = FindPos()[1]
-						$MsgBox = MsgBox(4 + 65536, "Confirm TH Location", "Please confirm Townhall coordinates: " & $THx & ", " & $THy, 3, $frmBot)
+						$manualTHx = FindPos()[0]
+						$manualTHy = FindPos()[1]
+						$MsgBox = MsgBox(4 + 65536, "Confirm TH Location", "Please confirm Townhall coordinates: " & $manualTHx & ", " & $manualTHy, 3, $frmBot)
 						If $MsgBox = 6 Then
+							$THx = $manualTHx
+							$THy = $manualTHy
 							$searchTH = checkTownhall()
 							If $searchTH == "-" Then
 								$searchTH = "10"
 								SetLog("Forcing TH: " & $searchTH)
+								$THx = $manualTHx
+								$THy = $manualTHy
 								$manualTH = True
 								GetResources($manualTH)
 							ElseIf $searchTH <> "-" Then
