@@ -359,6 +359,22 @@ Func Idle() ;Sequence that runs until Full Army
 		SetLog("Time Idle: " & StringFormat("%02i", Floor(Floor($TimeIdle / 60) / 60)) & ":" & StringFormat("%02i", Floor(Mod(Floor($TimeIdle / 60), 60))) & ":" & StringFormat("%02i", Floor(Mod($TimeIdle, 60))))
 		If $OutOfGold = 1 Then Return
 	WEnd
+	$eBarbTrain=0
+	$eArchTrain=0
+	$eGiantTrain=0
+	$eGoblTrain=0
+	$eWallTrain=0
+	$eBallTrain=0
+	$eWizaTrain=0
+	$eHealTrain=0
+	$eDragTrain=0
+	$ePekkTrain=0
+	$eMiniTrain=0
+	$eHogsTrain=0
+	$eValkTrain=0
+	$eGoleTrain=0
+	$eWitcTrain=0
+	$eLavaTrain=0
 EndFunc   ;==>Idle
 
 Func AttackMain() ;Main control for attack functions
