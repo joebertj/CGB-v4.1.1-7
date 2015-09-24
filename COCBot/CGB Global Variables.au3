@@ -427,7 +427,7 @@ Global $CurTrophy = 0
 Global $brrNum
 Global $sTimer, $iTimePassed, $hour, $min, $sec , $sTimeWakeUp = 120,$sTimeStopAtk
 Global $fulltroop = 100
-Global $CurCamp, $TotalCamp = 0
+Global $CurCamp, $TotalCamp = 0, $CurCampOld
 Global $NoLeague
 Global $FirstStart = True
 Global $TPaused, $BlockInputPause = 0

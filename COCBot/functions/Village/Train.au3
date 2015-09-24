@@ -711,17 +711,27 @@ Func Train()
 			If $brrNum >= 4 Then ExitLoop ; make sure no more infiniti loop
 			If _Sleep($iDelayTrain3) Then ExitLoop
 			;endif
-			$eBarbTrainOld=$eBarbTrain
-			$eArchTrainOld=$eArchTrain
-			$eGiantTrainOld=$eGiantTrain
-			$eGoblTrainOld=$eGoblTrain
-			$eWallTrainOld=$eWallTrain
-			$eBallTrainOld=$eBallTrain
-			$eWizaTrainOld=$eWizaTrain
-			$eHealTrainOld=$eHealTrain
-			$eDragTrainOld=$eDragTrain
-			$ePekkTrainOld=$ePekkTrain
+			If $eBarbTrain = 1 Then $eBarbTrainOld=$eBarbTrain
+			If $eArchTrain = 1 Then $eArchTrainOld=$eArchTrain
+			If $eGiantTrain = 1 Then $eGiantTrainOld=$eGiantTrain
+			If $eGoblTrain = 1 Then $eGoblTrainOld=$eGoblTrain
+			If $eWallTrain = 1 Then $eWallTrainOld=$eWallTrain
+			If $eBallTrain = 1 Then $eBallTrainOld=$eBallTrain
+			If $eWizaTrain = 1 Then $eWizaTrainOld=$eWizaTrain
+			If $eHealTrain = 1 Then $eHealTrainOld=$eHealTrain
+			If $eDragTrain = 1 Then $eDragTrainOld=$eDragTrain
+			If $ePekkTrain = 1 Then $ePekkTrainOld=$ePekkTrain
 		WEnd
+		$eBarbTrainOld=$eBarbTrain
+		$eArchTrainOld=$eArchTrain
+		$eGiantTrainOld=$eGiantTrain
+		$eGoblTrainOld=$eGoblTrain
+		$eWallTrainOld=$eWallTrain
+		$eBallTrainOld=$eBallTrain
+		$eWizaTrainOld=$eWizaTrain
+		$eHealTrainOld=$eHealTrain
+		$eDragTrainOld=$eDragTrain
+		$ePekkTrainOld=$ePekkTrain
 		$eMiniTrainOld=$eMiniTrain
 		$eHogsTrainOld=$eHogsTrain
 		$eValkTrainOld=$eValkTrain
@@ -871,13 +881,19 @@ Func Train()
 			If $brrNum >= 2 Then ExitLoop ; make sure no more infiniti loop
 			If _Sleep($iDelayTrain3) Then ExitLoop
 			;endif
-			$eMiniTrainOld=$eMiniTrain
-			$eHogsTrainOld=$eHogsTrain
-			$eValkTrainOld=$eValkTrain
-			$eGoleTrainOld=$eGoleTrain
-			$eWitcTrainOld=$eWitcTrain
-			$eLavaTrainOld=$eLavaTrain
+			If $eMiniTrain = 1 Then $eMiniTrainOld=$eMiniTrain
+			If $eHogsTrain = 1 Then $eHogsTrainOld=$eHogsTrain
+			If $eValkTrain = 1 Then $eValkTrainOld=$eValkTrain
+			If $eGoleTrain = 1 Then $eGoleTrainOld=$eGoleTrain
+			If $eWitcTrain = 1 Then $eWitcTrainOld=$eWitcTrain
+			If $eLavaTrain = 1 Then $eLavaTrainOld=$eLavaTrain
 		WEnd
+		$eMiniTrainOld=$eMiniTrain
+		$eHogsTrainOld=$eHogsTrain
+		$eValkTrainOld=$eValkTrain
+		$eGoleTrainOld=$eGoleTrain
+		$eWitcTrainOld=$eWitcTrain
+		$eLavaTrainOld=$eLavaTrain
 		If $fullarmy Then ; restore original values
 			$BarbComp /= 2
 			$ArchComp /= 2
@@ -1268,3 +1284,57 @@ Func IsTrainPage()
 		Return False
 	EndIf
 EndFunc   ;==>IsTrainPage
+
+Func getMinInTrain()
+	Local $minInTrain = 60
+
+	If $eBarbTrain > 0 Then
+		If $minInTrain > 1 Then $minInTrain = 1
+	EndIf
+	If $eArchTrain > 0 Then
+		If $minInTrain > 1 Then $minInTrain = 1
+	EndIf
+	If $eGiantTrain > 0 Then
+		If $minInTrain > 2 Then $minInTrain = 2
+	EndIf
+	If $eGoblTrain > 0 Then
+		If $minInTrain > 1 Then $minInTrain = 1
+	EndIf
+	If $eWallTrain > 0 Then
+		If $minInTrain > 2 Then $minInTrain = 2
+	EndIf
+	If $eBallTrain > 0 Then
+		If $minInTrain > 8 Then $minInTrain = 8
+	EndIf
+	If $eWizaTrain > 0 Then
+		If $minInTrain > 8 Then $minInTrain = 8
+	EndIf
+	If $eHealTrain > 0 Then
+		If $minInTrain > 15 Then $minInTrain = 15
+	EndIf
+	If $eDragTrain > 0 Then
+		If $minInTrain > 30 Then $minInTrain = 30
+	EndIf
+	If $ePekkTrain > 0 Then
+		If $minInTrain > 45 Then $minInTrain = 45
+	EndIf
+	If $eMiniTrain > 0 Then
+		If $minInTrain > 1 Then $minInTrain = 1
+	EndIf
+	If $eHogsTrain > 0 Then
+		If $minInTrain > 2 Then $minInTrain = 2
+	EndIf
+	If $eValkTrain > 0 Then
+		If $minInTrain > 8 Then $minInTrain = 8
+	EndIf
+	If $eGoleTrain > 0 Then
+		If $minInTrain > 45 Then $minInTrain = 45
+	EndIf
+	If $eWitcTrain > 0 Then
+		If $minInTrain > 20 Then $minInTrain = 20
+	EndIf
+	If $eLavaTrain > 0 Then
+		If $minInTrain > 45 Then $minInTrain = 45
+	EndIf
+	Return $minInTrain
+EndFunc

@@ -56,6 +56,7 @@ Func checkArmyCamp()
 		If $iCount > 4 Then ExitLoop
 	WEnd
 
+	$CurCampOld = $CurCamp
 	$aGetArmySize = StringSplit($sArmyInfo, "#") ; split the trained troop number from the total troop number
 	If $aGetArmySize[0] > 1 Then ; check if the OCR was valid and returned both values
 		$CurCamp = Number($aGetArmySize[1])

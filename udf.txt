@@ -4366,7 +4366,7 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Atta
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\AttackBottomTHType.au3(174,1) : UNREFED(231):	ModerateZoomed
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\AttackBottomTHType.au3(272,1) : UNREFED(327):	OriginalMaxZoomed
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Tab.au3(1,1) : UNREFED(99):	Tab
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\TrainClick.au3(89,1) : UNREFED(95):	TrainClickP
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\TrainClick.au3(90,1) : UNREFED(96):	TrainClickP
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\CheckVersion.au3(97,1) : UNREFED(120):	VersionNumFromVersionTXT
 C:\Program Files (x86)\AutoIt3\Include\Array.au3(2394,1) : UNREFED(2434):	_Array1DToHistogram
 C:\Program Files (x86)\AutoIt3\Include\Array.au3(185,1) : UNREFED(233):	_ArrayBinarySearch
