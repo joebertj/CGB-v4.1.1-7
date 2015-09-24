@@ -19,22 +19,22 @@ Func checkArmyCamp()
 	Local $sInputbox
 	Local $diff
 
-	$eBarbCount=0
-	$eArchCount=0
-	$eGiantCount=0
-	$eGoblCount=0
-	$eWallCount=0
-	$eBallCount=0
-	$eWizaCount=0
-	$eHealCount=0
-	$eDragCount=0
-	$ePekkCount=0
-	$eMiniCount=0
-	$eHogsCount=0
-	$eValkCount=0
-	$eGoleCount=0
-	$eWitcCount=0
-	$eLavaCount=0
+	;$eBarbCount=0
+	;$eArchCount=0
+	;$eGiantCount=0
+	;$eGoblCount=0
+	;$eWallCount=0
+	;$eBallCount=0
+	;$eWizaCount=0
+	;$eHealCount=0
+	;$eDragCount=0
+	;$ePekkCount=0
+	;$eMiniCount=0
+	;$eHogsCount=0
+	;$eValkCount=0
+	;$eGoleCount=0
+	;$eWitcCount=0
+	;$eLavaCount=0
 
 	SetLog("Checking Army Camp...", $COLOR_BLUE)
 	If _Sleep($iDelaycheckArmyCamp1) Then Return
