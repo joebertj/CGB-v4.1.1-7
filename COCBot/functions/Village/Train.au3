@@ -648,10 +648,11 @@ Func Train()
 				EndIf
 			EndIf
 			If _Sleep($iDelayTrain6) Then Return
-			SetLog("Count: " & $eArchCount & " Train: " & $eArchTrain & " TrainOld: " & $eArchTrainOld & " Comp: " & $ArchComp)
+			;SetLog("$eArchCount: " & $eArchCount & " $eArchTrain: " & $eArchTrain & " $eArchTrainOld: " & $ArchComp & " Comp: " & $ArchComp)
 			If $eArchCount + $eArchTrainOld < $ArchComp Then
 				$trainCount = Ceiling(($ArchComp - $eArchCount - $eArchTrainOld) / $numBarracksAvaiables)
-				SetLog("trainCount: " & $trainCount)
+				;SetLog("$numBarracksAvaiables: " & $numBarracksAvaiables & " $trainCount: " & $trainCount)
+				;SetLog("trainCount: " & $trainCount)
 				;If $trainCount = 0 Then $trainCount = 1
 				For $i = 1 to $trainCount
 					If TrainClick(331, 320, 1, 50, $FullArch, $GemArch, "#0275") Then ;Archer
@@ -712,7 +713,7 @@ Func Train()
 			If _Sleep($iDelayTrain3) Then ExitLoop
 			;endif
 		WEnd
-
+		$hasTrained = False
 		$brrNum = 0
 		;USE DARK BARRACK
 		While Not isDarkBarrack()
@@ -824,9 +825,11 @@ Func Train()
 			EndIf
 			If _Sleep($iDelayTrain6) Then Return
 			If $eMiniCount + $eMiniTrainOld < $MiniComp Then
+				;SetLog("$eMiniCount: " & $eMiniCount & " $eMiniTrain: " & $eMiniTrain & " $eMiniTrainOld: " & $eMiniTrainOld & " $MiniComp: " & $MiniComp)
 				$trainCount = Ceiling(($MiniComp - $eMiniCount - $eMiniTrainOld) / $numDarkBarracksAvaiables)
 				;If $trainCount = 0 Then $trainCount = 1
 				For $i = 1 to $trainCount
+					;SetLog("$i: " & $i & " $numDarkBarracksAvaiables: " & $numDarkBarracksAvaiables & " $trainCount: " & $trainCount)
 					If TrainClick(220, 320, 1, 50, $FullMini, $GemMini, "#0284") Then ;Minion
 						$eMiniTrain += 1
 						$hasTrained = True

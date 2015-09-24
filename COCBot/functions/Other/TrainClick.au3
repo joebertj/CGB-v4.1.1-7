@@ -70,10 +70,11 @@ Func TrainClick($x, $y, $iTimes, $iSpeed, $aWatchSpot, $aLootSpot, $sdebugtxt = 
 				Return False
 			EndIf
 		EndIf
-		Return $trainSuccess
 	Else
 		Return False
 	EndIf
+	;SetLog("$trainSuccess: " & $trainSuccess)
+	Return $trainSuccess
 EndFunc   ;==>TrainClick
 
 			; Temp fix for DE troop training

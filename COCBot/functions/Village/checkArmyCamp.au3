@@ -203,12 +203,12 @@ Func checkArmyCamp()
 			ElseIf $Troops[1] = "Minion" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Minions"
-				SetLog("Minicountold: " & $eMiniCountOld & " Minicount: " & $eMiniCount & " MiniTrain: " & $eMiniTrain)
+				;SetLog("Minicountold: " & $eMiniCountOld & " Minicount: " & $eMiniCount & " MiniTrain: " & $eMiniTrain)
 				$eMiniCountOld = $eMiniCount
 				$eMiniCount = $TroopQ
 				$diff = $eMiniCount - $eMiniCountOld
 				If $eMiniTrain > $diff And $diff > 0 Then $eMiniTrain -= $diff
-				SetLog("Minicountold: " & $eMiniCountOld & " Minicount: " & $eMiniCount & " MiniTrain: " & $eMiniTrain)
+				;SetLog("Minicountold: " & $eMiniCountOld & " Minicount: " & $eMiniCount & " MiniTrain: " & $eMiniTrain)
 				If $FirstStart Then $CurMini -= $TroopQ
 
 			ElseIf $Troops[1] = "HogRider" Then

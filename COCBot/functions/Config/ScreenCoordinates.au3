@@ -109,7 +109,7 @@ Global Const $FullHeal[4]   = [ 468, 482, 0xB5B5B5, 45]
 Global Const $FullDrag[4]   = [ 574, 482, 0xB5B5B5, 45]
 Global Const $FullPekk[4]   = [ 680, 482, 0xB5B5B5, 45]
 
-Global Const $FullMini[4]   = [ 255, 348, 0xE7E7E7, 30] ; 0xC7F8F8 Most locations are only 30 decimal change in blue to gray (Dk blue chest)
+Global Const $FullMini[4]   = [ 229, 302, 0x727272, 30] ; 0x50769C  Most locations are only 30 decimal change in blue to gray (Dk blue chest)
 Global Const $FullHogs[4]   = [ 364, 355, 0xB2B2B2, 30] ; 0xD07C58 normal (lt brown shoulder)
 Global Const $FullValk[4]   = [ 417, 317, 0xB1B1B1, 30] ; 0xFF6E18 normal (lt orange hari curl)
 Global Const $FullGole[4]   = [ 562, 339, 0xC9C9C9, 30] ; 0xF07CD0 normal (pink eye)
