@@ -16,6 +16,7 @@ Func Train()
 
 	Local $anotherTroops, $trainCount, $trainKind, $hasTrained
 	Local $eBarbTrainOld=0, $eArchTrainOld=0, $eGiantTrainOld=0, $eGoblTrainOld=0, $eWallTrainOld=0, $eBallTrainOld=0, $eWizaTrainOld=0, $eHealTrainOld=0, $eDragTrainOld=0, $ePekkTrainOld=0, $eMiniTrainOld=0, $eHogsTrainOld=0, $eValkTrainOld=0, $eGoleTrainOld=0, $eWitcTrainOld=0, $eLavaTrainOld=0
+	Local $eBarbTrainRem=0, $eArchTrainRem=0, $eGiantTrainRem=0, $eGoblTrainRem=0, $eWallTrainRem=0, $eBallTrainRem=0, $eWizaTrainRem=0, $eHealTrainRem=0, $eDragTrainRem=0, $ePekkTrainRem=0, $eMiniTrainRem=0, $eHogsTrainRem=0, $eValkTrainRem=0, $eGoleTrainRem=0, $eWitcTrainRem=0, $eLavaTrainRem=0
 
 	If $debugSetlog = 1 Then SetLog("Func Train ", $COLOR_PURPLE)
 	If $bTrainEnabled = False Then Return
@@ -528,7 +529,13 @@ Func Train()
 			$hasTrained = False
 			If $ePekkCount + $ePekkTrainOld < $PekkComp Then
 				$trainCount = Ceiling(($PekkComp - $ePekkCount - $ePekkTrainOld) / $numBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$ePekkTrainRem = Mod($PekkComp - $ePekkCount - $ePekkTrainOld, $numBarracksAvaiables)
+				If $ePekkTrainRem > 1 Then
+					$ePekkTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					If TrainClick(647, 425, 1, 50, $FullPekk, $GemPekk, "#0283") Then ; Pekka
 						$ePekkTrain += 1
@@ -545,7 +552,13 @@ Func Train()
 			If _Sleep($iDelayTrain6) Then Return
 			If $eDragCount + $eDragTrainOld < $DragComp Then
 				$trainCount = Ceiling(($DragComp - $eDragCount - $eDragTrainOld) / $numBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$eDragTrainRem = Mod($DragComp - $eDragCount - $eDragTrainOld, $numBarracksAvaiables)
+				If $eDragTrainRem > 1 Then
+					$eDragTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					If TrainClick(546, 425, 1, 50, $FullDrag, $GemDrag, "#0282") Then ;;Dragon
 						$eDragTrain += 1
@@ -562,7 +575,13 @@ Func Train()
 			If _Sleep($iDelayTrain6) Then Return
 			If $eHealCount + $eHealTrainOld < $HealComp Then
 				$trainCount = Ceiling(($HealComp - $eHealCount - $eHealTrainOld) / $numBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$eHealTrainRem = Mod($HealComp - $eHealCount - $eHealTrainOld, $numBarracksAvaiables)
+				If $eHealTrainRem > 1 Then
+					$eHealTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					If TrainClick(432, 425, 1, 50, $FullHeal, $GemHeal, "#0281") Then ;Healer
 						$eHealTrain += 1
@@ -579,7 +598,13 @@ Func Train()
 			If _Sleep($iDelayTrain6) Then Return
 			If $eBallCount + $eBallTrainOld < $BallComp Then
 				$trainCount = Ceiling(($BallComp - $eBallCount - $eBallTrainOld) / $numBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$eBallTrainRem = Mod($BallComp - $eBallCount - $eBallTrainOld, $numBarracksAvaiables)
+				If $eBallTrainRem > 1 Then
+					$eBallTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					If TrainClick(220, 425, 1, 50, $FullBall, $GemBall, "#0279") Then ;Balloon
 						$eBallTrain += 1
@@ -596,7 +621,13 @@ Func Train()
 			If _Sleep($iDelayTrain6) Then Return
 			If $eWizaCount + $eWizaTrainOld < $WizaComp Then
 				$trainCount = Ceiling(($WizaComp - $eWizaCount - $eWizaTrainOld) / $numBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$eWizaTrainRem = Mod($WizaComp - $eWizaCount - $eWizaTrainOld, $numBarracksAvaiables)
+				If $eWizaTrainRem > 1 Then
+					$eWizaTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					If TrainClick(331, 425, 1, 50, $FullWiza, $GemWiza, "#0280") Then ;Wizard
 						$eWizaTrain += 1
@@ -613,7 +644,13 @@ Func Train()
 			If _Sleep($iDelayTrain6) Then Return
 			If $eGiantCount + $eGiantTrainOld < $GiantComp Then
 				$trainCount = Ceiling(($GiantComp - $eGiantCount - $eGiantTrainOld) / $numBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$eGiantTrainRem = Mod($GiantComp - $eGiantCount - $eGiantTrainOld, $numBarracksAvaiables)
+				If $eGiantTrainRem > 1 Then
+					$eGiantTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					If TrainClick(432, 320, 1, 50, $FullGiant, $GemGiant, "#0276") Then ;Giant
 						$eGiantTrain += 1
@@ -630,7 +667,13 @@ Func Train()
 			If _Sleep($iDelayTrain6) Then Return
 			If $eWallCount + $eWallTrainOld < $WallComp Then
 				$trainCount = Ceiling(($WallComp - $eWallCount - $eWallTrainOld) / $numBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$eWallTrainRem = Mod($WallComp - $eWallCount - $eWallTrainOld, $numBarracksAvaiables)
+				If $eWallTrainRem > 1 Then
+					$eWallTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					If TrainClick(647, 320, 1, 50, $FullWall, $GemWall, "#0278") Then ;Wall Breaker
 						$eWallTrain += 1
@@ -648,6 +691,12 @@ Func Train()
 			;SetLog("$eArchCount: " & $eArchCount & " $eArchTrain: " & $eArchTrain & " $eArchTrainOld: " & $ArchComp & " Comp: " & $ArchComp)
 			If $eArchCount + $eArchTrainOld < $ArchComp Then
 				$trainCount = Ceiling(($ArchComp - $eArchCount - $eArchTrainOld) / $numBarracksAvaiables)
+				$eArchTrainRem = Mod($ArchComp - $eArchCount - $eArchTrainOld, $numBarracksAvaiables)
+				If $eArchTrainRem > 1 Then
+					$eArchTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
 				;SetLog("$numBarracksAvaiables: " & $numBarracksAvaiables & " $trainCount: " & $trainCount)
 				;SetLog("trainCount: " & $trainCount)
 				;If $trainCount*$numBarracksAvaiables > $ArchComp Then
@@ -669,7 +718,13 @@ Func Train()
 			If _Sleep($iDelayTrain6) Then Return
 			If $eBarbCount + $eBarbTrainOld < $BarbComp Then
 				$trainCount = Ceiling(($BarbComp - $eBarbCount - $eBarbTrainOld) / $numBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$eBarbTrainRem = Mod($BarbComp - $eBarbCount - $eBarbTrainOld, $numBarracksAvaiables)
+				If $eBarbTrainRem > 1 Then
+					$eBarbTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					If TrainClick(220, 320, 1, 50, $FullBarb, $GemBarb, "#0274") Then ;Barbarian
 						$eBarbTrain += 1
@@ -687,7 +742,12 @@ Func Train()
 				If _Sleep($iDelayTrain6) Then Return
 				If $eGoblCount + $eGoblTrainOld < $GoblComp Then
 					$trainCount = Ceiling(($GoblComp - $eGoblCount - $eGoblTrainOld) / $numBarracksAvaiables)
-					;If $trainCount = 0 Then $trainCount = 1
+					$eGoblTrainRem = Mod($GoblComp - $eGoblCount - $eGoblTrainOld, $numBarracksAvaiables)
+					If $eGoblTrainRem > 1 Then
+						$eGoblTrainRem -= 1
+					Else
+						$trainCount -= 1
+					EndIf
 					For $i = 1 to $trainCount
 						If TrainClick(546, 320, 1, 50, $FullGobl, $GemGobl, "#0277") Then ;Goblin
 							$eGoblTrain += 1
@@ -711,16 +771,16 @@ Func Train()
 			If $brrNum >= 4 Then ExitLoop ; make sure no more infiniti loop
 			If _Sleep($iDelayTrain3) Then ExitLoop
 			;endif
-			If $eBarbTrain = 1 Then $eBarbTrainOld=$eBarbTrain
-			If $eArchTrain = 1 Then $eArchTrainOld=$eArchTrain
-			If $eGiantTrain = 1 Then $eGiantTrainOld=$eGiantTrain
-			If $eGoblTrain = 1 Then $eGoblTrainOld=$eGoblTrain
-			If $eWallTrain = 1 Then $eWallTrainOld=$eWallTrain
-			If $eBallTrain = 1 Then $eBallTrainOld=$eBallTrain
-			If $eWizaTrain = 1 Then $eWizaTrainOld=$eWizaTrain
-			If $eHealTrain = 1 Then $eHealTrainOld=$eHealTrain
-			If $eDragTrain = 1 Then $eDragTrainOld=$eDragTrain
-			If $ePekkTrain = 1 Then $ePekkTrainOld=$ePekkTrain
+			;If $eBarbTrain = 1 Then $eBarbTrainOld=$eBarbTrain
+			;If $eArchTrain = 1 Then $eArchTrainOld=$eArchTrain
+			;If $eGiantTrain = 1 Then $eGiantTrainOld=$eGiantTrain
+			;If $eGoblTrain = 1 Then $eGoblTrainOld=$eGoblTrain
+			;If $eWallTrain = 1 Then $eWallTrainOld=$eWallTrain
+			;If $eBallTrain = 1 Then $eBallTrainOld=$eBallTrain
+			;If $eWizaTrain = 1 Then $eWizaTrainOld=$eWizaTrain
+			;If $eHealTrain = 1 Then $eHealTrainOld=$eHealTrain
+			;If $eDragTrain = 1 Then $eDragTrainOld=$eDragTrain
+			;If $ePekkTrain = 1 Then $ePekkTrainOld=$ePekkTrain
 		WEnd
 		$eBarbTrainOld=$eBarbTrain
 		$eArchTrainOld=$eArchTrain
@@ -767,7 +827,13 @@ Func Train()
 			; train units by training time, longer to train first then by size, finally cost
 			If $eGoleCount + $eGoleTrainOld < $GoleComp Then
 				$trainCount = Ceiling(($GoleComp - $eGoleCount - $eGoleTrainOld) / $numDarkBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$eGoleTrainRem = Mod($GoleComp - $eGoleCount - $eGoleTrainOld, $numDarkBarracksAvaiables)
+				If $eGoleTrainRem > 1 Then
+					$eGoleTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					If TrainClick(546, 320, 1, 50, $FullGole, $GemGole, "#0287") Then ;Golem
 						$eGoleTrain += 1
@@ -784,7 +850,13 @@ Func Train()
 			If _Sleep($iDelayTrain6) Then Return
 			If $eLavaCount + $eLavaTrainOld < $LavaComp Then
 				$trainCount = Ceiling(($LavaComp - $eLavaCount - $eLavaTrainOld) / $numDarkBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$eLavaTrainRem = Mod($LavaComp - $eLavaCount - $eLavaTrainOld, $numDarkBarracksAvaiables)
+				If $eLavaTrainRem > 1 Then
+					$eLavaTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					If TrainClick(220, 425, 1, 50, $FullLava, $GemLava, "#0289") Then ;Lava Hound
 						$eLavaTrain += 1
@@ -801,7 +873,13 @@ Func Train()
 			If _Sleep($iDelayTrain6) Then Return
 			If $eWitcCount + $eWitcTrainOld < $WitcComp Then
 				$trainCount = Ceiling(($WitcComp - $eWitcCount - $eWitcTrainOld) / $numDarkBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$eWitcTrainRem = Mod($WitcComp - $eWitcCount - $eWitcTrainOld, $numDarkBarracksAvaiables)
+				If $eWitcTrainRem > 1 Then
+					$eWitcTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					If TrainClick(647, 320, 1, 50, $FullWitc, $GemWitc, "#0288") Then ;Witch
 						$eWitcTrain += 1
@@ -818,7 +896,13 @@ Func Train()
 			If _Sleep($iDelayTrain6) Then Return
 			If $eValkCount + $eValkTrainOld < $ValkComp Then
 				$trainCount = Ceiling(($ValkComp - $eValkCount - $eValkTrainOld) / $numDarkBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$eValkTrainRem = Mod($ValkComp - $eValkCount - $eValkTrainOld, $numDarkBarracksAvaiables)
+				If $eValkTrainRem > 1 Then
+					$eValkTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					If TrainClick(432, 320, 1, 50, $FullValk, $GemValk, "#0286") Then ;Valkyrie
 						$eValkTrain += 1
@@ -835,7 +919,13 @@ Func Train()
 			If _Sleep($iDelayTrain6) Then Return
 			If $eHogsCount + $eHogsTrainOld < $HogsComp Then
 				$trainCount = Ceiling(($HogsComp - $eHogsCount - $eHogsTrainOld) / $numDarkBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$eHogsTrainRem = Mod($HogsComp - $eHogsCount - $eHogsTrainOld, $numDarkBarracksAvaiables)
+				If $eHogsTrainRem > 1 Then
+					$eHogsTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					If TrainClick(331, 320, 1, 50, $FullHogs, $GemHogs, "#0285") Then ;Hog Rider
 						$eHogsTrain += 1
@@ -853,7 +943,13 @@ Func Train()
 			If $eMiniCount + $eMiniTrainOld < $MiniComp Then
 				;SetLog("$eMiniCount: " & $eMiniCount & " $eMiniTrain: " & $eMiniTrain & " $eMiniTrainOld: " & $eMiniTrainOld & " $MiniComp: " & $MiniComp)
 				$trainCount = Ceiling(($MiniComp - $eMiniCount - $eMiniTrainOld) / $numDarkBarracksAvaiables)
-				;If $trainCount = 0 Then $trainCount = 1
+				$eMiniTrainRem = Mod($MiniComp - $eMiniCount - $eMiniTrainOld, $numDarkBarracksAvaiables)
+				If $eMiniTrainRem > 1 Then
+					$eMiniTrainRem -= 1
+				Else
+					$trainCount -= 1
+				EndIf
+
 				For $i = 1 to $trainCount
 					;SetLog("$i: " & $i & " $numDarkBarracksAvaiables: " & $numDarkBarracksAvaiables & " $trainCount: " & $trainCount)
 					If TrainClick(220, 320, 1, 50, $FullMini, $GemMini, "#0284") Then ;Minion

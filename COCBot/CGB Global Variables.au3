@@ -357,6 +357,7 @@ Global $ArmyComp = 200
 Global $eBarbCount=0, $eArchCount=0, $eGiantCount=0, $eGoblCount=0, $eWallCount=0, $eBallCount=0, $eWizaCount=0, $eHealCount=0, $eDragCount=0, $ePekkCount=0, $eMiniCount=0, $eHogsCount=0, $eValkCount=0, $eGoleCount=0, $eWitcCount=0, $eLavaCount=0
 Global $eBarbCountOld=0, $eArchCountOld=0, $eGiantCountOld=0, $eGoblCountOld=0, $eWallCountOld=0, $eBallCountOld=0, $eWizaCountOld=0, $eHealCountOld=0, $eDragCountOld=0, $ePekkCountOld=0, $eMiniCountOld=0, $eHogsCountOld=0, $eValkCountOld=0, $eGoleCountOld=0, $eWitcCountOld=0, $eLavaCountOld=0
 Global $eBarbTrain=0, $eArchTrain=0, $eGiantTrain=0, $eGoblTrain=0, $eWallTrain=0, $eBallTrain=0, $eWizaTrain=0, $eHealTrain=0, $eDragTrain=0, $ePekkTrain=0, $eMiniTrain=0, $eHogsTrain=0, $eValkTrain=0, $eGoleTrain=0, $eWitcTrain=0, $eLavaTrain=0
+Global $iSpeed
 
 ;Global $barrackPos[4][2] ;Positions of each barracks
 Global $barrackPos[2] = [-1, -1] ;Positions of each barracks

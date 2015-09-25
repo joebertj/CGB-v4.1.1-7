@@ -435,6 +435,8 @@ Func readConfig() ;Reads config and sets it to the variables
 		$isldTrainITDelay = IniRead($config, "troop", "TrainITDelay", "20")
 		;barracks boost not saved (no use)
 
+		$iSpeed = IniRead($config, "troop", "Speed", "0")
+
 		;Misc Settings--------------------------------------------------------------------------
 
 		;Laboratory

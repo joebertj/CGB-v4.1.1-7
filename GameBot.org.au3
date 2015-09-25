@@ -357,10 +357,15 @@ Func Idle() ;Sequence that runs until Full Army
 		EndIf
 		SnipeWhileTrain()
 		$TimeIdle += Round(TimerDiff($hTimer) / 1000, 2) ;In Seconds
-		$numInTrain = getMaxInTrain() ; use getMinInTrain() if Idle is too long without troops in training
-		SetLog("$numInTrain: " & $numInTrain & " $CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
+		; use getMinInTrain() if Idle is too long without troops in training
+		If $iSpeed = 0 Then
+			$numInTrain = getMaxInTrain()
+		ElseIf $iSpeed = 1 Then
+			$numInTrain = getMinInTrain()
+		EndIf
+		;SetLog("$numInTrain: " & $numInTrain & " $CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
 		If $CurCamp = $CurCampOld Then ; if no new troop is produced
-			SetLog("-$trainTimerAdjust: " & -$trainTimerAdjust)
+			;SetLog("-$trainTimerAdjust: " & -$trainTimerAdjust)
 			If Floor(Mod(Floor($TimeIdle / 60), 60))-$trainTimerAdjust > $numInTrain Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
 				;reset training counter
 				$eBarbTrain=0
@@ -403,6 +408,7 @@ Func Idle() ;Sequence that runs until Full Army
 	$eGoleTrain=0
 	$eWitcTrain=0
 	$eLavaTrain=0
+	If $iSpeed = 0 Then $FirstStart=True
 EndFunc   ;==>Idle
 
 Func AttackMain() ;Main control for attack functions

@@ -105,10 +105,14 @@ $tabTroops = GUICtrlCreateTabItem("Troops")
             GUICtrlSetTip(-1, "Boost your Queen so she is always available for raids")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-	Local $x = 30, $y = 210
-	$grpTroops = GUICtrlCreateGroup("Troops", $x - 20, $y - 20, 222, 310)
-
+	Local $x = 30, $y = 200
+	$grpTroops = GUICtrlCreateGroup("Troops", $x - 20, $y - 10, 222, 315)
 		$y +=5
+		$lblTotal = GUICtrlCreateLabel("Optimize for ", $x - 5, $y, -1, -1)
+		$radAccuracy = GUICtrlCreateRadio("Accuracy", $x + 55, $y - 5, -1, -1)
+			GUICtrlSetState(-1, $GUI_CHECKED)
+		$radSpeed = GUICtrlCreateRadio("Speed", $x + 135, $y - 5 , -1, -1)
+		$y +=25
 		$chkUsePercent = GUICtrlCreateCheckbox("Use Percent", $x - 5, $y - 5, 95, 17, $GUI_DISABLE)
 			GUICtrlSetState($chkUsePercent,$GUI_DISABLE)
 		$lblTotal = GUICtrlCreateLabel("Total:", $x + 95, $y - 5, -1, -1, $SS_RIGHT)
@@ -142,7 +146,7 @@ $tabTroops = GUICtrlCreateTabItem("Troops")
 
 	;GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-	Local $x = 30, $y = 315
+	Local $x = 30, $y = 330
 	;$grpOtherTroops = GUICtrlCreateGroup("Add. Troops", $x - 20, $y - 20, 222, 195)
 		GUICtrlCreateIcon ($pIconLib, $eIcnGiant, $x - 5, $y - 5, 24, 24)
 		$lblGiants = GUICtrlCreateLabel("Giants:", $x + 25, $y, -1, -1)

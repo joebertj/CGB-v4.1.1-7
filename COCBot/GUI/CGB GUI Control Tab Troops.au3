@@ -36,6 +36,9 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
+			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
+			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
 
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_ENABLE)
@@ -66,6 +69,9 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
+			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
+			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
 
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_ENABLE)
@@ -96,6 +102,9 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
+			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
+			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_ENABLE)
 			Next
@@ -125,6 +134,10 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
+			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
+			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
+
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_ENABLE)
 			Next
@@ -154,6 +167,10 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbBarrack3, $GUI_DISABLE)
 			GUICtrlSetState($cmbBarrack4, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
+			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
+			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
+
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_ENABLE)
 			Next
@@ -190,6 +207,10 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
+			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
+			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
+
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_ENABLE)
 			Next
@@ -224,6 +245,10 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
+			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
+			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
+
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_ENABLE)
 			Next
@@ -255,6 +280,10 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
+			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
+			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
+
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_ENABLE)
 			Next
@@ -300,6 +329,9 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_ENABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_ENABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_DISABLE)
+			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
+			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_DISABLE)
 			Next
@@ -320,6 +352,9 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
+			GUICtrlSetState($radAccuracy, $GUI_ENABLE)
+			GUICtrlSetState($radSpeed, $GUI_ENABLE)
+			;GUICtrlSetState($chkUsePercent, $GUI_ENABLE)
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_ENABLE)
 			Next

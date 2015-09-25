@@ -982,7 +982,11 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	GUICtrlSetData($sldTrainITDelay, $isldTrainITDelay)
 	GUICtrlSetData($lbltxtTrainITDelay, "delay " & $isldTrainITDelay & " ms.")
 	;barracks boost not saved (no use)
-
+	If $iSpeed = 0 Then
+		GUICtrlSetState($radAccuracy, $GUI_CHECKED)
+	ElseIf $iSpeed = 1 Then
+		GUICtrlSetState($radSpeed, $GUI_CHECKED)
+	EndIf
 
 	;PushBullet-----------------------------------------------------------------------------
 
@@ -1470,3 +1474,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 
 
 EndFunc   ;==>applyConfig
+
+Func chkSpeed()
+
+EndFunc

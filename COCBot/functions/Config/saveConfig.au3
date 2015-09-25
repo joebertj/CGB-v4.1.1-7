@@ -883,6 +883,12 @@ Func saveConfig() ;Saves the controls settings to the config
 
 	;barracks boost not saved (no use)
 
+	If GUICtrlRead($radAccuracy) = $GUI_CHECKED Then
+		IniWrite($config, "troop", "Speed", 0)
+	ElseIf GUICtrlRead($radSpeed) = $GUI_CHECKED Then
+		IniWrite($config, "troop", "Speed", 1)
+	EndIf
+
 	;Misc Settings--------------------------------------------------------------------------
 	If $ichkWalls = 1 Then
 		IniWrite($config, "other", "auto-wall", 1)
