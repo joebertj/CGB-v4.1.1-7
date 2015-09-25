@@ -815,8 +815,8 @@ Func Train()
 			$eHealTrain=0
 			$eDragTrain=0
 			$ePekkTrain=0
-			$notTraining = 0
 		EndIf
+		$notTraining = 0
 		$eBarbTrainOld=$eBarbTrain
 		$eArchTrainOld=$eArchTrain
 		$eGiantTrainOld=$eGiantTrain
@@ -1041,8 +1041,8 @@ Func Train()
 			$eGoleTrain=0
 			$eWitcTrain=0
 			$eLavaTrain=0
-			$notTraining = 0
 		EndIf
+		$notTraining = 0
 		$eMiniTrainOld=$eMiniTrain
 		$eHogsTrainOld=$eHogsTrain
 		$eValkTrainOld=$eValkTrain
