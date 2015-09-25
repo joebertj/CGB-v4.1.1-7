@@ -11,7 +11,7 @@
 ; ===============================================================================================================================
 
 
-Func GetResources($thisearchTH = "-") ;Reads resources
+Func GetResources($manualTH = False) ;Reads resources
 
 	If _Sleep($iDelayGetResources1) Then Return
 	$searchGold = ""
@@ -83,9 +83,10 @@ Func GetResources($thisearchTH = "-") ;Reads resources
 	EndIf
 
 	Local $THString = ""
-	$searchTH = $thisearchTH
 	If ($OptBullyMode = 1 And $SearchCount >= $ATBullyMode) Or $OptTrophyMode = 1 Or ($iCmbSearchMode <> $LB And ($iChkMeetTH[$DB] = 1 Or $iChkMeetTHO[$DB] = 1)) Or ($iCmbSearchMode <> $DB And ($iChkMeetTH[$LB] = 1 Or $iChkMeetTHO[$LB] = 1)) Then
-		$searchTH = checkTownhall()
+		If Not $manualTH Then
+			$searchTH = checkTownhall()
+		EndIf
 
 		If SearchTownHallLoc() = False And $searchTH <> "-" Then
 			$THLoc = "In"

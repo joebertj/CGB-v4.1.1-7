@@ -14,6 +14,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 Func VillageSearch() ;Control for searching a village that meets conditions
+	Local $manualTHx,$manualTHy
 	$iSkipped = 0
 	$DESideFound = False
 
@@ -148,20 +149,27 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			While 1
 				$MsgBox = MsgBox(1 + 65536, "Manual TH Select", "Click OK to manually select the base Townhall.", 5, $frmBot)
 				If $MsgBox = 1 Then
+					If $Hide Then btnHide()
 					$MsgBox = MsgBox(0, "Click TH", "Please click the Townhall.", 2, $frmBot)
 					If $MsgBox = 1 Then
-						$THx = FindPos()[0]
-						$THy = FindPos()[1]
-						$MsgBox = MsgBox(4 + 65536, "Confirm TH Location", "Please confirm Townhall coordinates: " & $THx & ", " & $THy, 3, $frmBot)
+						$manualTHx = FindPos()[0]
+						$manualTHy = FindPos()[1]
+						$MsgBox = MsgBox(4 + 65536, "Confirm TH Location", "Please confirm Townhall coordinates: " & $manualTHx & ", " & $manualTHy, 3, $frmBot)
 						If $MsgBox = 6 Then
+							$THx = $manualTHx
+							$THy = $manualTHy
 							$searchTH = checkTownhall()
 							If $searchTH == "-" Then
 								$searchTH = "10"
 								SetLog("Forcing TH: " & $searchTH)
+								$THx = $manualTHx
+								$THy = $manualTHy
+								$manualTH = True
+								GetResources($manualTH)
 							ElseIf $searchTH <> "-" Then
 								SetLog("Manual TH: " & $searchTH)
-								GetResources($searchTH)
 								$manualTH = True
+								GetResources($manualTH)
 							EndIf
 						EndIf
 					EndIf
@@ -223,7 +231,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 					$iMatchMode = $TS
 					ExitLoop
 				Else
-					If $OptIgnoreTraps = 0 And $OptIgnoreAirTraps = 0 Then
+					If $OptIgnoreTraps = 0 Or $OptIgnoreAirTraps = 0 Then
 						SetLog("Trap found, skipping base...", $COLOR_RED)
 						$i = 0
 						While $i < 100

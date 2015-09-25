@@ -104,6 +104,7 @@ Func chkSnipeMode()
 		GUICtrlSetState($chkIgnoreTraps, $GUI_ENABLE)
 		GUICtrlSetState($chkIgnoreAirTraps, $GUI_ENABLE)
 		GUICtrlSetState($chkParanoid, $GUI_ENABLE)
+		GUICtrlSetState($chkGreedy, $GUI_ENABLE)
 	Else
 		$OptTrophyMode = 0
 		RevertTroops()
@@ -113,6 +114,7 @@ Func chkSnipeMode()
 		GUICtrlSetState($chkIgnoreTraps, $GUI_DISABLE)
 		GUICtrlSetState($chkIgnoreAirTraps, $GUI_DISABLE)
 		GUICtrlSetState($chkParanoid, $GUI_DISABLE)
+		GUICtrlSetState($chkGreedy, $GUI_DISABLE)
 	EndIf
 EndFunc   ;==>chkSnipeMode
 ;;; Toolbox

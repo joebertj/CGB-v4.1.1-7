@@ -883,6 +883,12 @@ Func saveConfig() ;Saves the controls settings to the config
 
 	;barracks boost not saved (no use)
 
+	If GUICtrlRead($radAccuracy) = $GUI_CHECKED Then
+		IniWrite($config, "troop", "Speed", 0)
+	ElseIf GUICtrlRead($radSpeed) = $GUI_CHECKED Then
+		IniWrite($config, "troop", "Speed", 1)
+	EndIf
+
 	;Misc Settings--------------------------------------------------------------------------
 	If $ichkWalls = 1 Then
 		IniWrite($config, "other", "auto-wall", 1)
@@ -956,7 +962,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($building, "upgrade", "LabPosY", $aLabPos[1])
 	;
 
-	For $iz = 0 To 5 ; Save Upgrades data
+	For $iz = 0 To 11 ; Save Upgrades data
 		IniWrite($building, "upgrade", "xupgrade" & $iz, $aUpgrades[$iz][0])
 		IniWrite($building, "upgrade", "yupgrade" & $iz, $aUpgrades[$iz][1])
 		IniWrite($building, "upgrade", "upgradevalue" & $iz, $aUpgrades[$iz][2])

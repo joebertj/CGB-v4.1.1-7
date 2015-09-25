@@ -515,7 +515,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 
 	If $OptIgnoreAirTraps = 1 Then
 		GUICtrlSetState($chkIgnoreAirTraps, $GUI_CHECKED)
-	ElseIf $OptIgnoreTraps = 0 Then
+	ElseIf $OptIgnoreAirTraps = 0 Then
 		GUICtrlSetState($chkIgnoreAirTraps, $GUI_UNCHECKED)
 	EndIf
 
@@ -982,7 +982,11 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	GUICtrlSetData($sldTrainITDelay, $isldTrainITDelay)
 	GUICtrlSetData($lbltxtTrainITDelay, "delay " & $isldTrainITDelay & " ms.")
 	;barracks boost not saved (no use)
-
+	If $iSpeed = 0 Then
+		GUICtrlSetState($radAccuracy, $GUI_CHECKED)
+	ElseIf $iSpeed = 1 Then
+		GUICtrlSetState($radSpeed, $GUI_CHECKED)
+	EndIf
 
 	;PushBullet-----------------------------------------------------------------------------
 
@@ -1122,7 +1126,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 		GUICtrlSetState($chkSaveWallBldr, $GUI_UNCHECKED)
 	EndIf
 
-	For $iz = 0 To 5 ; Apply the buildings upgrade varaible to GUI
+	For $iz = 0 To 11 ; Apply the buildings upgrade varaible to GUI
 		GUICtrlSetImage($picUpgradeStatus[$iz], $pIconLib, $ipicUpgradeStatus[$iz]) ; Set GUI status pic
 		If $aUpgrades[$iz][2] > 0 Then
 			GUICtrlSetData($txtUpgradeValue[$iz], _NumberFormat($aUpgrades[$iz][2])) ; Set GUI loot value to match $aUpgrades variable
@@ -1470,3 +1474,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 
 
 EndFunc   ;==>applyConfig
+
+Func chkSpeed()
+
+EndFunc

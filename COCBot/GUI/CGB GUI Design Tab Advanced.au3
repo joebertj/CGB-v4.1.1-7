@@ -52,7 +52,7 @@ $grpTrainSpell = GUICtrlCreateGroup("Spells Training", $x - 20, $y - 20, 223, 10
 	$SpellFactoryIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 62, $x-18, $y, 21, 21)
 	$lblTrainNormalSpell = GUICtrlCreateLabel("Normal Spell", $x -3 , $y + 5, -1, 17, $SS_RIGHT)
     $cmbTrainNormalSpellType = GUICtrlCreateCombo("",  $x +65, $y, 90, 21, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-	GUICtrlSetData(-1, "None|1:Lightning|2:heal|3:Rage|4:Jump|5:Freeze|6:All|7:Rage+Heal|7:Jump+Rage", "None")
+	GUICtrlSetData(-1, "None|1:Lightning|2:Heal|3:Rage|4:Jump|5:Freeze|6:All|7:Rage+Heal|8:Jump+Rage", "None")
 	GUICtrlSetOnEvent(-1, "cmbTrainNormalSpellType")
 	GUICtrlSetState(-1, $GUI_DISABLE)
 	$LightningIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 36, $x + 160, $y-9, 35, 35)
@@ -67,9 +67,9 @@ $grpTrainSpell = GUICtrlCreateGroup("Spells Training", $x - 20, $y - 20, 223, 10
 	GUICtrlSetState(-1, $GUI_HIDE)
 	$y += 35
 	$DarkSpellFactoryIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 85, $x-18, $y, 21, 21)
-	$lblTrainDarkSpell = GUICtrlCreateLabel("Dark E Spell", $x -3 , $y + 5, -1, 17, $SS_RIGHT)
+	$lblTrainDarkSpell = GUICtrlCreateLabel("Dark Spell", $x -3 , $y + 5, -1, 17, $SS_RIGHT)
 	$cmbTrainDarkSpellType = GUICtrlCreateCombo("",  $x +65, $y, 90, 21, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-	GUICtrlSetData(-1, "None|1:Poison|2:Earthquake|3:haste", "None")
+	GUICtrlSetData(-1, "None|1:Poison|2:Earthquake|3:Haste|4:All", "None")
 	GUICtrlSetOnEvent(-1, "cmbTrainDarkSpellType")
 	GUICtrlSetState(-1, $GUI_DISABLE)
 	$PoisonIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 88, $x + 160, $y-7, 35, 35)
@@ -140,7 +140,7 @@ GUICtrlCreateGroup("", -99, -99, 1, 1)
 		$chkSnipeWhileTrain = GUICtrlCreateCheckbox("TH snipe while training army", $x , $y, -1, -1) ; Snipe While Train MOD by ChiefM3
         GUICtrlSetTip(-1, "Bot will try to TH snipe while training army.")
 		$y+=20
-		$lblIgnoreTraps = GUICtrlCreateLabel( "Ignore Traps", $x , $y + 5, -1, 40)
+		$lblIgnoreTraps = GUICtrlCreateLabel( "Ignore Traps", $x , $y + 5, -1, -1)
 		$chkIgnoreTraps = GUICtrlCreateCheckbox("Ground", $x + 75 , $y, -1, -1)
 		$chkIgnoreAirTraps = GUICtrlCreateCheckbox("Air", $x + 145 , $y, -1, -1)
 		$y+=20

@@ -10,7 +10,7 @@
 ;                  $aWatchSpot          - [in/out] an array of [X location, Y location, Hex Color, Tolerance] to check after click if full
 ;                  $aLootSpot           - [in/out] an array of [X location, Y location, Hex Color, Tolerance] to check after click, color used to see if out of Elixir for more troops
 ;						 $sdebugtxt				 - String with click debug text
-; Return values .: None
+; Return values .: True = success, False = failure
 ; Author ........: KnowJack (July 2015)
 ; Modified ......: Sardo 2015-08
 ; Remarks .......: This file is part of ClashGameBot. Copyright 2015
@@ -21,6 +21,8 @@
 ; ===============================================================================================================================
 
 Func TrainClick($x, $y, $iTimes, $iSpeed, $aWatchSpot, $aLootSpot, $sdebugtxt = "")
+	Local $trainSuccess = False
+
 	If IsTrainPage() Then
 		If $debugClick = 1 Then
 			Local $txt = _DecodeDebug($sdebugtxt)
@@ -41,22 +43,23 @@ Func TrainClick($x, $y, $iTimes, $iSpeed, $aWatchSpot, $aLootSpot, $sdebugtxt = 
 				EndIf
 
 				ControlClick($Title, "", "", "left", "1", $x, $y) ;Click once.
-
+				$trainSuccess = True
 				If _Sleep($iSpeed, False) Then ExitLoop
 			Next
 		Else
 			If isProblemAffect(True) Then checkMainScreen(False)
 			If $DebugSetlog = 1 Then SetLog("Full Check=" & _GetPixelColor($aWatchSpot[0], $aWatchSpot[1], True), $COLOR_PURPLE)
-			If _CheckPixel($aWatchSpot, True) = True Then Return ; Check to see if barrack full
+			If _CheckPixel($aWatchSpot, True) = True Then Return False; Check to see if barrack full
 			If _CheckPixel($aLootSpot, True) = True Then  ; Check to see if out of Elixir
 				SetLog("Elixir Check Fail: Color = " & _GetPixelColor($aLootSpot[0], $aLootSpot[1], True), $COLOR_PURPLE)
 				$OutOfElixir = 1
 				If _Sleep($iDelayTrainClick1) Then Return
 				If IsGemOpen(True) = True Then ClickP($aAway) ;Click Away
-				Return
+				Return False
 			EndIf
 
 			ControlClick($Title, "", "", "left", "1", $x, $y)
+			$trainSuccess = True
 
 			If _Sleep($iSpeed, False) Then Return
 			If _CheckPixel($aLootSpot, True) = True Then ; Check to see if out of Elixir
@@ -64,13 +67,14 @@ Func TrainClick($x, $y, $iTimes, $iSpeed, $aWatchSpot, $aLootSpot, $sdebugtxt = 
 				$OutOfElixir = 1
 				If _Sleep($iDelayTrainClick1) Then Return
 				If IsGemOpen(True) = True Then ClickP($aAway) ;Click Away
-				Return
+				Return False
 			EndIf
 		EndIf
-		Return True
 	Else
 		Return False
 	EndIf
+	;SetLog("$trainSuccess: " & $trainSuccess)
+	Return $trainSuccess
 EndFunc   ;==>TrainClick
 
 			; Temp fix for DE troop training

@@ -20,7 +20,7 @@ Func CheckVersion()
 			SetLog("WE CANNOT OBTAIN PRODUCT VERSION AT THIS TIME", $COLOR_ORANGE)
 		ElseIf VersionNumFromVersionTXT($sBotVersion) < VersionNumFromVersionTXT($lastversion) Then
 			SetLog("WARNING, YOUR BOT VERSION (" & $sBotVersion & ") IS OUT OF DATE.", $COLOR_RED)
-			SetLog("PLEASE DOWNLOAD THE LATEST(" & $lastversion & ") FROM https://GameBot.org               ", $COLOR_RED)
+			SetLog("PLEASE DOWNLOAD THE LATEST(" & $lastversion & ") FROM https://MyBot.run               ", $COLOR_RED)
 			SetLog(" ")
 			_PrintLogVersion($oldversmessage)
 		ElseIf VersionNumFromVersionTXT($sBotVersion) > VersionNumFromVersionTXT($lastversion) Then
@@ -38,7 +38,7 @@ EndFunc   ;==>CheckVersion
 
 ;~ Func CheckVersionTXT()
 ;~ 	;download page from site contains last bot version
-;~ 	$hLastVersion = InetGet("https://gamebot.org/lastversion.txt", @ScriptDir & "\LastVersion.txt")
+;~ 	$hLastVersion = InetGet("https://mybot.run/lastversion.txt", @ScriptDir & "\LastVersion.txt")
 ;~ 	InetClose($hLastVersion)
 
 ;~ 	;search version into downloaded page

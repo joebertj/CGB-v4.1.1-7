@@ -6,11 +6,11 @@
 ; Return values .: None
 ; Author ........: GKevinOD (2014)
 ; Modified ......: DkEd, Hervidero (2015)
-; Remarks .......: This file is part of ClashGameBot. Copyright 2015
-;                  ClashGameBot is distributed under the terms of the GNU GPL
+; Remarks .......: This file is part of MyBot. Copyright 2015
+;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........:
-; Link ..........: www.gamebot.org
+; Link ..........: www.mybot.run
 ; Example .......: No
 ; ===============================================================================================================================
 
@@ -62,7 +62,7 @@ $importMenuItem = GUICtrlCreateMenuItem("Import from Clipboard", $settingsMenu)
 $tabAboutUs = GUICtrlCreateTabItem("About Us")
 Local $x = 30, $y = 150
 	$grpCredits = GUICtrlCreateGroup("Credits", $x - 20, $y - 20, 450, 375)
-		$txtCredits = "Clash Game Bot is brought to you by a worldwide team of open source"  & @CRLF & _
+		$txtCredits = "My Bot is brought to you by a worldwide team of open source"  & @CRLF & _
 						"programmers and a vibrant community of forum members!"
 		$lblCredits1 = GUICtrlCreateLabel($txtCredits, $x - 5, $y, 400, 50)
 			GUICtrlSetFont(-1, 9, $FW_BOLD)
@@ -71,7 +71,7 @@ Local $x = 30, $y = 150
 		$txtCredits = "Please visit our web forums:"
 		$lblCredits2 = GUICtrlCreateLabel($txtCredits, $x - 5, $y, -1, -1)
 		$y += 20
-		$labelGameBotURL = GUICtrlCreateLabel("https://GameBot.org", $x - 5, $y, 150, 20)
+		$labelGameBotURL = GUICtrlCreateLabel("https://MyBot.run", $x - 5, $y, 150, 20)
 			GUICtrlSetFont(-1, 8.5, $FW_BOLD)
 			GUICtrlSetColor(-1, $COLOR_BLUE)
 		$y += 25
@@ -83,11 +83,11 @@ Local $x = 30, $y = 150
 						"" & @CRLF & _
 						"And to all forum members contributing to make this great software!" & @CRLF & _
 						"" & @CRLF & _
-						"The latest release of the 'Clash Game Bot' can be found at:"
+						"The latest release of the 'My Bot' can be found at:"
 		$lbltxtCredits = GUICtrlCreateEdit($txtCredits, $x - 5, $y, 400, 80, BITOR($WS_VISIBLE, $ES_AUTOVSCROLL, $ES_READONLY, $SS_LEFT),0)
 			GUICtrlSetBkColor(-1, $COLOR_WHITE)
 		$y += 85
-		$labelForumURL = GUICtrlCreateLabel("https://GameBot.org/latest", $x - 5, $y, 450, 20)
+		$labelForumURL = GUICtrlCreateLabel("https://MyBot.run/latest", $x - 5, $y, 450, 20)
 			GUICtrlSetFont(-1, 8.5, $FW_BOLD)
 			GUICtrlSetColor(-1, $COLOR_BLUE)
 		$y += 100
@@ -95,7 +95,7 @@ Local $x = 30, $y = 150
 						"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even " & @CRLF & _
 						"the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General " & @CRLF & _
 						"Public License for more details. The license can be found in the main code folder location."  & @CRLF & _
-						"Copyright (C) 2015 GameBot.org"
+						"Copyright (C) 2015 MyBot.run"
 		$lbltxtWarn = GUICtrlCreateEdit($txtWarn, $x - 5, $y, 410, 56, BITOR($WS_VISIBLE, $ES_AUTOVSCROLL, $ES_READONLY, $SS_LEFT, $ES_CENTER),0)
 			GUICtrlSetColor(-1, 0x000053)
 			GUICtrlSetBkColor(-1, $COLOR_WHITE)

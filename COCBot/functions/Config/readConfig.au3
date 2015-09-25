@@ -44,7 +44,7 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		$listResourceLocation = IniRead($building, "other", "listResource", "")
 
-		For $iz = 0 to 5 ; SReads Upgrade building data
+		For $iz = 0 to 11 ; SReads Upgrade building data
 			$aUpgrades[$iz][0] = IniRead($building, "upgrade", "xupgrade"&$iz, "-1")
 			$aUpgrades[$iz][1] = IniRead($building, "upgrade", "yupgrade"&$iz, "-1")
 			$aUpgrades[$iz][2] = IniRead($building, "upgrade", "upgradevalue"&$iz, "-1")
@@ -224,6 +224,7 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		$OptTrophyMode = IniRead($config, "advanced", "TrophyMode", "0")
 		$OptIgnoreTraps = IniRead($config, "advanced", "IgnoreTraps", "0")
+		$OptIgnoreAirTraps = IniRead($config, "advanced", "IgnoreAirTraps", "0")
 		$OptParanoid = IniRead($config, "advanced", "Paranoid", "0")
 		$OptGreedy = IniRead($config, "advanced", "Greedy", "0")
 		$THaddtiles = IniRead($config, "advanced", "THaddTiles", "0")
@@ -433,6 +434,8 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		$isldTrainITDelay = IniRead($config, "troop", "TrainITDelay", "20")
 		;barracks boost not saved (no use)
+
+		$iSpeed = IniRead($config, "troop", "Speed", "0")
 
 		;Misc Settings--------------------------------------------------------------------------
 

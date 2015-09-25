@@ -231,6 +231,7 @@ EndFunc   ;==>runBot
 
 Func Idle() ;Sequence that runs until Full Army
 	Local $TimeIdle = 0 ;In Seconds
+	Local $numInTrain, $trainTimerAdjust=0 ;In minutes
 	If $debugSetlog = 1 Then SetLog("Func Idle ", $COLOR_PURPLE)
 	While $fullArmy = False
 		If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
@@ -356,9 +357,58 @@ Func Idle() ;Sequence that runs until Full Army
 		EndIf
 		SnipeWhileTrain()
 		$TimeIdle += Round(TimerDiff($hTimer) / 1000, 2) ;In Seconds
+		; use getMinInTrain() if Idle is too long without troops in training
+		If $iSpeed = 0 Then
+			$numInTrain = getMaxInTrain()
+		ElseIf $iSpeed = 1 Then
+			$numInTrain = getMinInTrain()
+		EndIf
+		;SetLog("$numInTrain: " & $numInTrain & " $CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
+		If $CurCamp = $CurCampOld Then ; if no new troop is produced
+			;SetLog("-$trainTimerAdjust: " & -$trainTimerAdjust)
+			If Floor(Mod(Floor($TimeIdle / 60), 60))-$trainTimerAdjust > $numInTrain Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
+				;reset training counter
+				$eBarbTrain=0
+				$eArchTrain=0
+				$eGiantTrain=0
+				$eGoblTrain=0
+				$eWallTrain=0
+				$eBallTrain=0
+				$eWizaTrain=0
+				$eHealTrain=0
+				$eDragTrain=0
+				$ePekkTrain=0
+				$eMiniTrain=0
+				$eHogsTrain=0
+				$eValkTrain=0
+				$eGoleTrain=0
+				$eWitcTrain=0
+				$eLavaTrain=0
+			EndIf
+		Else
+			$trainTimerAdjust += $numInTrain ;units are being produced, increment time to adjust idle time
+		EndIf
 		SetLog("Time Idle: " & StringFormat("%02i", Floor(Floor($TimeIdle / 60) / 60)) & ":" & StringFormat("%02i", Floor(Mod(Floor($TimeIdle / 60), 60))) & ":" & StringFormat("%02i", Floor(Mod($TimeIdle, 60))))
 		If $OutOfGold = 1 Then Return
 	WEnd
+	; reset training counter before attacking
+	$eBarbTrain=0
+	$eArchTrain=0
+	$eGiantTrain=0
+	$eGoblTrain=0
+	$eWallTrain=0
+	$eBallTrain=0
+	$eWizaTrain=0
+	$eHealTrain=0
+	$eDragTrain=0
+	$ePekkTrain=0
+	$eMiniTrain=0
+	$eHogsTrain=0
+	$eValkTrain=0
+	$eGoleTrain=0
+	$eWitcTrain=0
+	$eLavaTrain=0
+	If $iSpeed = 0 Then $FirstStart=True
 EndFunc   ;==>Idle
 
 Func AttackMain() ;Main control for attack functions

@@ -6,8 +6,8 @@
 ; Return values .: None
 ; Author ........: Code Monkey #59
 ; Modified ......: KnowJack(july 2015)
-; Remarks .......: This file is part of ClashGameBot. Copyright 2015
-;                  ClashGameBot is distributed under the terms of the GNU GPL
+; Remarks .......: This file is part of MyBot. Copyright 2015
+;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........:
 ; Example .......: No
@@ -18,10 +18,10 @@ Func getBSPos()
 		OpenBS(True) ; Try to start BS if it is not running
 		If @error = 1 Then
 			_ExtMsgBoxSet(1 + 64, $SS_CENTER, 0x004080, 0xFFFF00, 12, "Comic Sans MS", 600)
-			$stext = @CRLF & "Clash Game Bot has experienced a serious error" & @CRLF & @CRLF & _
+			$stext = @CRLF & "My Bot has experienced a serious error" & @CRLF & @CRLF & _
 					"Unable to find or start up BlueSatcks" & @CRLF & @CRLF & "Reboot PC and try again," & _
-					"and search www.gamebot.org forums for more help" & @CRLF
-			$MsgBox = _ExtMsgBox(0, "Close ClashGameBot!", "Okay - Must Exit Program", $stext, 15, $frmBot)
+					"and search www.mybot.run forums for more help" & @CRLF
+			$MsgBox = _ExtMsgBox(0, "Close MyBot!", "Okay - Must Exit Program", $stext, 15, $frmBot)
 			If $MsgBox = 1 Then
 				Exit
 			EndIf

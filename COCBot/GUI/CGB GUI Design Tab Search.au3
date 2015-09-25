@@ -515,3 +515,4 @@ $tabSearch = GUICtrlCreateTabItem("Search")
 				Next
 			GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUICtrlCreateTabItem("")
+hidenormal()

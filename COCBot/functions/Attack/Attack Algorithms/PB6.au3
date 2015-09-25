@@ -16,22 +16,22 @@
 
 Func AttackTHPB6()
 	Local $i, $j
-	Local $eGiantCount = 0
-	Local $eBallCount = 0
-	Local $eHogsCount = 0
-	Local $eBarbCount = 0
-	Local $eGoblCount = 0
-	Local $eWallCount = 0
-	Local $eArchCount = 0
-	Local $eWizaCount = 0
-	Local $eMiniCount = 0
-	Local $eWitcCount
-	Local $eHealCount
-	Local $eGoleCount
-	Local $eLavaCount
-	Local $eDragCount
-	Local $ePekkCount
-	Local $eValkCount
+	;Local $eGiantCount = 0
+	;Local $eBallCount = 0
+	;Local $eHogsCount = 0
+	;Local $eBarbCount = 0
+	;Local $eGoblCount = 0
+	;Local $eWallCount = 0
+	;Local $eArchCount = 0
+	;Local $eWizaCount = 0
+	;Local $eMiniCount = 0
+	;Local $eWitcCount
+	;Local $eHealCount
+	;Local $eGoleCount
+	;Local $eLavaCount
+	;Local $eDragCount
+	;Local $ePekkCount
+	;Local $eValkCount
 	Local $eKingCount
 	Local $eQueenCount
 	Local $eCastleCount
@@ -201,6 +201,11 @@ Func AttackTHPB6()
 	Setlog("ALL IN!!!") ;Desperate times need desperate measures
 	Setlog("Calculating drop sequence...")
 	;Setlog("Drop coordinates: x" & $x & " y " & $y)
+	$eESpellCount = GetTroopCount($eESpell)
+	$eESpellSlot = -1
+	If $eESpellCount > 0 Then
+		$eESpellSlot = GetTroopSlot($eESpell)
+	EndIf
 	$eJSpellCount = GetTroopCount($eJSpell)
 	$eJSpellSlot = -1
 	If $eJSpellCount > 0 Then
@@ -231,11 +236,6 @@ Func AttackTHPB6()
 	If $eLSpellCount > 0 Then
 		$eLSpellSlot = GetTroopSlot($eLSpell)
 	EndIf
-	$eESpellCount = GetTroopCount($eESpell)
-	$eESpellSlot = -1
-	If $eESpellCount > 0 Then
-		$eESpellSlot = GetTroopSlot($eESpell)
-	EndIf
 	$eGoleCount = GetTroopCount($eGole)
 	$eLavaCount = GetTroopCount($eLava)
 	$eDragCount = GetTroopCount($eDrag)
@@ -263,6 +263,13 @@ Func AttackTHPB6()
 	$eWitcCount = GetTroopCount($eWitc)
 	$eHealCount = GetTroopCount($eHeal)
 	Setlog("Done. Dropping now.")
+
+	If $eESpellCount > 0 Then
+		If $OptParanoid = 0 Then $eESpellCount = 1
+		For $i = 1 To $eESpellCount
+			SpellTH($THx, $THy, $eESpellSlot)
+		Next
+	EndIf
 
 	If $eJSpellCount > 0 Then
 		SpellTH($DropCoord[2][0], $DropCoord[2][1], $eJSpellSlot)
@@ -401,15 +408,6 @@ Func AttackTHPB6()
 		If $OptParanoid = 0 Then $eLSpellCount = 1
 		For $i = 1 To $eLSpellCount
 			SpellTH($THx, $THy, $eLSpellSlot)
-		Next
-	EndIf
-
-	CheckHeroesHealth($eKingSlot, $eQueenSlot)
-
-	If $eESpellCount > 0 Then
-		If $OptParanoid = 0 Then $eESpellCount = 1
-		For $i = 1 To $eESpellCount
-			SpellTH($THx, $THy, $eESpellSlot)
 		Next
 	EndIf
 
@@ -708,6 +706,20 @@ Func GetDropTH($xx, $yy, $type, $spots = 1, $spotidx = 1)
 			$x1 = (($yy - $intercept) / $slope)
 			$y1 = ($slope * $x1 + $intercept)
 			If $yy > 520 Then ; bottom TH
+				If Mod($spotidx, 2) = 0 Then ;Switch to Case 3
+					$intercept = 925
+					$x1 = (($yy - $intercept) / -$slope)
+					$y1 = (-$slope * $x1 + $intercept)
+					If $yy > 560 Then
+						$x1 = ((560 - $intercept) / -$slope)
+						$y1 = (-$slope * $x1 + $intercept)
+					EndIf
+				Else
+					If $yy > 560 Then
+						$x1 = ((560 - $intercept) / $slope)
+						$y1 = ($slope * $x1 + $intercept)
+					EndIf
+				EndIf
 				$DropTH[0] = Round($x1)
 				$DropTH[1] = Round($y1)
 			Else
@@ -735,6 +747,20 @@ Func GetDropTH($xx, $yy, $type, $spots = 1, $spotidx = 1)
 			$x1 = (($yy - $intercept) / -$slope)
 			$y1 = (-$slope * $x1 + $intercept)
 			If $yy > 520 Then ; bottom TH
+				If Mod($spotidx, 2) = 0 Then ;Switch to Case 1
+					$intercept = 280
+					$x1 = (($yy - $intercept) / $slope)
+					$y1 = ($slope * $x1 + $intercept)
+					If $yy > 560 Then
+						$x1 = ((560 - $intercept) / $slope)
+						$y1 = ($slope * $x1 + $intercept)
+					EndIf
+				Else
+					If $yy > 560 Then
+						$x1 = ((560 - $intercept) / -$slope)
+						$y1 = (-$slope * $x1 + $intercept)
+					EndIf
+				EndIf
 				$DropTH[0] = Round($x1)
 				$DropTH[1] = Round($y1)
 			Else
@@ -866,6 +892,7 @@ Func Greedy($spotsNum, $eKingSlot = -1, $eQueenSlot = -1)
 			$i = Mod($i + 1, 4)
 			$j += 1
 		WEnd
+		If _Sleep(10*1000) Then Return
 	Else
 		SetLog("Greedy mode: Nothing to loot")
 	EndIf

@@ -22,7 +22,7 @@
 	4) The default algorithms are not recommended, as they use both ground and air troops (B.A.M.).
 	*******************************************************************
 #ce
-Global $chkMortar = 1, $chkWiz = 1, $chkInferno = 1, $chkTesla = 1, $chkAir = 1, $grdTroops = 0, $airTroops = 0
+Global $chkWall = 1, $chkMortar = 1, $chkWiz = 1, $chkInferno = 1, $chkTesla = 1, $chkAir = 1, $grdTroops = 0, $airTroops = 0
 
 Global $trapTH[5][20]
 
@@ -81,15 +81,19 @@ Func checkDefense()
 
 	$allTroops = False
 	$skipBase = False
-	$numDefFound = 0;
+	Local $numDefFound = 0;
 
 	$airTroops = $OptIgnoreTraps
 	$grdTroops = $OptIgnoreAirTraps
-	Local $d[4]
-	Local $Dpixel = 11.6
+	Local $d[4], $e[4], $f[4]
+
+	Local $numWallFound = 0
+	Local $icmbWallsLocal = 0
+	Local $WallLoopCounter = 0
 
 	If $airTroops = 1 Then
 		$chkMortar = 0
+		$chkWall = 0
 	EndIf
 	If $grdTroops = 1 Then
 		$chkAir = 0
@@ -126,50 +130,58 @@ Func checkDefense()
 						$Defx = Int($expRet[1])
 						$Defy = Int($expRet[1 + 1])
 						$numDefFound += 1
-						Setlog($DefText[$t] & " Found")
+
+						; check if trap is nearer to deployment line than TH
+						Switch $THside
+							Case 0
+								$e = GetDistance(0, 0, $Defx, $Defy)
+								$f = GetDistance(0, 0, 125, 90)
+							Case 1
+								$e = GetDistance(0, 180, $Defx, $Defy)
+								$f = GetDistance(0, 180, 125, 90)
+							Case 2
+								$e = GetDistance(250, 0, $Defx, $Defy)
+								$f = GetDistance(250, 0, 125, 90)
+							Case 3
+								$e = GetDistance(250, 180, $Defx, $Defy)
+								$f = GetDistance(250, 180, 125, 90)
+						EndSwitch
 						;Setlog($trapTHtxt[$t][$i] & " Found")
 						$d = GetDistance(125, 90, $Defx, $Defy) ; 250x180 image TH is center
-						SetLog("Defense coord: " & $Defx & " ," & $Defy)
-						SetLog("Distance in pixels: " & $d[2] & " Distance in tiles: " & $d[3])
+						SetLog($DefText[$t] & " coordinates: " & $Defx & " ," & $Defy)
+						SetLog("Distance from TH: " & $d[2] & " pixels or " & $d[3] & " tiles")
+						SetLog($DefText[$t] & " distance from deployment side is " & $e[3])
+						SetLog("TH distance from deployment side is " & $f[3])
+						;minimum 1 tile distance to discount a false positive and minus 1 to maximum range for trap effectivity
 						If $chkInferno = 1 And $DefText[$t] = "Inferno Tower" Then
-							SetLog("Inferno Tower distance is " & $d[3]);range 9
-							If $d[3] > 2 And $d[3] < 9 - 1 Then
+							SetLog("Inferno Tower distance from TH is " & $d[3]);range 9
+							If $d[3] > 1 And $d[3] < 9 - 1 Or $e[3] < $f[3] Then
 								$skipBase = True
 								Return "Inferno Tower found near TH, skipping..."
-							Else
-								$skipBase = False
 							EndIf
 						ElseIf $chkTesla = 1 And $DefText[$t] = "Hidden Tesla" Then
 							SetLog("Hidden Tesla distance is " & $d[3]);range 6-7
-							If $d[3] > 2 And $d[3] < 7 - 1 Then
+							If $d[3] > 1 And $d[3] < 7 - 1 Or $e[3] < $f[3] Then
 								$skipBase = True
 								Return "Hidden Tesla found near TH, skipping..."
-							Else
-								$skipBase = False
 							EndIf
 						ElseIf $chkMortar = 1 And $DefText[$t] = "Mortar" Then
-							SetLog("Mortar distance is " & $d[3]);range is 4-11
-							If $d[3] > 2 And $d[3] < 11 - 1 Then
+							SetLog("Mortar distance is " & $d[3]);range is 4-11, minimum range 4 is not really a factor
+							If $d[3] > 1 And $d[3] < 11 - 1 Or $e[3] < $f[3] Then
 								$skipBase = True
 								Return "Mortar found near TH, skipping..."
-							Else
-								$skipBase = False
 							EndIf
 						ElseIf $chkWiz = 1 And $DefText[$t] = "Wizard Tower" Then
 							SetLog("Wizard Tower distance is " & $d[3]);range is 7
-							If $d[3] > 2 And $d[3] < 7 - 1 Then
+							If $d[3] > 1 And $d[3] < 7 - 1 Or $e[3] < $f[3] Then
 								$skipBase = True
 								Return "Wizard Tower found near TH, skipping..."
-							Else
-								$skipBase = False
 							EndIf
 						ElseIf $chkAir = 1 And $DefText[$t] = "Air Defense" Then
 							SetLog("Air Defense distance is " & $d[3]);range is 10
-							If $d[3] > 2 And $d[3] < 10 - 1 Then
+							If $d[3] > 1 And $d[3] < 10 - 1 Or $e[3] < $f[3] Then
 								$skipBase = True
 								Return "Air Defense found near TH, skipping..."
-							Else
-								$skipBase = False
 							EndIf
 						Else
 							If $AttackTHType <> 6 And ($Defx > 5 And $Defx < 245) And ($Defy > 10 And $Defy < 170) Then
@@ -183,11 +195,76 @@ Func checkDefense()
 			EndIf
 		Next
 	Next
-	If $numDefFound > 0 Then
+	; check wall trap
+	For $icmbWallsLocal = 0 To 7
+		For $ImageIndex = 0 To 2
+			If Not FileExists($Wall[$icmbWallsLocal][$ImageIndex]) Then
+				SetLog("File Not Found", $COLOR_RED)
+				Return False
+			EndIf
+			$res = ""
+
+			If _Sleep(500) Then Return
+			_CaptureTH()
+			$sendHBitmap = _GDIPlus_BitmapCreateHBITMAPFromBitmap($hBitmap)
+			$res = DllCall($LibDir & "\ImageSearch.dll", "str", "searchTile", "handle", $sendHBitmap, "str", $Wall[$icmbWallsLocal][$ImageIndex], "float", 0.910)
+			_GDIPlus_ImageSaveToFile($hBitmap, @ScriptDir & "\checkDefense.png")
+			_WinAPI_DeleteObject($sendHBitmap)
+
+			If IsArray($res) Then
+				;SetLog("DLL Call succeeded " & $res[0], $COLOR_RED)
+				If $res[0] = "0" Then
+					; failed to find any wall of current Level
+					$res = ""
+				ElseIf $res[0] = "-1" Then
+					SetLog("DLL Error", $COLOR_RED)
+					Return False
+				ElseIf $res[0] = "-2" Then
+					SetLog("Invalid Resolution", $COLOR_RED)
+					Return False
+				Else
+
+					$expRet = StringSplit($res[0], "|", 2)
+					For $j = 1 To UBound($expRet) - 1 Step 2
+						$WallX = Int($expRet[$j])
+						$WallY = Int($expRet[$j + 1])
+						Switch $THside
+							Case 0
+								$e = GetDistance(0, 0, $WallX, $WallY)
+								$f = GetDistance(0, 0, 125, 90)
+							Case 1
+								$e = GetDistance(0, 180, $WallX, $WallY)
+								$f = GetDistance(0, 180, 125, 90)
+							Case 2
+								$e = GetDistance(250, 0, $WallX, $WallY)
+								$f = GetDistance(250, 0, 125, 90)
+							Case 3
+								$e = GetDistance(250, 180, $WallX, $WallY)
+								$f = GetDistance(250, 180, 125, 90)
+						EndSwitch
+						If $e[3] < $f[3] Then
+							$numWallFound += 1
+						EndIf
+						$WallLoopCounter += 1
+						If($WallLoopCounter > 100) Then ExitLoop
+					Next
+				EndIf
+				If _Sleep(250) Then Return
+			EndIf
+		Next
+	Next
+	SetLog($numWallFound & " walls found")
+	If $chkWall = 1 And $numWallFound > 10 Then
+		$skipBase = True
+		Return "Wall trap found"
+	ElseIf $numWallFound > 0 Then
+		Return "Walls found but not a problem."
+	ElseIf $numDefFound > 0 Then
 		Return "Defense found, but not near TH."
 	Else
 		Return "No major traps found near TH."
 	EndIf
 EndFunc   ;==>checkDefense
+
 
 
