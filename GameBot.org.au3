@@ -127,9 +127,6 @@ Func runBot() ;Bot that runs everything in order
 			If _Sleep($iDelayRunBot5) Then Return
 			checkMainScreen(False)
 			If $Restart = True Then ContinueLoop
-			Collect()
-			If _Sleep($iDelayRunBot1) Then Return
-			If $Restart = True Then ContinueLoop
 			CheckTombs()
 			If _Sleep($iDelayRunBot3) Then Return
 			If $Restart = True Then ContinueLoop
@@ -150,6 +147,8 @@ Func runBot() ;Bot that runs everything in order
 			Train()
 			If _Sleep($iDelayRunBot1) Then Return
 			checkMainScreen(False)
+			If $Restart = True Then ContinueLoop
+			Collect()
 			If $Restart = True Then ContinueLoop
 			BoostBarracks()
 			If $Restart = True Then ContinueLoop
