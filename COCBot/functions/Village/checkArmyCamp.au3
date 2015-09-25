@@ -19,23 +19,6 @@ Func checkArmyCamp()
 	Local $sInputbox
 	Local $diff
 
-	;$eBarbCount=0
-	;$eArchCount=0
-	;$eGiantCount=0
-	;$eGoblCount=0
-	;$eWallCount=0
-	;$eBallCount=0
-	;$eWizaCount=0
-	;$eHealCount=0
-	;$eDragCount=0
-	;$ePekkCount=0
-	;$eMiniCount=0
-	;$eHogsCount=0
-	;$eValkCount=0
-	;$eGoleCount=0
-	;$eWitcCount=0
-	;$eLavaCount=0
-
 	SetLog("Checking Army Camp...", $COLOR_BLUE)
 	If _Sleep($iDelaycheckArmyCamp1) Then Return
 
@@ -114,21 +97,27 @@ Func checkArmyCamp()
 			If $Troops[1] = "Barbarian" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Barbarians"
+				;SetLog("$eBarbCountOld: " & $eBarbCountOld & " $eBarbCount: " & $eBarbCount & " $eBarbTrain: " & $eBarbTrain)
 				$eBarbCountOld = $eBarbCount
 				$eBarbCount = $TroopQ
+				;SetLog("$eBarbCountOld: " & $eBarbCountOld & " $eBarbCount: " & $eBarbCount & " $eBarbTrain: " & $eBarbTrain)
 				$diff = $eBarbCount - $eBarbCountOld
+				;SetLog("$diff: " & $diff & "$eBarbTrain: " & $eBarbTrain)
 				If $eBarbTrain > $diff And $diff > 0 Then $eBarbTrain -= $diff
+				;SetLog("$diff: " & $diff & "$eBarbTrain: " & $eBarbTrain)
 				If $FirstStart Then $CurBarb -= $TroopQ
-
 			ElseIf $Troops[1] = "Archer" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Archers"
+				;SetLog("$eArchCountOld: " & $eArchCountOld & " $eArchCount: " & $eArchCount & " $eArchTrain: " & $eArchTrain)
 				$eArchCountOld = $eArchCount
 				$eArchCount = $TroopQ
+				;SetLog("$eArchCountOld: " & $eArchCountOld & " $eArchCount: " & $eArchCount & " $eArchTrain: " & $eArchTrain)
 				$diff = $eArchCount - $eArchCountOld
+				;SetLog("$diff: " & $diff & "$eArchTrain: " & $eArchTrain)
 				If $eArchTrain > $diff And $diff > 0 Then $eArchTrain -= $diff
+				;SetLog("$diff: " & $diff & "$eArchTrain: " & $eArchTrain)
 				If $FirstStart Then $CurArch -= $TroopQ
-
 			ElseIf $Troops[1] = "Giant" Then
 				$TroopQ = $Troops[3]
 				$TroopName = "Giants"
