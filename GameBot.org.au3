@@ -127,9 +127,6 @@ Func runBot() ;Bot that runs everything in order
 			If _Sleep($iDelayRunBot5) Then Return
 			checkMainScreen(False)
 			If $Restart = True Then ContinueLoop
-			Collect()
-			If _Sleep($iDelayRunBot1) Then Return
-			If $Restart = True Then ContinueLoop
 			CheckTombs()
 			If _Sleep($iDelayRunBot3) Then Return
 			If $Restart = True Then ContinueLoop
@@ -150,6 +147,8 @@ Func runBot() ;Bot that runs everything in order
 			Train()
 			If _Sleep($iDelayRunBot1) Then Return
 			checkMainScreen(False)
+			If $Restart = True Then ContinueLoop
+			Collect()
 			If $Restart = True Then ContinueLoop
 			BoostBarracks()
 			If $Restart = True Then ContinueLoop
@@ -231,7 +230,7 @@ EndFunc   ;==>runBot
 
 Func Idle() ;Sequence that runs until Full Army
 	Local $TimeIdle = 0 ;In Seconds
-	Local $numInTrain, $trainTimerAdjust=0 ;In minutes
+	Local $trainTimerAdjust=0 ;In minutes
 	If $debugSetlog = 1 Then SetLog("Func Idle ", $COLOR_PURPLE)
 	While $fullArmy = False
 		If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
@@ -359,14 +358,13 @@ Func Idle() ;Sequence that runs until Full Army
 		$TimeIdle += Round(TimerDiff($hTimer) / 1000, 2) ;In Seconds
 		; use getMinInTrain() if Idle is too long without troops in training
 		If $iSpeed = 0 Then
-			$numInTrain = getMaxInTrain()
+			$trainTimerAdjust = getMaxInTrain()
 		ElseIf $iSpeed = 1 Then
-			$numInTrain = getMinInTrain()
+			$trainTimerAdjust = getMinInTrain()
 		EndIf
-		;SetLog("$numInTrain: " & $numInTrain & " $CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
+		SetLog("$trainTimerAdjust: " & $trainTimerAdjust & " $CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
 		If $CurCamp = $CurCampOld Then ; if no new troop is produced
-			;SetLog("-$trainTimerAdjust: " & -$trainTimerAdjust)
-			If Floor(Mod(Floor($TimeIdle / 60), 60))-$trainTimerAdjust > $numInTrain Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
+			If Floor(Mod(Floor($TimeIdle / 60), 60))-$trainTimerAdjust > 0 Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
 				;reset training counter
 				$eBarbTrain=0
 				$eArchTrain=0
@@ -386,29 +384,31 @@ Func Idle() ;Sequence that runs until Full Army
 				$eLavaTrain=0
 			EndIf
 		Else
-			$trainTimerAdjust += $numInTrain ;units are being produced, increment time to adjust idle time
+			$trainTimerAdjust += $trainTimerAdjust ;units are being produced, increment time to adjust idle time
 		EndIf
 		SetLog("Time Idle: " & StringFormat("%02i", Floor(Floor($TimeIdle / 60) / 60)) & ":" & StringFormat("%02i", Floor(Mod(Floor($TimeIdle / 60), 60))) & ":" & StringFormat("%02i", Floor(Mod($TimeIdle, 60))))
 		If $OutOfGold = 1 Then Return
 	WEnd
-	; reset training counter before attacking
-	$eBarbTrain=0
-	$eArchTrain=0
-	$eGiantTrain=0
-	$eGoblTrain=0
-	$eWallTrain=0
-	$eBallTrain=0
-	$eWizaTrain=0
-	$eHealTrain=0
-	$eDragTrain=0
-	$ePekkTrain=0
-	$eMiniTrain=0
-	$eHogsTrain=0
-	$eValkTrain=0
-	$eGoleTrain=0
-	$eWitcTrain=0
-	$eLavaTrain=0
-	If $iSpeed = 0 Then $FirstStart=True
+	If $iSpeed = 0 Then
+		$FirstStart=True
+		; reset training counter before attacking
+		$eBarbTrain=0
+		$eArchTrain=0
+		$eGiantTrain=0
+		$eGoblTrain=0
+		$eWallTrain=0
+		$eBallTrain=0
+		$eWizaTrain=0
+		$eHealTrain=0
+		$eDragTrain=0
+		$ePekkTrain=0
+		$eMiniTrain=0
+		$eHogsTrain=0
+		$eValkTrain=0
+		$eGoleTrain=0
+		$eWitcTrain=0
+		$eLavaTrain=0
+	EndIf
 EndFunc   ;==>Idle
 
 Func AttackMain() ;Main control for attack functions

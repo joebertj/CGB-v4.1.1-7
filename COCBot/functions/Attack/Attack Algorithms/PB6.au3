@@ -374,10 +374,6 @@ Func AttackTHPB6()
 		TroopTH($THx, $THy, $eMini, $spotsNum, $l, 250 + $l * 250)
 	EndIf
 
-	If $eCastleCount = 1 Then
-		CCTH($DropCoord[0][0], $DropCoord[0][1], $eCastleSlot)
-	EndIf
-
 	If $eKingCount = 1 Then
 		KingTH($DropCoord[0][0], $DropCoord[0][1], $eKingSlot)
 	EndIf
@@ -386,6 +382,12 @@ Func AttackTHPB6()
 
 	If $eQueenCount = 1 Then
 		QueenTH($DropCoord[0][0], $DropCoord[0][1], $eQueenSlot)
+	EndIf
+
+	CheckHeroesHealth($eKingSlot, $eQueenSlot)
+
+	If $eCastleCount = 1 Then
+		CCTH($DropCoord[0][0], $DropCoord[0][1], $eCastleSlot)
 	EndIf
 
 	CheckHeroesHealth($eKingSlot, $eQueenSlot)
@@ -410,6 +412,8 @@ Func AttackTHPB6()
 			SpellTH($THx, $THy, $eLSpellSlot)
 		Next
 	EndIf
+
+	If CheckForStar(10) = True Then Return
 
 	SetLog("Activating heroes abilities if not yet used before exit")
 	If $eKingCount = 1 Then
