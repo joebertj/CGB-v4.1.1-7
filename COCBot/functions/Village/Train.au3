@@ -11,11 +11,9 @@
 ; Link ..........:
 ; Example .......: No
 ; ===============================================================================================================================
-
 Func Train()
 
 	Local $anotherTroops, $trainCount, $trainKind, $hasTrained, $notTraining = 0
-	Local $eBarbTrainOld=0, $eArchTrainOld=0, $eGiantTrainOld=0, $eGoblTrainOld=0, $eWallTrainOld=0, $eBallTrainOld=0, $eWizaTrainOld=0, $eHealTrainOld=0, $eDragTrainOld=0, $ePekkTrainOld=0, $eMiniTrainOld=0, $eHogsTrainOld=0, $eValkTrainOld=0, $eGoleTrainOld=0, $eWitcTrainOld=0, $eLavaTrainOld=0
 	Local $eBarbTrainRem=0, $eArchTrainRem=0, $eGiantTrainRem=0, $eGoblTrainRem=0, $eWallTrainRem=0, $eBallTrainRem=0, $eWizaTrainRem=0, $eHealTrainRem=0, $eDragTrainRem=0, $ePekkTrainRem=0, $eMiniTrainRem=0, $eHogsTrainRem=0, $eValkTrainRem=0, $eGoleTrainRem=0, $eWitcTrainRem=0, $eLavaTrainRem=0
 	Local $eBarbTrainRemOnce=False, $eArchTrainRemOnce=False, $eGiantTrainRemOnce=False, $eGoblTrainRemOnce=False, $eWallTrainRemOnce=False, $eBallTrainRemOnce=False, $eWizaTrainRemOnce=False, $eHealTrainRemOnce=False, $eDragTrainRemOnce=False, $ePekkTrainRemOnce=False, $eMiniTrainRemOnce=False, $eHogsTrainRemOnce=False, $eValkTrainRemOnce=False, $eGoleTrainRemOnce=False, $eWitcTrainRemOnce=False, $eLavaTrainRemOnce=False
 
@@ -476,36 +474,19 @@ Func Train()
 			$GoleComp *= 2
 			$WitcComp *= 2
 			$LavaComp *= 2
-		;Else
-		;	If $eBarbTrain > $BarbComp Then $eBarbTrain=0
-		;	If $eArchTrain > $ArchComp Then $eArchTrain=0
-		;	If $eGiantTrain > $GiantComp Then $eGiantTrain=0
-		;	If $eGoblTrain > $GoblComp Then $eGoblTrain=0
-		;	If $eWallTrain > $WallComp Then $eWallTrain=0
-		;	If $eBallTrain > $BallComp Then $eBallTrain=0
-		;	If $eWizaTrain > $WizaComp Then $eWizaTrain=0
-		;	If $eHealTrain > $HealComp Then $eHealTrain=0
-		;	If $eDragTrain > $DragComp Then $eDragTrain=0
-		;	If $ePekkTrain > $PekkComp Then $ePekkTrain=0
-		;	If $eMiniTrain > $MiniComp Then $eMiniTrain=0
-		;	If $eHogsTrain > $HogsComp Then $eHogsTrain=0
-		;	If $eValkTrain > $ValkComp Then $eValkTrain=0
-		;	If $eGoleTrain > $GoleComp Then $eGoleTrain=0
-		;	If $eWitcTrain > $WitcComp Then $eWitcTrain=0
-		;	If $eLavaTrain > $LavaComp Then $eLavaTrain=0
 		EndIf
 		;SetLog("$eDragTrain: " & $eDragTrain)
 		;USE BARRACK
-		$eBarbTrainOld=$eBarbTrain
-		$eArchTrainOld=$eArchTrain
-		$eGiantTrainOld=$eGiantTrain
-		$eGoblTrainOld=$eGoblTrain
-		$eWallTrainOld=$eWallTrain
-		$eBallTrainOld=$eBallTrain
-		$eWizaTrainOld=$eWizaTrain
-		$eHealTrainOld=$eHealTrain
-		$eDragTrainOld=$eDragTrain
-		$ePekkTrainOld=$ePekkTrain
+		;$eBarbTrainOld=$eBarbTrain
+		;$eArchTrainOld=$eArchTrain
+		;$eGiantTrainOld=$eGiantTrain
+		;$eGoblTrainOld=$eGoblTrain
+		;$eWallTrainOld=$eWallTrain
+		;$eBallTrainOld=$eBallTrain
+		;$eWizaTrainOld=$eWizaTrain
+		;$eHealTrainOld=$eHealTrain
+		;$eDragTrainOld=$eDragTrain
+		;$ePekkTrainOld=$ePekkTrain
 		While isBarrack()
 			_CaptureRegion()
 			If $iSpeed = 0 And $FirstStart Then
