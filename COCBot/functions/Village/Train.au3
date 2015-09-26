@@ -492,7 +492,7 @@ Func Train()
 			If Not (IsTrainPage()) Then Return ; exit from train if no train page
 			If $numBarracksAvaiables = 0 Then
 				SetLog("Will not ever be able to train since no barracks are available")
-				Return
+				ExitLoop
 			EndIf
 			; train units by training time, longer to train first then by size
 			$trainKind = 0
@@ -776,12 +776,10 @@ Func Train()
 				If CheckFullArmy() = False Then $Restart = True ;If the army camp is full, use it to refill storages
 				Return ; We are out of Elixir stop training.
 			EndIf
-			If _Sleep($iDelayTrain2) Then ExitLoop
 			If Not (IsTrainPage()) Then Return
 			_TrainMoveBtn(-1) ;click prev button
-			If $brrNum >= 4 Then ExitLoop ; make sure no more infiniti loop
-			If _Sleep($iDelayTrain3) Then ExitLoop
-			;endif
+			If _Sleep($iDelayTrain2) Then ExitLoop
+			If $brrNum >= $numBarracksAvaiables Then ExitLoop
 		WEnd
 		SetLog("$notTraining: " & $notTraining)
 		If $notTraining = $numBarracksAvaiables Then
@@ -819,7 +817,10 @@ Func Train()
 		While Not isDarkBarrack()
 			_TrainMoveBtn(-1)
 			If _Sleep($iDelayTrain2) Then Return
+			If $brrNum > 9 Then ExitLoop ; anti infinite loop
+			$brrNum += 1
 		WEnd
+		$brrNum = 0
 		While isDarkBarrack()
 			_CaptureRegion()
 			If $iSpeed =0 And $FirstStart Then
@@ -836,8 +837,8 @@ Func Train()
 			$brrNum += 1
 			If Not (IsTrainPage()) Then Return ; exit from train if no train page
 			If $numDarkBarracksAvaiables = 0 Then
-				SetLog("Will not ever be able to train since no barracks are available")
-				Return
+				SetLog("Will not ever be able to train since no dark barracks are available")
+				ExitLoop
 			EndIf
 			; train units by training time, longer to train first then by size, finally cost
 			If $eGoleCount + $eGoleTrainOld < $GoleComp Then
@@ -1012,12 +1013,10 @@ Func Train()
 				If CheckFullArmy() = False Then $Restart = True ;If the army camp is full, use it to refill storages
 				Return ; We are out of Elixir stop training.
 			EndIf
-			If _Sleep($iDelayTrain2) Then ExitLoop
 			If Not (IsTrainPage()) Then Return
 			_TrainMoveBtn(-1) ;click prev button
-			If $brrNum >= 2 Then ExitLoop ; make sure no more infiniti loop
-			If _Sleep($iDelayTrain3) Then ExitLoop
-			;endif
+			If _Sleep($iDelayTrain2) Then ExitLoop
+			If $brrNum >= $numDarkBarracksAvaiables Then ExitLoop
 		WEnd
 		SetLog("$notTraining: " & $notTraining)
 		If $notTraining = $numDarkBarracksAvaiables Then
@@ -1184,13 +1183,6 @@ Func Train()
 			If Not (IsTrainPage()) Then Return
 			_TrainMoveBtn(-1) ;click prev button
 			If _Sleep($iDelayTrain2) Then ExitLoop
-			$icount = 0
-;~ 			While Not isBarrack()
-;~ 				If _Sleep($iDelayTrain4) Then ExitLoop
-;~ 				$icount = $icount + 1
-;~ 				If $icount = 5 Then ExitLoop
-;~ 			WEnd
-			If $debugSetlog = 1 And $icount = 10 Then SetLog("Train warning 9", $COLOR_PURPLE)
 			If $brrNum >= $numBarracksAvaiables Then ExitLoop ; make sure no more infiniti loop
 		WEnd
 	EndIf
