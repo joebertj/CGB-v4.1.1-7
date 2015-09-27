@@ -1194,7 +1194,7 @@ Func Train()
 			If _Sleep($iDelayTrain2) Then ExitLoop
 			If $brrNum >= $numBarracksAvaiables Then ExitLoop ; make sure no more infiniti loop
 		WEnd
-	EndIf
+
 
 	;dark here
 	If $isDarkBuild Then
@@ -1350,6 +1350,7 @@ Func Train()
 			If $brrDarkNum >= $numDarkBarracksAvaiables Then ExitLoop ; make sure no more infiniti loop
 		WEnd
 		;end dark
+	EndIf
 	EndIf
 	If $debugSetlog = 1 Then SetLog("---=====================END TRAIN =======================================---", $COLOR_PURPLE)
 	TrainSpells()
