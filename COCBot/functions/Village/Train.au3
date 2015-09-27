@@ -785,22 +785,6 @@ Func Train()
 			If $brrNum >= $numBarracksAvaiables Then ExitLoop
 		WEnd
 		SetLog("$notTraining: " & $notTraining & " $trainKind: " & $trainKind)
-		If $notTraining = $numBarracksAvaiables Then
-			If $trainKind = 0 Then ; if no troops can be trained due to restrictions, train some Archers
-				$ArchComp += Floor(($TotalCamp - $CurCamp) / getHouseSpace($eArch))
-			EndIf
-			$eBarbTrain=0
-			$eArchTrain=0
-			$eGiantTrain=0
-			$eGoblTrain=0
-			$eWallTrain=0
-			$eBallTrain=0
-			$eWizaTrain=0
-			$eHealTrain=0
-			$eDragTrain=0
-			$ePekkTrain=0
-		EndIf
-		$notTraining = 0
 		$eBarbTrainOld=$eBarbTrain
 		$eArchTrainOld=$eArchTrain
 		$eGiantTrainOld=$eGiantTrain
@@ -846,8 +830,6 @@ Func Train()
 				SetLog("Will not ever be able to train since no dark barracks are available")
 				ExitLoop
 			EndIf
-			$trainKind = 0
-			$hasTrained = False
 			; train units by training time, longer to train first then by size, finally cost
 			If $eGoleCount + $eGoleTrainOld < $GoleComp Then
 				$trainCount = Floor(($GoleComp - $eGoleCount - $eGoleTrainOld) / $numDarkBarracksAvaiables)
@@ -1027,10 +1009,27 @@ Func Train()
 			If $brrNum >= $numDarkBarracksAvaiables Then ExitLoop
 		WEnd
 		SetLog("$notTraining: " & $notTraining & " $trainKind: " & $trainKind)
-		If $notTraining = $numDarkBarracksAvaiables Then
-			If $trainKind = 0 Then ; if no troops can be trained due to restrictions, train some Minions
-				$MiniComp += Floor(($TotalCamp - $CurCamp) / getHouseSpace($eMini))
-			EndIf
+		If $notTraining = $numBarracksAvaiables  + $numDarkBarracksAvaiables Then
+			;If $trainKind = 0 Then ; if no troops can be trained due to restrictions, train some Archers
+				If $GoblComp > 0 Then
+					$GoblComp += Floor($TotalCamp - $CurCamp)
+				ElseIf $BarbComp > 0 Then
+					$BarbComp += Floor($TotalCamp - $CurCamp)
+				ElseIf $MiniComp > 0 Then
+					$MiniComp += Floor($TotalCamp - $CurCamp)
+				Else
+					$ArchComp += Floor($TotalCamp - $CurCamp)
+				EndIf
+			$eBarbTrain=0
+			$eArchTrain=0
+			$eGiantTrain=0
+			$eGoblTrain=0
+			$eWallTrain=0
+			$eBallTrain=0
+			$eWizaTrain=0
+			$eHealTrain=0
+			$eDragTrain=0
+			$ePekkTrain=0
 			$eMiniTrain=0
 			$eHogsTrain=0
 			$eValkTrain=0
@@ -1038,7 +1037,6 @@ Func Train()
 			$eWitcTrain=0
 			$eLavaTrain=0
 		EndIf
-		$notTraining = 0
 		$eMiniTrainOld=$eMiniTrain
 		$eHogsTrainOld=$eHogsTrain
 		$eValkTrainOld=$eValkTrain
