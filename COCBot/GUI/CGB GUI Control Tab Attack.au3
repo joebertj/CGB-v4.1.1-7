@@ -14,16 +14,30 @@
 ; ===============================================================================================================================
 
 Func chkDBSmartAttackRedArea()
-	If _GUICtrlComboBox_GetCurSel($cmbDBDeploy) >= 4 Then
-		GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_UNCHECKED)
-		GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_DISABLE)
-		$iChkRedArea[$LB] = 0
-		For $i = $lblDBSmartDeploy To $picDBAttackNearDarkElixirDrill
-			GUICtrlSetState($i, $GUI_HIDE)
-		Next
-	Else
-		GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_ENABLE)
-	EndIf
+	Local $i
+
+	Switch _GUICtrlComboBox_GetCurSel($cmbDBDeploy)
+		Case 0 To 3
+			GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_UNCHECKED)
+			GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_DISABLE)
+			$iChkRedArea[$LB] = 0
+			For $i = $lblDBSmartDeploy To $picDBAttackNearDarkElixirDrill
+				GUICtrlSetState($i, $GUI_HIDE)
+			Next
+			GUICtrlSetState($cmbDBSelectTroop, $GUI_ENABLE)
+			GUICtrlSetState($cmbDBUnitDelay, $GUI_ENABLE)
+			GUICtrlSetState($cmbDBWaveDelay, $GUI_ENABLE)
+			GUICtrlSetState($chkDBRandomSpeedAtk, $GUI_ENABLE)
+			GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_ENABLE)
+		Case 4
+			GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_DISABLE)
+		Case 5 To 6
+			GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_DISABLE)
+			GUICtrlSetState($cmbDBSelectTroop, $GUI_DISABLE)
+			GUICtrlSetState($cmbDBUnitDelay, $GUI_DISABLE)
+			GUICtrlSetState($cmbDBWaveDelay, $GUI_DISABLE)
+			GUICtrlSetState($chkDBRandomSpeedAtk, $GUI_DISABLE)
+	EndSwitch
 	If GUICtrlRead($chkDBSmartAttackRedArea) = $GUI_CHECKED Then
 		$iChkRedArea[$DB] = 1
 		For $i = $lblDBSmartDeploy To $picDBAttackNearDarkElixirDrill
@@ -39,16 +53,37 @@ EndFunc   ;==>chkDBSmartAttackRedArea
 
 Func chkABSmartAttackRedArea()
 	chkDESideEB()
-	If _GUICtrlComboBox_GetCurSel($cmbABDeploy) >= 4 Then
-		GUICtrlSetState($chkABSmartAttackRedArea, $GUI_UNCHECKED)
-		GUICtrlSetState($chkABSmartAttackRedArea, $GUI_DISABLE)
-		$iChkRedArea[$LB] = 0
-		For $i = $lblABSmartDeploy To $picABAttackNearDarkElixirDrill
-			GUICtrlSetState($i, $GUI_HIDE)
-		Next
-	Else
-		GUICtrlSetState($chkABSmartAttackRedArea, $GUI_ENABLE)
-	EndIf
+	Switch _GUICtrlComboBox_GetCurSel($cmbABDeploy)
+		Case 0 To 3
+			GUICtrlSetState($chkABSmartAttackRedArea, $GUI_UNCHECKED)
+			GUICtrlSetState($chkABSmartAttackRedArea, $GUI_DISABLE)
+			$iChkRedArea[$LB] = 0
+			For $i = $lblABSmartDeploy To $picABAttackNearDarkElixirDrill
+				GUICtrlSetState($i, $GUI_HIDE)
+			Next
+			GUICtrlSetState($cmbABSelectTroop, $GUI_ENABLE)
+			GUICtrlSetState($cmbABUnitDelay, $GUI_ENABLE)
+			GUICtrlSetState($cmbABWaveDelay, $GUI_ENABLE)
+			GUICtrlSetState($chkABRandomSpeedAtk, $GUI_ENABLE)
+			GUICtrlSetState($chkABSmartAttackRedArea, $GUI_ENABLE)
+			GUICtrlSetState($chkABDEUseSpell, $GUI_DISABLE)
+			GUICtrlSetState($cmbABDEUseSpellType, $GUI_DISABLE)
+		Case 4
+			GUICtrlSetState($chkABSmartAttackRedArea, $GUI_DISABLE)
+			GUICtrlSetState($chkABDEUseSpell, $GUI_DISABLE)
+			GUICtrlSetState($cmbABDEUseSpellType, $GUI_DISABLE)
+		Case 5 To 6
+			GUICtrlSetState($chkABSmartAttackRedArea, $GUI_DISABLE)
+			GUICtrlSetState($cmbABSelectTroop, $GUI_DISABLE)
+			GUICtrlSetState($cmbABUnitDelay, $GUI_DISABLE)
+			GUICtrlSetState($cmbABWaveDelay, $GUI_DISABLE)
+			GUICtrlSetState($chkABRandomSpeedAtk, $GUI_DISABLE)
+			GUICtrlSetState($chkABDEUseSpell, $GUI_DISABLE)
+			GUICtrlSetState($cmbABDEUseSpellType, $GUI_DISABLE)
+		Case 7
+			GUICtrlSetState($chkABDEUseSpell, $GUI_ENABLE)
+			GUICtrlSetState($cmbABDEUseSpellType, $GUI_ENABLE)
+	EndSwitch
 	If GUICtrlRead($chkABSmartAttackRedArea) = $GUI_CHECKED Then
 		$iChkRedArea[$LB] = 1
 		For $i = $lblABSmartDeploy To $picABAttackNearDarkElixirDrill

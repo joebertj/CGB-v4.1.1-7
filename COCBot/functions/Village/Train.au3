@@ -496,9 +496,9 @@ Func Train()
 				SetLog("Will not ever be able to train since no barracks are available")
 				ExitLoop
 			EndIf
-			; train units by training time, longer to train first then by size
 			$trainKind = 0
 			$hasTrained = False
+			; train units by training time, longer to train first then by size
 			If $ePekkCount + $ePekkTrainOld < $PekkComp Then
 				$trainCount = Floor(($PekkComp - $ePekkCount - $ePekkTrainOld) / $numBarracksAvaiables)
 				If Not $ePekkTrainRemOnce Then
@@ -845,6 +845,8 @@ Func Train()
 				SetLog("Will not ever be able to train since no dark barracks are available")
 				ExitLoop
 			EndIf
+			$trainKind = 0
+			$hasTrained = False
 			; train units by training time, longer to train first then by size, finally cost
 			If $eGoleCount + $eGoleTrainOld < $GoleComp Then
 				$trainCount = Floor(($GoleComp - $eGoleCount - $eGoleTrainOld) / $numDarkBarracksAvaiables)
