@@ -458,6 +458,8 @@ Func Train()
 		;SetLog("$fullarmy: " & $fullarmy)
 		;SetLog("$eDragTrain: " & $eDragTrain)
 		If $fullarmy Then ; double temporarily to train
+			$ArchComp = GUICtrlRead($txtNumArch) ; restore ArchComp
+			$MiniComp = GUICtrlRead($txtNumMini) ; restore MiniComp
 			$BarbComp *= 2
 			$ArchComp *= 2
 			$GoblComp *= 2
@@ -781,8 +783,11 @@ Func Train()
 			If _Sleep($iDelayTrain2) Then ExitLoop
 			If $brrNum >= $numBarracksAvaiables Then ExitLoop
 		WEnd
-		SetLog("$notTraining: " & $notTraining)
+		;SetLog("$notTraining: " & $notTraining)
 		If $notTraining = $numBarracksAvaiables Then
+			If $trainKind = 0 Then ; if no troops can be trained due to restrictions, train some Archers
+				$ArchComp += Floor(($TotalCamp - $CurCamp) / getHouseSpace($eArch))
+			EndIf
 			$eBarbTrain=0
 			$eArchTrain=0
 			$eGiantTrain=0
@@ -1018,8 +1023,11 @@ Func Train()
 			If _Sleep($iDelayTrain2) Then ExitLoop
 			If $brrNum >= $numDarkBarracksAvaiables Then ExitLoop
 		WEnd
-		SetLog("$notTraining: " & $notTraining)
+		;SetLog("$notTraining: " & $notTraining)
 		If $notTraining = $numDarkBarracksAvaiables Then
+			If $trainKind = 0 Then ; if no troops can be trained due to restrictions, train some Minions
+				$MiniComp += Floor(($TotalCamp - $CurCamp) / getHouseSpace($eMini))
+			EndIf
 			$eMiniTrain=0
 			$eHogsTrain=0
 			$eValkTrain=0

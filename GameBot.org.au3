@@ -363,7 +363,7 @@ Func Idle() ;Sequence that runs until Full Army
 			$trainTimerAdjust = getMinInTrain()
 		EndIf
 		SetLog("$trainTimerAdjust: " & $trainTimerAdjust & " $CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
-		If $CurCamp = $CurCampOld Then ; if no new troop is produced
+		If $trainTimerAdjust = 0 Or $trainTimerAdjust = 60 Or $CurCamp = $CurCampOld Then ; if no new troop is produced or being trained
 			If Floor(Mod(Floor($TimeIdle / 60), 60))-$trainTimerAdjust > 0 Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
 				;reset training counter
 				$eBarbTrain=0
