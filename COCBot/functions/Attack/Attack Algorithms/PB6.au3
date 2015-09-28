@@ -16,22 +16,6 @@
 
 Func AttackTHPB6()
 	Local $i, $j
-	;Local $eGiantCount = 0
-	;Local $eBallCount = 0
-	;Local $eHogsCount = 0
-	;Local $eBarbCount = 0
-	;Local $eGoblCount = 0
-	;Local $eWallCount = 0
-	;Local $eArchCount = 0
-	;Local $eWizaCount = 0
-	;Local $eMiniCount = 0
-	;Local $eWitcCount
-	;Local $eHealCount
-	;Local $eGoleCount
-	;Local $eLavaCount
-	;Local $eDragCount
-	;Local $ePekkCount
-	;Local $eValkCount
 	Local $eKingCount
 	Local $eQueenCount
 	Local $eCastleCount
@@ -231,6 +215,11 @@ Func AttackTHPB6()
 	If $eHaSpellCount > 0 Then
 		$eHaSpellSlot = GetTroopSlot($eHaSpell)
 	EndIf
+	$eFSpellCount = GetTroopCount($eFSpell)
+	$eFSpellSlot = -1
+	If $eFSpellCount > 0 Then
+		$eFSpellSlot = GetTroopSlot($eFSpell)
+	EndIf
 	$eLSpellCount = GetTroopCount($eLSpell)
 	$eLSpellSlot = -1
 	If $eLSpellCount > 0 Then
@@ -276,7 +265,10 @@ Func AttackTHPB6()
 	EndIf
 
 	If $ePSpellCount > 0 Then
-		SpellTH($DropCoord[3][0], $DropCoord[3][1], $ePSpellSlot)
+		If $OptParanoid = 0 Then $ePSpellCount = 1
+		For $i = 1 To $ePSpellCount
+			SpellTH($DropCoord[3][0], $DropCoord[3][1], $ePSpellSlot)
+		Next
 	EndIf
 
 	If $eHSpellCount > 0 Then
@@ -297,6 +289,13 @@ Func AttackTHPB6()
 		If $OptParanoid = 0 Then $eHaSpellCount = 1
 		For $i = 1 To $eHaSpellCount
 			SpellTH($DropCoord[3][0], $DropCoord[3][1], $eHaSpellSlot)
+		Next
+	EndIf
+
+	If $eFSpellCount > 0 Then
+		If $OptParanoid = 0 Then $eFSpellCount = 1
+		For $i = 1 To $eFSpellCount
+			SpellTH($THx, $THy, $eFSpellSlot)
 		Next
 	EndIf
 
@@ -413,7 +412,7 @@ Func AttackTHPB6()
 		Next
 	EndIf
 
-	If CheckForStar(25) = True Then Return
+	If _Sleep($iDelayAttackTHPB61*30) Then Return
 
 	SetLog("Activating heroes abilities if not yet used before exit")
 	If $eKingCount = 1 Then
@@ -639,42 +638,46 @@ Func TroopTH($xx, $yy, $eTroop, $spots, $numperspot, $Sleep)
 			Case 0 ;UL
 				;$x < 68
 				;$y < 20
-				For $i = 1 To $spots
-					$DropTH = GetDropTH($xx, $yy, 0, $spots, $i)
-					For $j = 1 To $numperspot
+				For $i = 1 To $numperspot
+					For $j = 1 To $spots
+						$DropTH = GetDropTH($xx, $yy, 0, $spots, $j)
 						Click($DropTH[0], $DropTH[1], 1, 0, "#0019")
 						If _Sleep(Random($iDelayAttackTHGrid2min, $iDelayAttackTHGrid2max)) Then Return
 					Next
+					If _Sleep(Random($iDelayAttackTHGrid4min, $iDelayAttackTHGrid4max)) Then Return
 				Next
 			Case 1 ;LL
 				;$x < 68
 				;$y > 600
-				For $i = 1 To $spots
-					$DropTH = GetDropTH($xx, $yy, 1, $spots, $i)
-					For $j = 1 To $numperspot
+				For $i = 1 To $numperspot
+					For $j = 1 To $spots
+						$DropTH = GetDropTH($xx, $yy, 1, $spots, $j)
 						Click($DropTH[0], $DropTH[1], 1, 0, "#0019")
 						If _Sleep(Random($iDelayAttackTHGrid2min, $iDelayAttackTHGrid2max)) Then Return
 					Next
+					If _Sleep(Random($iDelayAttackTHGrid4min, $iDelayAttackTHGrid4max)) Then Return
 				Next
 			Case 2 ;UR
 				;$x > 825
 				;$y < 20
-				For $i = 1 To $spots
-					$DropTH = GetDropTH($xx, $yy, 2, $spots, $i)
-					For $j = 1 To $numperspot
+				For $i = 1 To $numperspot
+					For $j = 1 To $spots
+						$DropTH = GetDropTH($xx, $yy, 2, $spots, $j)
 						Click($DropTH[0], $DropTH[1], 1, 0, "#0019")
 						If _Sleep(Random($iDelayAttackTHGrid2min, $iDelayAttackTHGrid2max)) Then Return
 					Next
+					If _Sleep(Random($iDelayAttackTHGrid4min, $iDelayAttackTHGrid4max)) Then Return
 				Next
 			Case 3 ;LR
 				;$x > 825
 				;$y > 600
-				For $i = 1 To $spots
-					$DropTH = GetDropTH($xx, $yy, 3, $spots, $i)
-					For $j = 1 To $numperspot
+				For $i = 1 To $numperspot
+					For $j = 1 To $spots
+						$DropTH = GetDropTH($xx, $yy, 3, $spots, $j)
 						Click($DropTH[0], $DropTH[1], 1, 0, "#0019")
 						If _Sleep(Random($iDelayAttackTHGrid2min, $iDelayAttackTHGrid2max)) Then Return
 					Next
+					If _Sleep(Random($iDelayAttackTHGrid4min, $iDelayAttackTHGrid4max)) Then Return
 				Next
 		EndSwitch
 	If _Sleep($Sleep) Then Return

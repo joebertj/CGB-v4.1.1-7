@@ -458,7 +458,9 @@ Func Train()
 		;SetLog("$fullarmy: " & $fullarmy)
 		;SetLog("$eDragTrain: " & $eDragTrain)
 		If $fullarmy Then ; double temporarily to train
+			$BarbComp = GUICtrlRead($txtNumBarb)
 			$ArchComp = GUICtrlRead($txtNumArch) ; restore ArchComp
+			$GoblComp = GUICtrlRead($txtNumGobl)
 			$MiniComp = GUICtrlRead($txtNumMini) ; restore MiniComp
 			SetLog("$ArchComp: " & $ArchComp & " $MiniComp: " & $MiniComp)
 			$BarbComp *= 2
@@ -784,7 +786,7 @@ Func Train()
 			If _Sleep($iDelayTrain2) Then ExitLoop
 			If $brrNum >= $numBarracksAvaiables Then ExitLoop
 		WEnd
-		SetLog("$notTraining: " & $notTraining & " $trainKind: " & $trainKind)
+		;SetLog("$notTraining: " & $notTraining & " $trainKind: " & $trainKind)
 		$eBarbTrainOld=$eBarbTrain
 		$eArchTrainOld=$eArchTrain
 		$eGiantTrainOld=$eGiantTrain
