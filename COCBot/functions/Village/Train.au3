@@ -13,7 +13,7 @@
 ; ===============================================================================================================================
 Func Train()
 
-	Local $anotherTroops, $trainCount, $trainKind, $hasTrained, $notTraining = 0
+	Local $anotherTroops, $trainCount, $trainKind, $hasTrained
 	Local $eBarbTrainRem=0, $eArchTrainRem=0, $eGiantTrainRem=0, $eGoblTrainRem=0, $eWallTrainRem=0, $eBallTrainRem=0, $eWizaTrainRem=0, $eHealTrainRem=0, $eDragTrainRem=0, $ePekkTrainRem=0, $eMiniTrainRem=0, $eHogsTrainRem=0, $eValkTrainRem=0, $eGoleTrainRem=0, $eWitcTrainRem=0, $eLavaTrainRem=0
 	Local $eBarbTrainRemOnce=False, $eArchTrainRemOnce=False, $eGiantTrainRemOnce=False, $eGoblTrainRemOnce=False, $eWallTrainRemOnce=False, $eBallTrainRemOnce=False, $eWizaTrainRemOnce=False, $eHealTrainRemOnce=False, $eDragTrainRemOnce=False, $ePekkTrainRemOnce=False, $eMiniTrainRemOnce=False, $eHogsTrainRemOnce=False, $eValkTrainRemOnce=False, $eGoleTrainRemOnce=False, $eWitcTrainRemOnce=False, $eLavaTrainRemOnce=False
 
@@ -465,7 +465,7 @@ Func Train()
 				$MiniComp = GUICtrlRead($txtNumMini) ; restore MiniComp
 				$trainFiller = False
 			EndIf
-			SetLog("fullarmy $ArchComp: " & $ArchComp & "$eBallComp" & $BallComp & "$eMiniComp: " & $MiniComp)
+			SetLog("fullarmy $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 			$BarbComp = ($BarbComp * 2) - $eBarbCount
 			$ArchComp = ($ArchComp * 2) - $eArchCount
 			$GoblComp = ($GoblComp * 2) - $eGoblCount
@@ -483,6 +483,7 @@ Func Train()
 			$WitcComp = ($WitcComp * 2) - $eWitcCount
 			$LavaComp = ($LavaComp * 2) - $eLavaCount
 		EndIf
+		$notTraining = 0 ; reset before training
 		While isBarrack()
 			_CaptureRegion()
 			If ($iSpeed = 0 And $FirstStart) Or $RemoveTroops Then
@@ -1075,24 +1076,7 @@ Func Train()
 		EndIf
 		SetLog("$notTraining: " & $notTraining & " $trainKind: " & $trainKind)
 		If $notTraining = $numBarracksAvaiables  + $numDarkBarracksAvaiables Then
-			;If $trainKind = 0 Then ; if no troops can be trained due to restrictions, train some Archers
-
-			$eBarbTrain=0
-			$eArchTrain=0
-			$eGiantTrain=0
-			$eGoblTrain=0
-			$eWallTrain=0
-			$eBallTrain=0
-			$eWizaTrain=0
-			$eHealTrain=0
-			$eDragTrain=0
-			$ePekkTrain=0
-			$eMiniTrain=0
-			$eHogsTrain=0
-			$eValkTrain=0
-			$eGoleTrain=0
-			$eWitcTrain=0
-			$eLavaTrain=0
+			ResetCounters()
 		EndIf
 		If $fullarmy Then ; restore original values
 			$BarbComp =  GUICtrlRead($txtNumBarb)

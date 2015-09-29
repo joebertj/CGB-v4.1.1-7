@@ -370,9 +370,8 @@ Func Idle() ;Sequence that runs until Full Army
 		SetLog("$CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
 		If $CurCamp = $CurCampOld Then ; if no new troop is produced or being trained
 			If $TimeIdleinMinutes-$trainTimerAdjust > 0 Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
-				$RemoveTroops=True ; acccuracy or speed
 				ResetCounters()
-				SetLog("time $ArchComp: " & $ArchComp & "$eBallComp" & $BallComp & "$eMiniComp: " & $MiniComp)
+				SetLog("time $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 			EndIf
 		Else
 			$trainTimerAdjust = $TimeIdleinMinutes + $timeInTrain ;units are being produced, increment time to adjust idle time
@@ -384,7 +383,7 @@ Func Idle() ;Sequence that runs until Full Army
 		$RemoveTroops=True
 	EndIf
 	ResetCounters()
-	SetLog("attack $ArchComp: " & $ArchComp & "$eBallComp" & $BallComp & "$eMiniComp: " & $MiniComp)
+	SetLog("attack $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 EndFunc   ;==>Idle
 
 Func AttackMain() ;Main control for attack functions
