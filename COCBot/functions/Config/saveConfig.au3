@@ -507,14 +507,51 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 
 	;Train Spells
-	IniWrite($config, "advanced", "cmbTrainNormalSpellType", _GUICtrlComboBox_GetCurSel($cmbTrainNormalSpellType))
-	IniWrite($config, "advanced", "cmbTrainDarkSpellType", _GUICtrlComboBox_GetCurSel($cmbTrainDarkSpellType))
+	;IniWrite($config, "advanced", "cmbTrainNormalSpellType", _GUICtrlComboBox_GetCurSel($cmbTrainNormalSpellType))
+	;IniWrite($config, "advanced", "cmbTrainDarkSpellType", _GUICtrlComboBox_GetCurSel($cmbTrainDarkSpellType))
 
-	If GUICtrlRead($chkTrainSpells) = $GUI_CHECKED Then
-	    IniWrite($config, "advanced", "chkTrainSpells", "1")
+	If GUICtrlRead($chkTrainLSpell) = $GUI_CHECKED Then
+	    IniWrite($config, "advanced", "chkTrainLSpell", "1")
 	Else
-	    IniWrite($config, "advanced", "chkTrainSpells", "0")
+	    IniWrite($config, "advanced", "chkTrainLSpell", "0")
 	EndIf
+	If GUICtrlRead($chkTrainHSpell) = $GUI_CHECKED Then
+	    IniWrite($config, "advanced", "chkTrainHSpell", "1")
+	Else
+	    IniWrite($config, "advanced", "chkTrainHSpell", "0")
+	EndIf
+	If GUICtrlRead($chkTrainRSpell) = $GUI_CHECKED Then
+	    IniWrite($config, "advanced", "chkTrainRSpell", "1")
+	Else
+	    IniWrite($config, "advanced", "chkTrainRSpell", "0")
+	EndIf
+	If GUICtrlRead($chkTrainJSpell) = $GUI_CHECKED Then
+	    IniWrite($config, "advanced", "chkTrainJSpell", "1")
+	Else
+	    IniWrite($config, "advanced", "chkTrainJSpell", "0")
+	EndIf
+	If GUICtrlRead($chkTrainFSpell) = $GUI_CHECKED Then
+	    IniWrite($config, "advanced", "chkTrainFSpell", "1")
+	Else
+	    IniWrite($config, "advanced", "chkTrainFSpell", "0")
+	EndIf
+	If GUICtrlRead($chkTrainPSpell) = $GUI_CHECKED Then
+	    IniWrite($config, "advanced", "chkTrainPSpell", "1")
+	Else
+	    IniWrite($config, "advanced", "chkTrainPSpell", "0")
+	EndIf
+	If GUICtrlRead($chkTrainESpell) = $GUI_CHECKED Then
+	    IniWrite($config, "advanced", "chkTrainESpell", "1")
+	Else
+	    IniWrite($config, "advanced", "chkTrainESpell", "0")
+	EndIf
+	If GUICtrlRead($chkTrainHaSpell) = $GUI_CHECKED Then
+	    IniWrite($config, "advanced", "chkTrainHaSpell", "1")
+	Else
+	    IniWrite($config, "advanced", "chkTrainHaSpell", "0")
+	EndIf
+
+
 	If GUICtrlRead($chkIgnoreTraps) = $GUI_CHECKED Then
 		IniWrite($config, "advanced", "IgnoreTraps", 1)
 	Else

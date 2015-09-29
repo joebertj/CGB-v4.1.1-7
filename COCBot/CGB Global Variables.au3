@@ -210,7 +210,7 @@ Global $AttackTHType
 Global $allTroops = False, $skipBase = False
 ;Global $chklightspell
 ;Global $iLSpellQ
-Global $ichkTrainSpells
+Global $ichkTrainLSpell, $ichkTrainHSpell, $ichkTrainRSpell, $ichkTrainJSpell, $ichkTrainFSpell, $ichkTrainPSpell, $ichkTrainESpell, $ichkTrainHaSpell
 Global $NormalSpellTrain
 Global $DarkSpellTrain
 ;Global $BottomTHType

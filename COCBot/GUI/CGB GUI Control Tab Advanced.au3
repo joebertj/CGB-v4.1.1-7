@@ -82,18 +82,6 @@ Func chkBullyMode()
 	EndIf
 EndFunc   ;==>chkBullyMode
 
-Func chkTrainSpells()
-	If GUICtrlRead($chkTrainSpells) = $GUI_CHECKED Then
-		$ichkTrainSpells = 1
-		GUICtrlSetState($cmbTrainNormalSpellType, $GUI_ENABLE)
-		GUICtrlSetState($cmbTrainDarkSpellType, $GUI_ENABLE)
-	Else
-		$ichkTrainSpells = 0
-		GUICtrlSetState($cmbTrainNormalSpellType, $GUI_DISABLE)
-		GUICtrlSetState($cmbTrainDarkSpellType, $GUI_DISABLE)
-	EndIf
-EndFunc
-
 Func chkSnipeMode()
 	If GUICtrlRead($chkTrophyMode) = $GUI_CHECKED Then
 		$OptTrophyMode = 1

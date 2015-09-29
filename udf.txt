@@ -95,16 +95,16 @@ AutoIt3 Syntax Checker v3.3.14.1  Copyright (c) 2007-2013 Tylo & AutoIt Team
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB GUI Control.au3"(48,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Search.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB GUI Control.au3"(49,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Attack.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB GUI Control.au3"(50,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(126,31) : warning: $ToolboxActive: possibly used before declaration.
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(114,31) : warning: $ToolboxActive: possibly used before declaration.
         If Not $ToolboxActive Then
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(151,26) : warning: $ToolboxDetached: possibly used before declaration.
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(139,26) : warning: $ToolboxDetached: possibly used before declaration.
         ($ToolboxDetached)
 ~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(151,79) : error: Statement cannot be just an expression.
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(139,79) : error: Statement cannot be just an expression.
         ($ToolboxDetached) ? _GUI_Toolbox_Win_Hide() : _GUI_Toolbox_GUI_Hide()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(156,79) : error: Statement cannot be just an expression.
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(144,79) : error: Statement cannot be just an expression.
         ($ToolboxDetached) ? _GUI_Toolbox_Win_Show() : _GUI_Toolbox_GUI_Show()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB GUI Control.au3"(51,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab EndBattle.au3"
@@ -283,54 +283,6 @@ AutoIt3 Syntax Checker v3.3.14.1  Copyright (c) 2007-2013 Tylo & AutoIt Team
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(173,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\RequestCC.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(174,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Spell.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(175,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(469,44) : warning: $BarbCount: possibly used before declaration.
-			$BarbComp = ($BarbComp * 2) - $BarbCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(470,44) : warning: $ArchCount: possibly used before declaration.
-			$ArchComp = ($ArchComp * 2) - $ArchCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(471,44) : warning: $GoblCount: possibly used before declaration.
-			$GoblComp = ($GoblComp * 2) - $GoblCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(472,47) : warning: $GiantCount: possibly used before declaration.
-			$GiantComp = ($GiantComp * 2) - $GiantCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(473,44) : warning: $WallCount: possibly used before declaration.
-			$WallComp = ($WallComp * 2) - $WallCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(474,44) : warning: $WizaCount: possibly used before declaration.
-			$WizaComp = ($WizaComp * 2) - $WizaCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(475,44) : warning: $MiniCount: possibly used before declaration.
-			$MiniComp = ($MiniComp * 2) - $MiniCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(476,44) : warning: $HogsCount: possibly used before declaration.
-			$HogsComp = ($HogsComp * 2) - $HogsCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(477,44) : warning: $DragCount: possibly used before declaration.
-			$DragComp = ($DragComp * 2) - $DragCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(478,44) : warning: $BallCount: possibly used before declaration.
-			$BallComp = ($BallComp * 2) - $BallCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(479,44) : warning: $PekkCount: possibly used before declaration.
-			$PekkComp = ($PekkComp * 2) - $PekkCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(480,44) : warning: $HealCount: possibly used before declaration.
-			$HealComp = ($HealComp * 2) - $HealCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(481,44) : warning: $ValkCount: possibly used before declaration.
-			$ValkComp = ($ValkComp * 2) - $ValkCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(482,44) : warning: $GoleCount: possibly used before declaration.
-			$GoleComp = ($GoleComp * 2) - $GoleCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(483,44) : warning: $WitcCount: possibly used before declaration.
-			$WitcComp = ($WitcComp * 2) - $WitcCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(484,44) : warning: $LavaCount: possibly used before declaration.
-			$LavaComp = ($LavaComp * 2) - $LavaCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(176,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\TrainIt.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(177,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\VillageReport.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(178,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\isBarrack.au3"
@@ -349,54 +301,6 @@ AutoIt3 Syntax Checker v3.3.14.1  Copyright (c) 2007-2013 Tylo & AutoIt Team
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(191,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\THWizard.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(192,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\LocateHeroes.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(193,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\UpgradeHeroes.au3"
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(469,44) : error: $BarbCount: undeclared global variable.
-			$BarbComp = ($BarbComp * 2) - $BarbCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(470,44) : error: $ArchCount: undeclared global variable.
-			$ArchComp = ($ArchComp * 2) - $ArchCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(471,44) : error: $GoblCount: undeclared global variable.
-			$GoblComp = ($GoblComp * 2) - $GoblCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(472,47) : error: $GiantCount: undeclared global variable.
-			$GiantComp = ($GiantComp * 2) - $GiantCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(473,44) : error: $WallCount: undeclared global variable.
-			$WallComp = ($WallComp * 2) - $WallCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(474,44) : error: $WizaCount: undeclared global variable.
-			$WizaComp = ($WizaComp * 2) - $WizaCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(475,44) : error: $MiniCount: undeclared global variable.
-			$MiniComp = ($MiniComp * 2) - $MiniCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(476,44) : error: $HogsCount: undeclared global variable.
-			$HogsComp = ($HogsComp * 2) - $HogsCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(477,44) : error: $DragCount: undeclared global variable.
-			$DragComp = ($DragComp * 2) - $DragCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(478,44) : error: $BallCount: undeclared global variable.
-			$BallComp = ($BallComp * 2) - $BallCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(479,44) : error: $PekkCount: undeclared global variable.
-			$PekkComp = ($PekkComp * 2) - $PekkCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(480,44) : error: $HealCount: undeclared global variable.
-			$HealComp = ($HealComp * 2) - $HealCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(481,44) : error: $ValkCount: undeclared global variable.
-			$ValkComp = ($ValkComp * 2) - $ValkCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(482,44) : error: $GoleCount: undeclared global variable.
-			$GoleComp = ($GoleComp * 2) - $GoleCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(483,44) : error: $WitcCount: undeclared global variable.
-			$WitcComp = ($WitcComp * 2) - $WitcCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3"(484,44) : error: $LavaCount: undeclared global variable.
-			$LavaComp = ($LavaComp * 2) - $LavaCount
-			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
 C:\Program Files (x86)\AutoIt3\Include\APIProcConstants.au3(37,1) : UNREFED(37):	$ABOVE_NORMAL_PRIORITY_CLASS
 C:\Program Files (x86)\AutoIt3\Include\SecurityConstants.au3(96,1) : UNREFED(96):	$ACCESS_SYSTEM_SECURITY
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(353,1) : UNREFED(353):	$AD_CLOCKWISE
@@ -1272,6 +1176,7 @@ C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(76,1) : UNREFED(76):	
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(77,1) : UNREFED(77):	$DWMWA_NCRENDERING_POLICY
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(81,1) : UNREFED(81):	$DWMWA_NONCLIENT_RTL_LAYOUT
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(78,1) : UNREFED(78):	$DWMWA_TRANSITIONS_FORCEDISABLED
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(215,1) : UNREFED(215):	$DarkSpellTrain
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(73,1) : UNREFED(73):	$DropTrophiesStartPoint
 C:\Program Files (x86)\AutoIt3\Include\FontConstants.au3(44,1) : UNREFED(44):	$EASTEUROPE_CHARSET
 C:\Program Files (x86)\AutoIt3\Include\EditConstants.au3(33,1) : UNREFED(33):	$EC_ERR
@@ -2555,6 +2460,7 @@ C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(267,1) : UNREFED(267)
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(265,1) : UNREFED(265):	$NUMBER_AUTO
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(268,1) : UNREFED(268):	$NUMBER_DOUBLE
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(433,1) : UNREFED(433):	$NoLeague
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(214,1) : UNREFED(214):	$NormalSpellTrain
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(63,1) : UNREFED(63):	$OBJID_ALERT
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(61,1) : UNREFED(61):	$OBJID_CARET
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(62,1) : UNREFED(62):	$OBJID_CURSOR
@@ -6111,7 +6017,7 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Pixels\bool
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Stats.au3(20,1) : UNREFED(22):	btnLogs
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Stats.au3(16,1) : UNREFED(18):	btnLoots
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Search.au3(260,1) : UNREFED(268):	chkABEnableAfterHero
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\applyConfig.au3(1478,1) : UNREFED(16):	chkSpeed
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\applyConfig.au3(1513,1) : UNREFED(16):	chkSpeed
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getOcr.au3(104,1) : UNREFED(106):	getArmyTroopKind
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getOcr.au3(100,1) : UNREFED(102):	getArmyTroopQuantity
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getChar.au3(7,1) : UNREFED(129):	getChar
@@ -6130,4 +6036,4 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\g
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\CheckPrerequisites.au3(1,1) : UNREFED(11):	isNetFramework4Installed
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(335,1) : UNREFED(365):	runHelper
 
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\GameBot.org.au3 - 18 error(s), 24 warning(s)
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\GameBot.org.au3 - 2 error(s), 8 warning(s)
