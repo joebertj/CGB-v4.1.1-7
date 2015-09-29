@@ -465,7 +465,7 @@ Func Train()
 				$MiniComp = GUICtrlRead($txtNumMini) ; restore MiniComp
 				$trainFiller = False
 			EndIf
-			SetLog("$ArchComp: " & $ArchComp & " $MiniComp: " & $MiniComp)
+			SetLog("fullarmy $ArchComp: " & $ArchComp & "$eBallComp" & $BallComp & "$eMiniComp: " & $MiniComp)
 			$BarbComp = ($BarbComp * 2) - $eBarbCount
 			$ArchComp = ($ArchComp * 2) - $eArchCount
 			$GoblComp = ($GoblComp * 2) - $eGoblCount
@@ -1640,4 +1640,41 @@ Func getHouseSpace($eTroop)
 		$houseSpace = 30
 	EndIf
 	Return $houseSpace
+EndFunc
+
+Func ResetCounters()
+	; reset training counter
+	$eBarbTrain=0
+	$eArchTrain=0
+	$eGiantTrain=0
+	$eGoblTrain=0
+	$eWallTrain=0
+	$eBallTrain=0
+	$eWizaTrain=0
+	$eHealTrain=0
+	$eDragTrain=0
+	$ePekkTrain=0
+	$eMiniTrain=0
+	$eHogsTrain=0
+	$eValkTrain=0
+	$eGoleTrain=0
+	$eWitcTrain=0
+	$eLavaTrain=0
+	;reset army camp
+	$eBarbCount=0
+	$eArchCount=0
+	$eGiantCount=0
+	$eGoblCount=0
+	$eWallCount=0
+	$eBallCount=0
+	$eWizaCount=0
+	$eHealCount=0
+	$eDragCount=0
+	$ePekkCount=0
+	$eMiniCount=0
+	$eHogsCount=0
+	$eValkCount=0
+	$eGoleCount=0
+	$eWitcCount=0
+	$eLavaCount=0
 EndFunc

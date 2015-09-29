@@ -370,24 +370,9 @@ Func Idle() ;Sequence that runs until Full Army
 		SetLog("$CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
 		If $CurCamp = $CurCampOld Then ; if no new troop is produced or being trained
 			If $TimeIdleinMinutes-$trainTimerAdjust > 0 Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
-				$RemoveTroops=True
-				;reset training counter
-				$eBarbTrain=0
-				$eArchTrain=0
-				$eGiantTrain=0
-				$eGoblTrain=0
-				$eWallTrain=0
-				$eBallTrain=0
-				$eWizaTrain=0
-				$eHealTrain=0
-				$eDragTrain=0
-				$ePekkTrain=0
-				$eMiniTrain=0
-				$eHogsTrain=0
-				$eValkTrain=0
-				$eGoleTrain=0
-				$eWitcTrain=0
-				$eLavaTrain=0
+				$RemoveTroops=True ; acccuracy or speed
+				ResetCounters()
+				SetLog("time $ArchComp: " & $ArchComp & "$eBallComp" & $BallComp & "$eMiniComp: " & $MiniComp)
 			EndIf
 		Else
 			$trainTimerAdjust = $TimeIdleinMinutes + $timeInTrain ;units are being produced, increment time to adjust idle time
@@ -395,26 +380,11 @@ Func Idle() ;Sequence that runs until Full Army
 		SetLog("Time Idle: " & StringFormat("%02i", Floor(Floor($TimeIdle / 60) / 60)) & ":" & StringFormat("%02i", Floor(Mod(Floor($TimeIdle / 60), 60))) & ":" & StringFormat("%02i", Floor(Mod($TimeIdle, 60))))
 		If $OutOfGold = 1 Then Return
 	WEnd
-	If $iSpeed = 0 Then
+	If $iSpeed = 0 Then ; accuracy only
 		$RemoveTroops=True
-		; reset training counter before attacking
-		$eBarbTrain=0
-		$eArchTrain=0
-		$eGiantTrain=0
-		$eGoblTrain=0
-		$eWallTrain=0
-		$eBallTrain=0
-		$eWizaTrain=0
-		$eHealTrain=0
-		$eDragTrain=0
-		$ePekkTrain=0
-		$eMiniTrain=0
-		$eHogsTrain=0
-		$eValkTrain=0
-		$eGoleTrain=0
-		$eWitcTrain=0
-		$eLavaTrain=0
 	EndIf
+	ResetCounters()
+	SetLog("attack $ArchComp: " & $ArchComp & "$eBallComp" & $BallComp & "$eMiniComp: " & $MiniComp)
 EndFunc   ;==>Idle
 
 Func AttackMain() ;Main control for attack functions
