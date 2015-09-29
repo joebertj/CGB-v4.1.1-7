@@ -466,26 +466,26 @@ Func Train()
 				$trainFiller = False
 			EndIf
 			SetLog("$ArchComp: " & $ArchComp & " $MiniComp: " & $MiniComp)
-			$BarbComp *= 2
-			$ArchComp *= 2
-			$GoblComp *= 2
-			$GiantComp *= 2
-			$WallComp *= 2
-			$WizaComp *= 2
-			$MiniComp *= 2
-			$HogsComp *= 2
-			$DragComp *= 2
-			$BallComp *= 2
-			$PekkComp *= 2
-			$HealComp *= 2
-			$ValkComp *= 2
-			$GoleComp *= 2
-			$WitcComp *= 2
-			$LavaComp *= 2
+			$BarbComp = ($BarbComp * 2) - $eBarbCount
+			$ArchComp = ($ArchComp * 2) - $eArchCount
+			$GoblComp = ($GoblComp * 2) - $eGoblCount
+			$GiantComp = ($GiantComp * 2) - $eGiantCount
+			$WallComp = ($WallComp * 2) - $eWallCount
+			$WizaComp = ($WizaComp * 2) - $eWizaCount
+			$MiniComp = ($MiniComp * 2) - $eMiniCount
+			$HogsComp = ($HogsComp * 2) - $eHogsCount
+			$DragComp = ($DragComp * 2) - $eDragCount
+			$BallComp = ($BallComp * 2) - $eBallCount
+			$PekkComp = ($PekkComp * 2) - $ePekkCount
+			$HealComp = ($HealComp * 2) - $eHealCount
+			$ValkComp = ($ValkComp * 2) - $eValkCount
+			$GoleComp = ($GoleComp * 2) - $eGoleCount
+			$WitcComp = ($WitcComp * 2) - $eWitcCount
+			$LavaComp = ($LavaComp * 2) - $eLavaCount
 		EndIf
 		While isBarrack()
 			_CaptureRegion()
-			If $iSpeed = 0 And $FirstStart Then
+			If ($iSpeed = 0 And $FirstStart) Or $RemoveTroops Then
 				$icount = 0
 				While Not _ColorCheck(_GetPixelColor(565, 205, True), Hex(0xE8E8DE, 6), 20) ; while not disappears  green arrow
 					If Not (IsTrainPage()) Then Return
@@ -842,7 +842,7 @@ Func Train()
 		$brrNum = 0
 		While isDarkBarrack()
 			_CaptureRegion()
-			If $iSpeed =0 And $FirstStart Then
+			If ($iSpeed =0 And $FirstStart) Or $RemoveTroops Then
 				$icount = 0
 				While Not _ColorCheck(_GetPixelColor(565, 205, True), Hex(0xE8E8DE, 6), 20) ; while not disappears  green arrow
 					If Not (IsTrainPage()) Then Return
@@ -1055,6 +1055,7 @@ Func Train()
 			If _Sleep($iDelayTrain2) Then ExitLoop
 			If $brrNum >= $numDarkBarracksAvaiables Then ExitLoop
 		WEnd
+		If $RemoveTroops Then $RemoveTroops = False
 		$eMiniTrainOld=$eMiniTrain
 		$eHogsTrainOld=$eHogsTrain
 		$eValkTrainOld=$eValkTrain
@@ -1094,22 +1095,22 @@ Func Train()
 			$eLavaTrain=0
 		EndIf
 		If $fullarmy Then ; restore original values
-			$BarbComp /= 2
-			$ArchComp /= 2
-			$GoblComp /= 2
-			$GiantComp /= 2
-			$WallComp /= 2
-			$WizaComp /= 2
-			$MiniComp /= 2
-			$HogsComp /= 2
-			$DragComp /= 2
-			$BallComp /= 2
-			$PekkComp /= 2
-			$HealComp /= 2
-			$ValkComp /= 2
-			$GoleComp /= 2
-			$WitcComp /= 2
-			$LavaComp /= 2
+			$BarbComp =  GUICtrlRead($txtNumBarb)
+			$ArchComp =  GUICtrlRead($txtNumArch)
+			$GoblComp =  GUICtrlRead($txtNumGobl)
+			$GiantComp =  GUICtrlRead($txtNumGiant)
+			$WallComp =  GUICtrlRead($txtNumWall)
+			$WizaComp =  GUICtrlRead($txtNumWiza)
+			$MiniComp =  GUICtrlRead($txtNumMini)
+			$HogsComp =  GUICtrlRead($txtNumHogs)
+			$DragComp =  GUICtrlRead($txtNumDrag)
+			$BallComp =  GUICtrlRead($txtNumBall)
+			$PekkComp =  GUICtrlRead($txtNumPekk)
+			$HealComp =  GUICtrlRead($txtNumHeal)
+			$ValkComp =  GUICtrlRead($txtNumValk)
+			$GoleComp =  GUICtrlRead($txtNumGole)
+			$WitcComp =  GUICtrlRead($txtNumWitc)
+			$LavaComp =  GUICtrlRead($txtNumLava)
 		EndIf
 	Else
 		If $debugSetlog = 1 Then SetLog("---------TRAIN NEW BARRACK MODE------------------------")
@@ -1529,11 +1530,12 @@ Func getMinInTrain()
 	If $eLavaTrain > 0 Then
 		If $minInTrain > 45 Then $minInTrain = 45
 	EndIf
+	If $minInTrain = 60 Then $minInTrain = -1
 	Return $minInTrain
 EndFunc
 
 Func getMaxInTrain()
-	Local $maxInTrain = 0
+	Local $maxInTrain = -1
 
 	If $eBarbTrain > 0 Then
 		If $maxInTrain < 1 Then $maxInTrain = 1

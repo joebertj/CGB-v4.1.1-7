@@ -370,6 +370,7 @@ Func Idle() ;Sequence that runs until Full Army
 		SetLog("$CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
 		If $CurCamp = $CurCampOld Then ; if no new troop is produced or being trained
 			If $TimeIdleinMinutes-$trainTimerAdjust > 0 Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
+				$RemoveTroops=True
 				;reset training counter
 				$eBarbTrain=0
 				$eArchTrain=0
@@ -395,7 +396,7 @@ Func Idle() ;Sequence that runs until Full Army
 		If $OutOfGold = 1 Then Return
 	WEnd
 	If $iSpeed = 0 Then
-		$FirstStart=True
+		$RemoveTroops=True
 		; reset training counter before attacking
 		$eBarbTrain=0
 		$eArchTrain=0

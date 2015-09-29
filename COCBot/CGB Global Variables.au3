@@ -431,7 +431,7 @@ Global $sTimer, $iTimePassed, $hour, $min, $sec , $sTimeWakeUp = 120,$sTimeStopA
 Global $fulltroop = 100
 Global $CurCamp, $TotalCamp = 0, $CurCampOld
 Global $NoLeague
-Global $FirstStart = True
+Global $FirstStart = True, $RemoveTroops = False
 Global $TPaused, $BlockInputPause = 0
 
 ; Halt/Restart Mode values
