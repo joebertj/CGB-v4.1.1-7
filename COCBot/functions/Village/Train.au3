@@ -13,7 +13,7 @@
 ; ===============================================================================================================================
 Func Train()
 
-	Local $anotherTroops, $trainCount, $trainKind, $hasTrained, $notTraining = 0
+	Local $anotherTroops, $trainCount, $trainKind, $hasTrained
 	Local $eBarbTrainRem=0, $eArchTrainRem=0, $eGiantTrainRem=0, $eGoblTrainRem=0, $eWallTrainRem=0, $eBallTrainRem=0, $eWizaTrainRem=0, $eHealTrainRem=0, $eDragTrainRem=0, $ePekkTrainRem=0, $eMiniTrainRem=0, $eHogsTrainRem=0, $eValkTrainRem=0, $eGoleTrainRem=0, $eWitcTrainRem=0, $eLavaTrainRem=0
 	Local $eBarbTrainRemOnce=False, $eArchTrainRemOnce=False, $eGiantTrainRemOnce=False, $eGoblTrainRemOnce=False, $eWallTrainRemOnce=False, $eBallTrainRemOnce=False, $eWizaTrainRemOnce=False, $eHealTrainRemOnce=False, $eDragTrainRemOnce=False, $ePekkTrainRemOnce=False, $eMiniTrainRemOnce=False, $eHogsTrainRemOnce=False, $eValkTrainRemOnce=False, $eGoleTrainRemOnce=False, $eWitcTrainRemOnce=False, $eLavaTrainRemOnce=False
 
@@ -458,38 +458,35 @@ Func Train()
 		;SetLog("$fullarmy: " & $fullarmy)
 		;SetLog("$eDragTrain: " & $eDragTrain)
 		If $fullarmy Then ; double temporarily to train
-			$BarbComp *= 2
-			$ArchComp *= 2
-			$GoblComp *= 2
-			$GiantComp *= 2
-			$WallComp *= 2
-			$WizaComp *= 2
-			$MiniComp *= 2
-			$HogsComp *= 2
-			$DragComp *= 2
-			$BallComp *= 2
-			$PekkComp *= 2
-			$HealComp *= 2
-			$ValkComp *= 2
-			$GoleComp *= 2
-			$WitcComp *= 2
-			$LavaComp *= 2
+			If $trainFiller = True Then
+				$BarbComp = GUICtrlRead($txtNumBarb)
+				$ArchComp = GUICtrlRead($txtNumArch) ; restore ArchComp
+				$GoblComp = GUICtrlRead($txtNumGobl)
+				$MiniComp = GUICtrlRead($txtNumMini) ; restore MiniComp
+				$trainFiller = False
+			EndIf
+			SetLog("fullarmy $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
+			$BarbComp = ($BarbComp * 2) - $eBarbCount
+			$ArchComp = ($ArchComp * 2) - $eArchCount
+			$GoblComp = ($GoblComp * 2) - $eGoblCount
+			$GiantComp = ($GiantComp * 2) - $eGiantCount
+			$WallComp = ($WallComp * 2) - $eWallCount
+			$WizaComp = ($WizaComp * 2) - $eWizaCount
+			$MiniComp = ($MiniComp * 2) - $eMiniCount
+			$HogsComp = ($HogsComp * 2) - $eHogsCount
+			$DragComp = ($DragComp * 2) - $eDragCount
+			$BallComp = ($BallComp * 2) - $eBallCount
+			$PekkComp = ($PekkComp * 2) - $ePekkCount
+			$HealComp = ($HealComp * 2) - $eHealCount
+			$ValkComp = ($ValkComp * 2) - $eValkCount
+			$GoleComp = ($GoleComp * 2) - $eGoleCount
+			$WitcComp = ($WitcComp * 2) - $eWitcCount
+			$LavaComp = ($LavaComp * 2) - $eLavaCount
 		EndIf
-		;SetLog("$eDragTrain: " & $eDragTrain)
-		;USE BARRACK
-		;$eBarbTrainOld=$eBarbTrain
-		;$eArchTrainOld=$eArchTrain
-		;$eGiantTrainOld=$eGiantTrain
-		;$eGoblTrainOld=$eGoblTrain
-		;$eWallTrainOld=$eWallTrain
-		;$eBallTrainOld=$eBallTrain
-		;$eWizaTrainOld=$eWizaTrain
-		;$eHealTrainOld=$eHealTrain
-		;$eDragTrainOld=$eDragTrain
-		;$ePekkTrainOld=$ePekkTrain
+		$notTraining = 0 ; reset before training
 		While isBarrack()
 			_CaptureRegion()
-			If $iSpeed = 0 And $FirstStart Then
+			If ($iSpeed = 0 And $FirstStart) Or $RemoveTroops Then
 				$icount = 0
 				While Not _ColorCheck(_GetPixelColor(565, 205, True), Hex(0xE8E8DE, 6), 20) ; while not disappears  green arrow
 					If Not (IsTrainPage()) Then Return
@@ -504,11 +501,11 @@ Func Train()
 			If Not (IsTrainPage()) Then Return ; exit from train if no train page
 			If $numBarracksAvaiables = 0 Then
 				SetLog("Will not ever be able to train since no barracks are available")
-				Return
+				ExitLoop
 			EndIf
-			; train units by training time, longer to train first then by size
 			$trainKind = 0
 			$hasTrained = False
+			; train units by training time, longer to train first then by size
 			If $ePekkCount + $ePekkTrainOld < $PekkComp Then
 				$trainCount = Floor(($PekkComp - $ePekkCount - $ePekkTrainOld) / $numBarracksAvaiables)
 				If Not $ePekkTrainRemOnce Then
@@ -522,6 +519,11 @@ Func Train()
 				EndIf
 
 				For $i = 1 to $trainCount
+					; if troop creation will create a deadlock, skip train
+					If Not $fullarmy And getHouseSpace($ePekk) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(647, 425, 1, 50, $FullPekk, $GemPekk, "#0283") Then ; Pekka
 						$ePekkTrain += 1
 						$hasTrained = True
@@ -548,6 +550,10 @@ Func Train()
 				EndIf
 
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eDrag) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(546, 425, 1, 50, $FullDrag, $GemDrag, "#0282") Then ;;Dragon
 						$eDragTrain += 1
 						$hasTrained = True
@@ -574,6 +580,10 @@ Func Train()
 				EndIf
 
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eHeal) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(432, 425, 1, 50, $FullHeal, $GemHeal, "#0281") Then ;Healer
 						$eHealTrain += 1
 						$hasTrained = True
@@ -600,6 +610,10 @@ Func Train()
 				EndIf
 
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eBall) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(220, 425, 1, 50, $FullBall, $GemBall, "#0279") Then ;Balloon
 						$eBallTrain += 1
 						$hasTrained = True
@@ -626,6 +640,10 @@ Func Train()
 				EndIf
 
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eWiza) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(331, 425, 1, 50, $FullWiza, $GemWiza, "#0280") Then ;Wizard
 						$eWizaTrain += 1
 						$hasTrained = True
@@ -652,6 +670,10 @@ Func Train()
 				EndIf
 
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eGiant) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(432, 320, 1, 50, $FullGiant, $GemGiant, "#0276") Then ;Giant
 						$eGiantTrain += 1
 						$hasTrained = True
@@ -678,6 +700,10 @@ Func Train()
 				EndIf
 
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eWall) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(647, 320, 1, 50, $FullWall, $GemWall, "#0278") Then ;Wall Breaker
 						$eWallTrain += 1
 						$hasTrained = True
@@ -706,6 +732,10 @@ Func Train()
 				EndIf
 				;SetLog("$eArchTrainRem: " & $eArchTrainRem & " $trainCount: " & $trainCount)
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eArch) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(331, 320, 1, 50, $FullArch, $GemArch, "#0275") Then ;Archer
 						$eArchTrain += 1
 						$hasTrained = True
@@ -734,6 +764,10 @@ Func Train()
 				EndIf
 				;SetLog("$eBarbTrainRem: " & $eBarbTrainRem & " $trainCount: " & $trainCount)
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eBarb) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(220, 320, 1, 50, $FullBarb, $GemBarb, "#0274") Then ;Barbarian
 						$eBarbTrain += 1
 						$hasTrained = True
@@ -760,6 +794,10 @@ Func Train()
 						$trainCount += 1
 					EndIf
 					For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eGobl) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 						If TrainClick(546, 320, 1, 50, $FullGobl, $GemGobl, "#0277") Then ;Goblin
 							$eGoblTrain += 1
 						Else
@@ -777,27 +815,12 @@ Func Train()
 				If CheckFullArmy() = False Then $Restart = True ;If the army camp is full, use it to refill storages
 				Return ; We are out of Elixir stop training.
 			EndIf
-			If _Sleep($iDelayTrain2) Then ExitLoop
 			If Not (IsTrainPage()) Then Return
 			_TrainMoveBtn(-1) ;click prev button
-			If $brrNum >= 4 Then ExitLoop ; make sure no more infiniti loop
-			If _Sleep($iDelayTrain3) Then ExitLoop
-			;endif
+			If _Sleep($iDelayTrain2) Then ExitLoop
+			If $brrNum >= $numBarracksAvaiables Then ExitLoop
 		WEnd
-		SetLog("$notTraining: " & $notTraining)
-		If $notTraining = $numBarracksAvaiables Then
-			$eBarbTrain=0
-			$eArchTrain=0
-			$eGiantTrain=0
-			$eGoblTrain=0
-			$eWallTrain=0
-			$eBallTrain=0
-			$eWizaTrain=0
-			$eHealTrain=0
-			$eDragTrain=0
-			$ePekkTrain=0
-		EndIf
-		$notTraining = 0
+		;SetLog("$notTraining: " & $notTraining & " $trainKind: " & $trainKind)
 		$eBarbTrainOld=$eBarbTrain
 		$eArchTrainOld=$eArchTrain
 		$eGiantTrainOld=$eGiantTrain
@@ -808,22 +831,19 @@ Func Train()
 		$eHealTrainOld=$eHealTrain
 		$eDragTrainOld=$eDragTrain
 		$ePekkTrainOld=$ePekkTrain
-		$eMiniTrainOld=$eMiniTrain
-		$eHogsTrainOld=$eHogsTrain
-		$eValkTrainOld=$eValkTrain
-		$eGoleTrainOld=$eGoleTrain
-		$eWitcTrainOld=$eWitcTrain
-		$eLavaTrainOld=$eLavaTrain
 		$hasTrained = False
 		$brrNum = 0
 		;USE DARK BARRACK
 		While Not isDarkBarrack()
 			_TrainMoveBtn(-1)
 			If _Sleep($iDelayTrain2) Then Return
+			If $brrNum > 9 Then ExitLoop ; anti infinite loop
+			$brrNum += 1
 		WEnd
+		$brrNum = 0
 		While isDarkBarrack()
 			_CaptureRegion()
-			If $iSpeed =0 And $FirstStart Then
+			If ($iSpeed =0 And $FirstStart) Or $RemoveTroops Then
 				$icount = 0
 				While Not _ColorCheck(_GetPixelColor(565, 205, True), Hex(0xE8E8DE, 6), 20) ; while not disappears  green arrow
 					If Not (IsTrainPage()) Then Return
@@ -837,8 +857,8 @@ Func Train()
 			$brrNum += 1
 			If Not (IsTrainPage()) Then Return ; exit from train if no train page
 			If $numDarkBarracksAvaiables = 0 Then
-				SetLog("Will not ever be able to train since no barracks are available")
-				Return
+				SetLog("Will not ever be able to train since no dark barracks are available")
+				ExitLoop
 			EndIf
 			; train units by training time, longer to train first then by size, finally cost
 			If $eGoleCount + $eGoleTrainOld < $GoleComp Then
@@ -854,6 +874,10 @@ Func Train()
 				EndIf
 
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eGole) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(546, 320, 1, 50, $FullGole, $GemGole, "#0287") Then ;Golem
 						$eGoleTrain += 1
 						$hasTrained = True
@@ -880,6 +904,10 @@ Func Train()
 				EndIf
 
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eLava) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(220, 425, 1, 50, $FullLava, $GemLava, "#0289") Then ;Lava Hound
 						$eLavaTrain += 1
 						$hasTrained = True
@@ -906,6 +934,10 @@ Func Train()
 				EndIf
 
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eWitc) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(647, 320, 1, 50, $FullWitc, $GemWitc, "#0288") Then ;Witch
 						$eWitcTrain += 1
 						$hasTrained = True
@@ -932,6 +964,10 @@ Func Train()
 				EndIf
 
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eValk) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(432, 320, 1, 50, $FullValk, $GemValk, "#0286") Then ;Valkyrie
 						$eValkTrain += 1
 						$hasTrained = True
@@ -958,6 +994,10 @@ Func Train()
 				EndIf
 
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eHogs) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					If TrainClick(331, 320, 1, 50, $FullHogs, $GemHogs, "#0285") Then ;Hog Rider
 						$eHogsTrain += 1
 						$hasTrained = True
@@ -985,6 +1025,10 @@ Func Train()
 				EndIf
 
 				For $i = 1 to $trainCount
+					If Not $fullarmy And getHouseSpace($eMini) > $TotalCamp-$CurCamp Then
+						$trainFiller=True
+						ExitLoop
+					EndIf
 					;SetLog("$i: " & $i & " $numDarkBarracksAvaiables: " & $numDarkBarracksAvaiables & " $trainCount: " & $trainCount)
 					If TrainClick(220, 320, 1, 50, $FullMini, $GemMini, "#0284") Then ;Minion
 						$eMiniTrain += 1
@@ -1007,46 +1051,48 @@ Func Train()
 				If CheckFullArmy() = False Then $Restart = True ;If the army camp is full, use it to refill storages
 				Return ; We are out of Elixir stop training.
 			EndIf
-			If _Sleep($iDelayTrain2) Then ExitLoop
 			If Not (IsTrainPage()) Then Return
 			_TrainMoveBtn(-1) ;click prev button
-			If $brrNum >= 2 Then ExitLoop ; make sure no more infiniti loop
-			If _Sleep($iDelayTrain3) Then ExitLoop
-			;endif
+			If _Sleep($iDelayTrain2) Then ExitLoop
+			If $brrNum >= $numDarkBarracksAvaiables Then ExitLoop
 		WEnd
-		SetLog("$notTraining: " & $notTraining)
-		If $notTraining = $numDarkBarracksAvaiables Then
-			$eMiniTrain=0
-			$eHogsTrain=0
-			$eValkTrain=0
-			$eGoleTrain=0
-			$eWitcTrain=0
-			$eLavaTrain=0
-		EndIf
-		$notTraining = 0
+		If $RemoveTroops Then $RemoveTroops = False
 		$eMiniTrainOld=$eMiniTrain
 		$eHogsTrainOld=$eHogsTrain
 		$eValkTrainOld=$eValkTrain
 		$eGoleTrainOld=$eGoleTrain
 		$eWitcTrainOld=$eWitcTrain
 		$eLavaTrainOld=$eLavaTrain
+		SetLog("$fullarmy: " & $fullarmy & " $trainFiller: " & $trainFiller)
+		If $trainFiller = True Then
+			If $GoblComp > 0 Then
+				$GoblComp += ($TotalCamp - $CurCamp)
+			ElseIf $BarbComp > 0 Then
+				$BarbComp += ($TotalCamp - $CurCamp)
+			ElseIf $MiniComp > 0 Then
+				$MiniComp += ($TotalCamp - $CurCamp)
+			Else
+				$ArchComp += ($TotalCamp - $CurCamp)
+			EndIf
+		EndIf
+		SetLog("$notTraining: " & $notTraining & " $trainKind: " & $trainKind)
 		If $fullarmy Then ; restore original values
-			$BarbComp /= 2
-			$ArchComp /= 2
-			$GoblComp /= 2
-			$GiantComp /= 2
-			$WallComp /= 2
-			$WizaComp /= 2
-			$MiniComp /= 2
-			$HogsComp /= 2
-			$DragComp /= 2
-			$BallComp /= 2
-			$PekkComp /= 2
-			$HealComp /= 2
-			$ValkComp /= 2
-			$GoleComp /= 2
-			$WitcComp /= 2
-			$LavaComp /= 2
+			$BarbComp =  GUICtrlRead($txtNumBarb)
+			$ArchComp =  GUICtrlRead($txtNumArch)
+			$GoblComp =  GUICtrlRead($txtNumGobl)
+			$GiantComp =  GUICtrlRead($txtNumGiant)
+			$WallComp =  GUICtrlRead($txtNumWall)
+			$WizaComp =  GUICtrlRead($txtNumWiza)
+			$MiniComp =  GUICtrlRead($txtNumMini)
+			$HogsComp =  GUICtrlRead($txtNumHogs)
+			$DragComp =  GUICtrlRead($txtNumDrag)
+			$BallComp =  GUICtrlRead($txtNumBall)
+			$PekkComp =  GUICtrlRead($txtNumPekk)
+			$HealComp =  GUICtrlRead($txtNumHeal)
+			$ValkComp =  GUICtrlRead($txtNumValk)
+			$GoleComp =  GUICtrlRead($txtNumGole)
+			$WitcComp =  GUICtrlRead($txtNumWitc)
+			$LavaComp =  GUICtrlRead($txtNumLava)
 		EndIf
 	Else
 		If $debugSetlog = 1 Then SetLog("---------TRAIN NEW BARRACK MODE------------------------")
@@ -1179,16 +1225,9 @@ Func Train()
 			If Not (IsTrainPage()) Then Return
 			_TrainMoveBtn(-1) ;click prev button
 			If _Sleep($iDelayTrain2) Then ExitLoop
-			$icount = 0
-;~ 			While Not isBarrack()
-;~ 				If _Sleep($iDelayTrain4) Then ExitLoop
-;~ 				$icount = $icount + 1
-;~ 				If $icount = 5 Then ExitLoop
-;~ 			WEnd
-			If $debugSetlog = 1 And $icount = 10 Then SetLog("Train warning 9", $COLOR_PURPLE)
 			If $brrNum >= $numBarracksAvaiables Then ExitLoop ; make sure no more infiniti loop
 		WEnd
-	EndIf
+
 
 	;dark here
 	If $isDarkBuild Then
@@ -1345,6 +1384,7 @@ Func Train()
 		WEnd
 		;end dark
 	EndIf
+	EndIf
 	If $debugSetlog = 1 Then SetLog("---=====================END TRAIN =======================================---", $COLOR_PURPLE)
 	TrainSpells()
 	If $icmbTroopComp < 8 And $isNormalBuild And $BarrackStatus[0] = False And $BarrackStatus[1] = False And $BarrackStatus[2] = False And $BarrackStatus[3] = False And Not $FirstStart Then
@@ -1472,11 +1512,12 @@ Func getMinInTrain()
 	If $eLavaTrain > 0 Then
 		If $minInTrain > 45 Then $minInTrain = 45
 	EndIf
+	If $minInTrain = 60 Then $minInTrain = -1
 	Return $minInTrain
 EndFunc
 
 Func getMaxInTrain()
-	Local $maxInTrain = 0
+	Local $maxInTrain = -1
 
 	If $eBarbTrain > 0 Then
 		If $maxInTrain < 1 Then $maxInTrain = 1
@@ -1527,4 +1568,95 @@ Func getMaxInTrain()
 		If $maxInTrain < 45 Then $maxInTrain = 45
 	EndIf
 	Return $maxInTrain
+EndFunc
+
+Func getHouseSpace($eTroop)
+	Local $houseSpace = 0
+
+	If $eTroop = $eBarb Then
+		$houseSpace = 1
+
+	ElseIf $eTroop = $eArch Then
+		$houseSpace = 1
+
+	ElseIf $eTroop = $eGiant Then
+		$houseSpace = 5
+
+	ElseIf $eTroop = $eGobl Then
+		$houseSpace = 1
+
+	ElseIf $eTroop = $eWall Then
+		$houseSpace = 2
+
+	ElseIf $eTroop = $eBall Then
+		$houseSpace = 5
+
+	ElseIf $eTroop = $eWiza Then
+		$houseSpace = 4
+
+	ElseIf $eTroop = $eHeal Then
+		$houseSpace = 14
+
+	ElseIf $eTroop = $eDrag Then
+		$houseSpace = 20
+
+	ElseIf $eTroop = $ePekk Then
+		$houseSpace = 25
+
+	ElseIf $eTroop = $eMini Then
+		$houseSpace = 2
+
+	ElseIf $eTroop = $eHogs Then
+		$houseSpace = 5
+
+	ElseIf $eTroop = $eValk Then
+		$houseSpace = 8
+
+	ElseIf $eTroop = $eGole Then
+		$houseSpace = 30
+
+	ElseIf $eTroop = $eWitc Then
+		$houseSpace = 12
+
+	ElseIf $eTroop = $eLava Then
+		$houseSpace = 30
+	EndIf
+	Return $houseSpace
+EndFunc
+
+Func ResetCounters()
+	; reset training counter
+	$eBarbTrain=0
+	$eArchTrain=0
+	$eGiantTrain=0
+	$eGoblTrain=0
+	$eWallTrain=0
+	$eBallTrain=0
+	$eWizaTrain=0
+	$eHealTrain=0
+	$eDragTrain=0
+	$ePekkTrain=0
+	$eMiniTrain=0
+	$eHogsTrain=0
+	$eValkTrain=0
+	$eGoleTrain=0
+	$eWitcTrain=0
+	$eLavaTrain=0
+	;reset army camp
+	$eBarbCount=0
+	$eArchCount=0
+	$eGiantCount=0
+	$eGoblCount=0
+	$eWallCount=0
+	$eBallCount=0
+	$eWizaCount=0
+	$eHealCount=0
+	$eDragCount=0
+	$ePekkCount=0
+	$eMiniCount=0
+	$eHogsCount=0
+	$eValkCount=0
+	$eGoleCount=0
+	$eWitcCount=0
+	$eLavaCount=0
 EndFunc

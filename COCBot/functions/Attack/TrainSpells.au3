@@ -1,59 +1,9 @@
-Func ShowNormalSpellIcon()
-	GUICtrlSetState($LightningIcon, $GUI_HIDE)
-	GUICtrlSetState($HealIcon, $GUI_HIDE)
-	GUICtrlSetState($RageIcon, $GUI_HIDE)
-	GUICtrlSetState($JumpIcon, $GUI_HIDE)
-	GUICtrlSetState($FreezeIcon, $GUI_HIDE)
-
-	Local $IconNum = _GUICtrlComboBox_GetCurSel($cmbTrainNormalSpellType)
-	Switch $IconNum
-		Case 1
-			GUICtrlSetState($LightningIcon, $GUI_SHOW)
-		Case 2
-			GUICtrlSetState($HealIcon, $GUI_SHOW)
-		Case 3
-			GUICtrlSetState($RageIcon, $GUI_SHOW)
-		Case 4
-			GUICtrlSetState($JumpIcon, $GUI_SHOW)
-		Case 5
-			GUICtrlSetState($FreezeIcon, $GUI_SHOW)
-	EndSwitch
-
-EndFunc   ;==>ShowNormalSpellIcon
-
-Func ShowDarkSpellIcon()
-	GUICtrlSetState($PoisonIcon, $GUI_HIDE)
-	GUICtrlSetState($EarthquakeIcon, $GUI_HIDE)
-	GUICtrlSetState($HasteIcon, $GUI_HIDE)
-
-	Local $IconNum = _GUICtrlComboBox_GetCurSel($cmbTrainDarkSpellType)
-	Switch $IconNum
-		Case 1
-			GUICtrlSetState($PoisonIcon, $GUI_SHOW)
-		Case 2
-			GUICtrlSetState($EarthquakeIcon, $GUI_SHOW)
-		Case 3
-			GUICtrlSetState($HasteIcon, $GUI_SHOW)
-	EndSwitch
-
-
-EndFunc   ;==>ShowDarkSpellIcon
-
-
-Func cmbTrainNormalSpellType()
-	IniWrite($config, "advanced", "cmbTrainNormalSpellType", _GUICtrlComboBox_GetCurSel($cmbTrainNormalSpellType))
-	ShowNormalSpellIcon()
-EndFunc   ;==>cmbTrainNormalSpellType
-
-Func cmbTrainDarkSpellType()
-	IniWrite($config, "advanced", "cmbTrainDarkSpellType", _GUICtrlComboBox_GetCurSel($cmbTrainDarkSpellType))
-	ShowDarkSpellIcon()
-EndFunc   ;==>cmbTrainDarkSpellType
-
 Func TrainSpells()
 
-	If $ichkTrainSpells = 1 Then
+	If $ichkTrainLSpell = 1 Or $ichkTrainHSpell = 1 Or $ichkTrainRSpell = 1 Or $ichkTrainJSpell = 1 Or $ichkTrainFSpell = 1 Then
 		TrainNormalSpells()
+	EndIf
+	If $ichkTrainPSpell = 1 Or $ichkTrainESpell = 1 Or $ichkTrainHaSpell = 1 Then
 		TrainDarkSpells()
 	EndIf
 
@@ -67,88 +17,53 @@ Func TrainNormalSpells()
 	Local $lightning[2] = [250, "Lightning"], $heal[2] = [357, "Heal"], $Rage[2] = [464, "Rage"], $Jump[2] = [571, "Jump"], $Freeze[2] = [678, "Freeze"]
 	Local $multiTrain = False
 	Local $i = Random(0, 4, 1)
-	Local $j
+	Local $j, $k
+	Local $spellTrain = 0, $LSpellTrain = 0, $HSpellTrain = 0, $RSpellTrain = 0, $JSpellTrain = 0, $FSpellTrain = 0
 
-	Switch (_GUICtrlComboBox_GetCurSel($cmbTrainNormalSpellType) + 1)
+	For $k = 0 To 4
+	If $ichkTrainLSpell = 1 Then
+		$j = Mod($i, 5)
+		$SpellPos[$j] = $lightning[0]
+		$spellName[$j] = $lightning[1]
+		$i += 1
+		If $LSpellTrain = 0 Then $LSpellTrain = 1
+	EndIf
 
-		Case 1
-			Return
-		Case 2
-			$SpellPos[0] = $lightning[0]
-			$spellName[0] = $lightning[1]
-		Case 3
-			$SpellPos[0] = $heal[0]
-			$spellName[0] = $heal[1]
-		Case 4
-			$SpellPos[0] = $Rage[0]
-			$spellName[0] = $Rage[1]
-		Case 5
-			$SpellPos[0] = $Jump[0]
-			$spellName[0] = $Jump[1]
-		Case 6
-			$SpellPos[0] = $Freeze[0]
-			$spellName[0] = $Freeze[1]
-		Case 7
-			$SpellPos[$i] = $Freeze[0]
-			$spellName[$i] = $Freeze[1]
-			$i += 1
-			$j = Mod($i, 5)
-			$SpellPos[$j] = $Jump[0]
-			$spellName[$j] = $Jump[1]
-			$i += 1
-			$j = Mod($i, 5)
-			$SpellPos[$j] = $Rage[0]
-			$spellName[$j] = $Rage[1]
-			$i += 1
-			$j = Mod($i, 5)
-			$SpellPos[$j] = $heal[0]
-			$spellName[$j] = $heal[1]
-			$i += 1
-			$j = Mod($i, 5)
-			$SpellPos[$j] = $lightning[0]
-			$spellName[$j] = $lightning[1]
-			$multiTrain = True
-		Case 8
-			$SpellPos[$i] = $Rage[0]
-			$spellName[$i] = $Rage[1]
-			$i += 1
-			$j = Mod($i, 5)
-			$SpellPos[$j] = $heal[0]
-			$spellName[$j] = $heal[1]
-			$i += 1
-			$j = Mod($i, 5)
-			$SpellPos[$j] = $Rage[0]
-			$spellName[$j] = $Rage[1]
-			$i += 1
-			$j = Mod($i, 5)
-			$SpellPos[$j] = $heal[0]
-			$spellName[$j] = $heal[1]
-			$i += 1
-			$j = Mod($i, 5)
-			$SpellPos[$j] = $Rage[0]
-			$spellName[$j] = $Rage[1]
-			$multiTrain = True
-		Case 9
-			$SpellPos[$i] = $Jump[0]
-			$spellName[$i] = $Jump[1]
-			$i += 1
-			$j = Mod($i, 5)
-			$SpellPos[$j] = $Rage[0]
-			$spellName[$j] = $Rage[1]
-			$i += 1
-			$j = Mod($i, 5)
-			$SpellPos[$j] = $Jump[0]
-			$spellName[$j] = $Jump[1]
-			$i += 1
-			$j = Mod($i, 5)
-			$SpellPos[$j] = $Rage[0]
-			$spellName[$j] = $Rage[1]
-			$i += 1
-			$j = Mod($i, 5)
-			$SpellPos[$j] = $Jump[0]
-			$spellName[$j] = $Jump[1]
-			$multiTrain = True
-	EndSwitch
+	If $ichkTrainHSpell = 1 Then
+		$j = Mod($i, 5)
+		$SpellPos[$j] = $heal[0]
+		$spellName[$j] = $heal[1]
+		$i += 1
+		If $HSpellTrain = 0 Then $HSpellTrain = 1
+	EndIf
+
+	If $ichkTrainRSpell = 1 Then
+		$j = Mod($i, 5)
+		$SpellPos[$j] = $Rage[0]
+		$spellName[$j] = $Rage[1]
+		$i += 1
+		If $RSpellTrain = 0 Then $RSpellTrain = 1
+	EndIf
+
+	If $ichkTrainJSpell = 1 Then
+		$j = Mod($i, 5)
+		$SpellPos[$j] = $Jump[0]
+		$spellName[$j] = $Jump[1]
+		$i += 1
+		If $JSpellTrain = 0 Then $JSpellTrain = 1
+	EndIf
+
+	If $ichkTrainFSpell = 1 Then
+		$j = Mod($i, 5)
+		$SpellPos[$j] = $Freeze[0]
+		$spellName[$j] = $Freeze[1]
+		$i += 1
+		If $FSpellTrain = 0 Then $FSpellTrain = 1
+	EndIf
+	Next
+
+	$spellTrain = $LSpellTrain + $HSpellTrain + $RSpellTrain + $JSpellTrain + $FSpellTrain
+	If $spellTrain > 1 Then $multiTrain = True
 
 	If $multiTrain Then
 		SetLog("Order of creation")
@@ -173,7 +88,7 @@ Func TrainNormalSpells()
 	If isSpellFactory() Then
 		$count = 0
 		$i = 0
-		While $count < 5
+		While $count < $spellTrain
 			$created = True
 			If $multiTrain Then $i = $count
 			If $debugSetlog = 1 Then SetLog(_GetPixelColor($SpellPos[$i], 375, True))
@@ -220,33 +135,34 @@ Func TrainDarkSpells()
 	Local $multiTrain = False
 	Local $i = Random(0, 2, 1)
 	Local $j
+	Local $spellTrain = 0, $PSpellTrain = 0, $ESpellTrain = 0, $HaSpellTrain = 0
 
-	Switch (_GUICtrlComboBox_GetCurSel($cmbTrainDarkSpellType) + 1)
+	For $k = 0 To 2
+	If $ichkTrainPSpell = 1 Then
+		$j = Mod($i, 3)
+		$SpellPos[$j] = $Poison[0]
+		$spellName[$j] = $Poison[1]
+		$i += 1
+		If $PSpellTrain = 0 Then $PSpellTrain = 1
+	EndIf
+	If $ichkTrainESpell = 1 Then
+		$j = Mod($i, 3)
+		$SpellPos[$j] = $Earthquake[0]
+		$spellName[$j] = $Earthquake[1]
+		$i += 1
+		If $ESpellTrain = 0 Then $ESpellTrain = 1
+	EndIf
+	If $ichkTrainHaSpell = 1 Then
+		$j = Mod($i, 3)
+		$SpellPos[$j] = $haste[0]
+		$spellName[$j] = $haste[1]
+		$i += 1
+		If $HaSpellTrain = 0 Then $HaSpellTrain = 1
+	EndIf
+	Next
 
-		Case 1
-			Return
-		Case 2
-			$SpellPos[0] = $Poison[0]
-			$spellName[0] = $Poison[1]
-		Case 3
-			$SpellPos[0] = $Earthquake[0]
-			$spellName[0] = $Earthquake[1]
-		Case 4
-			$SpellPos[0] = $haste[0]
-			$spellName[0] = $haste[1]
-		Case 5
-			$SpellPos[$i] = $haste[0]
-			$spellName[$i] = $haste[1]
-			$i += 1
-			$j = Mod($i, 3)
-			$SpellPos[$j] = $Earthquake[0]
-			$spellName[$j] = $Earthquake[1]
-			$i += 1
-			$j = Mod($i, 3)
-			$SpellPos[$j] = $Poison[0]
-			$spellName[$j] = $Poison[1]
-			$multiTrain = True
-	EndSwitch
+	$spellTrain = $PSpellTrain + $ESpellTrain + $HaSpellTrain
+	If $spellTrain > 1 Then $multiTrain = True
 
 	If $multiTrain Then
 		SetLog("Order of creation")
@@ -272,9 +188,9 @@ Func TrainDarkSpells()
 	If isDarkSpellFactory() Then
 		$count = 0
 		$i = 0
-		While $count < 6
+		While $count < $spellTrain
 			$created = True
-			If $multiTrain Then $i = Mod($count, 3)
+			If $multiTrain Then $i = $count
 			If _sleep(500) Then Return
 
 			If $debugSetlog = 1 Then SetLog(_GetPixelColor($SpellPos[$i], 375, True))

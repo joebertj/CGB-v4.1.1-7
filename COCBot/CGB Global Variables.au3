@@ -210,7 +210,7 @@ Global $AttackTHType
 Global $allTroops = False, $skipBase = False
 ;Global $chklightspell
 ;Global $iLSpellQ
-Global $ichkTrainSpells
+Global $ichkTrainLSpell, $ichkTrainHSpell, $ichkTrainRSpell, $ichkTrainJSpell, $ichkTrainFSpell, $ichkTrainPSpell, $ichkTrainESpell, $ichkTrainHaSpell
 Global $NormalSpellTrain
 Global $DarkSpellTrain
 ;Global $BottomTHType
@@ -358,7 +358,7 @@ Global $eBarbCount=0, $eArchCount=0, $eGiantCount=0, $eGoblCount=0, $eWallCount=
 Global $eBarbCountOld=0, $eArchCountOld=0, $eGiantCountOld=0, $eGoblCountOld=0, $eWallCountOld=0, $eBallCountOld=0, $eWizaCountOld=0, $eHealCountOld=0, $eDragCountOld=0, $ePekkCountOld=0, $eMiniCountOld=0, $eHogsCountOld=0, $eValkCountOld=0, $eGoleCountOld=0, $eWitcCountOld=0, $eLavaCountOld=0
 Global $eBarbTrain=0, $eArchTrain=0, $eGiantTrain=0, $eGoblTrain=0, $eWallTrain=0, $eBallTrain=0, $eWizaTrain=0, $eHealTrain=0, $eDragTrain=0, $ePekkTrain=0, $eMiniTrain=0, $eHogsTrain=0, $eValkTrain=0, $eGoleTrain=0, $eWitcTrain=0, $eLavaTrain=0
 Global $eBarbTrainOld=0, $eArchTrainOld=0, $eGiantTrainOld=0, $eGoblTrainOld=0, $eWallTrainOld=0, $eBallTrainOld=0, $eWizaTrainOld=0, $eHealTrainOld=0, $eDragTrainOld=0, $ePekkTrainOld=0, $eMiniTrainOld=0, $eHogsTrainOld=0, $eValkTrainOld=0, $eGoleTrainOld=0, $eWitcTrainOld=0, $eLavaTrainOld=0
-Global $iSpeed
+Global $iSpeed, $trainFiller = False, $notTraining = 0
 
 ;Global $barrackPos[4][2] ;Positions of each barracks
 Global $barrackPos[2] = [-1, -1] ;Positions of each barracks
@@ -431,7 +431,7 @@ Global $sTimer, $iTimePassed, $hour, $min, $sec , $sTimeWakeUp = 120,$sTimeStopA
 Global $fulltroop = 100
 Global $CurCamp, $TotalCamp = 0, $CurCampOld
 Global $NoLeague
-Global $FirstStart = True
+Global $FirstStart = True, $RemoveTroops = False
 Global $TPaused, $BlockInputPause = 0
 
 ; Halt/Restart Mode values

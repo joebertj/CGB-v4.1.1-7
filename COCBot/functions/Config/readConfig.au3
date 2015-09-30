@@ -236,10 +236,17 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iAlertPBVillage = IniRead($config, "advanced", "AlertPBVillage", "0")
 		$iLastAttack = IniRead($config, "advanced", "AlertPBLastAttack", "0")
 
-		;Train Spells
-		$ichkTrainSpells = IniRead($config, "advanced", "chkTrainSpells", "0")
-		$NormalSpellTrain = IniRead($config, "advanced", "cmbTrainNormalSpellType", "0")
-		$DarkSpellTrain = IniRead($config, "advanced", "cmbTrainDarkSpellType", "0")
+		;Train Spell
+		$ichkTrainLSpell = IniRead($config, "advanced", "chkTrainLSpell", "0")
+		$ichkTrainHSpell = IniRead($config, "advanced", "chkTrainHSpell", "0")
+		$ichkTrainRSpell = IniRead($config, "advanced", "chkTrainRSpell", "0")
+		$ichkTrainJSpell = IniRead($config, "advanced", "chkTrainJSpell", "0")
+		$ichkTrainFSpell = IniRead($config, "advanced", "chkTrainFSpell", "0")
+		$ichkTrainPSpell = IniRead($config, "advanced", "chkTrainPSpell", "0")
+		$ichkTrainESpell = IniRead($config, "advanced", "chkTrainESpell", "0")
+		$ichkTrainHaSpell = IniRead($config, "advanced", "chkTrainHaSpell", "0")
+		;$NormalSpellTrain = IniRead($config, "advanced", "cmbTrainNormalSpellType", "0")
+		;$DarkSpellTrain = IniRead($config, "advanced", "cmbTrainDarkSpellType", "0")
 		;		$iUnbreakableMode = IniRead($config, "advanced", "chkUnbreakable", "0")
 		$iUnbreakableWait = IniRead($config, "advanced", "UnbreakableWait", "5")
 		$iUnBrkMinGold = IniRead($config, "advanced", "minUnBrkgold", "50000")

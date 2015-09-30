@@ -95,16 +95,16 @@ AutoIt3 Syntax Checker v3.3.14.1  Copyright (c) 2007-2013 Tylo & AutoIt Team
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB GUI Control.au3"(48,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Search.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB GUI Control.au3"(49,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Attack.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB GUI Control.au3"(50,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(126,31) : warning: $ToolboxActive: possibly used before declaration.
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(114,31) : warning: $ToolboxActive: possibly used before declaration.
         If Not $ToolboxActive Then
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(151,26) : warning: $ToolboxDetached: possibly used before declaration.
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(139,26) : warning: $ToolboxDetached: possibly used before declaration.
         ($ToolboxDetached)
 ~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(151,79) : error: Statement cannot be just an expression.
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(139,79) : error: Statement cannot be just an expression.
         ($ToolboxDetached) ? _GUI_Toolbox_Win_Hide() : _GUI_Toolbox_GUI_Hide()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(156,79) : error: Statement cannot be just an expression.
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Advanced.au3"(144,79) : error: Statement cannot be just an expression.
         ($ToolboxDetached) ? _GUI_Toolbox_Win_Show() : _GUI_Toolbox_GUI_Show()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB GUI Control.au3"(51,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab EndBattle.au3"
@@ -1176,6 +1176,7 @@ C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(76,1) : UNREFED(76):	
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(77,1) : UNREFED(77):	$DWMWA_NCRENDERING_POLICY
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(81,1) : UNREFED(81):	$DWMWA_NONCLIENT_RTL_LAYOUT
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(78,1) : UNREFED(78):	$DWMWA_TRANSITIONS_FORCEDISABLED
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(215,1) : UNREFED(215):	$DarkSpellTrain
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(73,1) : UNREFED(73):	$DropTrophiesStartPoint
 C:\Program Files (x86)\AutoIt3\Include\FontConstants.au3(44,1) : UNREFED(44):	$EASTEUROPE_CHARSET
 C:\Program Files (x86)\AutoIt3\Include\EditConstants.au3(33,1) : UNREFED(33):	$EC_ERR
@@ -2459,6 +2460,7 @@ C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(267,1) : UNREFED(267)
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(265,1) : UNREFED(265):	$NUMBER_AUTO
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(268,1) : UNREFED(268):	$NUMBER_DOUBLE
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(433,1) : UNREFED(433):	$NoLeague
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(214,1) : UNREFED(214):	$NormalSpellTrain
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(63,1) : UNREFED(63):	$OBJID_ALERT
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(61,1) : UNREFED(61):	$OBJID_CARET
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(62,1) : UNREFED(62):	$OBJID_CURSOR
@@ -4136,36 +4138,36 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatb
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(50,1) : UNREFED(50):	$editGlobalMessages4
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(52,1) : UNREFED(52):	$editResponses
 C:\Program Files (x86)\AutoIt3\Include\Array.au3(72,1) : UNREFED(72):	$g_oArrayUniqueCOMErrorHandler
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(23,1) : UNREFED(23):	$iDelayAttackTHGrid4
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(24,1) : UNREFED(24):	$iDelayAttackTHGrid5
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(25,1) : UNREFED(25):	$iDelayAttackTHGrid6
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(42,1) : UNREFED(42):	$iDelayBarch1
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(43,1) : UNREFED(43):	$iDelayBarch2
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(44,1) : UNREFED(44):	$iDelayBarch3
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(149,1) : UNREFED(149):	$iDelayBlockInput1
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(194,1) : UNREFED(194):	$iDelayBoostBarracks4
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(207,1) : UNREFED(207):	$iDelayBotDetectFirstTime2
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(152,1) : UNREFED(152):	$iDelayCheckVersionHTML1
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(309,1) : UNREFED(309):	$iDelayCreateSpell1
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(310,1) : UNREFED(310):	$iDelayCreateSpell2
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(311,1) : UNREFED(311):	$iDelayCreateSpell3
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(356,1) : UNREFED(356):	$iDelayDropLSpell1
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(88,1) : UNREFED(88):	$iDelayDropOnEdge4
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(59,1) : UNREFED(59):	$iDelayGoldElixirChange1
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(60,1) : UNREFED(60):	$iDelayGoldElixirChange2
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(25,1) : UNREFED(25):	$iDelayAttackTHGrid4
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(26,1) : UNREFED(26):	$iDelayAttackTHGrid5
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(27,1) : UNREFED(27):	$iDelayAttackTHGrid6
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(44,1) : UNREFED(44):	$iDelayBarch1
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(45,1) : UNREFED(45):	$iDelayBarch2
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(46,1) : UNREFED(46):	$iDelayBarch3
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(151,1) : UNREFED(151):	$iDelayBlockInput1
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(196,1) : UNREFED(196):	$iDelayBoostBarracks4
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(209,1) : UNREFED(209):	$iDelayBotDetectFirstTime2
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(154,1) : UNREFED(154):	$iDelayCheckVersionHTML1
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(311,1) : UNREFED(311):	$iDelayCreateSpell1
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(312,1) : UNREFED(312):	$iDelayCreateSpell2
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(313,1) : UNREFED(313):	$iDelayCreateSpell3
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(358,1) : UNREFED(358):	$iDelayDropLSpell1
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(90,1) : UNREFED(90):	$iDelayDropOnEdge4
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(61,1) : UNREFED(61):	$iDelayGoldElixirChange1
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(62,1) : UNREFED(62):	$iDelayGoldElixirChange2
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(7,1) : UNREFED(7):	$iDelayRunBot4
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(327,1) : UNREFED(327):	$iDelayUpgradeBuilding3
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(348,1) : UNREFED(348):	$iDelayUpgradeWallElixir1
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(349,1) : UNREFED(349):	$iDelayUpgradeWallElixir2
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(350,1) : UNREFED(350):	$iDelayUpgradeWallElixir3
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(343,1) : UNREFED(343):	$iDelayUpgradeWallGold1
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(344,1) : UNREFED(344):	$iDelayUpgradeWallGold2
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(345,1) : UNREFED(345):	$iDelayUpgradeWallGold3
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(110,1) : UNREFED(110):	$iDelaycheckDarkElix1
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(111,1) : UNREFED(111):	$iDelaycheckDarkElix2
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(139,1) : UNREFED(139):	$iDelaywaitMainScreen2
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(140,1) : UNREFED(140):	$iDelaywaitMainScreen3
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(141,1) : UNREFED(141):	$iDelaywaitMainScreen4
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(329,1) : UNREFED(329):	$iDelayUpgradeBuilding3
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(350,1) : UNREFED(350):	$iDelayUpgradeWallElixir1
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(351,1) : UNREFED(351):	$iDelayUpgradeWallElixir2
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(352,1) : UNREFED(352):	$iDelayUpgradeWallElixir3
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(345,1) : UNREFED(345):	$iDelayUpgradeWallGold1
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(346,1) : UNREFED(346):	$iDelayUpgradeWallGold2
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(347,1) : UNREFED(347):	$iDelayUpgradeWallGold3
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(112,1) : UNREFED(112):	$iDelaycheckDarkElix1
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(113,1) : UNREFED(113):	$iDelaycheckDarkElix2
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(141,1) : UNREFED(141):	$iDelaywaitMainScreen2
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(142,1) : UNREFED(142):	$iDelaywaitMainScreen3
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(143,1) : UNREFED(143):	$iDelaywaitMainScreen4
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(679,1) : UNREFED(679):	$iMaxBarrackTroop
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(595,1) : UNREFED(595):	$iShareMessageEnable
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(596,1) : UNREFED(596):	$iShareMessageSearch
@@ -6015,7 +6017,7 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Pixels\bool
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Stats.au3(20,1) : UNREFED(22):	btnLogs
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Stats.au3(16,1) : UNREFED(18):	btnLoots
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Search.au3(260,1) : UNREFED(268):	chkABEnableAfterHero
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\applyConfig.au3(1478,1) : UNREFED(16):	chkSpeed
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\applyConfig.au3(1513,1) : UNREFED(16):	chkSpeed
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getOcr.au3(104,1) : UNREFED(106):	getArmyTroopKind
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getOcr.au3(100,1) : UNREFED(102):	getArmyTroopQuantity
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getChar.au3(7,1) : UNREFED(129):	getChar

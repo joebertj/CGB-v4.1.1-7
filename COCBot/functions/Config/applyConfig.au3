@@ -475,17 +475,52 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	EndIf
 
 	;Train Spells
-	If $ichkTrainSpells = 1 Then
-	    GUICtrlSetState($chkTrainSpells, $GUI_CHECKED)
+	If $ichkTrainLSpell = 1 Then
+	    GUICtrlSetState($chkTrainLSpell, $GUI_CHECKED)
 	Else
-	    GUICtrlSetState($chkTrainSpells, $GUI_UNCHECKED)
+	    GUICtrlSetState($chkTrainLSpell, $GUI_UNCHECKED)
 	EndIf
-	chkTrainSpells()
+	If $ichkTrainHSpell = 1 Then
+	    GUICtrlSetState($chkTrainHSpell, $GUI_CHECKED)
+	Else
+	    GUICtrlSetState($chkTrainHSpell, $GUI_UNCHECKED)
+	EndIf
+	If $ichkTrainRSpell = 1 Then
+	    GUICtrlSetState($chkTrainRSpell, $GUI_CHECKED)
+	Else
+	    GUICtrlSetState($chkTrainRSpell, $GUI_UNCHECKED)
+	EndIf
+	If $ichkTrainJSpell = 1 Then
+	    GUICtrlSetState($chkTrainJSpell, $GUI_CHECKED)
+	Else
+	    GUICtrlSetState($chkTrainJSpell, $GUI_UNCHECKED)
+	EndIf
+	If $ichkTrainFSpell = 1 Then
+	    GUICtrlSetState($chkTrainFSpell, $GUI_CHECKED)
+	Else
+	    GUICtrlSetState($chkTrainFSpell, $GUI_UNCHECKED)
+	EndIf
+	If $ichkTrainPSpell = 1 Then
+	    GUICtrlSetState($chkTrainPSpell, $GUI_CHECKED)
+	Else
+	    GUICtrlSetState($chkTrainPSpell, $GUI_UNCHECKED)
+	EndIf
+	If $ichkTrainESpell = 1 Then
+	    GUICtrlSetState($chkTrainESpell, $GUI_CHECKED)
+	Else
+	    GUICtrlSetState($chkTrainESpell, $GUI_UNCHECKED)
+	EndIf
+	If $ichkTrainHaSpell = 1 Then
+	    GUICtrlSetState($chkTrainHaSpell, $GUI_CHECKED)
+	Else
+	    GUICtrlSetState($chkTrainHaSpell, $GUI_UNCHECKED)
+	EndIf
 
-	_GUICtrlComboBox_SetCurSel($cmbTrainNormalSpellType, $NormalSpellTrain)
-	cmbTrainNormalSpellType()
-	_GUICtrlComboBox_SetCurSel($cmbTrainDarkSpellType, $DarkSpellTrain)
-	cmbTrainDarkSpellType()
+
+	;_GUICtrlComboBox_SetCurSel($cmbTrainNormalSpellType, $NormalSpellTrain)
+	;cmbTrainNormalSpellType()
+	;_GUICtrlComboBox_SetCurSel($cmbTrainDarkSpellType, $DarkSpellTrain)
+	;cmbTrainDarkSpellType()
 
 	If $OptBullyMode = 1 Then
 		GUICtrlSetState($chkBullyMode, $GUI_CHECKED)

@@ -24,7 +24,7 @@
 #pragma compile(FileVersion, 4.1.1)
 #pragma compile(LegalCopyright, © http://gamebot.org)
 
-$sBotVersion = "v4.1.1-7 merge"
+$sBotVersion = "v4.1.1-7.18"
 $sBotTitle = "Clash Game Bot " & $sBotVersion
 Global $sBotDll = @ScriptDir & "\CGBPlugin.dll"
 
@@ -230,7 +230,8 @@ EndFunc   ;==>runBot
 
 Func Idle() ;Sequence that runs until Full Army
 	Local $TimeIdle = 0 ;In Seconds
-	Local $trainTimerAdjust=0 ;In minutes
+	Local $trainTimerAdjust=0, $timeInTrain=0, $TimeIdleinMinutes=0 ;In minutes
+
 	If $debugSetlog = 1 Then SetLog("Func Idle ", $COLOR_PURPLE)
 	While $fullArmy = False
 		If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
@@ -354,61 +355,37 @@ Func Idle() ;Sequence that runs until Full Army
 				$ClanAdStartTime = TimerInit()
 			EndIf
 		EndIf
+		RequestCC()
 		SnipeWhileTrain()
 		$TimeIdle += Round(TimerDiff($hTimer) / 1000, 2) ;In Seconds
 		; use getMinInTrain() if Idle is too long without troops in training
 		If $iSpeed = 0 Then
-			$trainTimerAdjust = getMaxInTrain()
+			$timeInTrain = getMaxInTrain()
 		ElseIf $iSpeed = 1 Then
-			$trainTimerAdjust = getMinInTrain()
+			$timeInTrain = getMinInTrain()
 		EndIf
-		SetLog("$trainTimerAdjust: " & $trainTimerAdjust & " $CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
-		If $CurCamp = $CurCampOld Then ; if no new troop is produced
-			If Floor(Mod(Floor($TimeIdle / 60), 60))-$trainTimerAdjust > 0 Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
-				;reset training counter
-				$eBarbTrain=0
-				$eArchTrain=0
-				$eGiantTrain=0
-				$eGoblTrain=0
-				$eWallTrain=0
-				$eBallTrain=0
-				$eWizaTrain=0
-				$eHealTrain=0
-				$eDragTrain=0
-				$ePekkTrain=0
-				$eMiniTrain=0
-				$eHogsTrain=0
-				$eValkTrain=0
-				$eGoleTrain=0
-				$eWitcTrain=0
-				$eLavaTrain=0
+		$TimeIdleinMinutes = Floor($TimeIdle/60)
+		If $trainTimerAdjust = 0 Then $trainTimerAdjust = $TimeIdleinMinutes + $timeInTrain
+		SetLog("$trainTimerAdjust: " & $trainTimerAdjust & " $timeInTrain: " & $timeInTrain & " $TimeIdleinMinutes: " & $TimeIdleinMinutes)
+		SetLog("$CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
+		If $CurCamp = $CurCampOld Then ; if no new troop is produced or being trained
+			If $TimeIdleinMinutes-$trainTimerAdjust > 0 Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
+				If $notTraining = 0 Then $RemoveTroops=True ; training stuck, alo $timeInTrain = -1
+				ResetCounters()
+				SetLog("time $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 			EndIf
 		Else
-			$trainTimerAdjust += $trainTimerAdjust ;units are being produced, increment time to adjust idle time
+			$trainTimerAdjust = $TimeIdleinMinutes + $timeInTrain ;units are being produced, increment time to adjust idle time
 		EndIf
+		If $notTraining = $numBarracksAvaiables  + $numDarkBarracksAvaiables Then ResetCounters()
 		SetLog("Time Idle: " & StringFormat("%02i", Floor(Floor($TimeIdle / 60) / 60)) & ":" & StringFormat("%02i", Floor(Mod(Floor($TimeIdle / 60), 60))) & ":" & StringFormat("%02i", Floor(Mod($TimeIdle, 60))))
 		If $OutOfGold = 1 Then Return
 	WEnd
-	If $iSpeed = 0 Then
-		$FirstStart=True
-		; reset training counter before attacking
-		$eBarbTrain=0
-		$eArchTrain=0
-		$eGiantTrain=0
-		$eGoblTrain=0
-		$eWallTrain=0
-		$eBallTrain=0
-		$eWizaTrain=0
-		$eHealTrain=0
-		$eDragTrain=0
-		$ePekkTrain=0
-		$eMiniTrain=0
-		$eHogsTrain=0
-		$eValkTrain=0
-		$eGoleTrain=0
-		$eWitcTrain=0
-		$eLavaTrain=0
+	If $iSpeed = 0 Then ; accuracy only
+		$RemoveTroops=True
 	EndIf
+	ResetCounters()
+	SetLog("attack $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 EndFunc   ;==>Idle
 
 Func AttackMain() ;Main control for attack functions
