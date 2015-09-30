@@ -370,13 +370,14 @@ Func Idle() ;Sequence that runs until Full Army
 		SetLog("$CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
 		If $CurCamp = $CurCampOld Then ; if no new troop is produced or being trained
 			If $TimeIdleinMinutes-$trainTimerAdjust > 0 Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
-				If ($iSpeed = 1) Or ($iSpeed = 0 And $notTraining = 0) Then $RemoveTroops=True ; training stuck, alo $timeInTrain = -1
+				If $notTraining = 0 Then $RemoveTroops=True ; training stuck, alo $timeInTrain = -1
 				ResetCounters()
 				SetLog("time $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 			EndIf
 		Else
 			$trainTimerAdjust = $TimeIdleinMinutes + $timeInTrain ;units are being produced, increment time to adjust idle time
 		EndIf
+		If $notTraining = $numBarracksAvaiables  + $numDarkBarracksAvaiables Then ResetCounters()
 		SetLog("Time Idle: " & StringFormat("%02i", Floor(Floor($TimeIdle / 60) / 60)) & ":" & StringFormat("%02i", Floor(Mod(Floor($TimeIdle / 60), 60))) & ":" & StringFormat("%02i", Floor(Mod($TimeIdle, 60))))
 		If $OutOfGold = 1 Then Return
 	WEnd
