@@ -79,7 +79,7 @@ Func AttackTHPB6()
 			EndIf
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(15) = True Then
+			If CheckForStar(30) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -137,7 +137,7 @@ Func AttackTHPB6()
 			EndIf
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(5) = True Then
+			If CheckForStar(30) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -170,7 +170,7 @@ Func AttackTHPB6()
 					TroopTH($THx, $THy, $eValk, 2, 1, 500)
 				EndIf
 				PrepareAttack($iMatchMode, True) ;Check remaining quantities
-				If CheckForStar(45) = True Then
+				If CheckForStar(90) = True Then
 					If $optGreedy = 1 Then
 						Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 					EndIf

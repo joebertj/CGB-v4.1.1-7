@@ -385,7 +385,7 @@ Func Idle() ;Sequence that runs until Full Army
 		$RemoveTroops=True
 	EndIf
 	ResetCounters()
-	SetLog("attack $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
+	If $debugSetlog = 1 Then SetLog("attack $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 EndFunc   ;==>Idle
 
 Func AttackMain() ;Main control for attack functions
