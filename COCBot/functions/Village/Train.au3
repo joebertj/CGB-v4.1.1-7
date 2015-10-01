@@ -465,7 +465,7 @@ Func Train()
 				$MiniComp = GUICtrlRead($txtNumMini) ; restore MiniComp
 				$trainFiller = False
 			EndIf
-			SetLog("fullarmy $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
+			If $debugSetlog = 1 Then SetLog("fullarmy $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 			$BarbComp = ($BarbComp * 2) - $eBarbCount
 			$ArchComp = ($ArchComp * 2) - $eArchCount
 			$GoblComp = ($GoblComp * 2) - $eGoblCount
@@ -1063,7 +1063,7 @@ Func Train()
 		$eGoleTrainOld=$eGoleTrain
 		$eWitcTrainOld=$eWitcTrain
 		$eLavaTrainOld=$eLavaTrain
-		SetLog("$fullarmy: " & $fullarmy & " $trainFiller: " & $trainFiller)
+		If $debugSetlog = 1 Then SetLog("$fullarmy: " & $fullarmy & " $trainFiller: " & $trainFiller)
 		If $trainFiller = True Then
 			If $GoblComp > 0 Then
 				$GoblComp += ($TotalCamp - $CurCamp)
@@ -1075,7 +1075,7 @@ Func Train()
 				$ArchComp += ($TotalCamp - $CurCamp)
 			EndIf
 		EndIf
-		SetLog("$notTraining: " & $notTraining & " $trainKind: " & $trainKind)
+		If $debugSetlog = 1 Then SetLog("$notTraining: " & $notTraining & " $trainKind: " & $trainKind)
 		If $fullarmy Then ; restore original values
 			$BarbComp =  GUICtrlRead($txtNumBarb)
 			$ArchComp =  GUICtrlRead($txtNumArch)

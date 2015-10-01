@@ -24,7 +24,7 @@
 #pragma compile(FileVersion, 4.1.1)
 #pragma compile(LegalCopyright, © http://gamebot.org)
 
-$sBotVersion = "v4.1.1-7.18"
+$sBotVersion = "v4.1.1-19"
 $sBotTitle = "Clash Game Bot " & $sBotVersion
 Global $sBotDll = @ScriptDir & "\CGBPlugin.dll"
 
@@ -366,13 +366,13 @@ Func Idle() ;Sequence that runs until Full Army
 		EndIf
 		$TimeIdleinMinutes = Floor($TimeIdle/60)
 		If $trainTimerAdjust = 0 Then $trainTimerAdjust = $TimeIdleinMinutes + $timeInTrain
-		SetLog("$trainTimerAdjust: " & $trainTimerAdjust & " $timeInTrain: " & $timeInTrain & " $TimeIdleinMinutes: " & $TimeIdleinMinutes)
-		SetLog("$CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
+		If $debugSetlog = 1 Then SetLog("$trainTimerAdjust: " & $trainTimerAdjust & " $timeInTrain: " & $timeInTrain & " $TimeIdleinMinutes: " & $TimeIdleinMinutes)
+		If $debugSetlog = 1 Then SetLog("$CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
 		If $CurCamp = $CurCampOld Then ; if no new troop is produced or being trained
 			If $TimeIdleinMinutes-$trainTimerAdjust > 0 Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
 				If $notTraining = 0 Then $RemoveTroops=True ; training stuck, alo $timeInTrain = -1
 				ResetCounters()
-				SetLog("time $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
+				If $debugSetlog = 1 Then SetLog("time $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 			EndIf
 		Else
 			$trainTimerAdjust = $TimeIdleinMinutes + $timeInTrain ;units are being produced, increment time to adjust idle time
