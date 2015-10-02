@@ -13,6 +13,7 @@
 ; Example .......: No
 ; ===============================================================================================================================
 Func CheckHeroesHealth($K=$King, $Q=$Queen)
+	Local $usedAbility = False
 
 	If $checkKPower Or $checkQPower Then
 		Local $aKingHealthCopy = $aKingHealth ; copy ScreenCoordinates array to modify locally with dynamic X coordinate from slotposition
@@ -33,6 +34,7 @@ Func CheckHeroesHealth($K=$King, $Q=$Queen)
 				SetLog("King is getting weak, Activating King's power", $COLOR_BLUE)
 				SelectDropTroop($K)
 				$checkKPower = False
+				$usedAbility = True
 			EndIf
 		EndIf
 		If $checkQPower Then
@@ -41,8 +43,10 @@ Func CheckHeroesHealth($K=$King, $Q=$Queen)
 				SetLog("Queen is getting weak, Activating Queen's power", $COLOR_BLUE)
 				SelectDropTroop($Q)
 				$checkQPower = False
+				$usedAbility = True
 			EndIf
 		EndIf
 	EndIf
+	Return $usedAbility
 EndFunc   ;==>CheckHeroesHealth
 

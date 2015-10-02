@@ -381,11 +381,10 @@ Func Idle() ;Sequence that runs until Full Army
 		SetLog("Time Idle: " & StringFormat("%02i", Floor(Floor($TimeIdle / 60) / 60)) & ":" & StringFormat("%02i", Floor(Mod(Floor($TimeIdle / 60), 60))) & ":" & StringFormat("%02i", Floor(Mod($TimeIdle, 60))))
 		If $OutOfGold = 1 Then Return
 	WEnd
-	;If $fullArmy Then Train()
-	;If $iSpeed = 0 Then ; accuracy only
-	;	$RemoveTroops=True
-	;	ResetCounters()
-	;EndIf
+	If $iSpeed = 0 Then ; accuracy only
+		$RemoveTroops=True
+	EndIf
+	ResetCounters()
 	If $debugSetlog = 1 Then SetLog("attack $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 EndFunc   ;==>Idle
 

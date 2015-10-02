@@ -456,7 +456,9 @@ Func CheckForStar($delay, $star=1, $eKingSlot=-1, $eQueenSlot=-1)
 	Local $count = 0, $WonStarColor[3]
 
 	While $count < $delay
-		If $star > 1 Then CheckHeroesHealth($eKingSlot, $eQueenSlot)
+		If $star > 1 Then
+			If CheckHeroesHealth($eKingSlot, $eQueenSlot) Then Return
+		EndIf
 		If _Sleep($iDelayAttackTHPB61) Then Return
 		;_CaptureRegion()
 		$WonStarColor[0] = _GetPixelColor($aWonOneStar[0], $aWonOneStar[1], True)
