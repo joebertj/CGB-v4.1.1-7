@@ -4115,7 +4115,6 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\Scre
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(30,1) : UNREFED(30):	$aLanguageCheck2
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(31,1) : UNREFED(31):	$aLanguageCheck3
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(32,1) : UNREFED(32):	$aLanguageCheck4
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(39,1) : UNREFED(39):	$aWonThreeStar
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(219,1) : UNREFED(219):	$cBarbarian
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(694,1) : UNREFED(694):	$chkABEnableAfterHero
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(44,1) : UNREFED(44):	$chkChatPushbullet
