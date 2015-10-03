@@ -465,23 +465,23 @@ Func Train()
 				$MiniComp = GUICtrlRead($txtNumMini) ; restore MiniComp
 				$trainFiller = False
 			EndIf
-			SetLog("fullarmy $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
-			$BarbComp = ($BarbComp * 2) - $eBarbCount
-			$ArchComp = ($ArchComp * 2) - $eArchCount
-			$GoblComp = ($GoblComp * 2) - $eGoblCount
-			$GiantComp = ($GiantComp * 2) - $eGiantCount
-			$WallComp = ($WallComp * 2) - $eWallCount
-			$WizaComp = ($WizaComp * 2) - $eWizaCount
-			$MiniComp = ($MiniComp * 2) - $eMiniCount
-			$HogsComp = ($HogsComp * 2) - $eHogsCount
-			$DragComp = ($DragComp * 2) - $eDragCount
-			$BallComp = ($BallComp * 2) - $eBallCount
-			$PekkComp = ($PekkComp * 2) - $ePekkCount
-			$HealComp = ($HealComp * 2) - $eHealCount
-			$ValkComp = ($ValkComp * 2) - $eValkCount
-			$GoleComp = ($GoleComp * 2) - $eGoleCount
-			$WitcComp = ($WitcComp * 2) - $eWitcCount
-			$LavaComp = ($LavaComp * 2) - $eLavaCount
+			If $debugSetlog = 1 Then SetLog("fullarmy $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
+			$BarbComp *= 2
+			$ArchComp *= 2
+			$GoblComp *= 2
+			$GiantComp *= 2
+			$WallComp *= 2
+			$WizaComp *= 2
+			$MiniComp *= 2
+			$HogsComp *= 2
+			$DragComp *= 2
+			$BallComp *= 2
+			$PekkComp *= 2
+			$HealComp *= 2
+			$ValkComp *= 2
+			$GoleComp *= 2
+			$WitcComp *= 2
+			$LavaComp *= 2
 		EndIf
 		$notTraining = 0 ; reset before training
 		While isBarrack()
@@ -1063,7 +1063,7 @@ Func Train()
 		$eGoleTrainOld=$eGoleTrain
 		$eWitcTrainOld=$eWitcTrain
 		$eLavaTrainOld=$eLavaTrain
-		SetLog("$fullarmy: " & $fullarmy & " $trainFiller: " & $trainFiller)
+		If $debugSetlog = 1 Then SetLog("$fullarmy: " & $fullarmy & " $trainFiller: " & $trainFiller)
 		If $trainFiller = True Then
 			If $GoblComp > 0 Then
 				$GoblComp += ($TotalCamp - $CurCamp)
@@ -1075,7 +1075,7 @@ Func Train()
 				$ArchComp += ($TotalCamp - $CurCamp)
 			EndIf
 		EndIf
-		SetLog("$notTraining: " & $notTraining & " $trainKind: " & $trainKind)
+		If $debugSetlog = 1 Then SetLog("$notTraining: " & $notTraining & " $trainKind: " & $trainKind)
 		If $fullarmy Then ; restore original values
 			$BarbComp =  GUICtrlRead($txtNumBarb)
 			$ArchComp =  GUICtrlRead($txtNumArch)

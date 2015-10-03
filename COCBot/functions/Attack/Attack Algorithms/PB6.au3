@@ -79,7 +79,7 @@ Func AttackTHPB6()
 			EndIf
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(15) = True Then
+			If CheckForStar(30) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -137,7 +137,7 @@ Func AttackTHPB6()
 			EndIf
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(5) = True Then
+			If CheckForStar(30) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -170,7 +170,7 @@ Func AttackTHPB6()
 					TroopTH($THx, $THy, $eValk, 2, 1, 500)
 				EndIf
 				PrepareAttack($iMatchMode, True) ;Check remaining quantities
-				If CheckForStar(45) = True Then
+				If CheckForStar(90) = True Then
 					If $optGreedy = 1 Then
 						Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 					EndIf
@@ -412,7 +412,7 @@ Func AttackTHPB6()
 		Next
 	EndIf
 
-	If _Sleep($iDelayAttackTHPB61*30) Then Return
+	CheckForStar(60,3,$eKingSlot,$eQueenSlot)
 
 	SetLog("Activating heroes abilities if not yet used before exit")
 	If $eKingCount = 1 Then
@@ -452,12 +452,33 @@ Func GetTroopSlot($eTroop)
 	Return -1
 EndFunc   ;==>GetTroopSlot
 
-Func CheckForStar($delay)
-	Local $count = 0
+Func CheckForStar($delay, $star=1, $eKingSlot=-1, $eQueenSlot=-1)
+	Local $count = 0, $WonStarColor[3]
+
 	While $count < $delay
+		If $star > 1 Then
+			If CheckHeroesHealth($eKingSlot, $eQueenSlot) Then Return
+		EndIf
 		If _Sleep($iDelayAttackTHPB61) Then Return
 		;_CaptureRegion()
-		If _ColorCheck(_GetPixelColor($aWonOneStar[0], $aWonOneStar[1], True), Hex($aWonOneStar[2], 6), $aWonOneStar[3]) = True Then
+		$WonStarColor[0] = _GetPixelColor($aWonOneStar[0], $aWonOneStar[1], True)
+		$WonStarColor[1] = Hex($aWonOneStar[2], 6)
+		$WonStarColor[2] = $aWonOneStar[3]
+		If $star = 2 Then
+			SetLog("Checking if two stars has been won")
+			$WonStarColor[0] = _GetPixelColor($aWonTwoStar[0], $aWonTwoStar[1], True)
+			$WonStarColor[1] = Hex($aWonTwoStar[2], 6)
+			$WonStarColor[2] = $aWonTwoStar[3]
+		ElseIf $star = 3 Then
+			SetLog("Checking if three stars has been won")
+			$WonStarColor[0] = _GetPixelColor($aWonThreeStar[0], $aWonThreeStar[1], True)
+			$WonStarColor[1] = Hex($aWonThreeStar[2], 6)
+			$WonStarColor[2] = $aWonThreeStar[3]
+		ElseIf $star <> 1 Then
+			SetLog("Only one, two and three stars can be won")
+			Return False
+		EndIf
+		If _ColorCheck($WonStarColor[0],$WonStarColor[1],$WonStarColor[2]) = True Then
 			SetLog("Townhall has been destroyed!")
 			Return True;exit if you get a star
 		EndIf
