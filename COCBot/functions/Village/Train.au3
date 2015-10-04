@@ -466,22 +466,22 @@ Func Train()
 				$trainFiller = False
 			EndIf
 			If $debugSetlog = 1 Then SetLog("fullarmy $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
-			$BarbComp *= 2
-			$ArchComp *= 2
-			$GoblComp *= 2
-			$GiantComp *= 2
-			$WallComp *= 2
-			$WizaComp *= 2
-			$MiniComp *= 2
-			$HogsComp *= 2
-			$DragComp *= 2
-			$BallComp *= 2
-			$PekkComp *= 2
-			$HealComp *= 2
-			$ValkComp *= 2
-			$GoleComp *= 2
-			$WitcComp *= 2
-			$LavaComp *= 2
+			$BarbComp = $BarbComp * 3 - $eBarbCount
+			$ArchComp = $ArchComp * 3 - $eArchCount
+			$GoblComp = $GoblComp * 3 - $eGoblCount
+			$GiantComp = $GiantComp * 3 - $eGiantCount
+			$WallComp = $WallComp * 3 - $eWallCount
+			$WizaComp = $WizaComp * 3 - $eWizaCount
+			$MiniComp = $MiniComp * 3 - $eMiniCount
+			$HogsComp = $HogsComp * 3 - $eHogsCount
+			$DragComp = $DragComp * 3 - $eDragCount
+			$BallComp = $BallComp * 3 - $eBallCount
+			$PekkComp = $PekkComp * 3 - $ePekkCount
+			$HealComp = $HealComp * 3 - $eHealCount
+			$ValkComp = $ValkComp * 3 - $eValkCount
+			$GoleComp = $GoleComp * 3 - $eGoleCount
+			$WitcComp = $WitcComp * 3 - $eWitcCount
+			$LavaComp = $LavaComp * 3 - $eLavaCount
 		EndIf
 		$notTraining = 0 ; reset before training
 		While isBarrack()
