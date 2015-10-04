@@ -62,9 +62,9 @@ Func Train()
 	; $numBarracksAvaiables returns to be used as the divisor to assign the amount of kind troops each barracks | $TroopName+EBarrack
 	;
 
-	If $icmbTroopComp <> 8 Then
+	;If $icmbTroopComp <> 8 Then
 		checkArmyCamp()
-	EndIf
+	;EndIf
 
 	SetLog("Training Troops...", $COLOR_BLUE)
 	If _Sleep($iDelayTrain1) Then Return
