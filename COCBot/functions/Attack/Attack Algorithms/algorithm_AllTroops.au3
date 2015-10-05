@@ -49,7 +49,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 			Case 5
 				MasterGiBAM() ;Excellent for champions and all
 			Case 6
-				AttackTHPB6()
+				AttackTHAllIn()
 			Case 7
                 AttackTHWizard() ; Good for Master to Champ
 		    Case 8
@@ -149,10 +149,10 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 			SetLog("Attacking with four fingers", $COLOR_BLUE)
 			$nbSides = 5
 		Case 5
-			SetLog("Attacking using PB6")
-			AttackTHPB6()
+			SetLog("Attacking using AllIn")
+			AttackTHAllIn()
 		Case 6
-			SetLog("Attacking using PB6:Lavaloonion")
+			SetLog("Attacking using Lavaloonion")
 			AttackTHLavaloonion()
 	    Case 7 ;DE Side - Live Base only ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			SetLog("Attacking on Dark Elixir Side.", $COLOR_BLUE)

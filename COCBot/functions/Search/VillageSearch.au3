@@ -106,7 +106,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		If $OptTrophyMode = 1 And $AttackTHType = 3 Then $AttackTHTypeText = ", Attack3:Gbarch"
 		If $OptTrophyMode = 1 And $AttackTHType = 4 Then $AttackTHTypeText = ", Attack4:SmartBarch"
 		If $OptTrophyMode = 1 And $AttackTHType = 5 Then $AttackTHTypeText = ", Attack5:MasterGiBAM"
-		If $OptTrophyMode = 1 And $AttackTHType = 6 Then $AttackTHTypeText = ", Attack6:PB6"
+		If $OptTrophyMode = 1 And $AttackTHType = 6 Then $AttackTHTypeText = ", Attack6:AllIn"
 		If $OptTrophyMode = 1 And $AttackTHType = 7 Then $AttackTHTypeText = ", Attack7:THWizard"
 		If $OptTrophyMode = 1 And $AttackTHType = 8 Then $AttackTHTypeText = ", Attack8:THDragon"
 		If $OptTrophyMode = 1 Then $OptTrophyModeText = "THSnipe Combo, " & $THaddtiles & " Tile(s), "
@@ -290,7 +290,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				_WinAPI_DeleteObject($hBitmap)
 			EndIf
 			If $iChkDeploySettings[$iMatchMode] = 5 Then
-				If PrepareAttackTHPB6() Then ExitLoop
+				If PrepareAttackTHAllIn() Then ExitLoop
 			EndIf
 			If $iChkDeploySettings[$iMatchMode] = 6 Then
 				If PrepareAttackTHLavaloonion() Then ExitLoop
@@ -312,7 +312,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				ExitLoop
 			EndIf
 			If $iChkDeploySettings[$iMatchMode] = 5 Then
-				If PrepareAttackTHPB6() Then ExitLoop
+				If PrepareAttackTHAllIn() Then ExitLoop
 			EndIf
 			If $iChkDeploySettings[$iMatchMode] = 6 Then
 				If PrepareAttackTHLavaloonion() Then ExitLoop
