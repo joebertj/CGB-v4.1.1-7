@@ -422,6 +422,8 @@ Func readConfig() ;Reads config and sets it to the variables
 		;Troop Settings--------------------------------------------------------------------------
 		$iCmbTroopComp = IniRead($config, "troop", "TroopComposition", "0")
 
+		$ichkUsePercent = IniRead($config, "troop", "Percent", "0")
+
 		For $i = 0 To UBound($TroopName) - 1
 			Assign($TroopName[$i] & "Comp", IniRead($config, "troop", $TroopName[$i], "0"))
 		Next

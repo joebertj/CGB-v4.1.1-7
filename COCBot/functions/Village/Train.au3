@@ -484,6 +484,7 @@ Func Train()
 			$LavaComp = $LavaComp * 3 - $eLavaCount
 		EndIf
 		$notTraining = 0 ; reset before training
+		$notTrainingDark = 0
 		While isBarrack()
 			_CaptureRegion()
 			If ($iSpeed = 0 And $FirstStart) Or $RemoveTroops Then
@@ -935,7 +936,7 @@ Func Train()
 
 				For $i = 1 to $trainCount
 					If Not $fullarmy And getHouseSpace($eWitc) > $TotalCamp-$CurCamp Then
-						$trainFiller=True
+						$trainFillerDark=True
 						ExitLoop
 					EndIf
 					If TrainClick(647, 320, 1, 50, $FullWitc, $GemWitc, "#0288") Then ;Witch
@@ -965,7 +966,7 @@ Func Train()
 
 				For $i = 1 to $trainCount
 					If Not $fullarmy And getHouseSpace($eValk) > $TotalCamp-$CurCamp Then
-						$trainFiller=True
+						$trainFillerDark=True
 						ExitLoop
 					EndIf
 					If TrainClick(432, 320, 1, 50, $FullValk, $GemValk, "#0286") Then ;Valkyrie
@@ -995,7 +996,7 @@ Func Train()
 
 				For $i = 1 to $trainCount
 					If Not $fullarmy And getHouseSpace($eHogs) > $TotalCamp-$CurCamp Then
-						$trainFiller=True
+						$trainFillerDark=True
 						ExitLoop
 					EndIf
 					If TrainClick(331, 320, 1, 50, $FullHogs, $GemHogs, "#0285") Then ;Hog Rider
@@ -1026,7 +1027,7 @@ Func Train()
 
 				For $i = 1 to $trainCount
 					If Not $fullarmy And getHouseSpace($eMini) > $TotalCamp-$CurCamp Then
-						$trainFiller=True
+						$trainFillerDark=True
 						ExitLoop
 					EndIf
 					;SetLog("$i: " & $i & " $numDarkBarracksAvaiables: " & $numDarkBarracksAvaiables & " $trainCount: " & $trainCount)
@@ -1042,7 +1043,7 @@ Func Train()
 					$trainKind += 1
 				EndIf
 			EndIf
-			If _ColorCheck(_GetPixelColor(565, 205, True), Hex(0xE8E8DE, 6), 20) Then $notTraining += 1
+			If _ColorCheck(_GetPixelColor(565, 205, True), Hex(0xE8E8DE, 6), 20) Then $notTrainingDark += 1
 			If $OutOfDarkElixir = 1 Then
 				Setlog("Not enough Dark Elixir to train troops!", $COLOR_RED)
 				Setlog("Switching to Halt Attack, Stay Online Mode...", $COLOR_RED)
@@ -1065,17 +1066,18 @@ Func Train()
 		$eLavaTrainOld=$eLavaTrain
 		If $debugSetlog = 1 Then SetLog("$fullarmy: " & $fullarmy & " $trainFiller: " & $trainFiller)
 		If $trainFiller = True Then
-			If $GoblComp > 0 Then
-				$GoblComp += ($TotalCamp - $CurCamp)
-			ElseIf $BarbComp > 0 Then
+			If $BarbComp > 0 Then
 				$BarbComp += ($TotalCamp - $CurCamp)
-			ElseIf $MiniComp > 0 Then
-				$MiniComp += ($TotalCamp - $CurCamp)
+			ElseIf $GoblComp > 0 Then
+				$GoblComp += ($TotalCamp - $CurCamp)
 			Else
 				$ArchComp += ($TotalCamp - $CurCamp)
 			EndIf
 		EndIf
-		If $debugSetlog = 1 Then SetLog("$notTraining: " & $notTraining & " $trainKind: " & $trainKind)
+		If $trainFillerDark = True Then
+			$MiniComp += ($TotalCamp - $CurCamp)
+		EndIf
+		If $debugSetlog = 1 Then SetLog("$notTrainingDark: " & $notTrainingDark & " $trainKind: " & $trainKind)
 		If $fullarmy Then ; restore original values
 			$BarbComp =  GUICtrlRead($txtNumBarb)
 			$ArchComp =  GUICtrlRead($txtNumArch)

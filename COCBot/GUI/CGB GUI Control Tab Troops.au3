@@ -354,7 +354,7 @@ Func SetComboTroopComp()
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
 			GUICtrlSetState($radAccuracy, $GUI_ENABLE)
 			GUICtrlSetState($radSpeed, $GUI_ENABLE)
-			;GUICtrlSetState($chkUsePercent, $GUI_ENABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_ENABLE)
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_ENABLE)
 			Next
@@ -381,10 +381,18 @@ Func SetComboTroopComp()
 EndFunc   ;==>SetComboTroopComp
 
 Func lblTotalCount()
-	GUICtrlSetData($lblTotalCount, GUICtrlRead($txtNumBarb) + GUICtrlRead($txtNumArch) + GUICtrlRead($txtNumGiant)*5 + GUICtrlRead($txtNumGobl) + GUICtrlRead($txtNumWall)*2 + GUICtrlRead($txtNumBall)*5 + GUICtrlRead($txtNumWiza)*4 + GUICtrlRead($txtNumHeal)*14 + GUICtrlRead($txtNumDrag)*20 + GUICtrlRead($txtNumPekk)*25 + GUICtrlRead($txtNumMini)*2 + GUICtrlRead($txtNumHogs)*5 + GUICtrlRead($txtNumValk)*8 + GUICtrlRead($txtNumGole)*30 + GUICtrlRead($txtNumWitc)*12 + GUICtrlRead($txtNumLava)*30)
-	If GUICtrlRead($lblTotalCount) = $ArmyComp Then
+	Local $i = $iValueTotalCampForced
+
+	If $ichkUsePercent = 1 Then
+		GUICtrlSetData($lblTotalCount, GUICtrlRead($txtNumBarb) + GUICtrlRead($txtNumArch) + GUICtrlRead($txtNumGiant) + GUICtrlRead($txtNumGobl) + GUICtrlRead($txtNumWall) + GUICtrlRead($txtNumBall) + GUICtrlRead($txtNumWiza) + GUICtrlRead($txtNumHeal) + GUICtrlRead($txtNumDrag) + GUICtrlRead($txtNumPekk) + GUICtrlRead($txtNumMini) + GUICtrlRead($txtNumHogs) + GUICtrlRead($txtNumValk) + GUICtrlRead($txtNumGole) + GUICtrlRead($txtNumWitc) + GUICtrlRead($txtNumLava))
+		$i = 100
+	Else
+		GUICtrlSetData($lblTotalCount, GUICtrlRead($txtNumBarb) + GUICtrlRead($txtNumArch) + GUICtrlRead($txtNumGiant)*5 + GUICtrlRead($txtNumGobl) + GUICtrlRead($txtNumWall)*2 + GUICtrlRead($txtNumBall)*5 + GUICtrlRead($txtNumWiza)*4 + GUICtrlRead($txtNumHeal)*14 + GUICtrlRead($txtNumDrag)*20 + GUICtrlRead($txtNumPekk)*25 + GUICtrlRead($txtNumMini)*2 + GUICtrlRead($txtNumHogs)*5 + GUICtrlRead($txtNumValk)*8 + GUICtrlRead($txtNumGole)*30 + GUICtrlRead($txtNumWitc)*12 + GUICtrlRead($txtNumLava)*30)
+		$i = $ArmyComp
+	EndIf
+	If GUICtrlRead($lblTotalCount) = $i Then
 		GUICtrlSetBkColor($lblTotalCount, $COLOR_MONEYGREEN)
-	ElseIf GUICtrlRead($lblTotalCount) < $ArmyComp Then
+	ElseIf GUICtrlRead($lblTotalCount) < $i Then
 		GUICtrlSetBkColor($lblTotalCount, $COLOR_ORANGE)
 	Else
 		GUICtrlSetBkColor($lblTotalCount, $COLOR_RED)

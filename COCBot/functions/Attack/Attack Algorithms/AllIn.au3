@@ -45,7 +45,7 @@ Func AttackTHAllIn()
 			TroopTH($THx, $THy, $eArch, $spotsNum, Random(2, 3, 1), 500)
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(30) = True Then
+			If CheckForStar(45) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -79,7 +79,7 @@ Func AttackTHAllIn()
 			EndIf
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(30) = True Then
+			If CheckForStar(45) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -137,7 +137,7 @@ Func AttackTHAllIn()
 			EndIf
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(30) = True Then
+			If CheckForStar(45) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -412,7 +412,7 @@ Func AttackTHAllIn()
 		Next
 	EndIf
 
-	CheckForStar(60,3,$eKingSlot,$eQueenSlot)
+	CheckForStar(30,3,$eKingSlot,$eQueenSlot)
 
 	SetLog("Activating heroes abilities if not yet used before exit")
 	If $eKingCount = 1 Then
