@@ -1,7 +1,7 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: AttackTHPB6
+; Name ..........: AttackTHAllIn
 ; Description ...: A polymorph build TH Snipe attack type
-; Syntax ........: AttackTHPB6(), GetTroopCount(), GetTroopSlot(), CheckForStar(), SpellTH(), KingTH(), QueenTH(), CCTH(),
+; Syntax ........: AttackTHAllIn(), GetTroopCount(), GetTroopSlot(), CheckForStar(), SpellTH(), KingTH(), QueenTH(), CCTH(),
 ;                  GetDropTHDistance(), TroopTH(), GetDropTH()
 ; Parameters ....: None
 ; Return values .: None
@@ -14,7 +14,7 @@
 ; Example .......:
 ; ===============================================================================================================================
 
-Func AttackTHPB6()
+Func AttackTHAllIn()
 	Local $i, $j
 	Local $eKingCount
 	Local $eQueenCount
@@ -45,7 +45,7 @@ Func AttackTHPB6()
 			TroopTH($THx, $THy, $eArch, $spotsNum, Random(2, 3, 1), 500)
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(30) = True Then
+			If CheckForStar(45) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -79,7 +79,7 @@ Func AttackTHPB6()
 			EndIf
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(30) = True Then
+			If CheckForStar(45) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -137,7 +137,7 @@ Func AttackTHPB6()
 			EndIf
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(30) = True Then
+			If CheckForStar(45) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -412,7 +412,7 @@ Func AttackTHPB6()
 		Next
 	EndIf
 
-	CheckForStar(60,3,$eKingSlot,$eQueenSlot)
+	CheckForStar(30,3,$eKingSlot,$eQueenSlot)
 
 	SetLog("Activating heroes abilities if not yet used before exit")
 	If $eKingCount = 1 Then
@@ -424,7 +424,7 @@ Func AttackTHPB6()
 
 	SetLog("Finished Attacking, waiting for the battle to end")
 
-EndFunc   ;==>AttackTHPB6
+EndFunc   ;==>AttackTHAllIn
 
 Func GetTroopCount($eTroop)
 	For $i = 0 To UBound($atkTroops) - 1
@@ -459,7 +459,7 @@ Func CheckForStar($delay, $star=1, $eKingSlot=-1, $eQueenSlot=-1)
 		If $star > 1 Then
 			If CheckHeroesHealth($eKingSlot, $eQueenSlot) Then Return
 		EndIf
-		If _Sleep($iDelayAttackTHPB61) Then Return
+		If _Sleep($iDelayAttackTHAllIn1) Then Return
 		;_CaptureRegion()
 		$WonStarColor[0] = _GetPixelColor($aWonOneStar[0], $aWonOneStar[1], True)
 		$WonStarColor[1] = Hex($aWonOneStar[2], 6)
@@ -806,7 +806,7 @@ Func GetDropTH($xx, $yy, $type, $spots = 1, $spotidx = 1)
 	Return $DropTH
 EndFunc   ;==>GetDropTH
 
-Func PrepareAttackTHPB6()
+Func PrepareAttackTHAllIn()
 	Local $i
 	Local $smallestd = 40
 	;Local $tiles = 0
@@ -825,7 +825,7 @@ Func PrepareAttackTHPB6()
 	SetLog("Shortest distance " & $smallestd & " on side " & $THside)
 	;If $smallestd < $tiles Then
 	Return True
-EndFunc   ;==>PrepareAttackTHPB6
+EndFunc   ;==>PrepareAttackTHAllIn
 
 Func GetDistance($x1, $y1, $x2, $y2, $type=0)
 	Local $a, $b, $c, $d[4] = [0, 0, 0, 0]

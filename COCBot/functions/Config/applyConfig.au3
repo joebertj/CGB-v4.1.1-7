@@ -996,6 +996,12 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	;Troop Settings--------------------------------------------------------------------------
 	_GUICtrlComboBox_SetCurSel($cmbTroopComp, $iCmbTroopComp)
 
+	If $ichkUsePercent = 1 Then
+		GUICtrlSetState($chkUsePercent, $GUI_CHECKED)
+	ElseIf $ichkUsePercent = 0 Then
+		GUICtrlSetState($chkUsePercent, $GUI_UNCHECKED)
+	EndIf
+
 	For $i = 0 To UBound($TroopName) - 1
 		GUICtrlSetData(Eval("txtNum" & $TroopName[$i]), Eval($TroopName[$i] & "Comp"))
 	Next

@@ -295,7 +295,7 @@ AutoIt3 Syntax Checker v3.3.14.1  Copyright (c) 2007-2013 Tylo & AutoIt Team
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(185,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\SnipeWhileTrain.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(186,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\MasterGiBAM.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(187,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\AttackTHSmartBarch.au3"
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(188,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\PB6.au3"
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(188,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\AllIn.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(189,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\Lavaloonion.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(190,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\THDragons.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Functions.au3"(191,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\THWizard.au3"
@@ -431,7 +431,7 @@ C:\Program Files (x86)\AutoIt3\Include\ButtonConstants.au3(53,1) : UNREFED(53):	
 C:\Program Files (x86)\AutoIt3\Include\ButtonConstants.au3(49,1) : UNREFED(49):	$BUTTON_IMAGELIST_ALIGN_LEFT
 C:\Program Files (x86)\AutoIt3\Include\ButtonConstants.au3(50,1) : UNREFED(50):	$BUTTON_IMAGELIST_ALIGN_RIGHT
 C:\Program Files (x86)\AutoIt3\Include\ButtonConstants.au3(51,1) : UNREFED(51):	$BUTTON_IMAGELIST_ALIGN_TOP
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(199,1) : UNREFED(199):	$BullySearchCount
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(200,1) : UNREFED(200):	$BullySearchCount
 C:\Program Files (x86)\AutoIt3\Include\WindowsConstants.au3(613,1) : UNREFED(613):	$CAPTUREBLT
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(47,1) : UNREFED(47):	$CA_LOG_FILTER
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(46,1) : UNREFED(46):	$CA_NEGATIVE
@@ -771,14 +771,14 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatb
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(57,1) : UNREFED(57):	$ChatbotReadInterval
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(56,1) : UNREFED(56):	$ChatbotReadQueued
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(16,1) : UNREFED(16):	$ChatbotScrambleGlobal
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(696,1) : UNREFED(696):	$ChatbotStartTime
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(697,1) : UNREFED(697):	$ChatbotStartTime
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(17,1) : UNREFED(17):	$ChatbotSwitchLang
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(23,1) : UNREFED(23):	$ChatbotUsePushbullet
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(25,1) : UNREFED(25):	$ClanMessages
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(69,1) : UNREFED(69):	$ClanRequestTextArea
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(26,1) : UNREFED(26):	$ClanResponses
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(70,1) : UNREFED(70):	$ConfirmClanTroopsRequest
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(428,1) : UNREFED(428):	$CurTrophy
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(429,1) : UNREFED(429):	$CurTrophy
 C:\Program Files (x86)\AutoIt3\Include\APILocaleConstants.au3(36,1) : UNREFED(36):	$DATE_AUTOLAYOUT
 C:\Program Files (x86)\AutoIt3\Include\APILocaleConstants.au3(37,1) : UNREFED(37):	$DATE_LONGDATE
 C:\Program Files (x86)\AutoIt3\Include\APILocaleConstants.au3(38,1) : UNREFED(38):	$DATE_LTRREADING
@@ -1176,7 +1176,7 @@ C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(76,1) : UNREFED(76):	
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(77,1) : UNREFED(77):	$DWMWA_NCRENDERING_POLICY
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(81,1) : UNREFED(81):	$DWMWA_NONCLIENT_RTL_LAYOUT
 C:\Program Files (x86)\AutoIt3\Include\APIGdiConstants.au3(78,1) : UNREFED(78):	$DWMWA_TRANSITIONS_FORCEDISABLED
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(215,1) : UNREFED(215):	$DarkSpellTrain
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(216,1) : UNREFED(216):	$DarkSpellTrain
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(73,1) : UNREFED(73):	$DropTrophiesStartPoint
 C:\Program Files (x86)\AutoIt3\Include\FontConstants.au3(44,1) : UNREFED(44):	$EASTEUROPE_CHARSET
 C:\Program Files (x86)\AutoIt3\Include\EditConstants.au3(33,1) : UNREFED(33):	$EC_ERR
@@ -1370,7 +1370,7 @@ C:\Program Files (x86)\AutoIt3\Include\WinAPIConstants.au3(226,1) : UNREFED(226)
 C:\Program Files (x86)\AutoIt3\Include\WinAPIConstants.au3(227,1) : UNREFED(227):	$E_POINTER
 C:\Program Files (x86)\AutoIt3\Include\WinAPIConstants.au3(228,1) : UNREFED(228):	$E_UNEXPECTED
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(61,1) : UNREFED(61):	$EndBattleBtn
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(346,1) : UNREFED(346):	$F
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(347,1) : UNREFED(347):	$F
 C:\Program Files (x86)\AutoIt3\Include\FileConstants.au3(13,1) : UNREFED(13):	$FC_NOOVERWRITE
 C:\Program Files (x86)\AutoIt3\Include\FileConstants.au3(56,1) : UNREFED(56):	$FD_FILEMUSTEXIST
 C:\Program Files (x86)\AutoIt3\Include\FileConstants.au3(58,1) : UNREFED(58):	$FD_MULTISELECT
@@ -2222,7 +2222,7 @@ C:\Program Files (x86)\AutoIt3\Include\WinAPIConstants.au3(235,1) : UNREFED(235)
 C:\Program Files (x86)\AutoIt3\Include\WinAPIConstants.au3(246,1) : UNREFED(246):	$LR_SHARED
 C:\Program Files (x86)\AutoIt3\Include\WinAPIConstants.au3(242,1) : UNREFED(242):	$LR_VGACOLOR
 C:\Program Files (x86)\AutoIt3\Include\IE.au3(84,1) : UNREFED(84):	$LSFW_LOCK
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(661,1) : UNREFED(661):	$LTCount
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(662,1) : UNREFED(662):	$LTCount
 C:\Program Files (x86)\AutoIt3\Include\WinAPIConstants.au3(25,1) : UNREFED(25):	$LTGRAY_BRUSH
 C:\Program Files (x86)\AutoIt3\Include\WindowsConstants.au3(480,1) : UNREFED(480):	$LWA_ALPHA
 C:\Program Files (x86)\AutoIt3\Include\WindowsConstants.au3(481,1) : UNREFED(481):	$LWA_COLORKEY
@@ -2459,8 +2459,8 @@ C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(266,1) : UNREFED(266)
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(267,1) : UNREFED(267):	$NUMBER_64BIT
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(265,1) : UNREFED(265):	$NUMBER_AUTO
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(268,1) : UNREFED(268):	$NUMBER_DOUBLE
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(433,1) : UNREFED(433):	$NoLeague
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(214,1) : UNREFED(214):	$NormalSpellTrain
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(434,1) : UNREFED(434):	$NoLeague
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(215,1) : UNREFED(215):	$NormalSpellTrain
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(63,1) : UNREFED(63):	$OBJID_ALERT
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(61,1) : UNREFED(61):	$OBJID_CARET
 C:\Program Files (x86)\AutoIt3\Include\AutoItConstants.au3(62,1) : UNREFED(62):	$OBJID_CURSOR
@@ -3368,7 +3368,7 @@ C:\Program Files (x86)\AutoIt3\Include\TabConstants.au3(57,1) : UNREFED(57):	$TC
 C:\Program Files (x86)\AutoIt3\Include\TabConstants.au3(58,1) : UNREFED(58):	$TCS_VERTICAL
 C:\Program Files (x86)\AutoIt3\Include\TabConstants.au3(36,1) : UNREFED(36):	$TC_ERR
 C:\Program Files (x86)\AutoIt3\Include\FontConstants.au3(55,1) : UNREFED(55):	$THAI_CHARSET
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(652,1) : UNREFED(652):	$THString
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(653,1) : UNREFED(653):	$THString
 C:\Program Files (x86)\AutoIt3\Include\APILocaleConstants.au3(191,1) : UNREFED(191):	$TIME_FORCE24HOURFORMAT
 C:\Program Files (x86)\AutoIt3\Include\APILocaleConstants.au3(192,1) : UNREFED(192):	$TIME_NOMINUTESORSECONDS
 C:\Program Files (x86)\AutoIt3\Include\APILocaleConstants.au3(193,1) : UNREFED(193):	$TIME_NOSECONDS
@@ -3551,7 +3551,7 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\Scre
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(93,1) : UNREFED(93):	$TrainLava
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(87,1) : UNREFED(87):	$TrainMini
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(85,1) : UNREFED(85):	$TrainPekk
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(218,1) : UNREFED(218):	$TrainSpecial
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(219,1) : UNREFED(219):	$TrainSpecial
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(89,1) : UNREFED(89):	$TrainValk
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(79,1) : UNREFED(79):	$TrainWall
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(91,1) : UNREFED(91):	$TrainWitc
@@ -4031,7 +4031,7 @@ C:\Program Files (x86)\AutoIt3\Include\WindowsConstants.au3(68,1) : UNREFED(68):
 C:\Program Files (x86)\AutoIt3\Include\WindowsConstants.au3(46,1) : UNREFED(46):	$WS_TABSTOP
 C:\Program Files (x86)\AutoIt3\Include\WindowsConstants.au3(43,1) : UNREFED(43):	$WS_TILED
 C:\Program Files (x86)\AutoIt3\Include\WindowsConstants.au3(57,1) : UNREFED(57):	$WS_TILEDWINDOW
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(231,1) : UNREFED(231):	$Wallv
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(232,1) : UNREFED(232):	$Wallv
 C:\Program Files (x86)\AutoIt3\Include\GuiRichEdit.au3(67,1) : UNREFED(67):	$_GCR_E_INVALIDARG
 C:\Program Files (x86)\AutoIt3\Include\GuiRichEdit.au3(66,1) : UNREFED(66):	$_GCR_E_NOTIMPL
 C:\Program Files (x86)\AutoIt3\Include\GuiRichEdit.au3(65,1) : UNREFED(65):	$_GCR_S_OK
@@ -4115,8 +4115,8 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\Scre
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(30,1) : UNREFED(30):	$aLanguageCheck2
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(31,1) : UNREFED(31):	$aLanguageCheck3
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\ScreenCoordinates.au3(32,1) : UNREFED(32):	$aLanguageCheck4
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(219,1) : UNREFED(219):	$cBarbarian
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(694,1) : UNREFED(694):	$chkABEnableAfterHero
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(220,1) : UNREFED(220):	$cBarbarian
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(695,1) : UNREFED(695):	$chkABEnableAfterHero
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(44,1) : UNREFED(44):	$chkChatPushbullet
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(39,1) : UNREFED(39):	$chkClanChat
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(35,1) : UNREFED(35):	$chkGlobalChat
@@ -4127,9 +4127,9 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatb
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(43,1) : UNREFED(43):	$chkUseGeneric
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(40,1) : UNREFED(40):	$chkUseResponses
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(42,1) : UNREFED(42):	$chkUseSimsimi
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(417,1) : UNREFED(417):	$collectorPos
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(501,1) : UNREFED(501):	$dropAllOnSide
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(240,1) : UNREFED(240):	$eThing
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(418,1) : UNREFED(418):	$collectorPos
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(502,1) : UNREFED(502):	$dropAllOnSide
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(241,1) : UNREFED(241):	$eThing
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(53,1) : UNREFED(53):	$editGeneric
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(47,1) : UNREFED(47):	$editGlobalMessages1
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Chatbot.au3(48,1) : UNREFED(48):	$editGlobalMessages2
@@ -4167,26 +4167,26 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\Dela
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(141,1) : UNREFED(141):	$iDelaywaitMainScreen2
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(142,1) : UNREFED(142):	$iDelaywaitMainScreen3
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\DelayTimes.au3(143,1) : UNREFED(143):	$iDelaywaitMainScreen4
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(679,1) : UNREFED(679):	$iMaxBarrackTroop
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(595,1) : UNREFED(595):	$iShareMessageEnable
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(596,1) : UNREFED(596):	$iShareMessageSearch
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(383,1) : UNREFED(383):	$iTimeArch
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(385,1) : UNREFED(385):	$iTimeBarba
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(381,1) : UNREFED(381):	$iTimeGiant
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(384,1) : UNREFED(384):	$iTimeGoblin
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(380,1) : UNREFED(380):	$iTimeTroops
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(382,1) : UNREFED(382):	$iTimeWall
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(386,1) : UNREFED(386):	$iTimeWizard
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(680,1) : UNREFED(680):	$iMaxBarrackTroop
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(596,1) : UNREFED(596):	$iShareMessageEnable
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(597,1) : UNREFED(597):	$iShareMessageSearch
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(384,1) : UNREFED(384):	$iTimeArch
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(386,1) : UNREFED(386):	$iTimeBarba
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(382,1) : UNREFED(382):	$iTimeGiant
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(385,1) : UNREFED(385):	$iTimeGoblin
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(381,1) : UNREFED(381):	$iTimeTroops
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(383,1) : UNREFED(383):	$iTimeWall
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(387,1) : UNREFED(387):	$iTimeWizard
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\BlockInputEx.au3(99,1) : UNREFED(99):	$i_MouseHookGetAncestorHwnd
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(350,1) : UNREFED(350):	$icmbTroopCap
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(423,1) : UNREFED(423):	$imgDivider
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(226,1) : UNREFED(226):	$iwallcost
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(227,1) : UNREFED(227):	$iwallcostelix
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(611,1) : UNREFED(611):	$lastmessage
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(610,1) : UNREFED(610):	$lastversion
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(613,1) : UNREFED(613):	$oldversmessage
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(307,1) : UNREFED(307):	$remainingBoosts
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(426,1) : UNREFED(426):	$resArmy
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(351,1) : UNREFED(351):	$icmbTroopCap
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(424,1) : UNREFED(424):	$imgDivider
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(227,1) : UNREFED(227):	$iwallcost
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(228,1) : UNREFED(228):	$iwallcostelix
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(612,1) : UNREFED(612):	$lastmessage
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(611,1) : UNREFED(611):	$lastversion
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(614,1) : UNREFED(614):	$oldversmessage
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(308,1) : UNREFED(308):	$remainingBoosts
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(427,1) : UNREFED(427):	$resArmy
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\BlockInputEx.au3(98,1) : UNREFED(98):	$s_KeyboardKeys_Buffer
 C:\Program Files (x86)\AutoIt3\Include\GuiRichEdit.au3(249,1) : UNREFED(249):	$tagBIDIOPTIONS
 C:\Program Files (x86)\AutoIt3\Include\StructureConstants.au3(749,1) : UNREFED(749):	$tagBITMAPINFO
@@ -4331,9 +4331,9 @@ C:\Program Files (x86)\AutoIt3\Include\StructureConstants.au3(829,1) : UNREFED(8
 C:\Program Files (x86)\AutoIt3\Include\StructureConstants.au3(764,1) : UNREFED(764):	$tagWINDOWPLACEMENT
 C:\Program Files (x86)\AutoIt3\Include\StructureConstants.au3(769,1) : UNREFED(769):	$tagWINDOWPOS
 C:\Program Files (x86)\AutoIt3\Include\WinAPIGdi.au3(39,1) : UNREFED(39):	$tagXFORM
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(224,1) : UNREFED(224):	$wallbuild
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(232,1) : UNREFED(232):	$wallh
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(225,1) : UNREFED(225):	$walllowlevel
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(225,1) : UNREFED(225):	$wallbuild
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(233,1) : UNREFED(233):	$wallh
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB Global Variables.au3(226,1) : UNREFED(226):	$walllowlevel
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\AttackBottomTHType.au3(43,1) : UNREFED(107):	AllZoomedAttack
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\algorithm_Barch.au3(17,1) : UNREFED(36):	Barch
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Attack Algorithms\algorithmTH.au3(664,1) : UNREFED(37):	CastSpell
@@ -6016,7 +6016,7 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Pixels\bool
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Stats.au3(20,1) : UNREFED(22):	btnLogs
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Stats.au3(16,1) : UNREFED(18):	btnLoots
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab Search.au3(260,1) : UNREFED(268):	chkABEnableAfterHero
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\applyConfig.au3(1513,1) : UNREFED(16):	chkSpeed
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Config\applyConfig.au3(1519,1) : UNREFED(16):	chkSpeed
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getOcr.au3(104,1) : UNREFED(106):	getArmyTroopKind
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getOcr.au3(100,1) : UNREFED(102):	getArmyTroopQuantity
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getChar.au3(7,1) : UNREFED(129):	getChar
@@ -6027,6 +6027,7 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\g
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getDigitSmall.au3(7,1) : UNREFED(133):	getDigitSmall
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getElixir.au3(3,1) : UNREFED(21):	getElixir
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getGold.au3(3,1) : UNREFED(21):	getGold
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3(1222,1) : UNREFED(1275):	getMinInTrain
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getNormal.au3(3,1) : UNREFED(137):	getNormal
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getOther.au3(17,1) : UNREFED(237):	getOther
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getReturnHome.au3(3,1) : UNREFED(139):	getReturnHome

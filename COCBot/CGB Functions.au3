@@ -185,7 +185,7 @@
 #include "functions\Attack\SnipeWhileTrain.au3"
 #include "functions\Attack\Attack Algorithms\MasterGiBAM.au3"
 #include "functions\Attack\Attack Algorithms\AttackTHSmartBarch.au3"
-#include "functions\Attack\Attack Algorithms\PB6.au3"
+#include "functions\Attack\Attack Algorithms\AllIn.au3"
 #include "functions\Attack\Attack Algorithms\Lavaloonion.au3"
 #include "functions\Attack\Attack Algorithms\THDragons.au3"
 #include "functions\Attack\Attack Algorithms\THWizard.au3"

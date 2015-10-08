@@ -35,9 +35,10 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbBarrack4, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
-			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
-			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
-			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			;GUICtrlSetState($txtCapacity, $GUI_ENABLE
+			GUICtrlSetState($radAccuracy, $GUI_ENABLE)
+			GUICtrlSetState($radSpeed, $GUI_ENABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_CHECKED)
 			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
 
 			For $i = 0 To UBound($TroopName) - 1
@@ -69,8 +70,9 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
-			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
-			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($radAccuracy, $GUI_ENABLE)
+			GUICtrlSetState($radSpeed, $GUI_ENABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_CHECKED)
 			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
 
 			For $i = 0 To UBound($TroopName) - 1
@@ -102,8 +104,9 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
-			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
-			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($radAccuracy, $GUI_ENABLE)
+			GUICtrlSetState($radSpeed, $GUI_ENABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_CHECKED)
 			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_ENABLE)
@@ -134,8 +137,9 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
-			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
-			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($radAccuracy, $GUI_ENABLE)
+			GUICtrlSetState($radSpeed, $GUI_ENABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_CHECKED)
 			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
 
 			For $i = 0 To UBound($TroopName) - 1
@@ -167,8 +171,9 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbBarrack3, $GUI_DISABLE)
 			GUICtrlSetState($cmbBarrack4, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
-			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
-			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($radAccuracy, $GUI_ENABLE)
+			GUICtrlSetState($radSpeed, $GUI_ENABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_CHECKED)
 			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
 
 			For $i = 0 To UBound($TroopName) - 1
@@ -192,13 +197,11 @@ Func SetComboTroopComp()
 				GUICtrlSetData(Eval("txtNum" & $TroopDarkName[$i]), "0")
 			Next
 
-			_GUICtrlEdit_SetReadOnly($txtNumGiant, False)
+			GUICtrlSetData($txtNumBarb, "10")
+			GUICtrlSetData($txtNumArch, "50")
+			GUICtrlSetData($txtNumGobl, "30")
+			GUICtrlSetData($txtNumGiant, "10")
 
-			GUICtrlSetData($txtNumBarb, "60")
-			GUICtrlSetData($txtNumArch, "30")
-			GUICtrlSetData($txtNumGobl, "10")
-
-			GUICtrlSetData($txtNumGiant, $GiantComp)
 		Case 5
 			GUICtrlSetState($cmbBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbBarrack2, $GUI_DISABLE)
@@ -207,8 +210,9 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
-			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
-			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($radAccuracy, $GUI_ENABLE)
+			GUICtrlSetState($radSpeed, $GUI_ENABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_CHECKED)
 			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
 
 			For $i = 0 To UBound($TroopName) - 1
@@ -231,12 +235,10 @@ Func SetComboTroopComp()
 			For $i = 0 To UBound($TroopDarkName) - 1
 				GUICtrlSetData(Eval("txtNum" & $TroopDarkName[$i]), "0")
 			Next
-			_GUICtrlEdit_SetReadOnly($txtNumGiant, False)
 
-			GUICtrlSetData($txtNumBarb, "50")
+			GUICtrlSetData($txtNumBarb, "40")
 			GUICtrlSetData($txtNumArch, "50")
-
-			GUICtrlSetData($txtNumGiant, $GiantComp)
+			GUICtrlSetData($txtNumGiant, "10")
 		Case 6
 			GUICtrlSetState($cmbBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbBarrack2, $GUI_DISABLE)
@@ -245,8 +247,9 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
-			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
-			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($radAccuracy, $GUI_ENABLE)
+			GUICtrlSetState($radSpeed, $GUI_ENABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_CHECKED)
 			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
 
 			For $i = 0 To UBound($TroopName) - 1
@@ -269,9 +272,9 @@ Func SetComboTroopComp()
 			For $i = 0 To UBound($TroopDarkName) - 1
 				GUICtrlSetData(Eval("txtNum" & $TroopDarkName[$i]), "0")
 			Next
-			GUICtrlSetData($txtNumBarb, "60")
-			GUICtrlSetData($txtNumArch, "30")
-			GUICtrlSetData($txtNumGobl, "10")
+			GUICtrlSetData($txtNumBarb, "20")
+			GUICtrlSetData($txtNumArch, "50")
+			GUICtrlSetData($txtNumGobl, "30")
 		Case 7
 			GUICtrlSetState($cmbBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbBarrack2, $GUI_DISABLE)
@@ -280,8 +283,9 @@ Func SetComboTroopComp()
 			GUICtrlSetState($cmbDarkBarrack1, $GUI_DISABLE)
 			GUICtrlSetState($cmbDarkBarrack2, $GUI_DISABLE)
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
-			GUICtrlSetState($radAccuracy, $GUI_DISABLE)
-			GUICtrlSetState($radSpeed, $GUI_DISABLE)
+			GUICtrlSetState($radAccuracy, $GUI_ENABLE)
+			GUICtrlSetState($radSpeed, $GUI_ENABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_CHECKED)
 			GUICtrlSetState($chkUsePercent, $GUI_DISABLE)
 
 			For $i = 0 To UBound($TroopName) - 1
@@ -305,22 +309,11 @@ Func SetComboTroopComp()
 				GUICtrlSetData(Eval("txtNum" & $TroopDarkName[$i]), "0")
 			Next
 
-			_GUICtrlEdit_SetReadOnly($txtNumGiant, False)
-			_GUICtrlEdit_SetReadOnly($txtNumWall, False)
-
-			GUICtrlSetData($txtNumBarb, "60")
-			GUICtrlSetData($txtNumArch, "30")
-			GUICtrlSetData($txtNumGobl, "10")
-
-			GUICtrlSetData($txtNumGiant, $GiantComp)
-			GUICtrlSetData($txtNumWall, $WallComp)
-			GUICtrlSetData($txtNumWiza, $WizaComp)
-			GUICtrlSetData($txtNumMini, $MiniComp)
-			GUICtrlSetData($txtNumHogs, $HogsComp)
-			GUICtrlSetData($txtNumValk, $ValkComp)
-			GUICtrlSetData($txtNumGole, $GoleComp)
-			GUICtrlSetData($txtNumWitc, $WitcComp)
-			GUICtrlSetData($txtNumLava, $LavaComp)
+			GUICtrlSetData($txtNumBarb, "10")
+			GUICtrlSetData($txtNumArch, "50")
+			GUICtrlSetData($txtNumGobl, "25")
+			GUICtrlSetData($txtNumGiant, "10")
+			GUICtrlSetData($txtNumWall, "5")
 		Case 8
 			GUICtrlSetState($cmbBarrack1, $GUI_ENABLE)
 			GUICtrlSetState($cmbBarrack2, $GUI_ENABLE)
@@ -354,7 +347,7 @@ Func SetComboTroopComp()
 			;GUICtrlSetState($txtCapacity, $GUI_ENABLE)
 			GUICtrlSetState($radAccuracy, $GUI_ENABLE)
 			GUICtrlSetState($radSpeed, $GUI_ENABLE)
-			;GUICtrlSetState($chkUsePercent, $GUI_ENABLE)
+			GUICtrlSetState($chkUsePercent, $GUI_ENABLE)
 			For $i = 0 To UBound($TroopName) - 1
 				GUICtrlSetState(Eval("txtNum" & $TroopName[$i]), $GUI_ENABLE)
 			Next
@@ -381,10 +374,24 @@ Func SetComboTroopComp()
 EndFunc   ;==>SetComboTroopComp
 
 Func lblTotalCount()
-	GUICtrlSetData($lblTotalCount, GUICtrlRead($txtNumBarb) + GUICtrlRead($txtNumArch) + GUICtrlRead($txtNumGiant)*5 + GUICtrlRead($txtNumGobl) + GUICtrlRead($txtNumWall)*2 + GUICtrlRead($txtNumBall)*5 + GUICtrlRead($txtNumWiza)*4 + GUICtrlRead($txtNumHeal)*14 + GUICtrlRead($txtNumDrag)*20 + GUICtrlRead($txtNumPekk)*25 + GUICtrlRead($txtNumMini)*2 + GUICtrlRead($txtNumHogs)*5 + GUICtrlRead($txtNumValk)*8 + GUICtrlRead($txtNumGole)*30 + GUICtrlRead($txtNumWitc)*12 + GUICtrlRead($txtNumLava)*30)
-	If GUICtrlRead($lblTotalCount) = $ArmyComp Then
+	Local $i
+
+	If GUICtrlRead($chkUsePercent) = $GUI_CHECKED Then
+		$ichkUsePercent = 1
+	Else
+		$ichkUsePercent = 0
+	EndIf
+
+	If $ichkUsePercent = 1 Then
+		GUICtrlSetData($lblTotalCount, GUICtrlRead($txtNumBarb) + GUICtrlRead($txtNumArch) + GUICtrlRead($txtNumGiant) + GUICtrlRead($txtNumGobl) + GUICtrlRead($txtNumWall) + GUICtrlRead($txtNumBall) + GUICtrlRead($txtNumWiza) + GUICtrlRead($txtNumHeal) + GUICtrlRead($txtNumDrag) + GUICtrlRead($txtNumPekk) + GUICtrlRead($txtNumMini) + GUICtrlRead($txtNumHogs) + GUICtrlRead($txtNumValk) + GUICtrlRead($txtNumGole) + GUICtrlRead($txtNumWitc) + GUICtrlRead($txtNumLava))
+		$i = 100
+	Else
+		GUICtrlSetData($lblTotalCount, GUICtrlRead($txtNumBarb) + GUICtrlRead($txtNumArch) + GUICtrlRead($txtNumGiant)*5 + GUICtrlRead($txtNumGobl) + GUICtrlRead($txtNumWall)*2 + GUICtrlRead($txtNumBall)*5 + GUICtrlRead($txtNumWiza)*4 + GUICtrlRead($txtNumHeal)*14 + GUICtrlRead($txtNumDrag)*20 + GUICtrlRead($txtNumPekk)*25 + GUICtrlRead($txtNumMini)*2 + GUICtrlRead($txtNumHogs)*5 + GUICtrlRead($txtNumValk)*8 + GUICtrlRead($txtNumGole)*30 + GUICtrlRead($txtNumWitc)*12 + GUICtrlRead($txtNumLava)*30)
+		$i = $TotalCamp
+	EndIf
+	If GUICtrlRead($lblTotalCount) = $i Then
 		GUICtrlSetBkColor($lblTotalCount, $COLOR_MONEYGREEN)
-	ElseIf GUICtrlRead($lblTotalCount) < $ArmyComp Then
+	ElseIf GUICtrlRead($lblTotalCount) < $i Then
 		GUICtrlSetBkColor($lblTotalCount, $COLOR_ORANGE)
 	Else
 		GUICtrlSetBkColor($lblTotalCount, $COLOR_RED)

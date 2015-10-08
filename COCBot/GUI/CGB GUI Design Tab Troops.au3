@@ -113,8 +113,8 @@ $tabTroops = GUICtrlCreateTabItem("Troops")
 			GUICtrlSetState(-1, $GUI_CHECKED)
 		$radSpeed = GUICtrlCreateRadio("Speed", $x + 135, $y - 5 , -1, -1)
 		$y +=25
-		$chkUsePercent = GUICtrlCreateCheckbox("Use Percent", $x - 5, $y - 5, 95, 17, $GUI_DISABLE)
-			GUICtrlSetState($chkUsePercent,$GUI_DISABLE)
+		$chkUsePercent = GUICtrlCreateCheckbox("Use Percent", $x - 5, $y - 5, 95, 17)
+		GUICtrlSetOnEvent(-1, "lblTotalCount")
 		$lblTotal = GUICtrlCreateLabel("Total:", $x + 95, $y - 5, -1, -1, $SS_RIGHT)
 		$lblTotalCount = GUICtrlCreateLabel("0", $x + 130, $y - 5, 55, 15, $SS_CENTER)
 			GUICtrlSetBkColor (-1, $COLOR_MONEYGREEN) ;lime, moneygreen

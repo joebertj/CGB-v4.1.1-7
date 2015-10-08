@@ -900,6 +900,12 @@ Func saveConfig() ;Saves the controls settings to the config
 	;Troop Settings--------------------------------------------------------------------------
 	IniWrite($config, "troop", "TroopComposition", _GUICtrlComboBox_GetCurSel($cmbTroopComp))
 
+	If GUICtrlRead($chkUsePercent) = $GUI_CHECKED Then
+		IniWrite($config, "troop", "Percent", 1)
+	Else
+		IniWrite($config, "troop", "Percent", 0)
+	EndIf
+
 	For $i = 0 To UBound($TroopName) - 1
 		IniWrite($config, "troop", $TroopName[$i], GUICtrlRead(Eval("txtNum" & $TroopName[$i])))
 	Next
