@@ -464,6 +464,12 @@ Func Train()
 				$GoblComp = GUICtrlRead($txtNumGobl)
 				$MiniComp = GUICtrlRead($txtNumMini) ; restore MiniComp
 				$trainFiller = False
+				If $ichkUsePercent = 1 Then
+					$BarbComp = Round($BarbComp * $TotalCamp / 100)
+					$ArchComp = Round($ArchComp * $TotalCamp / 100)
+					$GoblComp = Round($GoblComp * $TotalCamp / 100)
+					$MiniComp = Round($MiniComp * $TotalCamp / 100)
+				EndIf
 			EndIf
 			If $debugSetlog = 1 Then SetLog("fullarmy $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 			$BarbComp = $BarbComp * 3 - $eBarbCount
@@ -1095,6 +1101,9 @@ Func Train()
 			$GoleComp =  GUICtrlRead($txtNumGole)
 			$WitcComp =  GUICtrlRead($txtNumWitc)
 			$LavaComp =  GUICtrlRead($txtNumLava)
+			If $ichkUsePercent = 1 Then
+				PercentComp()
+			EndIf
 		EndIf
 	Else
 		If $debugSetlog = 1 Then SetLog("---------TRAIN NEW BARRACK MODE------------------------")

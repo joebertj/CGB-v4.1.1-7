@@ -6027,7 +6027,7 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\g
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getDigitSmall.au3(7,1) : UNREFED(133):	getDigitSmall
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getElixir.au3(3,1) : UNREFED(21):	getElixir
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getGold.au3(3,1) : UNREFED(21):	getGold
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3(1466,1) : UNREFED(1519):	getMinInTrain
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3(1475,1) : UNREFED(1528):	getMinInTrain
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getNormal.au3(3,1) : UNREFED(137):	getNormal
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getOther.au3(17,1) : UNREFED(237):	getOther
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getReturnHome.au3(3,1) : UNREFED(139):	getReturnHome
