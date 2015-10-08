@@ -144,6 +144,10 @@ Func runBot() ;Bot that runs everything in order
 			checkMainScreen(False) ; required here due to many possible exits
 			If $Restart = True Then ContinueLoop
 			$iArmyPercent = 0
+			If $ichkUsePercent = 1 Then
+				checkArmyCamp()
+				PercentComp()
+			EndIf
 			Train()
 			If _Sleep($iDelayRunBot1) Then Return
 			checkMainScreen(False)

@@ -62,9 +62,9 @@ Func Train()
 	; $numBarracksAvaiables returns to be used as the divisor to assign the amount of kind troops each barracks | $TroopName+EBarrack
 	;
 
-	;If $icmbTroopComp <> 8 Then
+	If $icmbTroopComp <> 9  Or $ichkUsePercent = 0 Then
 		checkArmyCamp()
-	;EndIf
+	EndIf
 
 	SetLog("Training Troops...", $COLOR_BLUE)
 	If _Sleep($iDelayTrain1) Then Return
@@ -1661,4 +1661,23 @@ Func ResetCounters()
 	$eGoleCount=0
 	$eWitcCount=0
 	$eLavaCount=0
+EndFunc
+
+Func PercentComp()
+		$BarbComp = Round($BarbComp * $TotalCamp / 100)
+		$ArchComp = Round($ArchComp * $TotalCamp / 100)
+		$GoblComp = Round($GoblComp * $TotalCamp / 100)
+		$GiantComp = Round($GiantComp * $TotalCamp / 100)
+		$WallComp = Round($WallComp * $TotalCamp / 100)
+		$WizaComp = Round($WizaComp * $TotalCamp / 100)
+		$MiniComp = Round($MiniComp * $TotalCamp / 100)
+		$HogsComp = Round($HogsComp * $TotalCamp / 100)
+		$DragComp = Round($DragComp * $TotalCamp / 100)
+		$BallComp = Round($BallComp * $TotalCamp / 100)
+		$PekkComp = Round($PekkComp * $TotalCamp / 100)
+		$HealComp = Round($HealComp * $TotalCamp / 100)
+		$ValkComp = Round($ValkComp * $TotalCamp / 100)
+		$GoleComp = Round($GoleComp * $TotalCamp / 100)
+		$WitcComp = Round($WitcComp * $TotalCamp / 100)
+		$LavaComp = Round($LavaComp * $TotalCamp / 100)
 EndFunc
