@@ -62,9 +62,9 @@ Func Train()
 	; $numBarracksAvaiables returns to be used as the divisor to assign the amount of kind troops each barracks | $TroopName+EBarrack
 	;
 
-	If $icmbTroopComp <> 9  Or $ichkUsePercent = 0 Then
+	;If $icmbTroopComp <> 9  Or $ichkUsePercent = 0 Then
 		checkArmyCamp()
-	EndIf
+	;EndIf
 
 	SetLog("Training Troops...", $COLOR_BLUE)
 	If _Sleep($iDelayTrain1) Then Return
@@ -227,29 +227,7 @@ Func Train()
 
 		If $debugSetlog = 1 Then SetLog("------- Calculating TOTAL of Units: Arch/Barbs/Gobl ------")
 
-		If $OptTrophyMode = 1 And $icmbTroopComp = 9 Then
-			$CurGobl += ($TotalCamp - $anotherTroops) * GUICtrlRead($txtNumGobl) / 100
-			$CurGobl = Round($CurGobl)
-			$CurBarb += ($TotalCamp - $anotherTroops) * GUICtrlRead($txtNumBarb) / 100
-			$CurBarb = Round($CurBarb)
-			$CurArch += ($TotalCamp - $anotherTroops) * GUICtrlRead($txtNumArch) / 100
-			$CurArch = Round($CurArch)
-			For $i = 0 To UBound($TroopName) - 1
-				If $TroopName[$i] = "Barb" Or $TroopName[$i] = "Arch" Or $TroopName[$i] = "Gobl" Then
-					If Eval("Cur" & $TroopName[$i]) * -1 > ($TotalCamp - $anotherTroops) * Eval($TroopName[$i] & "Comp") / 100 * .20 Then ;20% too many troops
-						SetLog("Too many " & $TroopName[$i] & ", train last.")
-						Assign("Cur" & $TroopName[$i], 0)
-						Assign(("tooMany" & $TroopName[$i]), 1)
-					ElseIf (Eval("Cur" & $TroopName[$i]) > ($TotalCamp - $anotherTroops) * Eval($TroopName[$i] & "Comp") / 100 * .20) And Eval("Cur" & $TroopName[$i]) <> Round(($TotalCamp - $anotherTroops) * Eval($TroopName[$i] & "Comp") / 100) Then ;20% too few troops
-						SetLog("Too few " & $TroopName[$i] & ", train first.")
-						Assign("Cur" & $TroopName[$i], 0)
-						Assign(("tooFew" & $TroopName[$i]), 1)
-					Else
-						Assign("Cur" & $TroopName[$i], Round(($TotalCamp - $anotherTroops) * Eval($TroopName[$i] & "Comp") / 100))
-					EndIf
-				EndIf
-			Next
-		Else
+		If $OptTrophyMode = 1 And $icmbTroopComp < 8 Then
 			$CurGobl = ($TotalCamp - $anotherTroops) * Eval("GoblComp") / 100
 			$CurGobl = Round($CurGobl)
 			$CurBarb = ($TotalCamp - $anotherTroops) * Eval("BarbComp") / 100
