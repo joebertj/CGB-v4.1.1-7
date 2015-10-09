@@ -638,7 +638,7 @@ Func Train()
 		$brrNum = 0
 		While isDarkBarrack()
 			_CaptureRegion()
-			If ($iSpeed =0 And $FirstStart) Or $RemoveTroops Then
+			If ($iSpeed =0 And $FirstStart) Or $RemoveDarkTroops Then
 				$icount = 0
 				While Not _ColorCheck(_GetPixelColor(565, 205, True), Hex(0xE8E8DE, 6), 20) ; while not disappears  green arrow
 					If Not (IsTrainPage()) Then Return
@@ -852,6 +852,7 @@ Func Train()
 			If $brrNum >= $numDarkBarracksAvaiables Then ExitLoop
 		WEnd
 		If $RemoveTroops Then $RemoveTroops = False
+		If $RemoveDarkTroops Then $RemoveDarkTroops = False
 		$eMiniTrainOld=$eMiniTrain
 		$eHogsTrainOld=$eHogsTrain
 		$eValkTrainOld=$eValkTrain
@@ -860,7 +861,9 @@ Func Train()
 		$eLavaTrainOld=$eLavaTrain
 		If $debugSetlog = 1 Then SetLog("$fullarmy: " & $fullarmy & " $trainFiller: " & $trainFiller)
 		If $trainFiller = True Then
-			If $BarbComp > 0 Then
+			If $ArchComp > 0 Then
+				$ArchComp += ($TotalCamp - $CurCamp)
+			ElseIf $BarbComp > 0 Then
 				$BarbComp += ($TotalCamp - $CurCamp)
 			ElseIf $GoblComp > 0 Then
 				$GoblComp += ($TotalCamp - $CurCamp)
@@ -869,7 +872,7 @@ Func Train()
 			EndIf
 		EndIf
 		If $trainFillerDark = True Then
-			$MiniComp += ($TotalCamp - $CurCamp)
+			$MiniComp += Floor(($TotalCamp - $CurCamp)/2)
 		EndIf
 		If $debugSetlog = 1 Then SetLog("$notTrainingDark: " & $notTrainingDark & " $trainKind: " & $trainKind)
 		If $fullarmy Then ; restore original values

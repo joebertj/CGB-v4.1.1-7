@@ -234,7 +234,7 @@ EndFunc   ;==>runBot
 
 Func Idle() ;Sequence that runs until Full Army
 	Local $TimeIdle = 0 ;In Seconds
-	Local $trainTimerAdjust=0, $timeInTrain=0, $TimeIdleinMinutes=0 ;In minutes
+	Local $trainTimerAdjust=-1, $timeInTrain=0, $TimeIdleinMinutes=0 ;In minutes
 
 	If $debugSetlog = 1 Then SetLog("Func Idle ", $COLOR_PURPLE)
 	While $fullArmy = False
@@ -365,17 +365,37 @@ Func Idle() ;Sequence that runs until Full Army
 		; use getMinInTrain() if Idle is too long without troops in training
 		$timeInTrain = getMaxInTrain()
 		$TimeIdleinMinutes = Floor($TimeIdle/60)
-		If $trainTimerAdjust = 0 Then $trainTimerAdjust = $TimeIdleinMinutes + $timeInTrain
+		If $trainTimerAdjust = -1 Then $trainTimerAdjust = $TimeIdleinMinutes + $timeInTrain
 		If $debugSetlog = 1 Then SetLog("$trainTimerAdjust: " & $trainTimerAdjust & " $timeInTrain: " & $timeInTrain & " $TimeIdleinMinutes: " & $TimeIdleinMinutes)
 		If $debugSetlog = 1 Then SetLog("$CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
 		If $CurCamp = $CurCampOld Then ; if no new troop is produced or being trained
 			If $TimeIdleinMinutes-$trainTimerAdjust > 0 Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
 				If $iSpeed = 0 Then
-					If $notTraining + $notTrainingDark < $numBarracksAvaiables + $numDarkBarracksAvaiables Then $RemoveTroops=True ; training stuck, alo $timeInTrain = -1
-				EndIf
-				If $iSpeed = 1 Then
-					If $notTraining > 0 Then $trainFiller = True
-					If $notTrainingDark > 0 Then $trainFillerDark = True
+					If $notTraining < $numBarracksAvaiables Then ; training stuck, also $timeInTrain = -1
+						$RemoveTroops=True
+						$trainFiller = True
+					Else
+						$trainFiller = True
+					EndIf
+					If $notTrainingDark < $numDarkBarracksAvaiables Then ; training stuck, also $timeInTrain = -1
+						$RemoveDarkTroops=True
+						$trainFillerDark = True
+					Else
+						$trainFillerDark = True
+					EndIf
+				ElseIf $iSpeed = 1 Then
+					If $notTraining = 0 Then
+						$RemoveTroops=True
+						$trainFiller = True
+					Else
+						$trainFiller = True
+					EndIf
+					If $notTrainingDark = 0 Then
+						$RemoveDarkTroops=True
+						$trainFillerDark = True
+					Else
+						$trainFillerDark = True
+					EndIf
 				EndIf
 				ResetCounters()
 				If $debugSetlog = 1 Then SetLog("time $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
@@ -388,7 +408,10 @@ Func Idle() ;Sequence that runs until Full Army
 		SetLog("Time Idle: " & StringFormat("%02i", Floor(Floor($TimeIdle / 60) / 60)) & ":" & StringFormat("%02i", Floor(Mod(Floor($TimeIdle / 60), 60))) & ":" & StringFormat("%02i", Floor(Mod($TimeIdle, 60))))
 		If $OutOfGold = 1 Then Return
 	WEnd
-	If $iSpeed = 0 Then $RemoveTroops=True
+	If $iSpeed = 0 Then
+		$RemoveTroops=True
+		$RemoveDarkTroops=True
+	EndIf
 	ResetCounters()
 	If $debugSetlog = 1 Then SetLog("attack $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 EndFunc   ;==>Idle

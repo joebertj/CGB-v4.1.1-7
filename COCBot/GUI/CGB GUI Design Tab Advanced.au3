@@ -130,11 +130,19 @@ GUICtrlCreateGroup("", -99, -99, 1, 1)
         GUICtrlSetTip(-1, "Bot will try to TH snipe while training army.")
 		$y+=20
 		$lblIgnoreTraps = GUICtrlCreateLabel( "Ignore Traps", $x , $y + 5, -1, -1)
-		$chkIgnoreTraps = GUICtrlCreateCheckbox("Ground", $x + 75 , $y, -1, -1)
-		$chkIgnoreAirTraps = GUICtrlCreateCheckbox("Air", $x + 145 , $y, -1, -1)
-		$y+=20
-		$chkParanoid = GUICtrlCreateCheckbox("Paranoid", $x , $y, -1, -1)
-		$chkGreedy = GUICtrlCreateCheckbox("Greedy", $x + 95 , $y, -1, -1)
+    $chkIgnoreTraps = GUICtrlCreateCheckbox("Ground", $x + 75 , $y, -1, -1)
+    $txtTip = "Traps Check will ignore GroundTraps"
+    GUICtrlSetTip(-1, $txtTip)
+    $chkIgnoreAirTraps = GUICtrlCreateCheckbox("Air", $x + 145 , $y, -1, -1)
+    $txtTip = "Traps Check will ignore AirTraps"
+    GUICtrlSetTip(-1, $txtTip)
+    $y+=20
+    $chkParanoid = GUICtrlCreateCheckbox("Paranoid", $x , $y, -1, -1)
+    $txtTip = "Will expend all spells once you reach ALL IN."
+    GUICtrlSetTip(-1, $txtTip)
+    $chkGreedy = GUICtrlCreateCheckbox("Greedy", $x + 95 , $y, -1, -1)
+    $txtTip = " Will use Barbarian, Archer, Goblins and Minions on a dead base after TH destroyed by snipe"
+    GUICtrlSetTip(-1, $txtTip)
     GUICtrlCreateGroup("", -99, -99, 1, 1)
 	Local $x = 260, $y = 260
 	$grpDefenseFarming = GUICtrlCreateGroup("Defense Farming", $x - 20, $y - 20, 220, 165)

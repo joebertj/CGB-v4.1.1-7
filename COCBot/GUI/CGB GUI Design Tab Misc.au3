@@ -19,8 +19,14 @@
 $tabMisc = GUICtrlCreateTabItem("Misc")
 Local $x = 30, $y = 150
 	$chkIceBreaker = GUICtrlCreateCheckbox("IceBreaker", $x - 5, $y + 40, 80, 16)
-	$chkKeepAlive = GUICtrlCreateCheckbox("KeepAlive", $x - 5, $y + 60, 80, 16)
+    $txtTip = "A trivia bot based on ChatBot"
+    GUICtrlSetTip(-1, $txtTip)
+    $chkKeepAlive = GUICtrlCreateCheckbox("KeepAlive", $x - 5, $y + 60, 80, 16)
+    $txtTip = "Prevent ScrenSaver and Power Policies to lock your PC by moving the mouse once in a while"
+    GUICtrlSetTip(-1, $txtTip)
 	$chkClanAd = GUICtrlCreateCheckbox("Advertise to Clan", $x + 100, $y + 40, 200, 16)
+	$txtTip = "Send a message to clan Chat every 15 minutes"
+    GUICtrlSetTip(-1, $txtTip)
 	$txtClanAd = GUICtrlCreateInput("Welcome", $x + 100, $y + 60, 310, 40, BitOr($WS_VSCROLL, $ES_AUTOVSCROLL, $ES_MULTILINE, $ES_WANTRETURN))
 
 	$grpControls = GUICtrlCreateGroup("Halt Attack", $x - 20, $y - 20, 450, 50)

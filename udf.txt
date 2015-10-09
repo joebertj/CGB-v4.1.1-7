@@ -87,7 +87,7 @@ AutoIt3 Syntax Checker v3.3.14.1  Copyright (c) 2007-2013 Tylo & AutoIt Team
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\GameBot.org.au3"(49,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB GUI Control.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB GUI Control.au3"(22,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\GUICtrlGetBkColor.au3"
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB GUI Control.au3"(45,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Bottom.au3"
-"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Bottom.au3"(299,31) : warning: $ToolboxModeSearch: possibly used before declaration.
+"C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Bottom.au3"(300,31) : warning: $ToolboxModeSearch: possibly used before declaration.
         If $ToolboxModeSearch Then
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
 "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\CGB GUI Control.au3"(46,1) : INCLUDE: "C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Tab General.au3"
@@ -4359,7 +4359,7 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Check
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Spell.au3(16,1) : UNREFED(59):	CreateSpell
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\DonateCC.au3(503,1) : UNREFED(553):	GTFO
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Other\Click.au3(96,1) : UNREFED(98):	GemClickP
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Bottom.au3(323,1) : UNREFED(330):	GetFont
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\GUI\CGB GUI Control Bottom.au3(324,1) : UNREFED(331):	GetFont
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\GoldElixirChange.au3(16,1) : UNREFED(69):	GoldElixirChange
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Troops\IdentifyTroopKind.au3(17,1) : UNREFED(193):	IdentifyTroopKind
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Attack\Troops\IdentifyTroopKind.au3(196,1) : UNREFED(240):	IdentifyTroopKindCreate
@@ -6027,7 +6027,7 @@ C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\g
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getDigitSmall.au3(7,1) : UNREFED(133):	getDigitSmall
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getElixir.au3(3,1) : UNREFED(21):	getElixir
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getGold.au3(3,1) : UNREFED(21):	getGold
-C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3(1222,1) : UNREFED(1275):	getMinInTrain
+C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Village\Train.au3(1225,1) : UNREFED(1278):	getMinInTrain
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getNormal.au3(3,1) : UNREFED(137):	getNormal
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getOther.au3(17,1) : UNREFED(237):	getOther
 C:\Users\IBM_ADMIN\Documents\Downloads\CGB-v4.1.1-7\COCBot\functions\Read Text\getReturnHome.au3(3,1) : UNREFED(139):	getReturnHome

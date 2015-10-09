@@ -220,6 +220,7 @@ Func btnStop()
 EndFunc   ;==>btnStop
 
 Func btnPause()
+	$trainTimerAdjust = 0
 	Send("{PAUSE}")
 EndFunc   ;==>btnPause
 
