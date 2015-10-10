@@ -870,9 +870,11 @@ Func Train()
 			Else
 				$ArchComp += ($TotalCamp - $CurCamp)
 			EndIf
+			$trainFiller = False
 		EndIf
 		If $trainFillerDark = True Then
 			$MiniComp += Floor(($TotalCamp - $CurCamp)/2)
+			$trainFillerDark = False
 		EndIf
 		If $debugSetlog = 1 Then SetLog("$notTrainingDark: " & $notTrainingDark & " $trainKind: " & $trainKind)
 		If $fullarmy Then ; restore original values

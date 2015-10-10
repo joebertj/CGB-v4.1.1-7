@@ -373,12 +373,14 @@ Func Idle() ;Sequence that runs until Full Army
 				If $iSpeed = 0 Then
 					If $notTraining < $numBarracksAvaiables Then ; training stuck, also $timeInTrain = -1
 						$RemoveTroops=True
+						ResetCounters()
 						$trainFiller = True
 					Else
 						$trainFiller = True
 					EndIf
 					If $notTrainingDark < $numDarkBarracksAvaiables Then ; training stuck, also $timeInTrain = -1
 						$RemoveDarkTroops=True
+						ResetCounters()
 						$trainFillerDark = True
 					Else
 						$trainFillerDark = True
@@ -386,18 +388,20 @@ Func Idle() ;Sequence that runs until Full Army
 				ElseIf $iSpeed = 1 Then
 					If $notTraining = 0 Then
 						$RemoveTroops=True
+						ResetCounters()
 						$trainFiller = True
 					Else
 						$trainFiller = True
 					EndIf
 					If $notTrainingDark = 0 Then
 						$RemoveDarkTroops=True
+						ResetCounters()
 						$trainFillerDark = True
 					Else
 						$trainFillerDark = True
 					EndIf
 				EndIf
-				ResetCounters()
+
 				If $debugSetlog = 1 Then SetLog("time $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 			EndIf
 		Else
