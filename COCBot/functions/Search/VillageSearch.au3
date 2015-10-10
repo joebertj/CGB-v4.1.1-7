@@ -295,6 +295,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			If $iChkDeploySettings[$iMatchMode] = 6 Then
 				If PrepareAttackTHLavaloonion() Then ExitLoop
 			EndIf
+			ExitLoop
 		ElseIf $match[$LB] And Not $dbBase Then
 			SetLog(_PadStringCenter(" Live Base Found! ", 50, "~"), $COLOR_GREEN)
 			$iMatchMode = $LB
@@ -317,6 +318,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			If $iChkDeploySettings[$iMatchMode] = 6 Then
 				If PrepareAttackTHLavaloonion() Then ExitLoop
 			EndIf
+			ExitLoop
 		ElseIf $match[$LB] Or $match[$DB] Then
 			If $OptBullyMode = 1 And ($SearchCount >= $ATBullyMode) Then
 				If $SearchTHLResult = 1 Then
