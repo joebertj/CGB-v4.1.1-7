@@ -11,52 +11,72 @@ EndFunc   ;==>TrainSpells
 
 Func TrainNormalSpells()
 	Local $count
-	Local $SpellPos[5]
-	Local $spellName[5]
+	Local $SpellPos[5], $SpellPosTemp[5]
+	Local $spellName[5],  $spellNameTemp[5]
 	Local $spellCount[5] = [0, 0, 0, 0, 0]
 	Local $lightning[2] = [250, "Lightning"], $heal[2] = [357, "Heal"], $Rage[2] = [464, "Rage"], $Jump[2] = [571, "Jump"], $Freeze[2] = [678, "Freeze"]
 	Local $multiTrain = False
 	Local $i = Random(0, 4, 1)
-	Local $j, $k
+	Local $j, $k, $l = 0
 	Local $spellTrain = 0, $LSpellTrain = 0, $HSpellTrain = 0, $RSpellTrain = 0, $JSpellTrain = 0, $FSpellTrain = 0
 
 	For $k = 0 To 4
 	If $ichkTrainLSpell = 1 Then
 		$j = Mod($i, 5)
-		$SpellPos[$j] = $lightning[0]
-		$spellName[$j] = $lightning[1]
+		$SpellPosTemp[$j] = $lightning[0]
+		$spellNameTemp[$j] = $lightning[1]
+		$SpellPos[$l] = $SpellPosTemp[$j]
+		$spellName[$l] = $spellNameTemp[$j]
+		$l += 1
+		If $l = 5 Then ExitLoop
 		$i += 1
 		If $LSpellTrain = 0 Then $LSpellTrain = 1
 	EndIf
 
 	If $ichkTrainHSpell = 1 Then
 		$j = Mod($i, 5)
-		$SpellPos[$j] = $heal[0]
-		$spellName[$j] = $heal[1]
+		$SpellPosTemp[$j] = $heal[0]
+		$spellNameTemp[$j] = $heal[1]
+		$SpellPos[$l] = $SpellPosTemp[$j]
+		$spellName[$l] = $spellNameTemp[$j]
+		$l += 1
+		If $l = 5 Then ExitLoop
 		$i += 1
 		If $HSpellTrain = 0 Then $HSpellTrain = 1
 	EndIf
 
 	If $ichkTrainRSpell = 1 Then
 		$j = Mod($i, 5)
-		$SpellPos[$j] = $Rage[0]
-		$spellName[$j] = $Rage[1]
+		$SpellPosTemp[$j] = $Rage[0]
+		$spellNameTemp[$j] = $Rage[1]
+		$SpellPos[$l] = $SpellPosTemp[$j]
+		$spellName[$l] = $spellNameTemp[$j]
+		$l += 1
+		If $l = 5 Then ExitLoop
 		$i += 1
 		If $RSpellTrain = 0 Then $RSpellTrain = 1
 	EndIf
 
 	If $ichkTrainJSpell = 1 Then
 		$j = Mod($i, 5)
-		$SpellPos[$j] = $Jump[0]
-		$spellName[$j] = $Jump[1]
+		$SpellPosTemp[$j] = $Jump[0]
+		$spellNameTemp[$j] = $Jump[1]
+		$SpellPos[$l] = $SpellPosTemp[$j]
+		$spellName[$l] = $spellNameTemp[$j]
+		$l += 1
+		If $l = 5 Then ExitLoop
 		$i += 1
 		If $JSpellTrain = 0 Then $JSpellTrain = 1
 	EndIf
 
 	If $ichkTrainFSpell = 1 Then
 		$j = Mod($i, 5)
-		$SpellPos[$j] = $Freeze[0]
-		$spellName[$j] = $Freeze[1]
+		$SpellPosTemp[$j] = $Freeze[0]
+		$spellNameTemp[$j] = $Freeze[1]
+		$SpellPos[$l] = $SpellPosTemp[$j]
+		$spellName[$l] = $spellNameTemp[$j]
+		$l += 1
+		If $l = 5 Then ExitLoop
 		$i += 1
 		If $FSpellTrain = 0 Then $FSpellTrain = 1
 	EndIf
@@ -128,34 +148,46 @@ EndFunc   ;==>TrainNormalSpells
 
 Func TrainDarkSpells()
 	Local $count
-	Local $SpellPos[3]
-	Local $spellName[3]
+	Local $SpellPos[3], $SpellPosTemp[3]
+	Local $spellName[3], $spellNameTemp[3]
 	Local $spellCount[3] = [0, 0, 0]
 	Local $Poison[2] = [250, "Poison"], $Earthquake[2] = [357, "Earthquake"], $haste[2] = [464, "Haste"]
 	Local $multiTrain = False
 	Local $i = Random(0, 2, 1)
-	Local $j
+	Local $j, $k, $l = 0
 	Local $spellTrain = 0, $PSpellTrain = 0, $ESpellTrain = 0, $HaSpellTrain = 0
 
 	For $k = 0 To 2
 	If $ichkTrainPSpell = 1 Then
 		$j = Mod($i, 3)
-		$SpellPos[$j] = $Poison[0]
-		$spellName[$j] = $Poison[1]
+		$SpellPosTemp[$j] = $Poison[0]
+		$spellNameTemp[$j] = $Poison[1]
+		$SpellPos[$l] = $SpellPosTemp[$j]
+		$spellName[$l] = $spellNameTemp[$j]
+		$l += 1
+		If $l = 3 Then ExitLoop
 		$i += 1
 		If $PSpellTrain = 0 Then $PSpellTrain = 1
 	EndIf
 	If $ichkTrainESpell = 1 Then
 		$j = Mod($i, 3)
-		$SpellPos[$j] = $Earthquake[0]
-		$spellName[$j] = $Earthquake[1]
+		$SpellPosTemp[$j] = $Earthquake[0]
+		$spellNameTemp[$j] = $Earthquake[1]
+		$SpellPos[$l] = $SpellPosTemp[$j]
+		$spellName[$l] = $spellNameTemp[$j]
+		$l += 1
+		If $l = 3 Then ExitLoop
 		$i += 1
 		If $ESpellTrain = 0 Then $ESpellTrain = 1
 	EndIf
 	If $ichkTrainHaSpell = 1 Then
 		$j = Mod($i, 3)
-		$SpellPos[$j] = $haste[0]
-		$spellName[$j] = $haste[1]
+		$SpellPosTemp[$j] = $haste[0]
+		$spellNameTemp[$j] = $haste[1]
+		$SpellPos[$l] = $SpellPosTemp[$j]
+		$spellName[$l] = $spellNameTemp[$j]
+		$l += 1
+		If $l = 3 Then ExitLoop
 		$i += 1
 		If $HaSpellTrain = 0 Then $HaSpellTrain = 1
 	EndIf

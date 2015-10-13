@@ -1,5 +1,5 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: CGB Functions
+; Name ..........: MBR Functions
 ; Description ...: This file Includes several files in the current script.
 ; Syntax ........: #include
 ; Parameters ....: None
@@ -89,7 +89,7 @@
 #include "functions\Other\_StatusUpdateTime.au3"
 #include "functions\Other\Click.au3"
 #include "functions\Other\CreateLogFile.au3"
-#include "functions\Other\debugCGBFunctions.au3"
+#include "functions\Other\debugMBRFunctions.au3"
 #include "functions\Other\FindPos.au3"
 #include "functions\Other\getBSPos.au3"
 #include "functions\Other\ExtMsgBox.au3"

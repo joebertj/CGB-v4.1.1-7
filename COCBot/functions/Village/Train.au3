@@ -1033,7 +1033,7 @@ Func Train()
 		While isDarkBarrack()
 			$brrDarkNum += 1
 			If $debugSetlog = 1 Then SetLog("====== Check Dark Barrack: " & $brrDarkNum & " ======", $COLOR_PURPLE)
-			If StringInStr($sBotDll, "CGBPlugin.dll") < 1 Then
+			If StringInStr($sBotDll, "MBRPlugin.dll") < 1 Then
 				ExitLoop
 			EndIf
 			If $fullarmy Or $FirstStart Then

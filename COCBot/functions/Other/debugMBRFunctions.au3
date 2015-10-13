@@ -1,6 +1,6 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: debugCGBFunctions
-; Description ...: This file will set the debug levels for the CGBfunctions.dll
+; Name ..........: debugMBRFunctions
+; Description ...: This file will set the debug levels for the MBRfunctions.dll
 ; Syntax ........:
 ; Parameters ....: $debugSearchArea, $debugRedArea, $debugOcr
 ; Return values .: None, will create files in Temp folder for debugging purposes
@@ -13,14 +13,14 @@
 ; Example .......: No
 ; ===============================================================================================================================
 
-Func debugCGBFunctions($debugSearchArea = 0, $debugRedArea = 0, $debugOcr = 0)
+Func debugMBRFunctions($debugSearchArea = 0, $debugRedArea = 0, $debugOcr = 0)
 
 	Local $result = DllCall($pFuncLib, "str", "setGlobalVar", "int", $debugSearchArea, "int", $debugRedArea, "int", $debugOcr)
 	;dll return 0 on success, -1 on error
 	If IsArray($result) Then
-		If $debugSetlog And $result[0] = -1 Then setlog("CGBfunctions.dll error setting Global vars.", $COLOR_PURPLE)
+		If $debugSetlog And $result[0] = -1 Then setlog("MBRfunctions.dll error setting Global vars.", $COLOR_PURPLE)
 	Else
-		If $debugSetlog Then setlog("CGBfunctions.dll not found.")
+		If $debugSetlog Then setlog("MBRfunctions.dll not found.")
 	EndIf
 
-EndFunc   ;==>debugCGBFunctions
+EndFunc   ;==>debugMBRFunctions

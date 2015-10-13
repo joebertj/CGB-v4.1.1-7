@@ -44,7 +44,7 @@ Func DEDrillSearch($bReTest = False)
 	; Checks the screen and stores the results as $result
 	_WinAPI_DeleteObject($hBitmapFirst)
 	$hBitmapFirst = _CaptureRegion2()
-	$result = DllCall($LibDir & "\CGBfunctions.dll", "str", "getLocationDarkElixirExtractorWithLevel", "ptr", $hBitmapFirst)
+	$result = DllCall($LibDir & "\MBRfunctions.dll", "str", "getLocationDarkElixirExtractorWithLevel", "ptr", $hBitmapFirst)
 
 	; Debugger
 	If $debugsetlog = 1 Then Setlog("Drill search $result[0] = " & $result[0], $COLOR_PURPLE) ;Debug

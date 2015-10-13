@@ -1,5 +1,5 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: CGB GUI Design
+; Name ..........: MBR GUI Design
 ; Description ...: This file Includes GUI Design
 ; Syntax ........:
 ; Parameters ....: None
@@ -46,26 +46,26 @@ Local $x = 260,  $y = 150
 
 $grpTrainSpell = GUICtrlCreateGroup("Spells Training", $x - 20, $y - 20, 223, 100)
 	GUICtrlSetTip(-1, "Bot will Create Spells")
-	$SpellFactoryIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 62, $x-18, $y, 21, 21)
+	$SpellFactoryIcon = GUICtrlCreateIcon ($LibDir & "\MBRBOT.dll", 62, $x-18, $y, 21, 21)
 	$chkTrainLSpell = GUICtrlCreateCheckbox("L", $x + 15, $y, -1, -1)
-	$LightningIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 36, $x + 45, $y, 21, 21)
+	$LightningIcon = GUICtrlCreateIcon ($LibDir & "\MBRBOT.dll", 36, $x + 45, $y, 21, 21)
 	$chkTrainHSpell = GUICtrlCreateCheckbox("H", $x + 75, $y, -1, -1)
-	$HealIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 31, $x + 105, $y, 21, 21)
+	$HealIcon = GUICtrlCreateIcon ($LibDir & "\MBRBOT.dll", 31, $x + 105, $y, 21, 21)
 	$chkTrainRSpell = GUICtrlCreateCheckbox("R", $x + 135, $y, -1, -1)
-	$RageIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 42, $x + 165, $y, 21, 21)
+	$RageIcon = GUICtrlCreateIcon ($LibDir & "\MBRBOT.dll", 42, $x + 165, $y, 21, 21)
 	$y += 25
 	$chkTrainJSpell = GUICtrlCreateCheckbox("J", $x + 15, $y, -1, -1)
-	$JumpIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 33, $x + 45, $y, 21, 21)
+	$JumpIcon = GUICtrlCreateIcon ($LibDir & "\MBRBOT.dll", 33, $x + 45, $y, 21, 21)
 	$chkTrainFSpell = GUICtrlCreateCheckbox("F", $x + 75, $y, -1, -1)
-	$FreezeIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 17, $x + 105, $y, 21, 21)
+	$FreezeIcon = GUICtrlCreateIcon ($LibDir & "\MBRBOT.dll", 17, $x + 105, $y, 21, 21)
 	$y += 25
-	$DarkSpellFactoryIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 85, $x-18, $y, 21, 21)
+	$DarkSpellFactoryIcon = GUICtrlCreateIcon ($LibDir & "\MBRBOT.dll", 85, $x-18, $y, 21, 21)
 	$chkTrainPSpell = GUICtrlCreateCheckbox("P", $x + 15, $y, -1, -1)
-	$PoisonIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 88, $x + 45, $y, 21, 21)
+	$PoisonIcon = GUICtrlCreateIcon ($LibDir & "\MBRBOT.dll", 88, $x + 45, $y, 21, 21)
 	$chkTrainESpell = GUICtrlCreateCheckbox("E", $x + 75, $y, -1, -1)
-	$EarthquakeIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 86, $x + 105, $y, 21, 21)
+	$EarthquakeIcon = GUICtrlCreateIcon ($LibDir & "\MBRBOT.dll", 86, $x + 105, $y, 21, 21)
 	$chkTrainHaSpell = GUICtrlCreateCheckbox("Ha", $x + 135, $y, -1, -1)
-	$HasteIcon = GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 87, $x + 165, $y, 21, 21)
+	$HasteIcon = GUICtrlCreateIcon ($LibDir & "\MBRBOT.dll", 87, $x + 165, $y, 21, 21)
 
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
