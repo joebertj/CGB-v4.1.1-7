@@ -382,11 +382,10 @@ Func lblTotalCount()
 		$ichkUsePercent = 0
 	EndIf
 
+	GUICtrlSetData($lblTotalCount, GUICtrlRead($txtNumBarb) + GUICtrlRead($txtNumArch) + GUICtrlRead($txtNumGiant)*5 + GUICtrlRead($txtNumGobl) + GUICtrlRead($txtNumWall)*2 + GUICtrlRead($txtNumBall)*5 + GUICtrlRead($txtNumWiza)*4 + GUICtrlRead($txtNumHeal)*14 + GUICtrlRead($txtNumDrag)*20 + GUICtrlRead($txtNumPekk)*25 + GUICtrlRead($txtNumMini)*2 + GUICtrlRead($txtNumHogs)*5 + GUICtrlRead($txtNumValk)*8 + GUICtrlRead($txtNumGole)*30 + GUICtrlRead($txtNumWitc)*12 + GUICtrlRead($txtNumLava)*30)
 	If $ichkUsePercent = 1 Then
-		GUICtrlSetData($lblTotalCount, GUICtrlRead($txtNumBarb) + GUICtrlRead($txtNumArch) + GUICtrlRead($txtNumGiant) + GUICtrlRead($txtNumGobl) + GUICtrlRead($txtNumWall) + GUICtrlRead($txtNumBall) + GUICtrlRead($txtNumWiza) + GUICtrlRead($txtNumHeal) + GUICtrlRead($txtNumDrag) + GUICtrlRead($txtNumPekk) + GUICtrlRead($txtNumMini) + GUICtrlRead($txtNumHogs) + GUICtrlRead($txtNumValk) + GUICtrlRead($txtNumGole) + GUICtrlRead($txtNumWitc) + GUICtrlRead($txtNumLava))
 		$i = 100
 	Else
-		GUICtrlSetData($lblTotalCount, GUICtrlRead($txtNumBarb) + GUICtrlRead($txtNumArch) + GUICtrlRead($txtNumGiant)*5 + GUICtrlRead($txtNumGobl) + GUICtrlRead($txtNumWall)*2 + GUICtrlRead($txtNumBall)*5 + GUICtrlRead($txtNumWiza)*4 + GUICtrlRead($txtNumHeal)*14 + GUICtrlRead($txtNumDrag)*20 + GUICtrlRead($txtNumPekk)*25 + GUICtrlRead($txtNumMini)*2 + GUICtrlRead($txtNumHogs)*5 + GUICtrlRead($txtNumValk)*8 + GUICtrlRead($txtNumGole)*30 + GUICtrlRead($txtNumWitc)*12 + GUICtrlRead($txtNumLava)*30)
 		$i = $TotalCamp
 	EndIf
 	If GUICtrlRead($lblTotalCount) = $i Then

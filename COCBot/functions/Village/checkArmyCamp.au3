@@ -77,9 +77,9 @@ Func checkArmyCamp()
 		Local $hBitmapFirst = _CaptureRegion2(140, 165, 705, 220)
 		If $debugSetlog = 1 Then SetLog("$hBitmapFirst made", $COLOR_PURPLE)
 		If _Sleep($iDelaycheckArmyCamp5) Then Return
-		If $debugSetlog = 1 Then SetLog("Calling CGBfunctions.dll/searchIdentifyTroopTrained ", $COLOR_PURPLE)
+		If $debugSetlog = 1 Then SetLog("Calling MBRfunctions.dll/searchIdentifyTroopTrained ", $COLOR_PURPLE)
 
-		Local $FullTemp = DllCall($LibDir & "\CGBfunctions.dll", "str", "searchIdentifyTroopTrained", "ptr", $hBitmapFirst)
+		Local $FullTemp = DllCall($LibDir & "\MBRfunctions.dll", "str", "searchIdentifyTroopTrained", "ptr", $hBitmapFirst)
 		If $debugSetlog = 1 Then SetLog("Dll return $FullTemp :" & $FullTemp[0], $COLOR_PURPLE)
 		Local $TroopTypeT = StringSplit($FullTemp[0], "#")
 		If $debugSetlog = 1 Then SetLog("$Trooptype split # : " & $TroopTypeT[0], $COLOR_PURPLE)

@@ -1,32 +1,31 @@
-#RequireAdmin
-#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
-#AutoIt3Wrapper_AU3Check_Parameters=-U -l udf.txt
-#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: CGB Bot
-; Description ...: This file contens the Sequence that runs all CGB Bot
+; Name ..........: MBR Bot
+; Description ...: This file contens the Sequence that runs all MBR Bot
 ; Author ........:  (2014)
 ; Modified ......:
-; Remarks .......: This file is part of ClashGameBot. Copyright 2015
-;                  ClashGameBot is distributed under the terms of the GNU GPL
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
-; Link ..........:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
+#RequireAdmin
+#AutoIt3Wrapper_UseX64=n
 #include <WindowsConstants.au3>
 #include <WinAPI.au3>
 
-#pragma compile(Icon, "Icons\cocbot.ico")
-#pragma compile(FileDescription, Clash of Clans Bot - A Free Clash of Clans bot - https://gamebot.org)
-#pragma compile(ProductName, Clash Game Bot)
+#pragma compile(Icon, "Icons\MyBot.ico")
+#pragma compile(FileDescription, Clash of Clans Bot - A Free Clash of Clans bot - https://mybot.run)
+#pragma compile(ProductName, My Bot)
 
-#pragma compile(ProductVersion, 4.1.1)
-#pragma compile(FileVersion, 4.1.1)
-#pragma compile(LegalCopyright, © http://gamebot.org)
+#pragma compile(ProductVersion, 4.2)
+#pragma compile(FileVersion, 4.2)
+#pragma compile(LegalCopyright, © https://mybot.run)
 
-$sBotVersion = "v4.1.1-20"
-$sBotTitle = "Clash Game Bot " & $sBotVersion
-Global $sBotDll = @ScriptDir & "\CGBPlugin.dll"
+$sBotVersion = "v4.2-1"
+$sBotTitle = "My Bot " & $sBotVersion
+Global $sBotDll = @ScriptDir & "\MBRPlugin.dll"
 
 If _Singleton($sBotTitle, 1) = 0 Then
 	MsgBox(0, "", "Bot is already running.")
@@ -44,10 +43,10 @@ If Not FileExists(@ScriptDir & "\License.txt") Then
 	InetClose($license)
 EndIf
 
-#include "COCBot\CGB Global Variables.au3"
-#include "COCBot\CGB GUI Design.au3"
-#include "COCBot\CGB GUI Control.au3"
-#include "COCBot\CGB Functions.au3"
+#include "COCBot\MBR Global Variables.au3"
+#include "COCBot\MBR GUI Design.au3"
+#include "COCBot\MBR GUI Control.au3"
+#include "COCBot\MBR Functions.au3"
 
 CheckPrerequisites() ; check for VC2010 and .NET software
 
@@ -69,13 +68,13 @@ If $ichkDeleteLoots = 1 Then DeleteFiles($dirLoots, "*.*", $iDeleteLootsDays, 0)
 If $ichkDeleteTemp = 1 Then DeleteFiles($dirTemp, "*.*", $iDeleteTempDays, 0)
 FileChangeDir($LibDir)
 
-;CGBfunctions.dll debugger
-debugCGBFunctions($debugSearchArea, $debugRedArea, $debugOcr) ; set debug levels
+;MBRfunctions.dll debugger
+debugMBRFunctions($debugSearchArea, $debugRedArea, $debugOcr) ; set debug levels
 
 AdlibRegister("PushBulletRemoteControl", $PBRemoteControlInterval)
 AdlibRegister("PushBulletDeleteOldPushes", $PBDeleteOldPushesInterval)
 
-; CheckVersion() ; check latest version on gamebot.org site
+;CheckVersion() ; check latest version on mybot.run site
 
 ;AutoStart Bot if request
 AutoStart()
@@ -234,7 +233,7 @@ EndFunc   ;==>runBot
 
 Func Idle() ;Sequence that runs until Full Army
 	Local $TimeIdle = 0 ;In Seconds
-	Local $trainTimerAdjust=0, $timeInTrain=0, $TimeIdleinMinutes=0 ;In minutes
+	Local $trainTimerAdjust=-1, $timeInTrain=0, $TimeIdleinMinutes=0 ;In minutes
 
 	If $debugSetlog = 1 Then SetLog("Func Idle ", $COLOR_PURPLE)
 	While $fullArmy = False
@@ -365,19 +364,43 @@ Func Idle() ;Sequence that runs until Full Army
 		; use getMinInTrain() if Idle is too long without troops in training
 		$timeInTrain = getMaxInTrain()
 		$TimeIdleinMinutes = Floor($TimeIdle/60)
-		If $trainTimerAdjust = 0 Then $trainTimerAdjust = $TimeIdleinMinutes + $timeInTrain
+		If $trainTimerAdjust = -1 Then $trainTimerAdjust = $TimeIdleinMinutes + $timeInTrain
 		If $debugSetlog = 1 Then SetLog("$trainTimerAdjust: " & $trainTimerAdjust & " $timeInTrain: " & $timeInTrain & " $TimeIdleinMinutes: " & $TimeIdleinMinutes)
 		If $debugSetlog = 1 Then SetLog("$CurCamp: " & $CurCamp & " $CurCampOld: " & $CurCampOld)
 		If $CurCamp = $CurCampOld Then ; if no new troop is produced or being trained
 			If $TimeIdleinMinutes-$trainTimerAdjust > 0 Then ;the adjusted idle time exceeds minimum time to wait for unit to be produced
 				If $iSpeed = 0 Then
-					If $notTraining + $notTrainingDark < $numBarracksAvaiables + $numDarkBarracksAvaiables Then $RemoveTroops=True ; training stuck, alo $timeInTrain = -1
+					If $notTraining < $numBarracksAvaiables Then ; training stuck, also $timeInTrain = -1
+						$RemoveTroops=True
+						ResetCounters()
+						$trainFiller = True
+					Else
+						$trainFiller = True
+					EndIf
+					If $notTrainingDark < $numDarkBarracksAvaiables Then ; training stuck, also $timeInTrain = -1
+						$RemoveDarkTroops=True
+						ResetCounters()
+						$trainFillerDark = True
+					Else
+						$trainFillerDark = True
+					EndIf
+				ElseIf $iSpeed = 1 Then
+					If $notTraining = 0 Then
+						$RemoveTroops=True
+						ResetCounters()
+						$trainFiller = True
+					Else
+						$trainFiller = True
+					EndIf
+					If $notTrainingDark = 0 Then
+						$RemoveDarkTroops=True
+						ResetCounters()
+						$trainFillerDark = True
+					Else
+						$trainFillerDark = True
+					EndIf
 				EndIf
-				If $iSpeed = 1 Then
-					If $notTraining > 0 Then $trainFiller = True
-					If $notTrainingDark > 0 Then $trainFillerDark = True
-				EndIf
-				ResetCounters()
+
 				If $debugSetlog = 1 Then SetLog("time $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 			EndIf
 		Else
@@ -388,7 +411,10 @@ Func Idle() ;Sequence that runs until Full Army
 		SetLog("Time Idle: " & StringFormat("%02i", Floor(Floor($TimeIdle / 60) / 60)) & ":" & StringFormat("%02i", Floor(Mod(Floor($TimeIdle / 60), 60))) & ":" & StringFormat("%02i", Floor(Mod($TimeIdle, 60))))
 		If $OutOfGold = 1 Then Return
 	WEnd
-	If $iSpeed = 0 Then $RemoveTroops=True
+	If $iSpeed = 0 Then
+		$RemoveTroops=True
+		$RemoveDarkTroops=True
+	EndIf
 	ResetCounters()
 	If $debugSetlog = 1 Then SetLog("attack $ArchComp: " & $ArchComp & " $eBallComp" & $BallComp & " $eMiniComp: " & $MiniComp)
 EndFunc   ;==>Idle

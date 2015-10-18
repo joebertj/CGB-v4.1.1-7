@@ -1,5 +1,5 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: CGB Global Variables
+; Name ..........: MBR Global Variables
 ; Description ...: This file Includes several files in the current script and all Declared variables, constant, or create an array.
 ; Syntax ........: #include , Global
 ; Parameters ....: None
@@ -83,8 +83,8 @@ Global $dirLogs = $sProfilePath & "\" & $sCurrProfile & "\Logs\"
 Global $dirLoots = $sProfilePath & "\" & $sCurrProfile & "\Loots\"
 Global $dirTemp = $sProfilePath & "\" & $sCurrProfile & "\Temp\"
 Global $LibDir = @ScriptDir & "\lib" ;lib directory contains dll's
-Global $pFuncLib = $LibDir & "\CGBFunctions.dll" ; functions library
-Global $pIconLib = $LibDir & "\CGBBOT.dll" ; icon library
+Global $pFuncLib = $LibDir & "\MBRFunctions.dll" ; functions library
+Global $pIconLib = $LibDir & "\MBRBOT.dll" ; icon library
 ; enumerated Icons 1-based index to IconLib
 Global Enum $eIcnArcher = 1, $eIcnDonArcher, $eIcnBalloon, $eIcnDonBalloon, $eIcnBarbarian, $eIcnDonBarbarian, $eIcnKing, $eIcnBuilder, $eIcnCC, $eIcnGUI, $eIcnDark, $eIcnDragon, $eIcnDonDragon, $eIcnDrill, $eIcnElixir, $eIcnCollector, $eIcnFreezeSpell, $eIcnGem, $eIcnGiant, $eIcnDonGiant, _
 		$eIcnTrap, $eIcnGoblin, $eIcnDonGoblin, $eIcnGold, $eIcnGolem, $eIcnDonGolem, $eIcnHealer, $eIcnDonHealer, $eIcnHogRider, $eIcnDonHogRider, $eIcnHealSpell, $eIcnInferno, $eIcnJumpSpell, $eIcnLavaHound, $eIcnDonLavaHound, $eIcnLightSpell, $eIcnMinion, $eIcnDonMinion, $eIcnPekka, $eIcnDonPekka, _
@@ -432,7 +432,7 @@ Global $sTimer, $iTimePassed, $hour, $min, $sec , $sTimeWakeUp = 120,$sTimeStopA
 Global $fulltroop = 100
 Global $CurCamp, $TotalCamp = 0, $CurCampOld
 Global $NoLeague
-Global $FirstStart = True, $RemoveTroops = False
+Global $FirstStart = True, $RemoveTroops = False, $RemoveDarkTroops = False
 Global $TPaused, $BlockInputPause = 0
 
 ; Halt/Restart Mode values

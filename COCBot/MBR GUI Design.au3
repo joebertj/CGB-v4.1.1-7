@@ -1,5 +1,5 @@
 ; #FUNCTION# ====================================================================================================================
-; Name ..........: CGB GUI Design
+; Name ..........: MBR GUI Design
 ; Description ...: This file Includes GUI Design
 ; Syntax ........:
 ; Parameters ....: None
