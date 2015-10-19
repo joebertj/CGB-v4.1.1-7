@@ -45,7 +45,7 @@ Func AttackTHAllIn()
 			TroopTH($THx, $THy, $eArch, $spotsNum, Random(2, 3, 1), 500)
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(45) = True Then
+			If CheckForStar(40) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -79,7 +79,7 @@ Func AttackTHAllIn()
 			EndIf
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(45) = True Then
+			If CheckForStar(40) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -137,7 +137,7 @@ Func AttackTHAllIn()
 			EndIf
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(45) = True Then
+			If CheckForStar(40) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -170,7 +170,7 @@ Func AttackTHAllIn()
 					TroopTH($THx, $THy, $eValk, 2, 1, 500)
 				EndIf
 				PrepareAttack($iMatchMode, True) ;Check remaining quantities
-				If CheckForStar(90) = True Then
+				If CheckForStar(80) = True Then
 					If $optGreedy = 1 Then
 						Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 					EndIf
