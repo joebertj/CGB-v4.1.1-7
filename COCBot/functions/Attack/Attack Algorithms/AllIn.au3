@@ -45,7 +45,7 @@ Func AttackTHAllIn()
 			TroopTH($THx, $THy, $eArch, $spotsNum, Random(2, 3, 1), 500)
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(40) = True Then
+			If CheckForStar(30) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -79,7 +79,7 @@ Func AttackTHAllIn()
 			EndIf
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(40) = True Then
+			If CheckForStar(30) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -137,7 +137,7 @@ Func AttackTHAllIn()
 			EndIf
 			$waveUsed = True
 			PrepareAttack($iMatchMode, True) ;Check remaining quantities
-			If CheckForStar(40) = True Then
+			If CheckForStar(30) = True Then
 				If $optGreedy = 1 Then
 					Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 				EndIf
@@ -153,9 +153,9 @@ Func AttackTHAllIn()
 			$eDragCount = GetTroopCount($eDrag)
 			$ePekkCount = GetTroopCount($ePekk)
 			$eValkCount = GetTroopCount($eValk)
-			If $eWizaCount > 1 Or $eDragCount > 1 Or $ePekkCount > 1 Or $eValkCount > 2 Then
+			If $eWizaCount > 1 Or $eDragCount > 1 Or $ePekkCount > 1 Or $eValkCount > 1 Then
 				If $eWizaCount > 0 Then
-					TroopTH($THx, $THy, $eWiza, 1, 1, 1000)
+					TroopTH($THx, $THy, $eWiza, 2, 1, 1000)
 				EndIf
 
 				If $eDragCount > 0 Then
@@ -170,7 +170,7 @@ Func AttackTHAllIn()
 					TroopTH($THx, $THy, $eValk, 2, 1, 500)
 				EndIf
 				PrepareAttack($iMatchMode, True) ;Check remaining quantities
-				If CheckForStar(80) = True Then
+				If CheckForStar(60) = True Then
 					If $optGreedy = 1 Then
 						Greedy($spotsNum,$eKingSlot,$eQueenSlot)
 					EndIf
