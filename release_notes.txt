@@ -1,0 +1,41 @@
+This has started as a TH Snipe Attack Only MOD as describe below. Now with the addition of MOD IceBreaker, new Deployment Fomula, Lavaloonion Attack, Wall Trap Detection, New Custom Army Training and Mix and Match Any Spell, it is a now full blown MOD. The base of my MOD is CGB 4.1.1-7 merge by haghparast. Everyone, Thank you for starting this.
+
+
+The All In Attack (Can be used on Dead or Live Base and for TH Snipe)
+
+I have been using eXtreme and Gbarch to push until Masters. I got many loses but I avoided them eventually by manually intervening during those last seconds where it is clear the script wont make it. I need to have a TH Snipe script of my own I thought. What is the point of a script if you need to do manual? So thus born this AllIn. 
+
+I created this script by studying the Gbarch function. So credits to the original creator.
+
+My frustration with both eXtreme and Gbarch script is it does not use all available units. This script will drop all types of your available units and a sparingly right amount of each on stages until that TH you are sniping crumbles in ashes.
+
+Any troop composition will do. But be sure you have enough troops that can target the TH right away like Barbs, Archers, Wizards, Dragon, Pekka, Minions, Valks or Witch. The tankers are also needed so pick at least one, Barbs, Giants, Golem or Lava. Distractors are also ok like Goblins, Balloons Or Hogs. Add Wallbreakers if you plan to increase sniping Tiles.
+
+First wave is the basic archer wave. 
+
+Second wave is BAM wave with goblins. 
+
+Third wave is a Giant and Wizard combo. If you have some Balloons or Hogs it will be dropped, also. First and second wave troops will be drop if they have enough quantities.
+
+Fourth wave is an Extra Wave and will only trigger if First, Second and Third wave did not push thru due to lack or insufficient troops. This is a last effort to be economical before going to the last wave.
+
+The final wave is the heart of this strategy. Called the "ALL IN". First, drops Earthquake, Poison, Heal, Jump, Haste and Rage spells. Next, high tier troops (Golem, Lava, Dragon, Pekka, Valk). Then, King, Queen and CC. Followed by all leftover troops. Then finally Witch and Healer. Lightning Spells to finish off the TH.
+
+Some waves will be skipped if you have not enough troops to effectively execute that wave. Save it up for the last wave.
+
+Options unique to this attack:
+
+Paranoid - Will expend all spells once you reach ALL IN.
+Greedy - Will use Barbarian, Archer, Goblins and Minions on a dead base after TH destroyed by snipe
+
+
+AllIn Update 20
+
+Percentages in Custom Army can now be used
+Uniform and Longer Wave timings
+New Full Army Pre-Training Formula
+New Preset Values and uses the new Custom Army code
+Fixed Barracks Mode
+Fixed Heroes Health check
+
+
